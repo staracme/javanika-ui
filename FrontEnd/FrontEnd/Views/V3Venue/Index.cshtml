@@ -1,0 +1,3552 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/App_Theme/V3-SeatingArrangementStyle.css" rel="stylesheet" />
+
+
+@{
+    FrontEnd.Models.JAVADBEntities db = new FrontEnd.Models.JAVADBEntities();
+    var block1 = db.tblBlocks.Where(b => b.BlockNumber == "V3B2").SingleOrDefault();
+    var block2 = db.tblBlocks.Where(b => b.BlockNumber == "V3B5").SingleOrDefault();
+    var block3 = db.tblBlocks.Where(b => b.BlockNumber == "V3B8").SingleOrDefault();
+    var block4 = db.tblBlocks.Where(b => b.BlockNumber == "V3B11").SingleOrDefault();
+    var block5 = db.tblBlocks.Where(b => b.BlockNumber == "V3B1").SingleOrDefault();
+    var block6 = db.tblBlocks.Where(b => b.BlockNumber == "V3B3").SingleOrDefault();
+    var block7 = db.tblBlocks.Where(b => b.BlockNumber == "V3B6").SingleOrDefault();
+    var block8 = db.tblBlocks.Where(b => b.BlockNumber == "V3B9").SingleOrDefault();
+    var block9 = db.tblBlocks.Where(b => b.BlockNumber == "V3B4").SingleOrDefault();
+    var block10 = db.tblBlocks.Where(b => b.BlockNumber == "V3B7").SingleOrDefault();
+
+}
+
+<div>
+
+    <div class="EventSeatHead">
+        Venue 3 Music Show | Show time: 6.00 PM | Venue: Carrington Hall Stage - Redwood City , Fransisco
+    </div>
+
+    <div class="MainOuterSeatingWrap">
+        <div class="app-inner">
+            <div class="StageWrap">Stage / Screen this side</div>
+            <div>
+                <div class="DragContent">Drag towards Right to view seats</div><div class="DragImg"><img src="~/App_Images/DragArrow.png" width="50px" /></div>
+                <div class="clr"></div>
+            </div>
+            <br />
+
+            <div class="SeatBlockWrap">
+
+                <div class="SeatDiv1">
+                    @if (block1 != null)
+                    {
+                        var seat_rows_b1_l1 = db.tblSeatRows.Where(b => b.BlockID == block1.BlockID && b.GroupName == "L1").OrderBy(s => s.SeatRowID).ToList();
+
+                        <ol id="V3B2">
+                            <li class="row">
+                                <!-- BLOCK 1 LEFT SIDE Row 1 -->
+                                <ol class="seats" type="A">
+                                    @foreach (var row in seat_rows_b1_l1)
+                                    {
+                                        var seats = db.tblSeats.Where(s => s.SeatRowID == row.SeatRowID).ToList();
+
+                                        foreach (var seat in seats)
+                                        {
+                                            if (seat.Status == "PRESENT")
+                                            {
+                                                <li class="seat">
+                                                    <input type="checkbox" id="@seat.SeatNumber" class="chkSeats" value="@seat.SeatID" />
+                                                    <label for="@seat.SeatNumber">@seat.SeatNumber</label>
+                                                    <div class="tooltip"></div>
+                                                </li>
+                                            }
+                                            else if (seat.Status == null)
+                                            {
+                                                <li class="seat">
+                                                </li>
+                                            }
+                                        }
+                                    }
+                                </ol>
+                            </li>
+
+                            @{
+                                var seat_rows_b1_l2 = db.tblSeatRows.Where(b => b.BlockID == block1.BlockID && b.GroupName == "L2").OrderBy(s => s.SeatRowID).ToList();
+                            }
+
+                            <li class="row">
+                                <!-- BLOCK 1 LEFT SIDE Row 2 -->
+                                <ol class="seats" type="A">
+                                    @foreach (var row in seat_rows_b1_l2)
+                                    {
+                                        var seats = db.tblSeats.Where(s => s.SeatRowID == row.SeatRowID).ToList();
+
+                                        foreach (var seat in seats)
+                                        {
+                                            if (seat.Status == "PRESENT")
+                                            {
+                                                <li class="seat">
+                                                    <input type="checkbox" id="@seat.SeatNumber" class="chkSeats" value="@seat.SeatID" />
+                                                    <label for="@seat.SeatNumber">@seat.SeatNumber</label>
+                                                    <div class="tooltip"></div>
+                                                </li>
+                                            }
+                                            else if (seat.Status == null)
+                                            {
+                                                <li class="seat">
+                                                </li>
+                                            }
+                                        }
+                                    }
+                                </ol>
+                            </li>
+
+                            @{
+                                var seat_rows_b1_l3 = db.tblSeatRows.Where(b => b.BlockID == block1.BlockID && b.GroupName == "L3").OrderBy(s => s.SeatRowID).ToList();
+                            }
+
+                            <li class="row">
+                                <!-- BLOCK 1 LEFT SIDE Row 3 -->
+                                <ol class="seats" type="A">
+                                    @foreach (var row in seat_rows_b1_l3)
+                                    {
+                                        var seats = db.tblSeats.Where(s => s.SeatRowID == row.SeatRowID).ToList();
+
+                                        foreach (var seat in seats)
+                                        {
+                                            if (seat.Status == "PRESENT")
+                                            {
+                                                <li class="seat">
+                                                    <input type="checkbox" id="@seat.SeatNumber" class="chkSeats" value="@seat.SeatID" />
+                                                    <label for="@seat.SeatNumber">@seat.SeatNumber</label>
+                                                    <div class="tooltip"></div>
+                                                </li>
+                                            }
+                                            else if (seat.Status == null)
+                                            {
+                                                <li class="seat">
+                                                </li>
+                                            }
+                                        }
+                                    }
+                                </ol>
+                            </li>
+                        </ol>
+                                }
+
+                    @if (block2 != null)
+                    {
+                        var seat_rows_b2_l1 = db.tblSeatRows.Where(b => b.BlockID == block2.BlockID && b.GroupName == "L1").OrderBy(s => s.SeatRowID).ToList();
+
+                        <ol id="V3B5">
+
+                            <li class="row">
+                                <!-- BLOCK 2 LEFT SIDE Row 1 -->
+                                <ol class="seats" type="A">
+
+                                    @foreach (var row in seat_rows_b2_l1)
+                                    {
+                                        var seats = db.tblSeats.Where(s => s.SeatRowID == row.SeatRowID).ToList();
+
+                                        foreach (var seat in seats)
+                                        {
+                                            if (seat.Status == "PRESENT")
+                                            {
+                                                <li class="seat">
+                                                    <input type="checkbox" id="@seat.SeatNumber" class="chkSeats" value="@seat.SeatID" />
+                                                    <label for="@seat.SeatNumber">@seat.SeatNumber</label>
+                                                    <div class="tooltip"></div>
+                                                </li>
+                                            }
+                                            else if (seat.Status == null)
+                                            {
+                                                <li class="seat">
+                                                </li>
+                                            }
+                                        }
+                                    }
+                                </ol>
+                            </li>
+
+                            @{
+                                var seat_rows_b2_l2 = db.tblSeatRows.Where(b => b.BlockID == block2.BlockID && b.GroupName == "L2").OrderBy(s => s.SeatRowID).ToList();
+                            }
+
+                            <li class="row">
+                                <!-- BLOCK 2 LEFT SIDE Row 2 -->
+                                <ol class="seats" type="A">
+
+                                    @foreach (var row in seat_rows_b2_l2)
+                                    {
+                                        var seats = db.tblSeats.Where(s => s.SeatRowID == row.SeatRowID).ToList();
+
+                                        foreach (var seat in seats)
+                                        {
+                                            if (seat.Status == "PRESENT")
+                                            {
+                                                <li class="seat">
+                                                    <input type="checkbox" id="@seat.SeatNumber" class="chkSeats" value="@seat.SeatID" />
+                                                    <label for="@seat.SeatNumber">@seat.SeatNumber</label>
+                                                    <div class="tooltip"></div>
+                                                </li>
+                                            }
+                                            else if (seat.Status == null)
+                                            {
+                                                <li class="seat">
+                                                </li>
+                                            }
+                                        }
+                                    }
+                                </ol>
+                            </li>
+
+                            @{
+                                var seat_rows_b2_l3 = db.tblSeatRows.Where(b => b.BlockID == block2.BlockID && b.GroupName == "L3").OrderBy(s => s.SeatRowID).ToList();
+                            }
+
+                            <li class="row">
+                                <!-- BLOCK 2 LEFT SIDE Row 3 -->
+                                <ol class="seats" type="A">
+
+                                    @foreach (var row in seat_rows_b2_l3)
+                                    {
+                                        var seats = db.tblSeats.Where(s => s.SeatRowID == row.SeatRowID).ToList();
+
+                                        foreach (var seat in seats)
+                                        {
+                                            if (seat.Status == "PRESENT")
+                                            {
+                                                <li class="seat">
+                                                    <input type="checkbox" id="@seat.SeatNumber" class="chkSeats" value="@seat.SeatID" />
+                                                    <label for="@seat.SeatNumber">@seat.SeatNumber</label>
+                                                    <div class="tooltip"></div>
+                                                </li>
+                                            }
+                                            else if (seat.Status == null)
+                                            {
+                                                <li class="seat">
+                                                </li>
+                                            }
+                                        }
+                                    }
+                                </ol>
+                            </li>
+
+
+                            @{
+                                var seat_rows_b2_l4 = db.tblSeatRows.Where(b => b.BlockID == block2.BlockID && b.GroupName == "L4").OrderBy(s => s.SeatRowID).ToList();
+                            }
+
+                            <li class="row">
+                                <!-- BLOCK 2 LEFT SIDE Row 4 -->
+                                <ol class="seats" type="A">
+
+                                    @foreach (var row in seat_rows_b2_l4)
+                                    {
+                                        var seats = db.tblSeats.Where(s => s.SeatRowID == row.SeatRowID).ToList();
+
+                                        foreach (var seat in seats)
+                                        {
+                                            if (seat.Status == "PRESENT")
+                                            {
+                                                <li class="seat">
+                                                    <input type="checkbox" id="@seat.SeatNumber" class="chkSeats" value="@seat.SeatID" />
+                                                    <label for="@seat.SeatNumber">@seat.SeatNumber</label>
+                                                    <div class="tooltip"></div>
+                                                </li>
+                                            }
+                                            else if (seat.Status == null)
+                                            {
+                                                <li class="seat">
+                                                </li>
+                                            }
+                                        }
+                                    }
+                                </ol>
+                            </li>
+
+
+                            @{
+                                var seat_rows_b2_l5 = db.tblSeatRows.Where(b => b.BlockID == block2.BlockID && b.GroupName == "L5").OrderBy(s => s.SeatRowID).ToList();
+                            }
+
+                            <li class="row">
+                                <!-- BLOCK 2 LEFT SIDE Row 5 -->
+                                <ol class="seats" type="A">
+
+                                    @foreach (var row in seat_rows_b2_l5)
+                                    {
+                                        var seats = db.tblSeats.Where(s => s.SeatRowID == row.SeatRowID).ToList();
+
+                                        foreach (var seat in seats)
+                                        {
+                                            if (seat.Status == "PRESENT")
+                                            {
+                                                <li class="seat">
+                                                    <input type="checkbox" id="@seat.SeatNumber" class="chkSeats" value="@seat.SeatID" />
+                                                    <label for="@seat.SeatNumber">@seat.SeatNumber</label>
+                                                    <div class="tooltip"></div>
+                                                </li>
+                                            }
+                                            else if (seat.Status == null)
+                                            {
+                                                <li class="seat">
+                                                </li>
+                                            }
+                                        }
+                                    }
+                                </ol>
+                            </li>
+
+                            @{
+                                var seat_rows_b2_l6 = db.tblSeatRows.Where(b => b.BlockID == block2.BlockID && b.GroupName == "L6").OrderBy(s => s.SeatRowID).ToList();
+                            }
+
+                            <li class="row">
+                                <!-- BLOCK 2 LEFT SIDE Row 6 -->
+                                <ol class="seats" type="A">
+
+                                    @foreach (var row in seat_rows_b2_l6)
+                                    {
+                                        var seats = db.tblSeats.Where(s => s.SeatRowID == row.SeatRowID).ToList();
+
+                                        foreach (var seat in seats)
+                                        {
+                                            if (seat.Status == "PRESENT")
+                                            {
+                                                <li class="seat">
+                                                    <input type="checkbox" id="@seat.SeatNumber" class="chkSeats" value="@seat.SeatID" />
+                                                    <label for="@seat.SeatNumber">@seat.SeatNumber</label>
+                                                    <div class="tooltip"></div>
+                                                </li>
+                                            }
+                                            else if (seat.Status == null)
+                                            {
+                                                <li class="seat">
+                                                </li>
+                                            }
+                                        }
+                                    }
+                                </ol>
+                            </li>
+
+
+
+
+                            @{
+                                var seat_rows_b2_l7 = db.tblSeatRows.Where(b => b.BlockID == block2.BlockID && b.GroupName == "L7").OrderBy(s => s.SeatRowID).ToList();
+                            }
+
+                            <li class="row">
+                                <!-- BLOCK 2 LEFT SIDE Row 7 -->
+                                <ol class="seats" type="A">
+
+                                    @foreach (var row in seat_rows_b2_l7)
+                                    {
+                                        var seats = db.tblSeats.Where(s => s.SeatRowID == row.SeatRowID).ToList();
+
+                                        foreach (var seat in seats)
+                                        {
+                                            if (seat.Status == "PRESENT")
+                                            {
+                                                <li class="seat">
+                                                    <input type="checkbox" id="@seat.SeatNumber" class="chkSeats" value="@seat.SeatID" />
+                                                    <label for="@seat.SeatNumber">@seat.SeatNumber</label>
+                                                    <div class="tooltip"></div>
+                                                </li>
+                                            }
+                                            else if (seat.Status == null)
+                                            {
+                                                <li class="seat">
+                                                </li>
+                                            }
+                                        }
+                                    }
+                                    </ol>
+                                </li>
+                            </ol>
+                                }
+
+
+
+                    @if (block3 != null)
+                    {
+                        var seat_rows_b3_l1 = db.tblSeatRows.Where(b => b.BlockID == block3.BlockID && b.GroupName == "L1").OrderBy(s => s.SeatRowID).ToList();
+
+                        <ol id="V3B8">
+
+                            <li class="row">
+                                <!-- BLOCK 3 LEFT SIDE Row 1 -->
+                                <ol class="seats" type="A">
+
+                                    @foreach (var row in seat_rows_b3_l1)
+                                    {
+                                        var seats = db.tblSeats.Where(s => s.SeatRowID == row.SeatRowID).ToList();
+
+                                        foreach (var seat in seats)
+                                        {
+                                            if (seat.Status == "PRESENT")
+                                            {
+                                                <li class="seat">
+                                                    <input type="checkbox" id="@seat.SeatNumber" class="chkSeats" value="@seat.SeatID" />
+                                                    <label for="@seat.SeatNumber">@seat.SeatNumber</label>
+                                                    <div class="tooltip"></div>
+                                                </li>
+                                            }
+                                            else if (seat.Status == null)
+                                            {
+                                                <li class="seat">
+                                                </li>
+                                            }
+                                        }
+                                    }
+                                </ol>
+                            </li>
+
+                            @{
+                                var seat_rows_b3_l2 = db.tblSeatRows.Where(b => b.BlockID == block3.BlockID && b.GroupName == "L2").OrderBy(s => s.SeatRowID).ToList();
+                            }
+
+                            <li class="row">
+                                <!-- BLOCK 3 LEFT SIDE Row 2 -->
+                                <ol class="seats" type="A">
+
+                                    @foreach (var row in seat_rows_b3_l2)
+                                    {
+                                        var seats = db.tblSeats.Where(s => s.SeatRowID == row.SeatRowID).ToList();
+
+                                        foreach (var seat in seats)
+                                        {
+                                            if (seat.Status == "PRESENT")
+                                            {
+                                                <li class="seat">
+                                                    <input type="checkbox" id="@seat.SeatNumber" class="chkSeats" value="@seat.SeatID" />
+                                                    <label for="@seat.SeatNumber">@seat.SeatNumber</label>
+                                                    <div class="tooltip"></div>
+                                                </li>
+                                            }
+                                            else if (seat.Status == null)
+                                            {
+                                                <li class="seat">
+                                                </li>
+                                            }
+                                        }
+                                    }
+                                </ol>
+                            </li>
+
+                            @{
+                                var seat_rows_b3_l3 = db.tblSeatRows.Where(b => b.BlockID == block3.BlockID && b.GroupName == "L3").OrderBy(s => s.SeatRowID).ToList();
+                            }
+
+                            <li class="row">
+                                <!-- BLOCK 3 LEFT SIDE Row 3 -->
+                                <ol class="seats" type="A">
+
+                                    @foreach (var row in seat_rows_b3_l3)
+                                    {
+                                        var seats = db.tblSeats.Where(s => s.SeatRowID == row.SeatRowID).ToList();
+
+                                        foreach (var seat in seats)
+                                        {
+                                            if (seat.Status == "PRESENT")
+                                            {
+                                                <li class="seat">
+                                                    <input type="checkbox" id="@seat.SeatNumber" class="chkSeats" value="@seat.SeatID" />
+                                                    <label for="@seat.SeatNumber">@seat.SeatNumber</label>
+                                                    <div class="tooltip"></div>
+                                                </li>
+                                            }
+                                            else if (seat.Status == null)
+                                            {
+                                                <li class="seat">
+                                                </li>
+                                            }
+                                        }
+                                    }
+                                </ol>
+                            </li>
+
+
+                            @{
+                                var seat_rows_b3_l4 = db.tblSeatRows.Where(b => b.BlockID == block3.BlockID && b.GroupName == "L4").OrderBy(s => s.SeatRowID).ToList();
+                            }
+
+                            <li class="row">
+                                <!-- BLOCK 3 LEFT SIDE Row 4 -->
+                                <ol class="seats" type="A">
+
+                                    @foreach (var row in seat_rows_b3_l4)
+                                    {
+                                        var seats = db.tblSeats.Where(s => s.SeatRowID == row.SeatRowID).ToList();
+
+                                        foreach (var seat in seats)
+                                        {
+                                            if (seat.Status == "PRESENT")
+                                            {
+                                                <li class="seat">
+                                                    <input type="checkbox" id="@seat.SeatNumber" class="chkSeats" value="@seat.SeatID" />
+                                                    <label for="@seat.SeatNumber">@seat.SeatNumber</label>
+                                                    <div class="tooltip"></div>
+                                                </li>
+                                            }
+                                            else if (seat.Status == null)
+                                            {
+                                                <li class="seat">
+                                                </li>
+                                            }
+                                        }
+                                    }
+                                </ol>
+                            </li>
+
+
+                            @{
+                                var seat_rows_b3_l5 = db.tblSeatRows.Where(b => b.BlockID == block3.BlockID && b.GroupName == "L5").OrderBy(s => s.SeatRowID).ToList();
+                            }
+
+                            <li class="row">
+                                <!-- BLOCK 3 LEFT SIDE Row 5 -->
+                                <ol class="seats" type="A">
+
+                                    @foreach (var row in seat_rows_b3_l5)
+                                    {
+                                        var seats = db.tblSeats.Where(s => s.SeatRowID == row.SeatRowID).ToList();
+
+                                        foreach (var seat in seats)
+                                        {
+                                            if (seat.Status == "PRESENT")
+                                            {
+                                                <li class="seat">
+                                                    <input type="checkbox" id="@seat.SeatNumber" class="chkSeats" value="@seat.SeatID" />
+                                                    <label for="@seat.SeatNumber">@seat.SeatNumber</label>
+                                                    <div class="tooltip"></div>
+                                                </li>
+                                            }
+                                            else if (seat.Status == null)
+                                            {
+                                                <li class="seat">
+                                                </li>
+                                            }
+                                        }
+                                    }
+                                </ol>
+                            </li>
+
+                            @{
+                                var seat_rows_b3_l6 = db.tblSeatRows.Where(b => b.BlockID == block3.BlockID && b.GroupName == "L6").OrderBy(s => s.SeatRowID).ToList();
+                            }
+
+                            <li class="row">
+                                <!-- BLOCK 3 LEFT SIDE Row 6 -->
+                                <ol class="seats" type="A">
+
+                                    @foreach (var row in seat_rows_b3_l6)
+                                    {
+                                        var seats = db.tblSeats.Where(s => s.SeatRowID == row.SeatRowID).ToList();
+
+                                        foreach (var seat in seats)
+                                        {
+                                            if (seat.Status == "PRESENT")
+                                            {
+                                                <li class="seat">
+                                                    <input type="checkbox" id="@seat.SeatNumber" class="chkSeats" value="@seat.SeatID" />
+                                                    <label for="@seat.SeatNumber">@seat.SeatNumber</label>
+                                                    <div class="tooltip"></div>
+                                                </li>
+                                            }
+                                            else if (seat.Status == null)
+                                            {
+                                                <li class="seat">
+                                                </li>
+                                            }
+                                        }
+                                    }
+                                </ol>
+                            </li>
+
+
+
+
+                            @{
+                                var seat_rows_b3_l7 = db.tblSeatRows.Where(b => b.BlockID == block3.BlockID && b.GroupName == "L7").OrderBy(s => s.SeatRowID).ToList();
+                            }
+
+                            <li class="row">
+                                <!-- BLOCK 3 LEFT SIDE Row 7 -->
+                                <ol class="seats" type="A">
+
+                                    @foreach (var row in seat_rows_b3_l7)
+                                    {
+                                        var seats = db.tblSeats.Where(s => s.SeatRowID == row.SeatRowID).ToList();
+
+                                        foreach (var seat in seats)
+                                        {
+                                            if (seat.Status == "PRESENT")
+                                            {
+                                                <li class="seat">
+                                                    <input type="checkbox" id="@seat.SeatNumber" class="chkSeats" value="@seat.SeatID" />
+                                                    <label for="@seat.SeatNumber">@seat.SeatNumber</label>
+                                                    <div class="tooltip"></div>
+                                                </li>
+                                            }
+                                            else if (seat.Status == null)
+                                            {
+                                                <li class="seat">
+                                                </li>
+                                            }
+                                        }
+                                    }
+                                </ol>
+                            </li>
+                        </ol>
+                                }
+
+                    @if (block4 != null)
+                    {
+                        var seat_rows_b4_l1 = db.tblSeatRows.Where(b => b.BlockID == block4.BlockID && b.GroupName == "L1").OrderBy(s => s.SeatRowID).ToList();
+
+                        <ol id="V3B11">
+
+                            <li class="row">
+                                <!-- BLOCK 4 LEFT SIDE Row 1 -->
+                                <ol class="seats" type="A">
+
+                                    @foreach (var row in seat_rows_b4_l1)
+                                    {
+                                        var seats = db.tblSeats.Where(s => s.SeatRowID == row.SeatRowID).ToList();
+
+                                        foreach (var seat in seats)
+                                        {
+                                            if (seat.Status == "PRESENT")
+                                            {
+                                                <li class="seat">
+                                                    <input type="checkbox" id="@seat.SeatNumber" class="chkSeats" value="@seat.SeatID" />
+                                                    <label for="@seat.SeatNumber">@seat.SeatNumber</label>
+                                                    <div class="tooltip"></div>
+                                                </li>
+                                            }
+                                            else if (seat.Status == null)
+                                            {
+                                                <li class="seat">
+                                                </li>
+                                            }
+                                        }
+                                    }
+                                </ol>
+                            </li>
+
+                            @{
+                                var seat_rows_b4_l2 = db.tblSeatRows.Where(b => b.BlockID == block4.BlockID && b.GroupName == "L2").OrderBy(s => s.SeatRowID).ToList();
+                            }
+
+                            <li class="row">
+                                <!-- BLOCK 4 LEFT SIDE Row 2 -->
+                                <ol class="seats" type="A">
+
+                                    @foreach (var row in seat_rows_b4_l2)
+                                    {
+                                        var seats = db.tblSeats.Where(s => s.SeatRowID == row.SeatRowID).ToList();
+
+                                        foreach (var seat in seats)
+                                        {
+                                            if (seat.Status == "PRESENT")
+                                            {
+                                                <li class="seat">
+                                                    <input type="checkbox" id="@seat.SeatNumber" class="chkSeats" value="@seat.SeatID" />
+                                                    <label for="@seat.SeatNumber">@seat.SeatNumber</label>
+                                                    <div class="tooltip"></div>
+                                                </li>
+                                            }
+                                            else if (seat.Status == null)
+                                            {
+                                                <li class="seat">
+                                                </li>
+                                            }
+                                        }
+                                    }
+                                </ol>
+                            </li>
+
+                            @{
+                                var seat_rows_b4_l3 = db.tblSeatRows.Where(b => b.BlockID == block4.BlockID && b.GroupName == "L3").OrderBy(s => s.SeatRowID).ToList();
+                            }
+
+                            <li class="row">
+                                <!-- BLOCK 4 LEFT SIDE Row 3 -->
+                                <ol class="seats" type="A">
+
+                                    @foreach (var row in seat_rows_b4_l3)
+                                    {
+                                        var seats = db.tblSeats.Where(s => s.SeatRowID == row.SeatRowID).ToList();
+
+                                        foreach (var seat in seats)
+                                        {
+                                            if (seat.Status == "PRESENT")
+                                            {
+                                                <li class="seat">
+                                                    <input type="checkbox" id="@seat.SeatNumber" class="chkSeats" value="@seat.SeatID" />
+                                                    <label for="@seat.SeatNumber">@seat.SeatNumber</label>
+                                                    <div class="tooltip"></div>
+                                                </li>
+                                            }
+                                            else if (seat.Status == null)
+                                            {
+                                                <li class="seat">
+                                                </li>
+                                            }
+                                        }
+                                    }
+                                </ol>
+                            </li>
+
+
+                            @{
+                                var seat_rows_b4_l4 = db.tblSeatRows.Where(b => b.BlockID == block4.BlockID && b.GroupName == "L4").OrderBy(s => s.SeatRowID).ToList();
+                            }
+
+                            <li class="row">
+                                <!-- BLOCK 4 LEFT SIDE Row 4 -->
+                                <ol class="seats" type="A">
+
+                                    @foreach (var row in seat_rows_b4_l4)
+                                    {
+                                        var seats = db.tblSeats.Where(s => s.SeatRowID == row.SeatRowID).ToList();
+
+                                        foreach (var seat in seats)
+                                        {
+                                            if (seat.Status == "PRESENT")
+                                            {
+                                                <li class="seat">
+                                                    <input type="checkbox" id="@seat.SeatNumber" class="chkSeats" value="@seat.SeatID" />
+                                                    <label for="@seat.SeatNumber">@seat.SeatNumber</label>
+                                                    <div class="tooltip"></div>
+                                                </li>
+                                            }
+                                            else if (seat.Status == null)
+                                            {
+                                                <li class="seat">
+                                                </li>
+                                            }
+                                        }
+                                    }
+                                </ol>
+                            </li>
+
+
+                            @{
+                                var seat_rows_b5_l5 = db.tblSeatRows.Where(b => b.BlockID == block4.BlockID && b.GroupName == "L5").OrderBy(s => s.SeatRowID).ToList();
+                            }
+
+                            <li class="row">
+                                <!-- BLOCK 4 LEFT SIDE Row 5 -->
+                                <ol class="seats" type="A">
+
+                                    @foreach (var row in seat_rows_b5_l5)
+                                    {
+                                        var seats = db.tblSeats.Where(s => s.SeatRowID == row.SeatRowID).ToList();
+
+                                        foreach (var seat in seats)
+                                        {
+                                            if (seat.Status == "PRESENT")
+                                            {
+                                                <li class="seat">
+                                                    <input type="checkbox" id="@seat.SeatNumber" class="chkSeats" value="@seat.SeatID" />
+                                                    <label for="@seat.SeatNumber">@seat.SeatNumber</label>
+                                                    <div class="tooltip"></div>
+                                                </li>
+                                            }
+                                            else if (seat.Status == null)
+                                            {
+                                                <li class="seat">
+                                                </li>
+                                            }
+                                        }
+                                    }
+                                </ol>
+                            </li>
+
+                            @{
+                                var seat_rows_b6_l6 = db.tblSeatRows.Where(b => b.BlockID == block4.BlockID && b.GroupName == "L6").OrderBy(s => s.SeatRowID).ToList();
+                            }
+
+                            <li class="row">
+                                <!-- BLOCK 4 LEFT SIDE Row 6 -->
+                                <ol class="seats" type="A">
+
+                                    @foreach (var row in seat_rows_b6_l6)
+                                    {
+                                        var seats = db.tblSeats.Where(s => s.SeatRowID == row.SeatRowID).ToList();
+
+                                        foreach (var seat in seats)
+                                        {
+                                            if (seat.Status == "PRESENT")
+                                            {
+                                                <li class="seat">
+                                                    <input type="checkbox" id="@seat.SeatNumber" class="chkSeats" value="@seat.SeatID" />
+                                                    <label for="@seat.SeatNumber">@seat.SeatNumber</label>
+                                                    <div class="tooltip"></div>
+                                                </li>
+                                            }
+                                            else if (seat.Status == null)
+                                            {
+                                                <li class="seat">
+                                                </li>
+                                            }
+                                        }
+                                    }
+                                </ol>
+                            </li>
+                            @{
+                                var seat_rows_b4_l7 = db.tblSeatRows.Where(b => b.BlockID == block4.BlockID && b.GroupName == "L7").OrderBy(s => s.SeatRowID).ToList();
+                            }
+
+                            <li class="row">
+                                <!-- BLOCK 4 LEFT SIDE Row 7 -->
+                                <ol class="seats" type="A">
+                                    @foreach (var row in seat_rows_b4_l7)
+                                    {
+                                        var seats = db.tblSeats.Where(s => s.SeatRowID == row.SeatRowID).ToList();
+
+                                        foreach (var seat in seats)
+                                        {
+                                            if (seat.Status == "PRESENT")
+                                            {
+                                                <li class="seat">
+                                                    <input type="checkbox" id="@seat.SeatNumber" class="chkSeats" value="@seat.SeatID" />
+                                                    <label for="@seat.SeatNumber">@seat.SeatNumber</label>
+                                                    <div class="tooltip"></div>
+                                                </li>
+                                            }
+                                            else if (seat.Status == null)
+                                            {
+                                                <li class="seat">
+                                                </li>
+                                            }
+                                        }
+                                    }
+                                </ol>
+                            </li>
+                        </ol>
+                                }
+                </div>
+
+                <div class="SeatDiv2">
+                    @if (block5 != null)
+                    {
+                        var seat_rows_b5_m1 = db.tblSeatRows.Where(b => b.BlockID == block5.BlockID && b.GroupName == "M1").OrderBy(s => s.SeatRowID).ToList();
+
+                        <ol id="V3B1">
+                            <li class="row">
+                                <ol class="seats" type="A">
+                                    @foreach (var row in seat_rows_b5_m1)
+                                    {
+                                        var seats = db.tblSeats.Where(s => s.SeatRowID == row.SeatRowID).ToList();
+
+                                        foreach (var seat in seats)
+                                        {
+                                            if (seat.Status == "PRESENT")
+                                            {
+                                                <li class="seat">
+                                                    <input type="checkbox" id="@seat.SeatNumber" class="chkSeats" value="@seat.SeatID" />
+                                                    <label for="@seat.SeatNumber">@seat.SeatNumber</label>
+                                                    <div class="tooltip"></div>
+                                                </li>
+                                            }
+                                            else if (seat.Status == null)
+                                            {
+                                                <li class="seat">
+                                                </li>
+                                            }
+                                        }
+                                    }
+
+                                </ol>
+                            </li>
+                        </ol>
+                    }
+
+                    @if (block6 != null)
+                    {
+                        var seat_rows_b6_m1 = db.tblSeatRows.Where(b => b.BlockID == block6.BlockID && b.GroupName == "M1").OrderBy(s => s.SeatRowID).ToList();
+                        var seat_rows_b6_m2 = db.tblSeatRows.Where(b => b.BlockID == block6.BlockID && b.GroupName == "M2").OrderBy(s => s.SeatRowID).ToList();
+
+                        <ol id="V3B3">
+                            <li class="row">
+                                <ol class="seats" type="A">
+                                    @foreach (var row in seat_rows_b6_m1)
+                                    {
+                                        var seats = db.tblSeats.Where(s => s.SeatRowID == row.SeatRowID).ToList();
+
+                                        foreach (var seat in seats)
+                                        {
+                                            if (seat.Status == "PRESENT")
+                                            {
+                                                <li class="seat">
+                                                    <input type="checkbox" id="@seat.SeatNumber" class="chkSeats" value="@seat.SeatID" />
+                                                    <label for="@seat.SeatNumber">@seat.SeatNumber</label>
+                                                    <div class="tooltip"></div>
+                                                </li>
+                                            }
+                                            else if (seat.Status == null)
+                                            {
+                                                <li class="seat">
+                                                </li>
+                                            }
+                                        }
+                                    }
+                                </ol>
+                            </li>
+
+                            <li class="row">
+                                <ol class="seats" type="A">
+                                    @foreach (var row in seat_rows_b6_m2)
+                                    {
+                                        var seats = db.tblSeats.Where(s => s.SeatRowID == row.SeatRowID).ToList();
+
+                                        foreach (var seat in seats)
+                                        {
+                                            if (seat.Status == "PRESENT")
+                                            {
+                                                <li class="seat">
+                                                    <input type="checkbox" id="@seat.SeatNumber" class="chkSeats" value="@seat.SeatID" />
+                                                    <label for="@seat.SeatNumber">@seat.SeatNumber</label>
+                                                    <div class="tooltip"></div>
+                                                </li>
+                                            }
+                                            else if (seat.Status == null)
+                                            {
+                                                <li class="seat">
+                                                </li>
+                                            }
+                                        }
+                                    }
+                                </ol>
+                            </li>
+                        </ol>
+                    }
+
+                    @if (block7 != null)
+                    {
+                        var seat_rows_b7_m1 = db.tblSeatRows.Where(b => b.BlockID == block7.BlockID && b.GroupName == "M1").OrderBy(s => s.SeatRowID).ToList();
+                        var seat_rows_b7_m2 = db.tblSeatRows.Where(b => b.BlockID == block7.BlockID && b.GroupName == "M2").OrderBy(s => s.SeatRowID).ToList();
+                        var seat_rows_b7_m3 = db.tblSeatRows.Where(b => b.BlockID == block7.BlockID && b.GroupName == "M3").OrderBy(s => s.SeatRowID).ToList();
+                        var seat_rows_b7_m4 = db.tblSeatRows.Where(b => b.BlockID == block7.BlockID && b.GroupName == "M4").OrderBy(s => s.SeatRowID).ToList();
+                        var seat_rows_b7_m5 = db.tblSeatRows.Where(b => b.BlockID == block7.BlockID && b.GroupName == "M5").OrderBy(s => s.SeatRowID).ToList();
+                        var seat_rows_b7_m6 = db.tblSeatRows.Where(b => b.BlockID == block7.BlockID && b.GroupName == "M6").OrderBy(s => s.SeatRowID).ToList();
+                        var seat_rows_b7_m7 = db.tblSeatRows.Where(b => b.BlockID == block7.BlockID && b.GroupName == "M7").OrderBy(s => s.SeatRowID).ToList();
+
+                        <ol id="V3B6">
+                            <li class="row">
+                                <ol class="seats" type="A">
+                                    @foreach (var row in seat_rows_b7_m1)
+                                    {
+                                        var seats = db.tblSeats.Where(s => s.SeatRowID == row.SeatRowID).ToList();
+
+                                        foreach (var seat in seats)
+                                        {
+                                            if (seat.Status == "PRESENT")
+                                            {
+                                                <li class="seat">
+                                                    <input type="checkbox" id="@seat.SeatNumber" class="chkSeats" value="@seat.SeatID" />
+                                                    <label for="@seat.SeatNumber">@seat.SeatNumber</label>
+                                                    <div class="tooltip"></div>
+                                                </li>
+                                            }
+                                            else if (seat.Status == null)
+                                            {
+                                                <li class="seat">
+                                                </li>
+                                            }
+                                        }
+                                    }
+                                </ol>
+                            </li>
+
+                            <li class="row">
+                                <ol class="seats" type="A">
+                                    @foreach (var row in seat_rows_b7_m2)
+                                    {
+                                        var seats = db.tblSeats.Where(s => s.SeatRowID == row.SeatRowID).ToList();
+
+                                        foreach (var seat in seats)
+                                        {
+                                            if (seat.Status == "PRESENT")
+                                            {
+                                                <li class="seat">
+                                                    <input type="checkbox" id="@seat.SeatNumber" class="chkSeats" value="@seat.SeatID" />
+                                                    <label for="@seat.SeatNumber">@seat.SeatNumber</label>
+                                                    <div class="tooltip"></div>
+                                                </li>
+                                            }
+                                            else if (seat.Status == null)
+                                            {
+                                                <li class="seat">
+                                                </li>
+                                            }
+                                        }
+                                    }
+                                </ol>
+                            </li>
+
+                            <li class="row">
+                                <ol class="seats" type="A">
+                                    @foreach (var row in seat_rows_b7_m3)
+                                    {
+                                        var seats = db.tblSeats.Where(s => s.SeatRowID == row.SeatRowID).ToList();
+
+                                        foreach (var seat in seats)
+                                        {
+                                            if (seat.Status == "PRESENT")
+                                            {
+                                                <li class="seat">
+                                                    <input type="checkbox" id="@seat.SeatNumber" class="chkSeats" value="@seat.SeatID" />
+                                                    <label for="@seat.SeatNumber">@seat.SeatNumber</label>
+                                                    <div class="tooltip"></div>
+                                                </li>
+                                            }
+                                            else if (seat.Status == null)
+                                            {
+                                                <li class="seat">
+                                                </li>
+                                            }
+                                        }
+                                    }
+                                </ol>
+                            </li>
+
+                            <li class="row">
+                                <ol class="seats" type="A">
+                                    @foreach (var row in seat_rows_b7_m4)
+                                    {
+                                        var seats = db.tblSeats.Where(s => s.SeatRowID == row.SeatRowID).ToList();
+
+                                        foreach (var seat in seats)
+                                        {
+                                            if (seat.Status == "PRESENT")
+                                            {
+                                                <li class="seat">
+                                                    <input type="checkbox" id="@seat.SeatNumber" class="chkSeats" value="@seat.SeatID" />
+                                                    <label for="@seat.SeatNumber">@seat.SeatNumber</label>
+                                                    <div class="tooltip"></div>
+                                                </li>
+                                            }
+                                            else if (seat.Status == null)
+                                            {
+                                                <li class="seat">
+                                                </li>
+                                            }
+                                        }
+                                    }
+                                </ol>
+                            </li>
+
+                            <li class="row">
+                                <ol class="seats" type="A">
+                                    @foreach (var row in seat_rows_b7_m5)
+                                    {
+                                        var seats = db.tblSeats.Where(s => s.SeatRowID == row.SeatRowID).ToList();
+
+                                        foreach (var seat in seats)
+                                        {
+                                            if (seat.Status == "PRESENT")
+                                            {
+                                                <li class="seat">
+                                                    <input type="checkbox" id="@seat.SeatNumber" class="chkSeats" value="@seat.SeatID" />
+                                                    <label for="@seat.SeatNumber">@seat.SeatNumber</label>
+                                                    <div class="tooltip"></div>
+                                                </li>
+                                            }
+                                            else if (seat.Status == null)
+                                            {
+                                                <li class="seat">
+                                                </li>
+                                            }
+                                        }
+                                    }
+                                </ol>
+                            </li>
+
+                            <li class="row">
+                                <ol class="seats" type="A">
+                                    @foreach (var row in seat_rows_b7_m6)
+                                    {
+                                        var seats = db.tblSeats.Where(s => s.SeatRowID == row.SeatRowID).ToList();
+
+                                        foreach (var seat in seats)
+                                        {
+                                            if (seat.Status == "PRESENT")
+                                            {
+                                                <li class="seat">
+                                                    <input type="checkbox" id="@seat.SeatNumber" class="chkSeats" value="@seat.SeatID" />
+                                                    <label for="@seat.SeatNumber">@seat.SeatNumber</label>
+                                                    <div class="tooltip"></div>
+                                                </li>
+                                            }
+                                            else if (seat.Status == null)
+                                            {
+                                                <li class="seat">
+                                                </li>
+                                            }
+                                        }
+                                    }
+                                </ol>
+                            </li>
+
+                            <li class="row">
+                                <ol class="seats" type="A">
+                                    @foreach (var row in seat_rows_b7_m7)
+                                    {
+                                        var seats = db.tblSeats.Where(s => s.SeatRowID == row.SeatRowID).ToList();
+
+                                        foreach (var seat in seats)
+                                        {
+                                            if (seat.Status == "PRESENT")
+                                            {
+                                                <li class="seat">
+                                                    <input type="checkbox" id="@seat.SeatNumber" class="chkSeats" value="@seat.SeatID" />
+                                                    <label for="@seat.SeatNumber">@seat.SeatNumber</label>
+                                                    <div class="tooltip"></div>
+                                                </li>
+                                            }
+                                            else if (seat.Status == null)
+                                            {
+                                                <li class="seat">
+                                                </li>
+                                            }
+                                        }
+                                    }
+                                </ol>
+                            </li>
+                        </ol>
+                    }
+
+                    @if (block8 != null)
+                    {
+                        var seat_rows_b8_m1 = db.tblSeatRows.Where(b => b.BlockID == block8.BlockID && b.GroupName == "M1").OrderBy(s => s.SeatRowID).ToList();
+                        var seat_rows_b8_m2 = db.tblSeatRows.Where(b => b.BlockID == block8.BlockID && b.GroupName == "M2").OrderBy(s => s.SeatRowID).ToList();
+                        var seat_rows_b8_m3 = db.tblSeatRows.Where(b => b.BlockID == block8.BlockID && b.GroupName == "M3").OrderBy(s => s.SeatRowID).ToList();
+                        var seat_rows_b8_m4 = db.tblSeatRows.Where(b => b.BlockID == block8.BlockID && b.GroupName == "M4").OrderBy(s => s.SeatRowID).ToList();
+                        var seat_rows_b8_m5 = db.tblSeatRows.Where(b => b.BlockID == block8.BlockID && b.GroupName == "M5").OrderBy(s => s.SeatRowID).ToList();
+                        var seat_rows_b8_m6 = db.tblSeatRows.Where(b => b.BlockID == block8.BlockID && b.GroupName == "M6").OrderBy(s => s.SeatRowID).ToList();
+                        var seat_rows_b8_m7 = db.tblSeatRows.Where(b => b.BlockID == block8.BlockID && b.GroupName == "M7").OrderBy(s => s.SeatRowID).ToList();
+                        var seat_rows_b8_m8 = db.tblSeatRows.Where(b => b.BlockID == block8.BlockID && b.GroupName == "M8").OrderBy(s => s.SeatRowID).ToList();
+                        var seat_rows_b8_m9 = db.tblSeatRows.Where(b => b.BlockID == block8.BlockID && b.GroupName == "M9").OrderBy(s => s.SeatRowID).ToList();
+
+                        <ol id="V3B9">
+                            <li class="row">
+                                <ol class="seats" type="A">
+                                    @foreach (var row in seat_rows_b8_m1)
+                                    {
+                                        var seats = db.tblSeats.Where(s => s.SeatRowID == row.SeatRowID).ToList();
+
+                                        foreach (var seat in seats)
+                                        {
+                                            if (seat.Status == "PRESENT")
+                                            {
+                                                <li class="seat">
+                                                    <input type="checkbox" id="@seat.SeatNumber" class="chkSeats" value="@seat.SeatID" />
+                                                    <label for="@seat.SeatNumber">@seat.SeatNumber</label>
+                                                    <div class="tooltip"></div>
+                                                </li>
+                                            }
+                                            else if (seat.Status == null)
+                                            {
+                                                <li class="seat">
+                                                </li>
+                                            }
+                                        }
+                                    }
+                                </ol>
+                            </li>
+
+                            <li class="row">
+                                <ol class="seats" type="A">
+                                    @foreach (var row in seat_rows_b8_m2)
+                                    {
+                                        var seats = db.tblSeats.Where(s => s.SeatRowID == row.SeatRowID).ToList();
+
+                                        foreach (var seat in seats)
+                                        {
+                                            if (seat.Status == "PRESENT")
+                                            {
+                                                <li class="seat">
+                                                    <input type="checkbox" id="@seat.SeatNumber" class="chkSeats" value="@seat.SeatID" />
+                                                    <label for="@seat.SeatNumber">@seat.SeatNumber</label>
+                                                    <div class="tooltip"></div>
+                                                </li>
+                                            }
+                                            else if (seat.Status == null)
+                                            {
+                                                <li class="seat">
+                                                </li>
+                                            }
+                                        }
+                                    }
+                                </ol>
+                            </li>
+
+                            <li class="row">
+                                <ol class="seats" type="A">
+                                    @foreach (var row in seat_rows_b8_m3)
+                                    {
+                                        var seats = db.tblSeats.Where(s => s.SeatRowID == row.SeatRowID).ToList();
+
+                                        foreach (var seat in seats)
+                                        {
+                                            if (seat.Status == "PRESENT")
+                                            {
+                                                <li class="seat">
+                                                    <input type="checkbox" id="@seat.SeatNumber" class="chkSeats" value="@seat.SeatID" />
+                                                    <label for="@seat.SeatNumber">@seat.SeatNumber</label>
+                                                    <div class="tooltip"></div>
+                                                </li>
+                                            }
+                                            else if (seat.Status == null)
+                                            {
+                                                <li class="seat">
+                                                </li>
+                                            }
+                                        }
+                                    }
+                                </ol>
+                            </li>
+
+                            <li class="row">
+                                <ol class="seats" type="A">
+                                    @foreach (var row in seat_rows_b8_m4)
+                                    {
+                                        var seats = db.tblSeats.Where(s => s.SeatRowID == row.SeatRowID).ToList();
+
+                                        foreach (var seat in seats)
+                                        {
+                                            if (seat.Status == "PRESENT")
+                                            {
+                                                <li class="seat">
+                                                    <input type="checkbox" id="@seat.SeatNumber" class="chkSeats" value="@seat.SeatID" />
+                                                    <label for="@seat.SeatNumber">@seat.SeatNumber</label>
+                                                    <div class="tooltip"></div>
+                                                </li>
+                                            }
+                                            else if (seat.Status == null)
+                                            {
+                                                <li class="seat">
+                                                </li>
+                                            }
+                                        }
+                                    }
+                                </ol>
+                            </li>
+
+                            <li class="row">
+                                <ol class="seats" type="A">
+                                    @foreach (var row in seat_rows_b8_m5)
+                                    {
+                                        var seats = db.tblSeats.Where(s => s.SeatRowID == row.SeatRowID).ToList();
+
+                                        foreach (var seat in seats)
+                                        {
+                                            if (seat.Status == "PRESENT")
+                                            {
+                                                <li class="seat">
+                                                    <input type="checkbox" id="@seat.SeatNumber" class="chkSeats" value="@seat.SeatID" />
+                                                    <label for="@seat.SeatNumber">@seat.SeatNumber</label>
+                                                    <div class="tooltip"></div>
+                                                </li>
+                                            }
+                                            else if (seat.Status == null)
+                                            {
+                                                <li class="seat">
+                                                </li>
+                                            }
+                                        }
+                                    }
+                                </ol>
+                            </li>
+
+                            <li class="row">
+                                <ol class="seats" type="A">
+                                    @foreach (var row in seat_rows_b8_m6)
+                                    {
+                                        var seats = db.tblSeats.Where(s => s.SeatRowID == row.SeatRowID).ToList();
+
+                                        foreach (var seat in seats)
+                                        {
+                                            if (seat.Status == "PRESENT")
+                                            {
+                                                <li class="seat">
+                                                    <input type="checkbox" id="@seat.SeatNumber" class="chkSeats" value="@seat.SeatID" />
+                                                    <label for="@seat.SeatNumber">@seat.SeatNumber</label>
+                                                    <div class="tooltip"></div>
+                                                </li>
+                                            }
+                                            else if (seat.Status == null)
+                                            {
+                                                <li class="seat">
+                                                </li>
+                                            }
+                                        }
+                                    }
+                                </ol>
+                            </li>
+
+                            <li class="row">
+                                <ol class="seats" type="A">
+                                    @foreach (var row in seat_rows_b8_m7)
+                                    {
+                                        var seats = db.tblSeats.Where(s => s.SeatRowID == row.SeatRowID).ToList();
+
+                                        foreach (var seat in seats)
+                                        {
+                                            if (seat.Status == "PRESENT")
+                                            {
+                                                <li class="seat">
+                                                    <input type="checkbox" id="@seat.SeatNumber" class="chkSeats" value="@seat.SeatID" />
+                                                    <label for="@seat.SeatNumber">@seat.SeatNumber</label>
+                                                    <div class="tooltip"></div>
+                                                </li>
+                                            }
+                                            else if (seat.Status == null)
+                                            {
+                                                <li class="seat">
+                                                </li>
+                                            }
+                                        }
+                                    }
+                                </ol>
+                            </li>
+
+                            <li class="row">
+                                <ol class="seats" type="A">
+                                    @foreach (var row in seat_rows_b8_m8)
+                                    {
+                                        var seats = db.tblSeats.Where(s => s.SeatRowID == row.SeatRowID).ToList();
+
+                                        foreach (var seat in seats)
+                                        {
+                                            if (seat.Status == "PRESENT")
+                                            {
+                                                <li class="seat">
+                                                    <input type="checkbox" id="@seat.SeatNumber" class="chkSeats" value="@seat.SeatID" />
+                                                    <label for="@seat.SeatNumber">@seat.SeatNumber</label>
+                                                    <div class="tooltip"></div>
+                                                </li>
+                                            }
+                                            else if (seat.Status == null)
+                                            {
+                                                <li class="seat">
+                                                </li>
+                                            }
+                                        }
+                                    }
+                                </ol>
+                            </li>
+
+                            <li class="row">
+                                <ol class="seats" type="A">
+                                    @foreach (var row in seat_rows_b8_m9)
+                                    {
+                                        var seats = db.tblSeats.Where(s => s.SeatRowID == row.SeatRowID).ToList();
+
+                                        foreach (var seat in seats)
+                                        {
+                                            if (seat.Status == "PRESENT")
+                                            {
+                                                <li class="seat">
+                                                    <input type="checkbox" id="@seat.SeatNumber" class="chkSeats" value="@seat.SeatID" />
+                                                    <label for="@seat.SeatNumber">@seat.SeatNumber</label>
+                                                    <div class="tooltip"></div>
+                                                </li>
+                                            }
+                                            else if (seat.Status == null)
+                                            {
+                                                <li class="seat">
+                                                </li>
+                                            }
+                                        }
+                                    }
+                                </ol>
+                            </li>
+
+                        </ol>
+                    }
+                </div>
+
+                <div class="SeatDiv3">
+                    @if (block9 != null)
+                    {
+                        var seat_rows_b9_r1 = db.tblSeatRows.Where(b => b.BlockID == block9.BlockID && b.GroupName == "R1").OrderBy(s => s.SeatRowID).ToList();
+                        var seat_rows_b9_r2 = db.tblSeatRows.Where(b => b.BlockID == block9.BlockID && b.GroupName == "R2").OrderBy(s => s.SeatRowID).ToList();
+                        var seat_rows_b9_r3 = db.tblSeatRows.Where(b => b.BlockID == block9.BlockID && b.GroupName == "R3").OrderBy(s => s.SeatRowID).ToList();
+
+                        <ol id="V3B4">
+                            <li class="row">
+                                <ol class="seats" type="A">
+                                    @foreach (var row in seat_rows_b9_r1)
+                                    {
+                                        var seats = db.tblSeats.Where(s => s.SeatRowID == row.SeatRowID).ToList();
+
+                                        foreach (var seat in seats)
+                                        {
+                                            if (seat.Status == "PRESENT")
+                                            {
+                                                <li class="seat">
+                                                    <input type="checkbox" id="@seat.SeatNumber" class="chkSeats" value="@seat.SeatID" />
+                                                    <label for="@seat.SeatNumber">@seat.SeatNumber</label>
+                                                    <div class="tooltip"></div>
+                                                </li>
+                                            }
+                                            else if (seat.Status == null)
+                                            {
+                                                <li class="seat">
+                                                </li>
+                                            }
+                                        }
+                                    }
+                                </ol>
+                            </li>
+
+                            <li class="row">
+                                <ol class="seats" type="A">
+                                    @foreach (var row in seat_rows_b9_r2)
+                                    {
+                                        var seats = db.tblSeats.Where(s => s.SeatRowID == row.SeatRowID).ToList();
+
+                                        foreach (var seat in seats)
+                                        {
+                                            if (seat.Status == "PRESENT")
+                                            {
+                                                <li class="seat">
+                                                    <input type="checkbox" id="@seat.SeatNumber" class="chkSeats" value="@seat.SeatID" />
+                                                    <label for="@seat.SeatNumber">@seat.SeatNumber</label>
+                                                    <div class="tooltip"></div>
+                                                </li>
+                                            }
+                                            else if (seat.Status == null)
+                                            {
+                                                <li class="seat">
+                                                </li>
+                                            }
+                                        }
+                                    }
+
+                                </ol>
+                            </li>
+
+                            <li class="row">
+                                <ol class="seats" type="A">
+                                    @foreach (var row in seat_rows_b9_r3)
+                                    {
+                                        var seats = db.tblSeats.Where(s => s.SeatRowID == row.SeatRowID).ToList();
+
+                                        foreach (var seat in seats)
+                                        {
+                                            if (seat.Status == "PRESENT")
+                                            {
+                                                <li class="seat">
+                                                    <input type="checkbox" id="@seat.SeatNumber" class="chkSeats" value="@seat.SeatID" />
+                                                    <label for="@seat.SeatNumber">@seat.SeatNumber</label>
+                                                    <div class="tooltip"></div>
+                                                </li>
+                                            }
+                                            else if (seat.Status == null)
+                                            {
+                                                <li class="seat">
+                                                </li>
+                                            }
+                                        }
+                                    }
+                                </ol>
+                            </li>
+                        </ol>
+                    }
+                    
+                    @if (block10 != null)
+                    {
+                        var seat_rows_b10_r1 = db.tblSeatRows.Where(b => b.BlockID == block10.BlockID && b.GroupName == "R1").OrderBy(s => s.SeatRowID).ToList();
+                        var seat_rows_b10_r2 = db.tblSeatRows.Where(b => b.BlockID == block10.BlockID && b.GroupName == "R2").OrderBy(s => s.SeatRowID).ToList();
+                        var seat_rows_b10_r3 = db.tblSeatRows.Where(b => b.BlockID == block10.BlockID && b.GroupName == "R3").OrderBy(s => s.SeatRowID).ToList();
+                        var seat_rows_b10_r4 = db.tblSeatRows.Where(b => b.BlockID == block10.BlockID && b.GroupName == "R4").OrderBy(s => s.SeatRowID).ToList();
+                        var seat_rows_b10_r5 = db.tblSeatRows.Where(b => b.BlockID == block10.BlockID && b.GroupName == "R5").OrderBy(s => s.SeatRowID).ToList();
+                        var seat_rows_b10_r6 = db.tblSeatRows.Where(b => b.BlockID == block10.BlockID && b.GroupName == "R6").OrderBy(s => s.SeatRowID).ToList();
+                        var seat_rows_b10_r7 = db.tblSeatRows.Where(b => b.BlockID == block10.BlockID && b.GroupName == "R7").OrderBy(s => s.SeatRowID).ToList();
+                        
+                        <ol id="V3B7">
+                            <li class="row">
+                                <ol class="seats" type="A">
+                                    @foreach (var row in seat_rows_b10_r1)
+                                    {
+                                        var seats = db.tblSeats.Where(s => s.SeatRowID == row.SeatRowID).ToList();
+
+                                        foreach (var seat in seats)
+                                        {
+                                            if (seat.Status == "PRESENT")
+                                            {
+                                                <li class="seat">
+                                                    <input type="checkbox" id="@seat.SeatNumber" class="chkSeats" value="@seat.SeatID" />
+                                                    <label for="@seat.SeatNumber">@seat.SeatNumber</label>
+                                                    <div class="tooltip"></div>
+                                                </li>
+                                            }
+                                            else if (seat.Status == null)
+                                            {
+                                                <li class="seat">
+                                                </li>
+                                            }
+                                        }
+                                    }
+                                </ol>
+                            </li>
+
+                            <li class="row">
+                                <ol class="seats" type="A">
+                                    @foreach (var row in seat_rows_b10_r2)
+                                    {
+                                        var seats = db.tblSeats.Where(s => s.SeatRowID == row.SeatRowID).ToList();
+
+                                        foreach (var seat in seats)
+                                        {
+                                            if (seat.Status == "PRESENT")
+                                            {
+                                                <li class="seat">
+                                                    <input type="checkbox" id="@seat.SeatNumber" class="chkSeats" value="@seat.SeatID" />
+                                                    <label for="@seat.SeatNumber">@seat.SeatNumber</label>
+                                                    <div class="tooltip"></div>
+                                                </li>
+                                            }
+                                            else if (seat.Status == null)
+                                            {
+                                                <li class="seat">
+                                                </li>
+                                            }
+                                        }
+                                    }
+                                </ol>
+                            </li>
+
+                            <li class="row">
+                                <ol class="seats" type="A">
+                                    @foreach (var row in seat_rows_b10_r3)
+                                    {
+                                        var seats = db.tblSeats.Where(s => s.SeatRowID == row.SeatRowID).ToList();
+
+                                        foreach (var seat in seats)
+                                        {
+                                            if (seat.Status == "PRESENT")
+                                            {
+                                                <li class="seat">
+                                                    <input type="checkbox" id="@seat.SeatNumber" class="chkSeats" value="@seat.SeatID" />
+                                                    <label for="@seat.SeatNumber">@seat.SeatNumber</label>
+                                                    <div class="tooltip"></div>
+                                                </li>
+                                            }
+                                            else if (seat.Status == null)
+                                            {
+                                                <li class="seat">
+                                                </li>
+                                            }
+                                        }
+                                    }
+                                </ol>
+                            </li>
+
+                            <li class="row">
+                                <ol class="seats" type="A">
+                                    @foreach (var row in seat_rows_b10_r4)
+                                    {
+                                        var seats = db.tblSeats.Where(s => s.SeatRowID == row.SeatRowID).ToList();
+
+                                        foreach (var seat in seats)
+                                        {
+                                            if (seat.Status == "PRESENT")
+                                            {
+                                                <li class="seat">
+                                                    <input type="checkbox" id="@seat.SeatNumber" class="chkSeats" value="@seat.SeatID" />
+                                                    <label for="@seat.SeatNumber">@seat.SeatNumber</label>
+                                                    <div class="tooltip"></div>
+                                                </li>
+                                            }
+                                            else if (seat.Status == null)
+                                            {
+                                                <li class="seat">
+                                                </li>
+                                            }
+                                        }
+                                    }
+                                </ol>
+                            </li>
+
+                            <li class="row">
+                                <ol class="seats" type="A">
+                                    @foreach (var row in seat_rows_b10_r5)
+                                    {
+                                        var seats = db.tblSeats.Where(s => s.SeatRowID == row.SeatRowID).ToList();
+
+                                        foreach (var seat in seats)
+                                        {
+                                            if (seat.Status == "PRESENT")
+                                            {
+                                                <li class="seat">
+                                                    <input type="checkbox" id="@seat.SeatNumber" class="chkSeats" value="@seat.SeatID" />
+                                                    <label for="@seat.SeatNumber">@seat.SeatNumber</label>
+                                                    <div class="tooltip"></div>
+                                                </li>
+                                            }
+                                            else if (seat.Status == null)
+                                            {
+                                                <li class="seat">
+                                                </li>
+                                            }
+                                        }
+                                    }
+                                </ol>
+                            </li>
+
+                            <li class="row">
+                                <ol class="seats" type="A">
+                                    @foreach (var row in seat_rows_b10_r6)
+                                    {
+                                        var seats = db.tblSeats.Where(s => s.SeatRowID == row.SeatRowID).ToList();
+
+                                        foreach (var seat in seats)
+                                        {
+                                            if (seat.Status == "PRESENT")
+                                            {
+                                                <li class="seat">
+                                                    <input type="checkbox" id="@seat.SeatNumber" class="chkSeats" value="@seat.SeatID" />
+                                                    <label for="@seat.SeatNumber">@seat.SeatNumber</label>
+                                                    <div class="tooltip"></div>
+                                                </li>
+                                            }
+                                            else if (seat.Status == null)
+                                            {
+                                                <li class="seat">
+                                                </li>
+                                            }
+                                        }
+                                    }
+                                </ol>
+                            </li>
+
+                            <li class="row">
+                                <ol class="seats" type="A">
+                                    @foreach (var row in seat_rows_b10_r7)
+                                    {
+                                        var seats = db.tblSeats.Where(s => s.SeatRowID == row.SeatRowID).ToList();
+
+                                        foreach (var seat in seats)
+                                        {
+                                            if (seat.Status == "PRESENT")
+                                            {
+                                                <li class="seat">
+                                                    <input type="checkbox" id="@seat.SeatNumber" class="chkSeats" value="@seat.SeatID" />
+                                                    <label for="@seat.SeatNumber">@seat.SeatNumber</label>
+                                                    <div class="tooltip"></div>
+                                                </li>
+                                            }
+                                            else if (seat.Status == null)
+                                            {
+                                                <li class="seat">
+                                                </li>
+                                            }
+                                        }
+                                    }
+                                </ol>
+                            </li>
+                        </ol>
+                    }
+                    <ol id="V3B10">
+
+                        <li class="row">
+                            <ol class="seats" type="A">
+
+                                <li class="seat">
+                                    <input type="checkbox" id="A5" />
+                                    <label for="A5">A5</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A5" />
+                                    <label for="A5">A5</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A5" />
+                                    <label for="A5">A5</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A5" />
+                                    <label for="A5">A5</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A6" />
+                                    <label for="A6">A6</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A7" />
+                                    <label for="A7">A7</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A7" />
+                                    <label for="A7">A7</label>
+                                </li>
+                                <li class="seat">
+
+                                </li>
+                            </ol>
+                        </li>
+
+                        <li class="row">
+                            <ol class="seats" type="A">
+                                <li class="seat">
+                                    <input type="checkbox" id="A5" />
+                                    <label for="A5">A5</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A5" />
+                                    <label for="A5">A5</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A5" />
+                                    <label for="A5">A5</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A5" />
+                                    <label for="A5">A5</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A6" />
+                                    <label for="A6">A6</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A7" />
+                                    <label for="A7">A7</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A7" />
+                                    <label for="A7">A7</label>
+                                </li>
+                                <li class="seat">
+
+                                </li>
+                            </ol>
+                        </li>
+
+                        <li class="row">
+                            <ol class="seats" type="A">
+                                <li class="seat">
+                                    <input type="checkbox" id="A5" />
+                                    <label for="A5">A5</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A5" />
+                                    <label for="A5">A5</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A5" />
+                                    <label for="A5">A5</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A5" />
+                                    <label for="A5">A5</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A6" />
+                                    <label for="A6">A6</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A7" />
+                                    <label for="A7">A7</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A7" />
+                                    <label for="A7">A7</label>
+                                </li>
+                                <li class="seat">
+
+                                </li>
+                            </ol>
+                        </li>
+
+                        <li class="row">
+                            <ol class="seats" type="A">
+                                <li class="seat">
+                                    <input type="checkbox" id="A5" />
+                                    <label for="A5">A5</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A5" />
+                                    <label for="A5">A5</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A5" />
+                                    <label for="A5">A5</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A5" />
+                                    <label for="A5">A5</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A6" />
+                                    <label for="A6">A6</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A7" />
+                                    <label for="A7">A7</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A7" />
+                                    <label for="A7">A7</label>
+                                </li>
+                                <li class="seat">
+
+                                </li>
+                            </ol>
+                        </li>
+
+                        <li class="row">
+                            <ol class="seats" type="A">
+                                <li class="seat">
+                                    <input type="checkbox" id="A5" />
+                                    <label for="A5">A5</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A5" />
+                                    <label for="A5">A5</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A5" />
+                                    <label for="A5">A5</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A5" />
+                                    <label for="A5">A5</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A6" />
+                                    <label for="A6">A6</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A7" />
+                                    <label for="A7">A7</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A7" />
+                                    <label for="A7">A7</label>
+                                </li>
+                                <li class="seat">
+
+                                </li>
+                            </ol>
+                        </li>
+
+                        <li class="row">
+                            <ol class="seats" type="A">
+                                <li class="seat">
+                                    <input type="checkbox" id="A5" />
+                                    <label for="A5">A5</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A5" />
+                                    <label for="A5">A5</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A5" />
+                                    <label for="A5">A5</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A5" />
+                                    <label for="A5">A5</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A6" />
+                                    <label for="A6">A6</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A7" />
+                                    <label for="A7">A7</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A7" />
+                                    <label for="A7">A7</label>
+                                </li>
+                                <li class="seat">
+
+                                </li>
+                            </ol>
+                        </li>
+
+                        <li class="row">
+                            <ol class="seats" type="A">
+                                <li class="seat">
+                                    <input type="checkbox" id="A5" />
+                                    <label for="A5">A5</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A5" />
+                                    <label for="A5">A5</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A5" />
+                                    <label for="A5">A5</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A5" />
+                                    <label for="A5">A5</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A6" />
+                                    <label for="A6">A6</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A7" />
+                                    <label for="A7">A7</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A7" />
+                                    <label for="A7">A7</label>
+                                </li>
+                                <li class="seat">
+
+                                </li>
+                            </ol>
+                        </li>
+                    </ol>
+
+                    <ol id="V3B12">
+
+                        <li class="row">
+                            <ol class="seats" type="A">
+
+                                <li class="seat">
+                                    <input type="checkbox" id="A5" />
+                                    <label for="A5">A5</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A5" />
+                                    <label for="A5">A5</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A5" />
+                                    <label for="A5">A5</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A5" />
+                                    <label for="A5">A5</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A6" />
+                                    <label for="A6">A6</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A7" />
+                                    <label for="A7">A7</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A7" />
+                                    <label for="A7">A7</label>
+                                </li>
+                                <li class="seat">
+
+                                </li>
+                            </ol>
+                        </li>
+
+                        <li class="row">
+                            <ol class="seats" type="A">
+                                <li class="seat">
+                                    <input type="checkbox" id="A5" />
+                                    <label for="A5">A5</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A5" />
+                                    <label for="A5">A5</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A5" />
+                                    <label for="A5">A5</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A5" />
+                                    <label for="A5">A5</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A6" />
+                                    <label for="A6">A6</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A7" />
+                                    <label for="A7">A7</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A7" />
+                                    <label for="A7">A7</label>
+                                </li>
+                                <li class="seat">
+
+                                </li>
+                            </ol>
+                        </li>
+
+                        <li class="row">
+                            <ol class="seats" type="A">
+                                <li class="seat">
+                                    <input type="checkbox" id="A5" />
+                                    <label for="A5">A5</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A5" />
+                                    <label for="A5">A5</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A5" />
+                                    <label for="A5">A5</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A5" />
+                                    <label for="A5">A5</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A6" />
+                                    <label for="A6">A6</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A7" />
+                                    <label for="A7">A7</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A7" />
+                                    <label for="A7">A7</label>
+                                </li>
+                                <li class="seat">
+
+                                </li>
+                            </ol>
+                        </li>
+
+                        <li class="row">
+                            <ol class="seats" type="A">
+                                <li class="seat">
+                                    <input type="checkbox" id="A5" />
+                                    <label for="A5">A5</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A5" />
+                                    <label for="A5">A5</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A5" />
+                                    <label for="A5">A5</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A5" />
+                                    <label for="A5">A5</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A6" />
+                                    <label for="A6">A6</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A7" />
+                                    <label for="A7">A7</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A7" />
+                                    <label for="A7">A7</label>
+                                </li>
+                                <li class="seat">
+
+                                </li>
+                            </ol>
+                        </li>
+
+                        <li class="row">
+                            <ol class="seats" type="A">
+                                <li class="seat">
+                                    <input type="checkbox" id="A5" />
+                                    <label for="A5">A5</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A5" />
+                                    <label for="A5">A5</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A5" />
+                                    <label for="A5">A5</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A5" />
+                                    <label for="A5">A5</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A6" />
+                                    <label for="A6">A6</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A7" />
+                                    <label for="A7">A7</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A7" />
+                                    <label for="A7">A7</label>
+                                </li>
+                                <li class="seat">
+
+                                </li>
+                            </ol>
+                        </li>
+
+                        <li class="row">
+                            <ol class="seats" type="A">
+                                <li class="seat">
+                                    <input type="checkbox" id="A5" />
+                                    <label for="A5">A5</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A5" />
+                                    <label for="A5">A5</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A5" />
+                                    <label for="A5">A5</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A5" />
+                                    <label for="A5">A5</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A6" />
+                                    <label for="A6">A6</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A7" />
+                                    <label for="A7">A7</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A7" />
+                                    <label for="A7">A7</label>
+                                </li>
+                                <li class="seat">
+
+                                </li>
+                            </ol>
+                        </li>
+
+                        <li class="row">
+                            <ol class="seats" type="A">
+                                <li class="seat">
+                                    <input type="checkbox" id="A5" />
+                                    <label for="A5">A5</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A5" />
+                                    <label for="A5">A5</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A5" />
+                                    <label for="A5">A5</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A5" />
+                                    <label for="A5">A5</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A6" />
+                                    <label for="A6">A6</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A7" />
+                                    <label for="A7">A7</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A7" />
+                                    <label for="A7">A7</label>
+                                </li>
+                                <li class="seat">
+
+                                </li>
+                            </ol>
+                        </li>
+                    </ol>
+                </div>
+
+                <div class="clr"></div>
+
+            </div>
+
+            <br /><br />
+
+            <div class="SeatBlockWrap">
+
+                <div class="SeatDiv1">
+                    <ol id="V3B11">
+
+                        <li class="row">
+                            <ol class="seats" type="A">
+                                <li class="seat">
+                                    <input type="checkbox" id="A5" />
+                                    <label for="A5">A5</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A5" />
+                                    <label for="A5">A5</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A5" />
+                                    <label for="A5">A5</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A5" />
+                                    <label for="A5">A5</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A5" />
+                                    <label for="A5">A5</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A6" />
+                                    <label for="A6">A6</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A7" />
+                                    <label for="A7">A7</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A7" />
+                                    <label for="A7">A7</label>
+                                </li>
+                                <li class="seat">
+
+                                </li>
+                            </ol>
+                        </li>
+
+                        <li class="row">
+                            <ol class="seats" type="A">
+                                <li class="seat">
+                                    <input type="checkbox" id="A5" />
+                                    <label for="A5">A5</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A5" />
+                                    <label for="A5">A5</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A5" />
+                                    <label for="A5">A5</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A5" />
+                                    <label for="A5">A5</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A5" />
+                                    <label for="A5">A5</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A6" />
+                                    <label for="A6">A6</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A7" />
+                                    <label for="A7">A7</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A7" />
+                                    <label for="A7">A7</label>
+                                </li>
+                                <li class="seat">
+
+                                </li>
+                            </ol>
+                        </li>
+
+                        <li class="row">
+                            <ol class="seats" type="A">
+                                <li class="seat">
+                                    <input type="checkbox" id="A5" />
+                                    <label for="A5">A5</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A5" />
+                                    <label for="A5">A5</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A5" />
+                                    <label for="A5">A5</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A5" />
+                                    <label for="A5">A5</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A5" />
+                                    <label for="A5">A5</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A6" />
+                                    <label for="A6">A6</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A7" />
+                                    <label for="A7">A7</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A7" />
+                                    <label for="A7">A7</label>
+                                </li>
+                                <li class="seat">
+
+                                </li>
+                            </ol>
+                        </li>
+
+                        <li class="row">
+                            <ol class="seats" type="A">
+                                <li class="seat">
+                                    <input type="checkbox" id="A5" />
+                                    <label for="A5">A5</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A5" />
+                                    <label for="A5">A5</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A5" />
+                                    <label for="A5">A5</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A5" />
+                                    <label for="A5">A5</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A5" />
+                                    <label for="A5">A5</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A6" />
+                                    <label for="A6">A6</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A7" />
+                                    <label for="A7">A7</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A7" />
+                                    <label for="A7">A7</label>
+                                </li>
+                                <li class="seat">
+
+                                </li>
+                            </ol>
+                        </li>
+
+                        <li class="row">
+                            <ol class="seats" type="A">
+                                <li class="seat">
+                                    <input type="checkbox" id="A5" />
+                                    <label for="A5">A5</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A5" />
+                                    <label for="A5">A5</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A5" />
+                                    <label for="A5">A5</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A5" />
+                                    <label for="A5">A5</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A5" />
+                                    <label for="A5">A5</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A6" />
+                                    <label for="A6">A6</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A7" />
+                                    <label for="A7">A7</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A7" />
+                                    <label for="A7">A7</label>
+                                </li>
+                                <li class="seat">
+
+                                </li>
+                            </ol>
+                        </li>
+
+                        <br />
+
+                        <li class="row">
+                            <ol class="seats" type="A">
+                                <li class="seat">
+
+                                </li>
+                                <li class="seat">
+
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A5" />
+                                    <label for="A5">A5</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A5" />
+                                    <label for="A5">A5</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A5" />
+                                    <label for="A5">A5</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A6" />
+                                    <label for="A6">A6</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A7" />
+                                    <label for="A7">A7</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A7" />
+                                    <label for="A7">A7</label>
+                                </li>
+                                <li class="seat">
+
+                                </li>
+                            </ol>
+                        </li>
+                        <li class="row">
+                            <ol class="seats" type="A">
+                                <li class="seat">
+
+                                </li>
+                                <li class="seat">
+
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A5" />
+                                    <label for="A5">A5</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A5" />
+                                    <label for="A5">A5</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A5" />
+                                    <label for="A5">A5</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A6" />
+                                    <label for="A6">A6</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A7" />
+                                    <label for="A7">A7</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A7" />
+                                    <label for="A7">A7</label>
+                                </li>
+                                <li class="seat">
+
+                                </li>
+                            </ol>
+                        </li>
+                        <li class="row">
+                            <ol class="seats" type="A">
+                                <li class="seat">
+
+                                </li>
+                                <li class="seat">
+
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A5" />
+                                    <label for="A5">A5</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A5" />
+                                    <label for="A5">A5</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A5" />
+                                    <label for="A5">A5</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A6" />
+                                    <label for="A6">A6</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A7" />
+                                    <label for="A7">A7</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A7" />
+                                    <label for="A7">A7</label>
+                                </li>
+                                <li class="seat">
+
+                                </li>
+                            </ol>
+                        </li>
+
+                    </ol>
+                </div>
+
+                <div class="SeatDiv2">
+
+                    <ol id="V3B9">
+                        <li class="row">
+                            <ol class="seats" type="A">
+                                <li class="seat">
+                                    <input type="checkbox" id="A9" />
+                                    <label for="A9">A9</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A10" />
+                                    <label for="A10">A10</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A11" />
+                                    <label for="A11">A11</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A12" />
+                                    <label for="A12">A12</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A13" />
+                                    <label for="A13">A13</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A14" />
+                                    <label for="A14">A14</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A15" />
+                                    <label for="A15">A15</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A16" />
+                                    <label for="A16">A16</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A17" />
+                                    <label for="A17">A17</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A18" />
+                                    <label for="A18">A18</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A19" />
+                                    <label for="A19">A19</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A20" />
+                                    <label for="A20">A20</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A21" />
+                                    <label for="A21">A21</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A21" />
+                                    <label for="A21">A21</label>
+                                </li>
+                                <li class="seat">
+
+                                </li>
+                            </ol>
+                        </li>
+
+                        <li class="row">
+                            <ol class="seats" type="A">
+                                <li class="seat">
+                                    <input type="checkbox" id="A9" />
+                                    <label for="A9">A9</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A10" />
+                                    <label for="A10">A10</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A11" />
+                                    <label for="A11">A11</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A12" />
+                                    <label for="A12">A12</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A13" />
+                                    <label for="A13">A13</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A14" />
+                                    <label for="A14">A14</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A15" />
+                                    <label for="A15">A15</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A16" />
+                                    <label for="A16">A16</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A17" />
+                                    <label for="A17">A17</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A18" />
+                                    <label for="A18">A18</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A19" />
+                                    <label for="A19">A19</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A20" />
+                                    <label for="A20">A20</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A21" />
+                                    <label for="A21">A21</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A21" />
+                                    <label for="A21">A21</label>
+                                </li>
+                                <li class="seat">
+
+                                </li>
+                            </ol>
+                        </li>
+
+                        <li class="row">
+                            <ol class="seats" type="A">
+                                <li class="seat">
+                                    <input type="checkbox" id="A9" />
+                                    <label for="A9">A9</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A10" />
+                                    <label for="A10">A10</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A11" />
+                                    <label for="A11">A11</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A12" />
+                                    <label for="A12">A12</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A13" />
+                                    <label for="A13">A13</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A14" />
+                                    <label for="A14">A14</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A15" />
+                                    <label for="A15">A15</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A16" />
+                                    <label for="A16">A16</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A17" />
+                                    <label for="A17">A17</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A18" />
+                                    <label for="A18">A18</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A19" />
+                                    <label for="A19">A19</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A20" />
+                                    <label for="A20">A20</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A21" />
+                                    <label for="A21">A21</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A21" />
+                                    <label for="A21">A21</label>
+                                </li>
+                                <li class="seat">
+
+                                </li>
+                            </ol>
+                        </li>
+
+                        <li class="row">
+                            <ol class="seats" type="A">
+                                <li class="seat">
+                                    <input type="checkbox" id="A9" />
+                                    <label for="A9">A9</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A10" />
+                                    <label for="A10">A10</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A11" />
+                                    <label for="A11">A11</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A12" />
+                                    <label for="A12">A12</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A13" />
+                                    <label for="A13">A13</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A14" />
+                                    <label for="A14">A14</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A15" />
+                                    <label for="A15">A15</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A16" />
+                                    <label for="A16">A16</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A17" />
+                                    <label for="A17">A17</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A18" />
+                                    <label for="A18">A18</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A19" />
+                                    <label for="A19">A19</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A20" />
+                                    <label for="A20">A20</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A21" />
+                                    <label for="A21">A21</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A21" />
+                                    <label for="A21">A21</label>
+                                </li>
+                                <li class="seat">
+
+                                </li>
+                            </ol>
+                        </li>
+
+                        <li class="row">
+                            <ol class="seats" type="A">
+                                <li class="seat">
+                                    <input type="checkbox" id="A9" />
+                                    <label for="A9">A9</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A10" />
+                                    <label for="A10">A10</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A11" />
+                                    <label for="A11">A11</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A12" />
+                                    <label for="A12">A12</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A13" />
+                                    <label for="A13">A13</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A14" />
+                                    <label for="A14">A14</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A15" />
+                                    <label for="A15">A15</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A16" />
+                                    <label for="A16">A16</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A17" />
+                                    <label for="A17">A17</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A18" />
+                                    <label for="A18">A18</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A19" />
+                                    <label for="A19">A19</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A20" />
+                                    <label for="A20">A20</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A21" />
+                                    <label for="A21">A21</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A21" />
+                                    <label for="A21">A21</label>
+                                </li>
+                                <li class="seat">
+
+                                </li>
+                            </ol>
+                        </li>
+
+                        <br />
+
+                        <li class="row">
+                            <ol class="seats" type="A">
+                                <li class="seat">
+
+                                </li>
+                                <li class="seat">
+
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A11" />
+                                    <label for="A11">A11</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A12" />
+                                    <label for="A12">A12</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A13" />
+                                    <label for="A13">A13</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A14" />
+                                    <label for="A14">A14</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A15" />
+                                    <label for="A15">A15</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A16" />
+                                    <label for="A16">A16</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A17" />
+                                    <label for="A17">A17</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A18" />
+                                    <label for="A18">A18</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A19" />
+                                    <label for="A19">A19</label>
+                                </li>
+                                <li class="seat">
+
+                                </li>
+                                <li class="seat">
+
+                                </li>
+                                <li class="seat">
+
+                                </li>
+                                <li class="seat">
+
+                                </li>
+                            </ol>
+                        </li>
+
+                        <li class="row">
+                            <ol class="seats" type="A">
+                                <li class="seat">
+
+                                </li>
+                                <li class="seat">
+
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A11" />
+                                    <label for="A11">A11</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A12" />
+                                    <label for="A12">A12</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A13" />
+                                    <label for="A13">A13</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A14" />
+                                    <label for="A14">A14</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A15" />
+                                    <label for="A15">A15</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A16" />
+                                    <label for="A16">A16</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A17" />
+                                    <label for="A17">A17</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A18" />
+                                    <label for="A18">A18</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A19" />
+                                    <label for="A19">A19</label>
+                                </li>
+                                <li class="seat">
+
+                                </li>
+                                <li class="seat">
+
+                                </li>
+                                <li class="seat">
+
+                                </li>
+                                <li class="seat">
+
+                                </li>
+                            </ol>
+                        </li>
+
+                        <li class="row">
+                            <ol class="seats" type="A">
+                                <li class="seat">
+
+                                </li>
+                                <li class="seat">
+
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A11" />
+                                    <label for="A11">A11</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A12" />
+                                    <label for="A12">A12</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A13" />
+                                    <label for="A13">A13</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A14" />
+                                    <label for="A14">A14</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A15" />
+                                    <label for="A15">A15</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A16" />
+                                    <label for="A16">A16</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A17" />
+                                    <label for="A17">A17</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A18" />
+                                    <label for="A18">A18</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A19" />
+                                    <label for="A19">A19</label>
+                                </li>
+                                <li class="seat">
+
+                                </li>
+                                <li class="seat">
+
+                                </li>
+                                <li class="seat">
+
+                                </li>
+                                <li class="seat">
+
+                                </li>
+                            </ol>
+                        </li>
+
+                        <li class="row">
+                            <ol class="seats" type="A">
+                                <li class="seat">
+
+                                </li>
+                                <li class="seat">
+
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A11" />
+                                    <label for="A11">A11</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A12" />
+                                    <label for="A12">A12</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A13" />
+                                    <label for="A13">A13</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A14" />
+                                    <label for="A14">A14</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A15" />
+                                    <label for="A15">A15</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A16" />
+                                    <label for="A16">A16</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A17" />
+                                    <label for="A17">A17</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A18" />
+                                    <label for="A18">A18</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A19" />
+                                    <label for="A19">A19</label>
+                                </li>
+                                <li class="seat">
+
+                                </li>
+                                <li class="seat">
+
+                                </li>
+                                <li class="seat">
+
+                                </li>
+                                <li class="seat">
+
+                                </li>
+                            </ol>
+                        </li>
+
+                    </ol>
+
+                </div>
+
+                <div class="SeatDiv3">
+                    <ol id="V3B15">
+
+                        <li class="row">
+                            <ol class="seats" type="A">
+
+                                <li class="seat">
+                                    <input type="checkbox" id="A5" />
+                                    <label for="A5">A5</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A5" />
+                                    <label for="A5">A5</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A5" />
+                                    <label for="A5">A5</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A5" />
+                                    <label for="A5">A5</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A6" />
+                                    <label for="A6">A6</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A7" />
+                                    <label for="A7">A7</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A7" />
+                                    <label for="A7">A7</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A7" />
+                                    <label for="A7">A7</label>
+                                </li>
+                            </ol>
+                        </li>
+
+                        <li class="row">
+                            <ol class="seats" type="A">
+
+                                <li class="seat">
+                                    <input type="checkbox" id="A5" />
+                                    <label for="A5">A5</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A5" />
+                                    <label for="A5">A5</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A5" />
+                                    <label for="A5">A5</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A5" />
+                                    <label for="A5">A5</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A6" />
+                                    <label for="A6">A6</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A7" />
+                                    <label for="A7">A7</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A7" />
+                                    <label for="A7">A7</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A7" />
+                                    <label for="A7">A7</label>
+                                </li>
+                            </ol>
+                        </li>
+
+                        <li class="row">
+                            <ol class="seats" type="A">
+
+                                <li class="seat">
+                                    <input type="checkbox" id="A5" />
+                                    <label for="A5">A5</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A5" />
+                                    <label for="A5">A5</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A5" />
+                                    <label for="A5">A5</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A5" />
+                                    <label for="A5">A5</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A6" />
+                                    <label for="A6">A6</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A7" />
+                                    <label for="A7">A7</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A7" />
+                                    <label for="A7">A7</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A7" />
+                                    <label for="A7">A7</label>
+                                </li>
+                            </ol>
+                        </li>
+
+                        <li class="row">
+                            <ol class="seats" type="A">
+
+                                <li class="seat">
+                                    <input type="checkbox" id="A5" />
+                                    <label for="A5">A5</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A5" />
+                                    <label for="A5">A5</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A5" />
+                                    <label for="A5">A5</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A5" />
+                                    <label for="A5">A5</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A6" />
+                                    <label for="A6">A6</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A7" />
+                                    <label for="A7">A7</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A7" />
+                                    <label for="A7">A7</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A7" />
+                                    <label for="A7">A7</label>
+                                </li>
+                            </ol>
+                        </li>
+
+                        <li class="row">
+                            <ol class="seats" type="A">
+
+                                <li class="seat">
+                                    <input type="checkbox" id="A5" />
+                                    <label for="A5">A5</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A5" />
+                                    <label for="A5">A5</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A5" />
+                                    <label for="A5">A5</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A5" />
+                                    <label for="A5">A5</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A6" />
+                                    <label for="A6">A6</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A7" />
+                                    <label for="A7">A7</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A7" />
+                                    <label for="A7">A7</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A7" />
+                                    <label for="A7">A7</label>
+                                </li>
+                            </ol>
+                        </li>
+
+                        <BR />
+
+                        <li class="row">
+                            <ol class="seats" type="A">
+
+                                <li class="seat">
+
+                                </li>
+                                <li class="seat">
+
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A5" />
+                                    <label for="A5">A5</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A5" />
+                                    <label for="A5">A5</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A6" />
+                                    <label for="A6">A6</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A7" />
+                                    <label for="A7">A7</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A7" />
+                                    <label for="A7">A7</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A7" />
+                                    <label for="A7">A7</label>
+                                </li>
+                            </ol>
+                        </li>
+
+                        <li class="row">
+                            <ol class="seats" type="A">
+
+                                <li class="seat">
+
+                                </li>
+                                <li class="seat">
+
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A5" />
+                                    <label for="A5">A5</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A5" />
+                                    <label for="A5">A5</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A6" />
+                                    <label for="A6">A6</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A7" />
+                                    <label for="A7">A7</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A7" />
+                                    <label for="A7">A7</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A7" />
+                                    <label for="A7">A7</label>
+                                </li>
+                            </ol>
+                        </li>
+
+                        <li class="row">
+                            <ol class="seats" type="A">
+
+                                <li class="seat">
+
+                                </li>
+                                <li class="seat">
+
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A5" />
+                                    <label for="A5">A5</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A5" />
+                                    <label for="A5">A5</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A6" />
+                                    <label for="A6">A6</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A7" />
+                                    <label for="A7">A7</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A7" />
+                                    <label for="A7">A7</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A7" />
+                                    <label for="A7">A7</label>
+                                </li>
+                            </ol>
+                        </li>
+
+                        <li class="row">
+                            <ol class="seats" type="A">
+
+                                <li class="seat">
+
+                                </li>
+                                <li class="seat">
+
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A5" />
+                                    <label for="A5">A5</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A5" />
+                                    <label for="A5">A5</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A6" />
+                                    <label for="A6">A6</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A7" />
+                                    <label for="A7">A7</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A7" />
+                                    <label for="A7">A7</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A7" />
+                                    <label for="A7">A7</label>
+                                </li>
+                            </ol>
+                        </li>
+
+                        <li class="row">
+                            <ol class="seats" type="A">
+
+                                <li class="seat">
+                                    <input type="checkbox" id="A5" />
+                                    <label for="A5">A5</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A5" />
+                                    <label for="A5">A5</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A5" />
+                                    <label for="A5">A5</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A5" />
+                                    <label for="A5">A5</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A6" />
+                                    <label for="A6">A6</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A7" />
+                                    <label for="A7">A7</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A7" />
+                                    <label for="A7">A7</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="A7" />
+                                    <label for="A7">A7</label>
+                                </li>
+                            </ol>
+                        </li>
+
+                    </ol>
+                </div>
+
+                <div class="clr"></div>
+
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="RightOuterSeatingWrap">
+
+        <div class="BookDetHead">Booking Details</div>
+
+        <div class="SessionTimeWrap">
+            <div class="SessionTime">Session will timeout in:</div>
+            15.00
+        </div>
+
+        <div class="TiersHead">Tier Availability</div>
+        <table class="TierTbl" border="1">
+            <tr>
+                <th>Tier</th>
+                <th>Available Seats</th>
+                <th>Cost</th>
+            </tr>
+            <tr>
+                <td class="TierClass">Elite</td>
+                <td>108</td>
+                <td>$30</td>
+            </tr>
+            <tr>
+                <td class="TierClass">Gold</td>
+                <td>215</td>
+                <td>$25</td>
+            </tr>
+            <tr>
+                <td class="TierClass">Silver</td>
+                <td>312</td>
+                <td>$20</td>
+            </tr>
+            <tr>
+                <td class="TierClass">Blue</td>
+                <td>500</td>
+                <td>$15</td>
+            </tr>
+        </table>
+
+        <div class="BookingHead">Your Bookings</div>
+        <table class="TierTbl" border="1">
+            <tr>
+                <th>Tier</th>
+                <th>Seats</th>
+                <th>Total Cost</th>
+            </tr>
+            <tr>
+                <td class="TierClass">Elite</td>
+                <td>2</td>
+                <td>$60</td>
+            </tr>
+            <tr>
+                <td class="TierClass">Gold</td>
+                <td>5</td>
+                <td>$125</td>
+            </tr>
+
+            <tr>
+                <td colspan="3" class="TierClass">No Bookings Yet</td>
+
+            </tr>
+
+        </table>
+
+        <button class="btnBookings">Proceed with Bookings</button>
+    </div>
+
+
+    <div class="clr"></div>
+</div>
+<script src="~/App_Scripts/scrollbooster.min.js"></script>
+
+<script>
+    let viewport = document.querySelector('.MainOuterSeatingWrap')
+    let content = viewport.querySelector('.app-inner')
+
+    let scr = new ScrollBooster({
+        viewport: viewport,
+        content: content,
+        // textSelection: true,
+        emulateScroll: true,
+        onClick: (data, event) => {
+            //event.preventDefault()
+        },
+        shouldScroll: (data, event) => {
+            if (event.target.tagName == 'BUTTON') {
+                return false
+            } else {
+                return true
+            }
+        },
+        onUpdate: (data) => {
+            // viewport.scrollLeft = data.position.x
+            // viewport.scrollTop = data.position.y
+            content.style.transform = `translate(
+            ${-data.position.x}px,
+            ${-data.position.y}px
+          )`
+        }
+    })
+</script>

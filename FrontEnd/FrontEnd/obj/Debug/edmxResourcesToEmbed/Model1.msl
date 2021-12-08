@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="JAVADBModelStoreContainer" CdmEntityContainer="JAVADBEntities">
+    <EntitySetMapping Name="tblAdminUsers">
+      <EntityTypeMapping TypeName="JAVADBModel.tblAdminUser">
+        <MappingFragment StoreEntitySet="tblAdminUsers">
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblBlocks">
+      <EntityTypeMapping TypeName="JAVADBModel.tblBlock">
+        <MappingFragment StoreEntitySet="tblBlocks">
+          <ScalarProperty Name="BlockID" ColumnName="BlockID" />
+          <ScalarProperty Name="LayoutID" ColumnName="LayoutID" />
+          <ScalarProperty Name="BlockNumber" ColumnName="BlockNumber" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblEventLayoutBlocks">
+      <EntityTypeMapping TypeName="JAVADBModel.tblEventLayoutBlock">
+        <MappingFragment StoreEntitySet="tblEventLayoutBlocks">
+          <ScalarProperty Name="EventLayoutBlockID" ColumnName="EventLayoutBlockID" />
+          <ScalarProperty Name="EventID" ColumnName="EventID" />
+          <ScalarProperty Name="BlockID" ColumnName="BlockID" />
+          <ScalarProperty Name="TierID" ColumnName="TierID" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblEvents">
+      <EntityTypeMapping TypeName="JAVADBModel.tblEvent">
+        <MappingFragment StoreEntitySet="tblEvents">
+          <ScalarProperty Name="EventID" ColumnName="EventID" />
+          <ScalarProperty Name="VenueID" ColumnName="VenueID" />
+          <ScalarProperty Name="LayoutID" ColumnName="LayoutID" />
+          <ScalarProperty Name="EventName" ColumnName="EventName" />
+          <ScalarProperty Name="EventType" ColumnName="EventType" />
+          <ScalarProperty Name="EventLanguage" ColumnName="EventLanguage" />
+          <ScalarProperty Name="EventPlaytime" ColumnName="EventPlaytime" />
+          <ScalarProperty Name="EventDurationType" ColumnName="EventDurationType" />
+          <ScalarProperty Name="EventDate" ColumnName="EventDate" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="ShowTime" ColumnName="ShowTime" />
+          <ScalarProperty Name="EventBanner" ColumnName="EventBanner" />
+          <ScalarProperty Name="EventMainBanner" ColumnName="EventMainBanner" />
+          <ScalarProperty Name="EventHomeBanner" ColumnName="EventHomeBanner" />
+          <ScalarProperty Name="LocationTracker" ColumnName="LocationTracker" />
+          <ScalarProperty Name="EventDescription" ColumnName="EventDescription" />
+          <ScalarProperty Name="EventTNC" ColumnName="EventTNC" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblLayouts">
+      <EntityTypeMapping TypeName="JAVADBModel.tblLayout">
+        <MappingFragment StoreEntitySet="tblLayout">
+          <ScalarProperty Name="LayoutID" ColumnName="LayoutID" />
+          <ScalarProperty Name="VenueID" ColumnName="VenueID" />
+          <ScalarProperty Name="LayoutName" ColumnName="LayoutName" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="LayoutNumber" ColumnName="LayoutNumber" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblSeats">
+      <EntityTypeMapping TypeName="JAVADBModel.tblSeat">
+        <MappingFragment StoreEntitySet="tblSeat">
+          <ScalarProperty Name="SeatID" ColumnName="SeatID" />
+          <ScalarProperty Name="SeatRowID" ColumnName="SeatRowID" />
+          <ScalarProperty Name="SeatNumber" ColumnName="SeatNumber" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblSeatRows">
+      <EntityTypeMapping TypeName="JAVADBModel.tblSeatRow">
+        <MappingFragment StoreEntitySet="tblSeatRows">
+          <ScalarProperty Name="SeatRowID" ColumnName="SeatRowID" />
+          <ScalarProperty Name="BlockID" ColumnName="BlockID" />
+          <ScalarProperty Name="RowNumber" ColumnName="RowNumber" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblTiers">
+      <EntityTypeMapping TypeName="JAVADBModel.tblTier">
+        <MappingFragment StoreEntitySet="tblTier">
+          <ScalarProperty Name="TierID" ColumnName="TierID" />
+          <ScalarProperty Name="TierName" ColumnName="TierName" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblVenues">
+      <EntityTypeMapping TypeName="JAVADBModel.tblVenue">
+        <MappingFragment StoreEntitySet="tblVenue">
+          <ScalarProperty Name="VenueID" ColumnName="VenueID" />
+          <ScalarProperty Name="VenueName" ColumnName="VenueName" />
+          <ScalarProperty Name="VenueNumber" ColumnName="VenueNumber" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

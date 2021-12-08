@@ -1,0 +1,116 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script src="~/App_Scripts/jquery.validate.js"></script>
+
+<script type="text/javascript">
+
+    $(function () {
+
+        $("#frmRegister").validate({
+            rules: {
+                txtParentName: {
+                    required: true
+                },
+                txtChildName: {
+                    required: true,
+                },
+                txtParentMobile: {
+                    required: true
+                },
+                txtParentEmail: {
+                    required: true,
+                    email: true
+                },
+                txtDOB: {
+                    required: true
+                },
+                chkTerms: {
+                    required: true
+                }
+            },
+            messages: {
+                txtParentName: {
+                    required: "Please enter parent name"
+                },
+                txtParentMobile: {
+                    required: "Please enter mobile number"
+                },
+                txtParentEmail: {
+                    required: "Please enter email id",
+                    email: "Please check email id format"
+                },
+                txtChildName: {
+                    required: "Please enter child name",
+                },
+                txtDOB: {
+                    required: "Please enter date of birth"
+                },
+                chkTerms: {
+                    required: "Please accept terms & conditions"
+                }
+            },
+            errorPlacement: function (error, element) {
+                if (element.attr("name") == "txtParentName")
+                    $('#lblParentName').html(error);
+
+                if (element.attr("name") == "txtParentEmail")
+                    $('#lblParentEmail').html(error);
+
+                if (element.attr("name") == "txtParentMobile")
+                    $('#lblParentMobile').html(error);
+
+
+                if (element.attr("name") == "txtChildName")
+                    $('#lblChildName').html(error);
+
+                if (element.attr("name") == "txtDOB")
+                    $('#lblDOB').html(error);
+
+                if (element.attr("name") == "chkTerms")
+                    $('#lblTerms').html(error);
+            }
+        });
+    });
+
+
+    function Register() {
+        if ($("#frmRegister").valid()) {
+            $("#btnRegister").hide();
+            $("#reg_loader").html("Please wait...");
+
+            $.ajax({
+                url: "/VOBA/Register",
+                data: $("#frmRegister").serialize(),
+                type: "POST",
+                success: function (response) {
+                    if (response.status == "OK") {
+                        location.href = "/VOBASummary?r_id=" + response.r_id;
+                    }
+                    else if (response.status == "ERROR") {
+                        alert("Sorry, Something went wrong.");
+                        $("#reg_loader").html("");
+                        $("#btnRegister").show();
+                    }
+                }
+            });
+        }
+    }
+</script>
+<div class="ContentWrap">
+    <div class="MainInnerLabel">General Rules for VOBA 2021 Junior</div>
+    <ol>
+	   <li>The VOBA junior is open for kids/participants 16 years or below. The Kid/Participant should have been born on or after April 1, 2005.</li>
+	   <li>All the auditions are pre-registered. Due to Covid safety compliance we will not be entertaining any walk-in auditions.</li>
+	   <li>Once you finish registration, you will be contacted by team to schedule a time to come for auditions. Detailed logistics will be communicated along with the email.</li>
+	   <li>No Kid/Participant will be allowed without parent/guardian for any event in journey of VOBA 2021</li>
+	   <li>Avoid tracks from meraGaana.com or online streaming as we do not guarantee wi-fi availability at venue.</li>
+	   <li>Bring tracks on USB drive or cell phone.</li>
+	   <li>You can sing any song of your choice but in Hindi. </li>
+	   <li>You will be singing one song's Antara and Mukhda. But please prepare two songs, the judges may ask you to sing 2nd in case they want to.</li>
+	   <li>You will sing Mukhada and Antara or Max 3 mins, whichever is lesser.</li>
+	</ol>
+</div>

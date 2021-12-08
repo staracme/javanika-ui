@@ -1,0 +1,103 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model FrontEnd.Models.tblEvent
+
+@{ 
+    FrontEnd.Models.JAVADBEntities db = new FrontEnd.Models.JAVADBEntities();
+
+    var view_image_path = Common.GetViewImagePath();
+    int eventID = Model.EventID;
+    decimal min_price = Convert.ToDecimal(db.tblEventLayoutBlocks.Where(e => e.EventID == eventID).Min(s => s.Price));
+
+	var artists = (List<FrontEnd.Models.tblEventArtist>)ViewData["Artists"];
+	
+	var isPastEvent = db.tblEvents.SqlQuery("SELECT * FROM TBLEVENTS WHERE CONVERT(DATE,EVENTDATE,103) < CONVERT(DATE,GETDATE(),103) AND EVENTID = " + eventID + "").Any();
+}
+
+@if (Model.tblVenue != null && Model.tblVenue.SeatingChart != null)
+{
+	<script type="text/javascript">
+		function BookTicket(evtID) {
+            $("#modalLoader").modal('show');
+			var bookingType = '@Model.BookingType';
+            
+			if (bookingType == 'TICKETS')
+			   location.href = "/BookTickets?eventID=" + evtID;
+			else if(bookingType == 'SEATS')
+			   location.href = "/@Model.tblVenue.SeatingChart/?eventID=" + evtID;
+		}
+	</script>
+}
+
+    <div class="SliderBannerWrap">
+        <div><img src="@view_image_path/MainBanners/@Model.EventMainBanner" width="100%" /></div>
+    </div>
+
+    <div class="EventsBlockWrap">
+        <div class="EventBlockTop">
+            <div class="EventTopLeft">
+                <div class="EventName">@Model.EventName</div>
+                <!--<div class="EventDetails"><span>@Model.EventType</span> | <span>@Model.EventLanguage</span> | <span>Age @Model.AgeGroup</span> | <span>@Model.EventPlaytime</span></div>-->
+                <div class="EventDetails"><span>@Model.EventType</span> | <span>Age: @Model.AgeGroup</span> | <span>@Model.EventPlaytime</span></div>
+            </div>
+            @if (Model.tblVenue != null)
+            {
+				//if (!isPastEvent)
+				//{
+						
+						<div class="EventTopRight">
+							<div class="BookTicketBtn"><button class="BtnBookTicket" onclick="JavaScript:BookTicket(@Model.EventID)">BOOK TICKETS</button></div>
+						</div>
+						<div class="clr"></div>
+						
+				//}
+            }
+            <div class="clr"></div>
+        </div>
+		@if(Model.EventID == 3040)
+		{
+			<div class="EventBlockBottom">
+				<span>@Convert.ToDateTime((Model.EventDurationType == "S" ? Model.EventDate : Model.StartDate)).ToString("dddd, dd MMMM") at @Model.ShowTime</span>&nbsp;&nbsp; |&nbsp;&nbsp; <span style="padding-top:13px;"><img src="~/App_Images/VenueSymbol.png" width="20px" /> @(Model.tblVenue != null ? Model.tblVenue.VenueName : "NA")</span> &nbsp;&nbsp;|&nbsp;&nbsp; $40 Onwards
+			</div>
+		}
+		else
+		{
+			<div class="EventBlockBottom">
+				<span>@Convert.ToDateTime((Model.EventDurationType == "S" ? Model.EventDate : Model.StartDate)).ToString("dddd, dd MMMM") at @Model.ShowTime</span>&nbsp;&nbsp; |&nbsp;&nbsp; <span style="padding-top:13px;"><img src="~/App_Images/VenueSymbol.png" width="20px" /> @(Model.tblVenue != null ? Model.tblVenue.VenueName : "NA")</span> &nbsp;&nbsp;|&nbsp;&nbsp; $50 Onwards
+			</div>
+		}
+    </div>
+
+    <div class="EventsInfoWrap">
+        <div class="EventArtistWrap">
+            <div class="ArtistHeader">Artist's</div>
+            <div class="ArtistWrapBlock">
+                @foreach (var artist in artists)
+                {
+                    <div>
+                        <div class="ArtistImg"><img src="@view_image_path/ArtistImages/@artist.Image" width="100" /></div>
+                        <div class="ArtistName">@artist.Name</div>
+                        <div class="clr"></div>
+                    </div>
+                }
+            </div>
+        </div>
+        <div class="EventInfortainmentWrap">
+
+            <b>Event Description:</b>
+            <br />
+			@MvcHtmlString.Create(Model.EventDescription)
+
+
+            <b>Booking Terms & Condition:</b>
+            <br />
+            @MvcHtmlString.Create(Model.EventTNC)
+
+        </div>
+        <div class="clr"></div>
+    </div>
+

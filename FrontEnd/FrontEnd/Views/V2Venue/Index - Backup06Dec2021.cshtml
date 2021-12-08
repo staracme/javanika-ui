@@ -1,0 +1,567 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href="~/App_Theme/V2-SeatingArrangementStyle.css" rel="stylesheet" />
+
+
+<div>
+    @{
+        FrontEnd.Models.JAVADBEntities db = new FrontEnd.Models.JAVADBEntities();
+
+        var block1 = db.tblBlocks.Where(b => b.BlockNumber == "V2B1").SingleOrDefault();
+        var block2 = db.tblBlocks.Where(b => b.BlockNumber == "V2B2").SingleOrDefault();
+        var block3 = db.tblBlocks.Where(b => b.BlockNumber == "V2B3").SingleOrDefault();
+        var block4 = db.tblBlocks.Where(b => b.BlockNumber == "V2B4").SingleOrDefault();
+        var block5 = db.tblBlocks.Where(b => b.BlockNumber == "V2B5").SingleOrDefault();
+
+        int eventID = Convert.ToInt32(Request["eventID"]);
+        var evt = db.tblEvents.Where(e => e.EventID == eventID).SingleOrDefault();
+
+        var tiers = (List<FrontEnd.Models.tblTier>)ViewData["Tiers"];
+    }
+
+    <script src="~/App_Scripts/jquery.countdown.js"></script>
+    <script src="~/App_Scripts/jquery.cookie.min.js"></script>
+    <script type="text/javascript">
+
+	$(function () {
+
+
+		setTimeout($("#divLoading").fadeOut(), 30000);
+
+
+        var date = new Date();
+        var midnight = new Date(date.getFullYear(), date.getMonth(), date.getDate(), 23, 59, 59);
+
+        if ($.cookie('refresh-@eventID') == null) {
+            $.cookie('refresh-@eventID', 'true', { expires: midnight });
+        }
+
+        $(".chkSeats").click(function () {
+            var seatID = $(this).val();
+
+            if ($(this).is(":checked")) {
+                SelectSeat(seatID);
+            }
+            else {
+                RemoveSeat(seatID);
+            }
+        });
+
+        //$('#clock').countdown(NOW())
+        $('#clock').countdown('@DateTime.Now.AddMinutes(3.00).ToString("yyyy/MM/dd HH:mm:ss")')
+           .on('update.countdown', function (event) {
+               var format = '%H:%M:%S';
+               $(this).html(event.strftime(format));
+           })
+           .on('finish.countdown', function (event) {
+               ClearSession();
+               $("#clock").html("00:00:00");
+			});
+    });
+
+
+    function SelectSeat(seatID) {
+        $.ajax({
+            url: "/V2Venue/SelectSeat",
+            data: { seatID: seatID, eventID: '@Request["eventID"]' },
+            type: "GET",
+            success: function (response) {
+                var data = JSON.parse(response);
+
+                if (data.status == "OK") {
+
+                    var noOfSeats = data.NoOfSeats;
+                    var str = "";
+
+                    if (parseInt(noOfSeats) > 0) {
+
+                        str += '<tr>';
+                        str += '<td>' + data.NoOfSeats + '</td>'
+                        str += '<td>$' + data.TotalPrice + '</td>';
+                        str += '</tr>';
+
+                        $("#tbody").html(str);
+                    }
+                    else {
+                        str += '<tr>';
+                        str += '<td colspan="2" class="TierClass">No Bookings Yet</td>';
+                        str += '</tr>';
+
+                        $("#tbody").html(str);
+                    }
+                }
+                else {
+                    console.log("Booked");
+                }
+            }
+        });
+    }
+
+    function RemoveSeat(seatID) {
+        $.ajax({
+            url: "/V2Venue/RemoveSeat",
+            data: { seatID: seatID, eventID: '@Request["eventID"]' },
+            type: "GET",
+            success: function (response) {
+                var data = JSON.parse(response);
+
+                if (data.status == "OK") {
+                    var noOfSeats = data.NoOfSeats;
+                    var str = "";
+
+                    if (parseInt(noOfSeats) > 0) {
+
+                        str += '<tr>';
+                        str += '<td>' + data.NoOfSeats + '</td>'
+                        str += '<td>$' + data.TotalPrice + '</td>';
+                        str += '</tr>';
+
+                        $("#tbody").html(str);
+                    }
+                    else {
+                        str += '<tr>';
+                        str += '<td colspan="2" class="TierClass">No Bookings Yet</td>';
+                        str += '</tr>';
+
+                        $("#tbody").html(str);
+                    }
+                }
+                else {
+                    console.log("Booked");
+                }
+            }
+        });
+    }
+
+
+    function ProceedBooking() {
+		var seats_selected = $(".chkSeats:checked").length;
+
+
+		if(seats_selected > 0)
+		{
+			$(".btnBookings").hide();
+			$("#loader").html("Processing....");
+
+			$.ajax({
+				url: "/V2Venue/CheckBooking",
+				type: "GET",
+				data: { eventID: '@Request["eventID"]'  },
+				success: function (response) {
+					if (response == "OCCUPIED") {
+						alert("Sorry! Someone has already selected these seats and is in process of booking these seats.");
+						location.reload();
+					}
+					else {
+						$("#frmBooking").submit();
+					}
+				}
+			});
+		}
+		else {
+			alert("Please select your seats to proceed further.");
+		}
+
+
+    }
+
+	    //validate & use coupon
+    function CheckCoupon() {
+
+        if ($("#txtCouponCode").val() != "") {
+
+            var seats_selected = $(".chkSeats:checked").length;
+
+            if (seats_selected > 0) {
+
+                var code = $("#txtCouponCode").val();
+
+                $("#btnCoupon").hide();
+                $("#coupon_loader").html("Processing...");
+
+                $.ajax({
+                    url: "/V2Venue/CheckCouponCode",
+                    data: { code: code, eventID: '@Request["eventID"]' },
+                    type: 'GET',
+                    success: OnCheckCouponSuccess
+                });
+            }
+            else {
+                alert("Please select seats.");
+            }
+        }
+        else
+            alert("Please enter valid coupon code.");
+    }
+
+    function OnCheckCouponSuccess(data) {
+        data = JSON.parse(data);
+
+        if (data.status == "OK") {
+            var noOfSeats = data.NoOfSeats;
+            var str = "";
+
+            if (parseInt(noOfSeats) > 0) {
+                if (data.coupon_code != null && data.coupon_code != "") {
+                    $("#coupon_patch").html("Coupon Code <b>" + data.coupon_code + "</b> has been applied.");
+                }
+            }
+        }
+        else {
+            alert(data.status);
+            $("#coupon_loader").html("");
+            $("#btnCoupon").show();
+        }
+    }
+
+	function NOW() {
+
+		var date = new Date();
+
+		date.setMinutes(date.getMinutes() + 15);
+
+		var aaaa = date.getFullYear();
+		var gg = date.getDate();
+		var mm = (date.getMonth() + 1);
+
+		if (gg < 10)
+			gg = "0" + gg;
+
+		if (mm < 10)
+			mm = "0" + mm;
+
+		var cur_day = aaaa + "/" + mm + "/" + gg;
+
+		var hours = date.getHours()
+		var minutes = date.getMinutes()
+		var seconds = date.getSeconds();
+
+		if (hours < 10)
+			hours = "0" + hours;
+
+		if (minutes < 10)
+			minutes = "0" + minutes;
+
+		if (seconds < 10)
+			seconds = "0" + seconds;
+
+		return cur_day + " " + hours + ":" + minutes   + ":" + seconds;
+
+	}
+
+	function ClearSession() {
+		alert("Your session has been expired. Please relselect the seats");
+		location.reload();
+	}
+    </script>
+
+
+    <div class="EventSeatHead">
+        @evt.EventName @evt.EventType | Show time: @evt.ShowTime | Venue: @evt.tblVenue.VenueName
+    </div>
+
+
+    <div class="MainOuterSeatingWrap">
+        <div class="app-inner">
+            <div class="StageWrap">Stage / Screen this side</div>
+            <div>
+                <div class="DragContent">Drag towards Right to view seats</div><div class="DragImg"><img src="~/App_Images/DragArrow.png" width="50px" /></div>
+                <div class="clr"></div>
+            </div>
+            <br />
+            @if (block1 != null)
+            {
+                var seat_rows = db.tblSeatRows.Where(b => b.BlockID == block1.BlockID).OrderBy(s => s.SeatRowID).ToList();
+
+                <ol id="@block1.BlockNumber" class="cabin fuselage">
+                    @foreach (var row in seat_rows)
+                    {
+                        var seats = db.tblSeats.Where(s => s.SeatRowID == row.SeatRowID).ToList();
+						var block_pricing = db.tblEventLayoutBlocks.Where(t => t.BlockID == block1.BlockID && t.EventID == eventID).SingleOrDefault();
+                        <li class="row">
+                            <ol class="seats" type="A">
+                                @foreach (var seat in seats)
+                                {
+                                    if (seat.Status == "PRESENT")
+                                    {
+                                        var isBooked = db.tblSeatSelections.SqlQuery("SELECT * FROM TBLSEATSELECTIONS WHERE SEATID = " + seat.SeatID + " AND EVENTID =" + eventID + " AND ORDERID IS NOT NULL AND ORDERID IN (SELECT ORDERID FROM TBLTICKETORDERS WHERE STATUS = 'SUCCESS')").Any();
+
+                                        <li class="seat">
+                                            <input type="checkbox" id="@seat.SeatID" @(isBooked ? "disabled" : "") class="chkSeats" value="@seat.SeatID" />
+                                            <label for="@seat.SeatID">@seat.SeatNumber</label>
+											<div class="tooltip">@(block_pricing.tblTier.TierName) - $@(block_pricing != null ? Decimal.Round(Convert.ToDecimal(block_pricing.Price)) : 0)</div>
+                                        </li>
+                                    }
+                                    else if (seat.Status == "BLANK")
+                                    {
+                                        <li class="seat">
+
+                                        </li>
+                                    }
+                                }
+                            </ol>
+                        </li>
+                    }
+                </ol>
+            }
+            <br />
+            @if (block2 != null)
+            {
+                var seat_rows = db.tblSeatRows.Where(b => b.BlockID == block2.BlockID).OrderBy(s => s.SeatRowID).ToList();
+				var block_pricing = db.tblEventLayoutBlocks.Where(t => t.BlockID == block2.BlockID && t.EventID == eventID).SingleOrDefault();
+                <ol id="@block2.BlockNumber">
+                    @foreach (var row in seat_rows)
+                    {
+                        var seats = db.tblSeats.Where(s => s.SeatRowID == row.SeatRowID).ToList();
+
+                        <li class="row">
+                            <ol class="seats" type="A">
+                                @foreach (var seat in seats)
+                                {
+                                    if (seat.Status == "PRESENT")
+                                    {
+                                        var isBooked = db.tblSeatSelections.SqlQuery("SELECT * FROM TBLSEATSELECTIONS WHERE SEATID = " + seat.SeatID + " AND EVENTID =" + eventID + " AND ORDERID IS NOT NULL AND ORDERID IN (SELECT ORDERID FROM TBLTICKETORDERS WHERE STATUS = 'SUCCESS')").Any();
+                                        
+                                        <li class="seat">
+                                            <input type="checkbox" id="@seat.SeatID" @(isBooked ? "disabled" : "") class="chkSeats" value="@seat.SeatID" />
+                                            <label for="@seat.SeatID">@seat.SeatNumber</label>
+											<div class="tooltip">@(block_pricing.tblTier.TierName) - $@(block_pricing != null ? Decimal.Round(Convert.ToDecimal(block_pricing.Price)) : 0)</div>
+                                        </li>
+                                    }
+                                    else if (seat.Status == "BLANK")
+                                    {
+                                        <li class="seat">
+
+                                        </li>
+                                    }
+                                }
+                            </ol>
+                        </li>
+                    }
+                </ol>
+            }
+            <br />
+            @if (block3 != null)
+            {
+                var seat_rows = db.tblSeatRows.Where(b => b.BlockID == block3.BlockID).OrderBy(s => s.SeatRowID).ToList();
+				var block_pricing = db.tblEventLayoutBlocks.Where(t => t.BlockID == block3.BlockID && t.EventID == eventID).SingleOrDefault();
+                <ol id="@block3.BlockNumber">
+                    @foreach (var row in seat_rows)
+                    {
+                        var seats = db.tblSeats.Where(s => s.SeatRowID == row.SeatRowID).ToList();
+
+                        <li class="row">
+                            <ol class="seats" type="A">
+                                @foreach (var seat in seats)
+                                {
+                                    if (seat.Status == "PRESENT")
+                                    {
+                                        var isBooked = db.tblSeatSelections.SqlQuery("SELECT * FROM TBLSEATSELECTIONS WHERE SEATID = " + seat.SeatID + " AND EVENTID =" + eventID + " AND ORDERID IS NOT NULL AND ORDERID IN (SELECT ORDERID FROM TBLTICKETORDERS WHERE STATUS = 'SUCCESS')").Any();
+                                        
+                                        <li class="seat">
+                                            <input type="checkbox" id="@seat.SeatID" @(isBooked ? "disabled" : "") class="chkSeats" value="@seat.SeatID" />
+                                            <label for="@seat.SeatID">@seat.SeatNumber</label>
+											<div class="tooltip">@(block_pricing.tblTier.TierName) - $@(block_pricing != null ? Decimal.Round(Convert.ToDecimal(block_pricing.Price)) : 0)</div>
+                                        </li>
+                                    }
+                                    else if (seat.Status == "BLANK")
+                                    {
+                                        <li class="seat">
+
+                                        </li>
+                                    }
+                                }
+                            </ol>
+                        </li>
+                    }
+                </ol>
+            }
+            <br />
+            @if (block4 != null)
+            {
+                var seat_rows = db.tblSeatRows.Where(b => b.BlockID == block4.BlockID).OrderBy(s => s.SeatRowID).ToList();
+
+                <ol id="@block4.BlockNumber">
+                    @foreach (var row in seat_rows)
+                    {
+                        var seats = db.tblSeats.Where(s => s.SeatRowID == row.SeatRowID).ToList();
+						var block_pricing = db.tblEventLayoutBlocks.Where(t => t.BlockID == block4.BlockID && t.EventID == eventID).SingleOrDefault();
+
+                        <li class="row">
+                            <ol class="seats" type="A">
+                                @foreach (var seat in seats)
+                                {
+                                    if (seat.Status == "PRESENT")
+                                    {
+                                        var isBooked = db.tblSeatSelections.SqlQuery("SELECT * FROM TBLSEATSELECTIONS WHERE SEATID = " + seat.SeatID + " AND EVENTID =" + eventID + " AND ORDERID IS NOT NULL AND ORDERID IN (SELECT ORDERID FROM TBLTICKETORDERS WHERE STATUS = 'SUCCESS')").Any();
+
+                                        <li class="seat">
+                                            <input type="checkbox" id="@seat.SeatID" @(isBooked ? "disabled" : "") class="chkSeats" value="@seat.SeatID" />
+                                            <label for="@seat.SeatID">@seat.SeatNumber</label>
+											<div class="tooltip">@(block_pricing.tblTier.TierName) - $@(block_pricing != null ? Decimal.Round(Convert.ToDecimal(block_pricing.Price)) : 0)</div>
+                                        </li>
+                                    }
+                                    else if (seat.Status == "BLANK")
+                                    {
+                                        <li class="seat"></li>
+                                    }
+                                }
+                            </ol>
+                        </li>
+                    }
+                </ol>
+            }
+            <br />
+            @if (block5 != null)
+            {
+                var seat_rows = db.tblSeatRows.Where(b => b.BlockID == block5.BlockID).OrderBy(s => s.SeatRowID).ToList();
+
+                var block_pricing = db.tblEventLayoutBlocks.Where(t => t.BlockID == block5.BlockID && t.EventID == eventID).SingleOrDefault();
+
+
+                <ol id="@block5.BlockNumber">
+                    @foreach (var row in seat_rows)
+                    {
+                        var seats = db.tblSeats.Where(s => s.SeatRowID == row.SeatRowID).ToList();
+
+                        <li class="row">
+                            <ol class="seats" type="A">
+                                @foreach (var seat in seats)
+                                {
+                                    if (seat.Status == "PRESENT")
+                                    {
+                                        var isBooked = db.tblSeatSelections.SqlQuery("SELECT * FROM TBLSEATSELECTIONS WHERE SEATID = " + seat.SeatID + " AND EVENTID =" + eventID + " AND ORDERID IS NOT NULL AND ORDERID IN (SELECT ORDERID FROM TBLTICKETORDERS WHERE STATUS = 'SUCCESS')").Any();
+
+                                        <li class="seat">
+                                            <input type="checkbox" id="@seat.SeatID" @(isBooked ? "disabled" : "") class="chkSeats" value="@seat.SeatID" />
+                                            <label for="@seat.SeatID">@seat.SeatNumber</label>
+											<div class="tooltip">@(block_pricing.tblTier.TierName) - $@(block_pricing != null ? Decimal.Round(Convert.ToDecimal(block_pricing.Price)) : 0)</div>
+                                        </li>
+                                    }
+                                    else if (seat.Status == "BLANK")
+                                    {
+                                        <li class="seat"></li>
+                                    }
+                                }
+                            </ol>
+                        </li>
+                    }
+                </ol>
+            }
+        </div>
+    </div>
+
+    <div class="RightOuterSeatingWrap">
+
+        <div class="BookDetHead">Booking Details</div>
+
+        <div class="SessionTimeWrap">
+            <div class="SessionTime">Session will timeout in:</div>
+            <div id="clock">9.00</div>
+        </div>
+
+
+
+        <div class="BookingHead">Your Bookings</div>
+        <table class="TierTbl" border="1">
+            <tr>
+                <th>Tier</th>
+                <th>Available Seats</th>
+                <th>Cost</th>
+            </tr>
+            @foreach (var tier in tiers)
+            {
+                var seats = db.tblSeats.SqlQuery("SELECT * FROM TBLSEAT WHERE SEATROWID IN (SELECT SEATROWID FROM TBLSEATROWS WHERE BLOCKID IN (SELECT BLOCKID FROM tblEventLayoutBlocks WHERE EVENTID = " + eventID + " AND TIERID = " + tier.TierID + ")) AND STATUS = 'PRESENT'").Count();
+                var get_price = db.tblEventLayoutBlocks.Where(e => e.TierID == tier.TierID && e.EventID == eventID).SingleOrDefault();
+
+                if (tier.TierName != "Gold" && tier.TierName != "LEVEL4")
+                {
+                    <tr>
+                        <td class="TierClass">@tier.TierName</td>
+                        <td>@seats</td>
+                        <td>$@(get_price != null ? Decimal.Round(Convert.ToDecimal(get_price.Price)) : 0)</td>
+                    </tr>
+                }
+            }
+        </table>
+
+
+        <div class="BookingHead">Your Bookings</div>
+        <table class="TierTbl" border="1">
+            <tr>
+
+                <th>Seats</th>
+                <th>Total Cost</th>
+            </tr>
+            <tbody id="tbody">
+                <tr>
+                    <td colspan="3" class="TierClass">No Bookings Yet</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div id="coupon_patch">
+
+            <div class="CouponHead">Add Discount Code</div><br />
+
+            <div>
+                <input type="text" class="TxtDiscCode" placeholder="Enter your discount code" id="txtCouponCode" name="txtCouponCode" />
+            </div>
+            <div>
+                <input type="button" class="TxtCpnBtn" value="Apply Discount" onclick="JavaScript:CheckCoupon();" id="btnCoupon" /><span id="coupon_loader"></span>
+            </div>
+        </div>
+
+        <form id="frmBooking" method="post" action="/BookingSummary/Summary">
+            <input type="hidden" id="eventID" name="eventID" value="@Request["eventID"]" />
+        </form>
+
+        <button class="btnBookings" onclick="JavaScript: ProceedBooking();">Proceed with Bookings</button><span id="loader"></span>
+    </div>
+
+
+
+    <div class="clr"></div>
+</div>
+<script src="~/App_Scripts/scrollbooster.min.js"></script>
+
+<script>
+    let viewport = document.querySelector('.MainOuterSeatingWrap')
+    let content = viewport.querySelector('.app-inner')
+
+    let scr = new ScrollBooster({
+        viewport: viewport,
+        content: content,
+        // textSelection: true,
+        emulateScroll: true,
+        onClick: (data, event) => {
+            //event.preventDefault()
+        },
+        shouldScroll: (data, event) => {
+            if (event.target.tagName == 'BUTTON') {
+                return false
+            } else {
+                return true
+            }
+        },
+        onUpdate: (data) => {
+            // viewport.scrollLeft = data.position.x
+            // viewport.scrollTop = data.position.y
+            content.style.transform = `translate(
+            ${-data.position.x}px,
+            ${-data.position.y}px
+          )`
+        }
+    })
+</script>
+
+<div id="divLoading" style="margin: 0px; padding: 0px; position: fixed; right: 0px; top: 0px; width: 100%; height: 100%; background-color: rgb(102, 102, 102); z-index: 30001; opacity: 0.8;">
+    <p style="position: absolute; color: White; top: 50%; left: 45%;">
+        Loading, please wait...
+        <img src="../App_Images/indicator-big.gif">
+    </p>
+</div>

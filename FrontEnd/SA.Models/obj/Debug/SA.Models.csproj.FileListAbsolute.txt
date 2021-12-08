@@ -1,0 +1,5 @@
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\SA.Models\bin\Debug\SA.Models.dll
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\SA.Models\bin\Debug\SA.Models.pdb
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\SA.Models\obj\Debug\SA.Models.csproj.CoreCompileInputs.cache
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\SA.Models\obj\Debug\SA.Models.dll
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\SA.Models\obj\Debug\SA.Models.pdb

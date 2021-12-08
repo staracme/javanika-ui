@@ -1,0 +1,617 @@
+E:\Theme\FrontEnd\FrontEnd\bin\ApplicationInsights.config
+E:\Theme\FrontEnd\FrontEnd\bin\roslyn\csc.exe
+E:\Theme\FrontEnd\FrontEnd\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+E:\Theme\FrontEnd\FrontEnd\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+E:\Theme\FrontEnd\FrontEnd\bin\roslyn\Microsoft.CodeAnalysis.dll
+E:\Theme\FrontEnd\FrontEnd\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+E:\Theme\FrontEnd\FrontEnd\bin\roslyn\Microsoft.CSharp.Core.targets
+E:\Theme\FrontEnd\FrontEnd\bin\roslyn\Microsoft.VisualBasic.Core.targets
+E:\Theme\FrontEnd\FrontEnd\bin\roslyn\System.Collections.Immutable.dll
+E:\Theme\FrontEnd\FrontEnd\bin\roslyn\System.Reflection.Metadata.dll
+E:\Theme\FrontEnd\FrontEnd\bin\roslyn\vbc.exe
+E:\Theme\FrontEnd\FrontEnd\bin\roslyn\VBCSCompiler.exe
+E:\Theme\FrontEnd\FrontEnd\bin\roslyn\VBCSCompiler.exe.config
+E:\Theme\FrontEnd\FrontEnd\bin\FrontEnd.dll.config
+E:\Theme\FrontEnd\FrontEnd\bin\FrontEnd.dll
+E:\Theme\FrontEnd\FrontEnd\bin\FrontEnd.pdb
+E:\Theme\FrontEnd\FrontEnd\bin\Antlr3.Runtime.dll
+E:\Theme\FrontEnd\FrontEnd\bin\EntityFramework.dll
+E:\Theme\FrontEnd\FrontEnd\bin\EntityFramework.SqlServer.dll
+E:\Theme\FrontEnd\FrontEnd\bin\Microsoft.AI.Agent.Intercept.dll
+E:\Theme\FrontEnd\FrontEnd\bin\Microsoft.AI.DependencyCollector.dll
+E:\Theme\FrontEnd\FrontEnd\bin\Microsoft.AI.PerfCounterCollector.dll
+E:\Theme\FrontEnd\FrontEnd\bin\Microsoft.AI.ServerTelemetryChannel.dll
+E:\Theme\FrontEnd\FrontEnd\bin\Microsoft.AI.Web.dll
+E:\Theme\FrontEnd\FrontEnd\bin\Microsoft.AI.WindowsServer.dll
+E:\Theme\FrontEnd\FrontEnd\bin\Microsoft.ApplicationInsights.dll
+E:\Theme\FrontEnd\FrontEnd\bin\Microsoft.AspNet.Identity.Core.dll
+E:\Theme\FrontEnd\FrontEnd\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+E:\Theme\FrontEnd\FrontEnd\bin\Microsoft.AspNet.Identity.Owin.dll
+E:\Theme\FrontEnd\FrontEnd\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+E:\Theme\FrontEnd\FrontEnd\bin\Microsoft.Owin.dll
+E:\Theme\FrontEnd\FrontEnd\bin\Microsoft.Owin.Host.SystemWeb.dll
+E:\Theme\FrontEnd\FrontEnd\bin\Microsoft.Owin.Security.Cookies.dll
+E:\Theme\FrontEnd\FrontEnd\bin\Microsoft.Owin.Security.dll
+E:\Theme\FrontEnd\FrontEnd\bin\Microsoft.Owin.Security.Facebook.dll
+E:\Theme\FrontEnd\FrontEnd\bin\Microsoft.Owin.Security.Google.dll
+E:\Theme\FrontEnd\FrontEnd\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+E:\Theme\FrontEnd\FrontEnd\bin\Microsoft.Owin.Security.OAuth.dll
+E:\Theme\FrontEnd\FrontEnd\bin\Microsoft.Owin.Security.Twitter.dll
+E:\Theme\FrontEnd\FrontEnd\bin\Microsoft.Web.Infrastructure.dll
+E:\Theme\FrontEnd\FrontEnd\bin\Newtonsoft.Json.dll
+E:\Theme\FrontEnd\FrontEnd\bin\Owin.dll
+E:\Theme\FrontEnd\FrontEnd\bin\System.Web.Helpers.dll
+E:\Theme\FrontEnd\FrontEnd\bin\System.Web.Mvc.dll
+E:\Theme\FrontEnd\FrontEnd\bin\System.Web.Optimization.dll
+E:\Theme\FrontEnd\FrontEnd\bin\System.Web.Razor.dll
+E:\Theme\FrontEnd\FrontEnd\bin\System.Web.WebPages.Deployment.dll
+E:\Theme\FrontEnd\FrontEnd\bin\System.Web.WebPages.dll
+E:\Theme\FrontEnd\FrontEnd\bin\System.Web.WebPages.Razor.dll
+E:\Theme\FrontEnd\FrontEnd\bin\WebGrease.dll
+E:\Theme\FrontEnd\FrontEnd\bin\Microsoft.AI.DependencyCollector.xml
+E:\Theme\FrontEnd\FrontEnd\bin\Microsoft.AI.ServerTelemetryChannel.xml
+E:\Theme\FrontEnd\FrontEnd\bin\Microsoft.AI.Web.xml
+E:\Theme\FrontEnd\FrontEnd\bin\Microsoft.AI.WindowsServer.xml
+E:\Theme\FrontEnd\FrontEnd\bin\Microsoft.ApplicationInsights.xml
+E:\Theme\FrontEnd\FrontEnd\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+E:\Theme\FrontEnd\FrontEnd\bin\System.Web.Helpers.xml
+E:\Theme\FrontEnd\FrontEnd\bin\System.Web.Mvc.xml
+E:\Theme\FrontEnd\FrontEnd\bin\System.Web.Optimization.xml
+E:\Theme\FrontEnd\FrontEnd\bin\System.Web.Razor.xml
+E:\Theme\FrontEnd\FrontEnd\bin\System.Web.WebPages.xml
+E:\Theme\FrontEnd\FrontEnd\bin\System.Web.WebPages.Deployment.xml
+E:\Theme\FrontEnd\FrontEnd\bin\System.Web.WebPages.Razor.xml
+E:\Theme\FrontEnd\FrontEnd\bin\Antlr3.Runtime.pdb
+E:\Theme\FrontEnd\FrontEnd\bin\Newtonsoft.Json.xml
+E:\Theme\FrontEnd\FrontEnd\bin\EntityFramework.xml
+E:\Theme\FrontEnd\FrontEnd\bin\EntityFramework.SqlServer.xml
+E:\Theme\FrontEnd\FrontEnd\bin\Microsoft.AspNet.Identity.Core.xml
+E:\Theme\FrontEnd\FrontEnd\bin\Microsoft.AspNet.Identity.Owin.xml
+E:\Theme\FrontEnd\FrontEnd\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+E:\Theme\FrontEnd\FrontEnd\bin\Microsoft.Owin.xml
+E:\Theme\FrontEnd\FrontEnd\bin\Microsoft.Owin.Host.SystemWeb.xml
+E:\Theme\FrontEnd\FrontEnd\bin\Microsoft.Owin.Security.xml
+E:\Theme\FrontEnd\FrontEnd\bin\Microsoft.Owin.Security.Facebook.xml
+E:\Theme\FrontEnd\FrontEnd\bin\Microsoft.Owin.Security.Cookies.xml
+E:\Theme\FrontEnd\FrontEnd\bin\Microsoft.Owin.Security.OAuth.xml
+E:\Theme\FrontEnd\FrontEnd\bin\Microsoft.Owin.Security.Google.xml
+E:\Theme\FrontEnd\FrontEnd\bin\Microsoft.Owin.Security.Twitter.xml
+E:\Theme\FrontEnd\FrontEnd\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+E:\Theme\FrontEnd\FrontEnd\obj\Debug\FrontEnd.csprojResolveAssemblyReference.cache
+E:\Theme\FrontEnd\FrontEnd\obj\Debug\FrontEnd.dll
+E:\Theme\FrontEnd\FrontEnd\obj\Debug\FrontEnd.pdb
+E:\Java Project\FrontEnd\FrontEnd\bin\ApplicationInsights.config
+E:\Java Project\FrontEnd\FrontEnd\bin\roslyn\csc.exe
+E:\Java Project\FrontEnd\FrontEnd\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+E:\Java Project\FrontEnd\FrontEnd\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+E:\Java Project\FrontEnd\FrontEnd\bin\roslyn\Microsoft.CodeAnalysis.dll
+E:\Java Project\FrontEnd\FrontEnd\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+E:\Java Project\FrontEnd\FrontEnd\bin\roslyn\Microsoft.CSharp.Core.targets
+E:\Java Project\FrontEnd\FrontEnd\bin\roslyn\Microsoft.VisualBasic.Core.targets
+E:\Java Project\FrontEnd\FrontEnd\bin\roslyn\System.Collections.Immutable.dll
+E:\Java Project\FrontEnd\FrontEnd\bin\roslyn\System.Reflection.Metadata.dll
+E:\Java Project\FrontEnd\FrontEnd\bin\roslyn\vbc.exe
+E:\Java Project\FrontEnd\FrontEnd\bin\roslyn\VBCSCompiler.exe
+E:\Java Project\FrontEnd\FrontEnd\bin\roslyn\VBCSCompiler.exe.config
+E:\Java Project\FrontEnd\FrontEnd\bin\FrontEnd.dll.config
+E:\Java Project\FrontEnd\FrontEnd\bin\FrontEnd.dll
+E:\Java Project\FrontEnd\FrontEnd\bin\FrontEnd.pdb
+E:\Java Project\FrontEnd\FrontEnd\bin\Antlr3.Runtime.dll
+E:\Java Project\FrontEnd\FrontEnd\bin\EntityFramework.dll
+E:\Java Project\FrontEnd\FrontEnd\bin\EntityFramework.SqlServer.dll
+E:\Java Project\FrontEnd\FrontEnd\bin\Microsoft.AI.Agent.Intercept.dll
+E:\Java Project\FrontEnd\FrontEnd\bin\Microsoft.AI.DependencyCollector.dll
+E:\Java Project\FrontEnd\FrontEnd\bin\Microsoft.AI.PerfCounterCollector.dll
+E:\Java Project\FrontEnd\FrontEnd\bin\Microsoft.AI.ServerTelemetryChannel.dll
+E:\Java Project\FrontEnd\FrontEnd\bin\Microsoft.AI.Web.dll
+E:\Java Project\FrontEnd\FrontEnd\bin\Microsoft.AI.WindowsServer.dll
+E:\Java Project\FrontEnd\FrontEnd\bin\Microsoft.ApplicationInsights.dll
+E:\Java Project\FrontEnd\FrontEnd\bin\Microsoft.AspNet.Identity.Core.dll
+E:\Java Project\FrontEnd\FrontEnd\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+E:\Java Project\FrontEnd\FrontEnd\bin\Microsoft.AspNet.Identity.Owin.dll
+E:\Java Project\FrontEnd\FrontEnd\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+E:\Java Project\FrontEnd\FrontEnd\bin\Microsoft.Owin.dll
+E:\Java Project\FrontEnd\FrontEnd\bin\Microsoft.Owin.Host.SystemWeb.dll
+E:\Java Project\FrontEnd\FrontEnd\bin\Microsoft.Owin.Security.Cookies.dll
+E:\Java Project\FrontEnd\FrontEnd\bin\Microsoft.Owin.Security.dll
+E:\Java Project\FrontEnd\FrontEnd\bin\Microsoft.Owin.Security.Facebook.dll
+E:\Java Project\FrontEnd\FrontEnd\bin\Microsoft.Owin.Security.Google.dll
+E:\Java Project\FrontEnd\FrontEnd\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+E:\Java Project\FrontEnd\FrontEnd\bin\Microsoft.Owin.Security.OAuth.dll
+E:\Java Project\FrontEnd\FrontEnd\bin\Microsoft.Owin.Security.Twitter.dll
+E:\Java Project\FrontEnd\FrontEnd\bin\Microsoft.Web.Infrastructure.dll
+E:\Java Project\FrontEnd\FrontEnd\bin\Newtonsoft.Json.dll
+E:\Java Project\FrontEnd\FrontEnd\bin\Owin.dll
+E:\Java Project\FrontEnd\FrontEnd\bin\System.Web.Helpers.dll
+E:\Java Project\FrontEnd\FrontEnd\bin\System.Web.Mvc.dll
+E:\Java Project\FrontEnd\FrontEnd\bin\System.Web.Optimization.dll
+E:\Java Project\FrontEnd\FrontEnd\bin\System.Web.Razor.dll
+E:\Java Project\FrontEnd\FrontEnd\bin\System.Web.WebPages.Deployment.dll
+E:\Java Project\FrontEnd\FrontEnd\bin\System.Web.WebPages.dll
+E:\Java Project\FrontEnd\FrontEnd\bin\System.Web.WebPages.Razor.dll
+E:\Java Project\FrontEnd\FrontEnd\bin\WebGrease.dll
+E:\Java Project\FrontEnd\FrontEnd\bin\Microsoft.AI.DependencyCollector.xml
+E:\Java Project\FrontEnd\FrontEnd\bin\Microsoft.AI.ServerTelemetryChannel.xml
+E:\Java Project\FrontEnd\FrontEnd\bin\Microsoft.AI.Web.xml
+E:\Java Project\FrontEnd\FrontEnd\bin\Microsoft.AI.WindowsServer.xml
+E:\Java Project\FrontEnd\FrontEnd\bin\Microsoft.ApplicationInsights.xml
+E:\Java Project\FrontEnd\FrontEnd\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+E:\Java Project\FrontEnd\FrontEnd\bin\System.Web.Helpers.xml
+E:\Java Project\FrontEnd\FrontEnd\bin\System.Web.Mvc.xml
+E:\Java Project\FrontEnd\FrontEnd\bin\System.Web.Optimization.xml
+E:\Java Project\FrontEnd\FrontEnd\bin\System.Web.Razor.xml
+E:\Java Project\FrontEnd\FrontEnd\bin\System.Web.WebPages.xml
+E:\Java Project\FrontEnd\FrontEnd\bin\System.Web.WebPages.Deployment.xml
+E:\Java Project\FrontEnd\FrontEnd\bin\System.Web.WebPages.Razor.xml
+E:\Java Project\FrontEnd\FrontEnd\bin\Antlr3.Runtime.pdb
+E:\Java Project\FrontEnd\FrontEnd\bin\Newtonsoft.Json.xml
+E:\Java Project\FrontEnd\FrontEnd\bin\EntityFramework.xml
+E:\Java Project\FrontEnd\FrontEnd\bin\EntityFramework.SqlServer.xml
+E:\Java Project\FrontEnd\FrontEnd\bin\Microsoft.AspNet.Identity.Core.xml
+E:\Java Project\FrontEnd\FrontEnd\bin\Microsoft.AspNet.Identity.Owin.xml
+E:\Java Project\FrontEnd\FrontEnd\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+E:\Java Project\FrontEnd\FrontEnd\bin\Microsoft.Owin.xml
+E:\Java Project\FrontEnd\FrontEnd\bin\Microsoft.Owin.Host.SystemWeb.xml
+E:\Java Project\FrontEnd\FrontEnd\bin\Microsoft.Owin.Security.xml
+E:\Java Project\FrontEnd\FrontEnd\bin\Microsoft.Owin.Security.Facebook.xml
+E:\Java Project\FrontEnd\FrontEnd\bin\Microsoft.Owin.Security.Cookies.xml
+E:\Java Project\FrontEnd\FrontEnd\bin\Microsoft.Owin.Security.OAuth.xml
+E:\Java Project\FrontEnd\FrontEnd\bin\Microsoft.Owin.Security.Google.xml
+E:\Java Project\FrontEnd\FrontEnd\bin\Microsoft.Owin.Security.Twitter.xml
+E:\Java Project\FrontEnd\FrontEnd\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+E:\Java Project\FrontEnd\FrontEnd\obj\Debug\FrontEnd.csprojResolveAssemblyReference.cache
+E:\Java Project\FrontEnd\FrontEnd\obj\Debug\FrontEnd.dll
+E:\Java Project\FrontEnd\FrontEnd\obj\Debug\FrontEnd.pdb
+E:\Java Project\FrontEnd\FrontEnd\bin\Braintree.dll
+E:\Java Project\FrontEnd\FrontEnd\bin\IronBarCode.dll
+E:\Java Project\FrontEnd\FrontEnd\bin\IronBarCode.xml
+E:\Java Project\FrontEnd\FrontEnd\bin\QRCoder.dll
+E:\Java Project\In development\FrontEnd\FrontEnd\bin\ApplicationInsights.config
+E:\Java Project\In development\FrontEnd\FrontEnd\bin\roslyn\csc.exe
+E:\Java Project\In development\FrontEnd\FrontEnd\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+E:\Java Project\In development\FrontEnd\FrontEnd\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+E:\Java Project\In development\FrontEnd\FrontEnd\bin\roslyn\Microsoft.CodeAnalysis.dll
+E:\Java Project\In development\FrontEnd\FrontEnd\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+E:\Java Project\In development\FrontEnd\FrontEnd\bin\roslyn\Microsoft.CSharp.Core.targets
+E:\Java Project\In development\FrontEnd\FrontEnd\bin\roslyn\Microsoft.VisualBasic.Core.targets
+E:\Java Project\In development\FrontEnd\FrontEnd\bin\roslyn\System.Collections.Immutable.dll
+E:\Java Project\In development\FrontEnd\FrontEnd\bin\roslyn\System.Reflection.Metadata.dll
+E:\Java Project\In development\FrontEnd\FrontEnd\bin\roslyn\vbc.exe
+E:\Java Project\In development\FrontEnd\FrontEnd\bin\roslyn\VBCSCompiler.exe
+E:\Java Project\In development\FrontEnd\FrontEnd\bin\roslyn\VBCSCompiler.exe.config
+E:\Java Project\In development\FrontEnd\FrontEnd\bin\FrontEnd.dll.config
+E:\Java Project\In development\FrontEnd\FrontEnd\bin\FrontEnd.dll
+E:\Java Project\In development\FrontEnd\FrontEnd\bin\FrontEnd.pdb
+E:\Java Project\In development\FrontEnd\FrontEnd\bin\Antlr3.Runtime.dll
+E:\Java Project\In development\FrontEnd\FrontEnd\bin\Braintree.dll
+E:\Java Project\In development\FrontEnd\FrontEnd\bin\EntityFramework.dll
+E:\Java Project\In development\FrontEnd\FrontEnd\bin\EntityFramework.SqlServer.dll
+E:\Java Project\In development\FrontEnd\FrontEnd\bin\IronBarCode.dll
+E:\Java Project\In development\FrontEnd\FrontEnd\bin\Microsoft.AI.Agent.Intercept.dll
+E:\Java Project\In development\FrontEnd\FrontEnd\bin\Microsoft.AI.DependencyCollector.dll
+E:\Java Project\In development\FrontEnd\FrontEnd\bin\Microsoft.AI.PerfCounterCollector.dll
+E:\Java Project\In development\FrontEnd\FrontEnd\bin\Microsoft.AI.ServerTelemetryChannel.dll
+E:\Java Project\In development\FrontEnd\FrontEnd\bin\Microsoft.AI.Web.dll
+E:\Java Project\In development\FrontEnd\FrontEnd\bin\Microsoft.AI.WindowsServer.dll
+E:\Java Project\In development\FrontEnd\FrontEnd\bin\Microsoft.ApplicationInsights.dll
+E:\Java Project\In development\FrontEnd\FrontEnd\bin\Microsoft.AspNet.Identity.Core.dll
+E:\Java Project\In development\FrontEnd\FrontEnd\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+E:\Java Project\In development\FrontEnd\FrontEnd\bin\Microsoft.AspNet.Identity.Owin.dll
+E:\Java Project\In development\FrontEnd\FrontEnd\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+E:\Java Project\In development\FrontEnd\FrontEnd\bin\Microsoft.Owin.dll
+E:\Java Project\In development\FrontEnd\FrontEnd\bin\Microsoft.Owin.Host.SystemWeb.dll
+E:\Java Project\In development\FrontEnd\FrontEnd\bin\Microsoft.Owin.Security.Cookies.dll
+E:\Java Project\In development\FrontEnd\FrontEnd\bin\Microsoft.Owin.Security.dll
+E:\Java Project\In development\FrontEnd\FrontEnd\bin\Microsoft.Owin.Security.Facebook.dll
+E:\Java Project\In development\FrontEnd\FrontEnd\bin\Microsoft.Owin.Security.Google.dll
+E:\Java Project\In development\FrontEnd\FrontEnd\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+E:\Java Project\In development\FrontEnd\FrontEnd\bin\Microsoft.Owin.Security.OAuth.dll
+E:\Java Project\In development\FrontEnd\FrontEnd\bin\Microsoft.Owin.Security.Twitter.dll
+E:\Java Project\In development\FrontEnd\FrontEnd\bin\Microsoft.Web.Infrastructure.dll
+E:\Java Project\In development\FrontEnd\FrontEnd\bin\Newtonsoft.Json.dll
+E:\Java Project\In development\FrontEnd\FrontEnd\bin\Owin.dll
+E:\Java Project\In development\FrontEnd\FrontEnd\bin\QRCoder.dll
+E:\Java Project\In development\FrontEnd\FrontEnd\bin\System.Web.Helpers.dll
+E:\Java Project\In development\FrontEnd\FrontEnd\bin\System.Web.Mvc.dll
+E:\Java Project\In development\FrontEnd\FrontEnd\bin\System.Web.Optimization.dll
+E:\Java Project\In development\FrontEnd\FrontEnd\bin\System.Web.Razor.dll
+E:\Java Project\In development\FrontEnd\FrontEnd\bin\System.Web.WebPages.Deployment.dll
+E:\Java Project\In development\FrontEnd\FrontEnd\bin\System.Web.WebPages.dll
+E:\Java Project\In development\FrontEnd\FrontEnd\bin\System.Web.WebPages.Razor.dll
+E:\Java Project\In development\FrontEnd\FrontEnd\bin\WebGrease.dll
+E:\Java Project\In development\FrontEnd\FrontEnd\bin\IronBarCode.xml
+E:\Java Project\In development\FrontEnd\FrontEnd\bin\Microsoft.AI.DependencyCollector.xml
+E:\Java Project\In development\FrontEnd\FrontEnd\bin\Microsoft.AI.ServerTelemetryChannel.xml
+E:\Java Project\In development\FrontEnd\FrontEnd\bin\Microsoft.AI.Web.xml
+E:\Java Project\In development\FrontEnd\FrontEnd\bin\Microsoft.AI.WindowsServer.xml
+E:\Java Project\In development\FrontEnd\FrontEnd\bin\Microsoft.ApplicationInsights.xml
+E:\Java Project\In development\FrontEnd\FrontEnd\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+E:\Java Project\In development\FrontEnd\FrontEnd\bin\Newtonsoft.Json.xml
+E:\Java Project\In development\FrontEnd\FrontEnd\bin\System.Web.Helpers.xml
+E:\Java Project\In development\FrontEnd\FrontEnd\bin\System.Web.Mvc.xml
+E:\Java Project\In development\FrontEnd\FrontEnd\bin\System.Web.Optimization.xml
+E:\Java Project\In development\FrontEnd\FrontEnd\bin\System.Web.Razor.xml
+E:\Java Project\In development\FrontEnd\FrontEnd\bin\System.Web.WebPages.xml
+E:\Java Project\In development\FrontEnd\FrontEnd\bin\System.Web.WebPages.Deployment.xml
+E:\Java Project\In development\FrontEnd\FrontEnd\bin\System.Web.WebPages.Razor.xml
+E:\Java Project\In development\FrontEnd\FrontEnd\bin\Antlr3.Runtime.pdb
+E:\Java Project\In development\FrontEnd\FrontEnd\bin\EntityFramework.xml
+E:\Java Project\In development\FrontEnd\FrontEnd\bin\EntityFramework.SqlServer.xml
+E:\Java Project\In development\FrontEnd\FrontEnd\bin\Microsoft.AspNet.Identity.Core.xml
+E:\Java Project\In development\FrontEnd\FrontEnd\bin\Microsoft.AspNet.Identity.Owin.xml
+E:\Java Project\In development\FrontEnd\FrontEnd\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+E:\Java Project\In development\FrontEnd\FrontEnd\bin\Microsoft.Owin.xml
+E:\Java Project\In development\FrontEnd\FrontEnd\bin\Microsoft.Owin.Host.SystemWeb.xml
+E:\Java Project\In development\FrontEnd\FrontEnd\bin\Microsoft.Owin.Security.xml
+E:\Java Project\In development\FrontEnd\FrontEnd\bin\Microsoft.Owin.Security.Facebook.xml
+E:\Java Project\In development\FrontEnd\FrontEnd\bin\Microsoft.Owin.Security.Cookies.xml
+E:\Java Project\In development\FrontEnd\FrontEnd\bin\Microsoft.Owin.Security.OAuth.xml
+E:\Java Project\In development\FrontEnd\FrontEnd\bin\Microsoft.Owin.Security.Google.xml
+E:\Java Project\In development\FrontEnd\FrontEnd\bin\Microsoft.Owin.Security.Twitter.xml
+E:\Java Project\In development\FrontEnd\FrontEnd\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+E:\Java Project\In development\FrontEnd\FrontEnd\obj\Debug\FrontEnd.csprojResolveAssemblyReference.cache
+E:\Java Project\In development\FrontEnd\FrontEnd\obj\Debug\FrontEnd.dll
+E:\Java Project\In development\FrontEnd\FrontEnd\obj\Debug\FrontEnd.pdb
+D:\Solutions to be copied to Office Sytem\Java\FrontEnd\FrontEnd\bin\ApplicationInsights.config
+D:\Solutions to be copied to Office Sytem\Java\FrontEnd\FrontEnd\bin\roslyn\csc.exe
+D:\Solutions to be copied to Office Sytem\Java\FrontEnd\FrontEnd\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\Solutions to be copied to Office Sytem\Java\FrontEnd\FrontEnd\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\Solutions to be copied to Office Sytem\Java\FrontEnd\FrontEnd\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\Solutions to be copied to Office Sytem\Java\FrontEnd\FrontEnd\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\Solutions to be copied to Office Sytem\Java\FrontEnd\FrontEnd\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\Solutions to be copied to Office Sytem\Java\FrontEnd\FrontEnd\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\Solutions to be copied to Office Sytem\Java\FrontEnd\FrontEnd\bin\roslyn\System.Collections.Immutable.dll
+D:\Solutions to be copied to Office Sytem\Java\FrontEnd\FrontEnd\bin\roslyn\System.Reflection.Metadata.dll
+D:\Solutions to be copied to Office Sytem\Java\FrontEnd\FrontEnd\bin\roslyn\vbc.exe
+D:\Solutions to be copied to Office Sytem\Java\FrontEnd\FrontEnd\bin\roslyn\VBCSCompiler.exe
+D:\Solutions to be copied to Office Sytem\Java\FrontEnd\FrontEnd\bin\roslyn\VBCSCompiler.exe.config
+D:\Solutions to be copied to Office Sytem\Java\FrontEnd\FrontEnd\bin\FrontEnd.dll.config
+D:\Solutions to be copied to Office Sytem\Java\FrontEnd\FrontEnd\bin\FrontEnd.dll
+D:\Solutions to be copied to Office Sytem\Java\FrontEnd\FrontEnd\bin\FrontEnd.pdb
+D:\Solutions to be copied to Office Sytem\Java\FrontEnd\FrontEnd\bin\Antlr3.Runtime.dll
+D:\Solutions to be copied to Office Sytem\Java\FrontEnd\FrontEnd\bin\Braintree.dll
+D:\Solutions to be copied to Office Sytem\Java\FrontEnd\FrontEnd\bin\EntityFramework.dll
+D:\Solutions to be copied to Office Sytem\Java\FrontEnd\FrontEnd\bin\EntityFramework.SqlServer.dll
+D:\Solutions to be copied to Office Sytem\Java\FrontEnd\FrontEnd\bin\IronBarCode.dll
+D:\Solutions to be copied to Office Sytem\Java\FrontEnd\FrontEnd\bin\Microsoft.AI.Agent.Intercept.dll
+D:\Solutions to be copied to Office Sytem\Java\FrontEnd\FrontEnd\bin\Microsoft.AI.DependencyCollector.dll
+D:\Solutions to be copied to Office Sytem\Java\FrontEnd\FrontEnd\bin\Microsoft.AI.PerfCounterCollector.dll
+D:\Solutions to be copied to Office Sytem\Java\FrontEnd\FrontEnd\bin\Microsoft.AI.ServerTelemetryChannel.dll
+D:\Solutions to be copied to Office Sytem\Java\FrontEnd\FrontEnd\bin\Microsoft.AI.Web.dll
+D:\Solutions to be copied to Office Sytem\Java\FrontEnd\FrontEnd\bin\Microsoft.AI.WindowsServer.dll
+D:\Solutions to be copied to Office Sytem\Java\FrontEnd\FrontEnd\bin\Microsoft.ApplicationInsights.dll
+D:\Solutions to be copied to Office Sytem\Java\FrontEnd\FrontEnd\bin\Microsoft.AspNet.Identity.Core.dll
+D:\Solutions to be copied to Office Sytem\Java\FrontEnd\FrontEnd\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\Solutions to be copied to Office Sytem\Java\FrontEnd\FrontEnd\bin\Microsoft.AspNet.Identity.Owin.dll
+D:\Solutions to be copied to Office Sytem\Java\FrontEnd\FrontEnd\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\Solutions to be copied to Office Sytem\Java\FrontEnd\FrontEnd\bin\Microsoft.Owin.dll
+D:\Solutions to be copied to Office Sytem\Java\FrontEnd\FrontEnd\bin\Microsoft.Owin.Host.SystemWeb.dll
+D:\Solutions to be copied to Office Sytem\Java\FrontEnd\FrontEnd\bin\Microsoft.Owin.Security.Cookies.dll
+D:\Solutions to be copied to Office Sytem\Java\FrontEnd\FrontEnd\bin\Microsoft.Owin.Security.dll
+D:\Solutions to be copied to Office Sytem\Java\FrontEnd\FrontEnd\bin\Microsoft.Owin.Security.Facebook.dll
+D:\Solutions to be copied to Office Sytem\Java\FrontEnd\FrontEnd\bin\Microsoft.Owin.Security.Google.dll
+D:\Solutions to be copied to Office Sytem\Java\FrontEnd\FrontEnd\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+D:\Solutions to be copied to Office Sytem\Java\FrontEnd\FrontEnd\bin\Microsoft.Owin.Security.OAuth.dll
+D:\Solutions to be copied to Office Sytem\Java\FrontEnd\FrontEnd\bin\Microsoft.Owin.Security.Twitter.dll
+D:\Solutions to be copied to Office Sytem\Java\FrontEnd\FrontEnd\bin\Microsoft.Web.Infrastructure.dll
+D:\Solutions to be copied to Office Sytem\Java\FrontEnd\FrontEnd\bin\Newtonsoft.Json.dll
+D:\Solutions to be copied to Office Sytem\Java\FrontEnd\FrontEnd\bin\Owin.dll
+D:\Solutions to be copied to Office Sytem\Java\FrontEnd\FrontEnd\bin\QRCoder.dll
+D:\Solutions to be copied to Office Sytem\Java\FrontEnd\FrontEnd\bin\System.Web.Helpers.dll
+D:\Solutions to be copied to Office Sytem\Java\FrontEnd\FrontEnd\bin\System.Web.Mvc.dll
+D:\Solutions to be copied to Office Sytem\Java\FrontEnd\FrontEnd\bin\System.Web.Optimization.dll
+D:\Solutions to be copied to Office Sytem\Java\FrontEnd\FrontEnd\bin\System.Web.Razor.dll
+D:\Solutions to be copied to Office Sytem\Java\FrontEnd\FrontEnd\bin\System.Web.WebPages.Deployment.dll
+D:\Solutions to be copied to Office Sytem\Java\FrontEnd\FrontEnd\bin\System.Web.WebPages.dll
+D:\Solutions to be copied to Office Sytem\Java\FrontEnd\FrontEnd\bin\System.Web.WebPages.Razor.dll
+D:\Solutions to be copied to Office Sytem\Java\FrontEnd\FrontEnd\bin\WebGrease.dll
+D:\Solutions to be copied to Office Sytem\Java\FrontEnd\FrontEnd\bin\IronBarCode.xml
+D:\Solutions to be copied to Office Sytem\Java\FrontEnd\FrontEnd\bin\Microsoft.AI.DependencyCollector.xml
+D:\Solutions to be copied to Office Sytem\Java\FrontEnd\FrontEnd\bin\Microsoft.AI.ServerTelemetryChannel.xml
+D:\Solutions to be copied to Office Sytem\Java\FrontEnd\FrontEnd\bin\Microsoft.AI.Web.xml
+D:\Solutions to be copied to Office Sytem\Java\FrontEnd\FrontEnd\bin\Microsoft.AI.WindowsServer.xml
+D:\Solutions to be copied to Office Sytem\Java\FrontEnd\FrontEnd\bin\Microsoft.ApplicationInsights.xml
+D:\Solutions to be copied to Office Sytem\Java\FrontEnd\FrontEnd\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\Solutions to be copied to Office Sytem\Java\FrontEnd\FrontEnd\bin\Newtonsoft.Json.xml
+D:\Solutions to be copied to Office Sytem\Java\FrontEnd\FrontEnd\bin\System.Web.Helpers.xml
+D:\Solutions to be copied to Office Sytem\Java\FrontEnd\FrontEnd\bin\System.Web.Mvc.xml
+D:\Solutions to be copied to Office Sytem\Java\FrontEnd\FrontEnd\bin\System.Web.Optimization.xml
+D:\Solutions to be copied to Office Sytem\Java\FrontEnd\FrontEnd\bin\System.Web.Razor.xml
+D:\Solutions to be copied to Office Sytem\Java\FrontEnd\FrontEnd\bin\System.Web.WebPages.xml
+D:\Solutions to be copied to Office Sytem\Java\FrontEnd\FrontEnd\bin\System.Web.WebPages.Deployment.xml
+D:\Solutions to be copied to Office Sytem\Java\FrontEnd\FrontEnd\bin\System.Web.WebPages.Razor.xml
+D:\Solutions to be copied to Office Sytem\Java\FrontEnd\FrontEnd\bin\Antlr3.Runtime.pdb
+D:\Solutions to be copied to Office Sytem\Java\FrontEnd\FrontEnd\bin\EntityFramework.xml
+D:\Solutions to be copied to Office Sytem\Java\FrontEnd\FrontEnd\bin\EntityFramework.SqlServer.xml
+D:\Solutions to be copied to Office Sytem\Java\FrontEnd\FrontEnd\bin\Microsoft.AspNet.Identity.Core.xml
+D:\Solutions to be copied to Office Sytem\Java\FrontEnd\FrontEnd\bin\Microsoft.AspNet.Identity.Owin.xml
+D:\Solutions to be copied to Office Sytem\Java\FrontEnd\FrontEnd\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+D:\Solutions to be copied to Office Sytem\Java\FrontEnd\FrontEnd\bin\Microsoft.Owin.xml
+D:\Solutions to be copied to Office Sytem\Java\FrontEnd\FrontEnd\bin\Microsoft.Owin.Host.SystemWeb.xml
+D:\Solutions to be copied to Office Sytem\Java\FrontEnd\FrontEnd\bin\Microsoft.Owin.Security.xml
+D:\Solutions to be copied to Office Sytem\Java\FrontEnd\FrontEnd\bin\Microsoft.Owin.Security.Facebook.xml
+D:\Solutions to be copied to Office Sytem\Java\FrontEnd\FrontEnd\bin\Microsoft.Owin.Security.Cookies.xml
+D:\Solutions to be copied to Office Sytem\Java\FrontEnd\FrontEnd\bin\Microsoft.Owin.Security.OAuth.xml
+D:\Solutions to be copied to Office Sytem\Java\FrontEnd\FrontEnd\bin\Microsoft.Owin.Security.Google.xml
+D:\Solutions to be copied to Office Sytem\Java\FrontEnd\FrontEnd\bin\Microsoft.Owin.Security.Twitter.xml
+D:\Solutions to be copied to Office Sytem\Java\FrontEnd\FrontEnd\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+D:\Solutions to be copied to Office Sytem\Java\FrontEnd\FrontEnd\obj\Debug\FrontEnd.csprojAssemblyReference.cache
+D:\Solutions to be copied to Office Sytem\Java\FrontEnd\FrontEnd\obj\Debug\FrontEnd.csproj.CoreCompileInputs.cache
+D:\Solutions to be copied to Office Sytem\Java\FrontEnd\FrontEnd\obj\Debug\FrontEnd.csproj.CopyComplete
+D:\Solutions to be copied to Office Sytem\Java\FrontEnd\FrontEnd\obj\Debug\FrontEnd.dll
+D:\Solutions to be copied to Office Sytem\Java\FrontEnd\FrontEnd\obj\Debug\FrontEnd.pdb
+C:\Users\Pranav\OneDrive - STARACME\Documents\Workspace\Projects\Javanika\FrontEnd\FrontEnd\obj\Debug\FrontEnd.csproj.CoreCompileInputs.cache
+C:\Users\Pranav\OneDrive - STARACME\Documents\Workspace\Projects\Javanika\FrontEnd\FrontEnd\bin\ApplicationInsights.config
+C:\Users\Pranav\OneDrive - STARACME\Documents\Workspace\Projects\Javanika\FrontEnd\FrontEnd\bin\roslyn\csc.exe
+C:\Users\Pranav\OneDrive - STARACME\Documents\Workspace\Projects\Javanika\FrontEnd\FrontEnd\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\Pranav\OneDrive - STARACME\Documents\Workspace\Projects\Javanika\FrontEnd\FrontEnd\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\Pranav\OneDrive - STARACME\Documents\Workspace\Projects\Javanika\FrontEnd\FrontEnd\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\Pranav\OneDrive - STARACME\Documents\Workspace\Projects\Javanika\FrontEnd\FrontEnd\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\Pranav\OneDrive - STARACME\Documents\Workspace\Projects\Javanika\FrontEnd\FrontEnd\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\Pranav\OneDrive - STARACME\Documents\Workspace\Projects\Javanika\FrontEnd\FrontEnd\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\Pranav\OneDrive - STARACME\Documents\Workspace\Projects\Javanika\FrontEnd\FrontEnd\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\Pranav\OneDrive - STARACME\Documents\Workspace\Projects\Javanika\FrontEnd\FrontEnd\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\Pranav\OneDrive - STARACME\Documents\Workspace\Projects\Javanika\FrontEnd\FrontEnd\bin\roslyn\vbc.exe
+C:\Users\Pranav\OneDrive - STARACME\Documents\Workspace\Projects\Javanika\FrontEnd\FrontEnd\bin\roslyn\VBCSCompiler.exe
+C:\Users\Pranav\OneDrive - STARACME\Documents\Workspace\Projects\Javanika\FrontEnd\FrontEnd\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\Pranav\OneDrive - STARACME\Documents\Workspace\Projects\Javanika\FrontEnd\FrontEnd\bin\FrontEnd.dll.config
+C:\Users\Pranav\OneDrive - STARACME\Documents\Workspace\Projects\Javanika\FrontEnd\FrontEnd\bin\FrontEnd.dll
+C:\Users\Pranav\OneDrive - STARACME\Documents\Workspace\Projects\Javanika\FrontEnd\FrontEnd\bin\FrontEnd.pdb
+C:\Users\Pranav\OneDrive - STARACME\Documents\Workspace\Projects\Javanika\FrontEnd\FrontEnd\bin\Antlr3.Runtime.dll
+C:\Users\Pranav\OneDrive - STARACME\Documents\Workspace\Projects\Javanika\FrontEnd\FrontEnd\bin\Braintree.dll
+C:\Users\Pranav\OneDrive - STARACME\Documents\Workspace\Projects\Javanika\FrontEnd\FrontEnd\bin\EntityFramework.dll
+C:\Users\Pranav\OneDrive - STARACME\Documents\Workspace\Projects\Javanika\FrontEnd\FrontEnd\bin\EntityFramework.SqlServer.dll
+C:\Users\Pranav\OneDrive - STARACME\Documents\Workspace\Projects\Javanika\FrontEnd\FrontEnd\bin\IronBarCode.dll
+C:\Users\Pranav\OneDrive - STARACME\Documents\Workspace\Projects\Javanika\FrontEnd\FrontEnd\bin\Microsoft.AI.Agent.Intercept.dll
+C:\Users\Pranav\OneDrive - STARACME\Documents\Workspace\Projects\Javanika\FrontEnd\FrontEnd\bin\Microsoft.AI.DependencyCollector.dll
+C:\Users\Pranav\OneDrive - STARACME\Documents\Workspace\Projects\Javanika\FrontEnd\FrontEnd\bin\Microsoft.AI.PerfCounterCollector.dll
+C:\Users\Pranav\OneDrive - STARACME\Documents\Workspace\Projects\Javanika\FrontEnd\FrontEnd\bin\Microsoft.AI.ServerTelemetryChannel.dll
+C:\Users\Pranav\OneDrive - STARACME\Documents\Workspace\Projects\Javanika\FrontEnd\FrontEnd\bin\Microsoft.AI.Web.dll
+C:\Users\Pranav\OneDrive - STARACME\Documents\Workspace\Projects\Javanika\FrontEnd\FrontEnd\bin\Microsoft.AI.WindowsServer.dll
+C:\Users\Pranav\OneDrive - STARACME\Documents\Workspace\Projects\Javanika\FrontEnd\FrontEnd\bin\Microsoft.ApplicationInsights.dll
+C:\Users\Pranav\OneDrive - STARACME\Documents\Workspace\Projects\Javanika\FrontEnd\FrontEnd\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\Pranav\OneDrive - STARACME\Documents\Workspace\Projects\Javanika\FrontEnd\FrontEnd\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\Pranav\OneDrive - STARACME\Documents\Workspace\Projects\Javanika\FrontEnd\FrontEnd\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\Pranav\OneDrive - STARACME\Documents\Workspace\Projects\Javanika\FrontEnd\FrontEnd\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\Pranav\OneDrive - STARACME\Documents\Workspace\Projects\Javanika\FrontEnd\FrontEnd\bin\Microsoft.Owin.dll
+C:\Users\Pranav\OneDrive - STARACME\Documents\Workspace\Projects\Javanika\FrontEnd\FrontEnd\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\Pranav\OneDrive - STARACME\Documents\Workspace\Projects\Javanika\FrontEnd\FrontEnd\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\Pranav\OneDrive - STARACME\Documents\Workspace\Projects\Javanika\FrontEnd\FrontEnd\bin\Microsoft.Owin.Security.dll
+C:\Users\Pranav\OneDrive - STARACME\Documents\Workspace\Projects\Javanika\FrontEnd\FrontEnd\bin\Microsoft.Owin.Security.Facebook.dll
+C:\Users\Pranav\OneDrive - STARACME\Documents\Workspace\Projects\Javanika\FrontEnd\FrontEnd\bin\Microsoft.Owin.Security.Google.dll
+C:\Users\Pranav\OneDrive - STARACME\Documents\Workspace\Projects\Javanika\FrontEnd\FrontEnd\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+C:\Users\Pranav\OneDrive - STARACME\Documents\Workspace\Projects\Javanika\FrontEnd\FrontEnd\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\Pranav\OneDrive - STARACME\Documents\Workspace\Projects\Javanika\FrontEnd\FrontEnd\bin\Microsoft.Owin.Security.Twitter.dll
+C:\Users\Pranav\OneDrive - STARACME\Documents\Workspace\Projects\Javanika\FrontEnd\FrontEnd\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Pranav\OneDrive - STARACME\Documents\Workspace\Projects\Javanika\FrontEnd\FrontEnd\bin\Newtonsoft.Json.dll
+C:\Users\Pranav\OneDrive - STARACME\Documents\Workspace\Projects\Javanika\FrontEnd\FrontEnd\bin\Owin.dll
+C:\Users\Pranav\OneDrive - STARACME\Documents\Workspace\Projects\Javanika\FrontEnd\FrontEnd\bin\QRCoder.dll
+C:\Users\Pranav\OneDrive - STARACME\Documents\Workspace\Projects\Javanika\FrontEnd\FrontEnd\bin\System.Web.Helpers.dll
+C:\Users\Pranav\OneDrive - STARACME\Documents\Workspace\Projects\Javanika\FrontEnd\FrontEnd\bin\System.Web.Mvc.dll
+C:\Users\Pranav\OneDrive - STARACME\Documents\Workspace\Projects\Javanika\FrontEnd\FrontEnd\bin\System.Web.Optimization.dll
+C:\Users\Pranav\OneDrive - STARACME\Documents\Workspace\Projects\Javanika\FrontEnd\FrontEnd\bin\System.Web.Razor.dll
+C:\Users\Pranav\OneDrive - STARACME\Documents\Workspace\Projects\Javanika\FrontEnd\FrontEnd\bin\System.Web.WebPages.Deployment.dll
+C:\Users\Pranav\OneDrive - STARACME\Documents\Workspace\Projects\Javanika\FrontEnd\FrontEnd\bin\System.Web.WebPages.dll
+C:\Users\Pranav\OneDrive - STARACME\Documents\Workspace\Projects\Javanika\FrontEnd\FrontEnd\bin\System.Web.WebPages.Razor.dll
+C:\Users\Pranav\OneDrive - STARACME\Documents\Workspace\Projects\Javanika\FrontEnd\FrontEnd\bin\WebGrease.dll
+C:\Users\Pranav\OneDrive - STARACME\Documents\Workspace\Projects\Javanika\FrontEnd\FrontEnd\bin\IronBarCode.xml
+C:\Users\Pranav\OneDrive - STARACME\Documents\Workspace\Projects\Javanika\FrontEnd\FrontEnd\bin\Microsoft.AI.DependencyCollector.xml
+C:\Users\Pranav\OneDrive - STARACME\Documents\Workspace\Projects\Javanika\FrontEnd\FrontEnd\bin\Microsoft.AI.ServerTelemetryChannel.xml
+C:\Users\Pranav\OneDrive - STARACME\Documents\Workspace\Projects\Javanika\FrontEnd\FrontEnd\bin\Microsoft.AI.Web.xml
+C:\Users\Pranav\OneDrive - STARACME\Documents\Workspace\Projects\Javanika\FrontEnd\FrontEnd\bin\Microsoft.AI.WindowsServer.xml
+C:\Users\Pranav\OneDrive - STARACME\Documents\Workspace\Projects\Javanika\FrontEnd\FrontEnd\bin\Microsoft.ApplicationInsights.xml
+C:\Users\Pranav\OneDrive - STARACME\Documents\Workspace\Projects\Javanika\FrontEnd\FrontEnd\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Pranav\OneDrive - STARACME\Documents\Workspace\Projects\Javanika\FrontEnd\FrontEnd\bin\Newtonsoft.Json.xml
+C:\Users\Pranav\OneDrive - STARACME\Documents\Workspace\Projects\Javanika\FrontEnd\FrontEnd\bin\System.Web.Helpers.xml
+C:\Users\Pranav\OneDrive - STARACME\Documents\Workspace\Projects\Javanika\FrontEnd\FrontEnd\bin\System.Web.Mvc.xml
+C:\Users\Pranav\OneDrive - STARACME\Documents\Workspace\Projects\Javanika\FrontEnd\FrontEnd\bin\System.Web.Optimization.xml
+C:\Users\Pranav\OneDrive - STARACME\Documents\Workspace\Projects\Javanika\FrontEnd\FrontEnd\bin\System.Web.Razor.xml
+C:\Users\Pranav\OneDrive - STARACME\Documents\Workspace\Projects\Javanika\FrontEnd\FrontEnd\bin\System.Web.WebPages.xml
+C:\Users\Pranav\OneDrive - STARACME\Documents\Workspace\Projects\Javanika\FrontEnd\FrontEnd\bin\System.Web.WebPages.Deployment.xml
+C:\Users\Pranav\OneDrive - STARACME\Documents\Workspace\Projects\Javanika\FrontEnd\FrontEnd\bin\System.Web.WebPages.Razor.xml
+C:\Users\Pranav\OneDrive - STARACME\Documents\Workspace\Projects\Javanika\FrontEnd\FrontEnd\bin\Antlr3.Runtime.pdb
+C:\Users\Pranav\OneDrive - STARACME\Documents\Workspace\Projects\Javanika\FrontEnd\FrontEnd\bin\EntityFramework.xml
+C:\Users\Pranav\OneDrive - STARACME\Documents\Workspace\Projects\Javanika\FrontEnd\FrontEnd\bin\EntityFramework.SqlServer.xml
+C:\Users\Pranav\OneDrive - STARACME\Documents\Workspace\Projects\Javanika\FrontEnd\FrontEnd\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\Pranav\OneDrive - STARACME\Documents\Workspace\Projects\Javanika\FrontEnd\FrontEnd\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\Pranav\OneDrive - STARACME\Documents\Workspace\Projects\Javanika\FrontEnd\FrontEnd\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\Pranav\OneDrive - STARACME\Documents\Workspace\Projects\Javanika\FrontEnd\FrontEnd\bin\Microsoft.Owin.xml
+C:\Users\Pranav\OneDrive - STARACME\Documents\Workspace\Projects\Javanika\FrontEnd\FrontEnd\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\Pranav\OneDrive - STARACME\Documents\Workspace\Projects\Javanika\FrontEnd\FrontEnd\bin\Microsoft.Owin.Security.xml
+C:\Users\Pranav\OneDrive - STARACME\Documents\Workspace\Projects\Javanika\FrontEnd\FrontEnd\bin\Microsoft.Owin.Security.Facebook.xml
+C:\Users\Pranav\OneDrive - STARACME\Documents\Workspace\Projects\Javanika\FrontEnd\FrontEnd\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\Pranav\OneDrive - STARACME\Documents\Workspace\Projects\Javanika\FrontEnd\FrontEnd\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\Pranav\OneDrive - STARACME\Documents\Workspace\Projects\Javanika\FrontEnd\FrontEnd\bin\Microsoft.Owin.Security.Google.xml
+C:\Users\Pranav\OneDrive - STARACME\Documents\Workspace\Projects\Javanika\FrontEnd\FrontEnd\bin\Microsoft.Owin.Security.Twitter.xml
+C:\Users\Pranav\OneDrive - STARACME\Documents\Workspace\Projects\Javanika\FrontEnd\FrontEnd\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Users\Pranav\OneDrive - STARACME\Documents\Workspace\Projects\Javanika\FrontEnd\FrontEnd\obj\Debug\FrontEnd.csproj.CopyComplete
+C:\Users\Pranav\OneDrive - STARACME\Documents\Workspace\Projects\Javanika\FrontEnd\FrontEnd\obj\Debug\FrontEnd.dll
+C:\Users\Pranav\OneDrive - STARACME\Documents\Workspace\Projects\Javanika\FrontEnd\FrontEnd\obj\Debug\FrontEnd.pdb
+C:\Users\Pranav\OneDrive - STARACME\Documents\Workspace\Projects\Javanika\FrontEnd\FrontEnd\obj\Debug\FrontEnd.csproj.AssemblyReference.cache
+E:\RAZAWORKS\FromStarAcme\javnika\wetransfer_javanika-files_2021-11-17_0843\FrontEnd\FrontEnd\bin\ApplicationInsights.config
+E:\RAZAWORKS\FromStarAcme\javnika\wetransfer_javanika-files_2021-11-17_0843\FrontEnd\FrontEnd\bin\roslyn\csc.exe
+E:\RAZAWORKS\FromStarAcme\javnika\wetransfer_javanika-files_2021-11-17_0843\FrontEnd\FrontEnd\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+E:\RAZAWORKS\FromStarAcme\javnika\wetransfer_javanika-files_2021-11-17_0843\FrontEnd\FrontEnd\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+E:\RAZAWORKS\FromStarAcme\javnika\wetransfer_javanika-files_2021-11-17_0843\FrontEnd\FrontEnd\bin\roslyn\Microsoft.CodeAnalysis.dll
+E:\RAZAWORKS\FromStarAcme\javnika\wetransfer_javanika-files_2021-11-17_0843\FrontEnd\FrontEnd\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+E:\RAZAWORKS\FromStarAcme\javnika\wetransfer_javanika-files_2021-11-17_0843\FrontEnd\FrontEnd\bin\roslyn\Microsoft.CSharp.Core.targets
+E:\RAZAWORKS\FromStarAcme\javnika\wetransfer_javanika-files_2021-11-17_0843\FrontEnd\FrontEnd\bin\roslyn\Microsoft.VisualBasic.Core.targets
+E:\RAZAWORKS\FromStarAcme\javnika\wetransfer_javanika-files_2021-11-17_0843\FrontEnd\FrontEnd\bin\roslyn\System.Collections.Immutable.dll
+E:\RAZAWORKS\FromStarAcme\javnika\wetransfer_javanika-files_2021-11-17_0843\FrontEnd\FrontEnd\bin\roslyn\System.Reflection.Metadata.dll
+E:\RAZAWORKS\FromStarAcme\javnika\wetransfer_javanika-files_2021-11-17_0843\FrontEnd\FrontEnd\bin\roslyn\vbc.exe
+E:\RAZAWORKS\FromStarAcme\javnika\wetransfer_javanika-files_2021-11-17_0843\FrontEnd\FrontEnd\bin\roslyn\VBCSCompiler.exe
+E:\RAZAWORKS\FromStarAcme\javnika\wetransfer_javanika-files_2021-11-17_0843\FrontEnd\FrontEnd\bin\roslyn\VBCSCompiler.exe.config
+E:\RAZAWORKS\FromStarAcme\javnika\wetransfer_javanika-files_2021-11-17_0843\FrontEnd\FrontEnd\bin\FrontEnd.dll.config
+E:\RAZAWORKS\FromStarAcme\javnika\wetransfer_javanika-files_2021-11-17_0843\FrontEnd\FrontEnd\bin\FrontEnd.dll
+E:\RAZAWORKS\FromStarAcme\javnika\wetransfer_javanika-files_2021-11-17_0843\FrontEnd\FrontEnd\bin\FrontEnd.pdb
+E:\RAZAWORKS\FromStarAcme\javnika\wetransfer_javanika-files_2021-11-17_0843\FrontEnd\FrontEnd\bin\Antlr3.Runtime.dll
+E:\RAZAWORKS\FromStarAcme\javnika\wetransfer_javanika-files_2021-11-17_0843\FrontEnd\FrontEnd\bin\Braintree.dll
+E:\RAZAWORKS\FromStarAcme\javnika\wetransfer_javanika-files_2021-11-17_0843\FrontEnd\FrontEnd\bin\EntityFramework.dll
+E:\RAZAWORKS\FromStarAcme\javnika\wetransfer_javanika-files_2021-11-17_0843\FrontEnd\FrontEnd\bin\EntityFramework.SqlServer.dll
+E:\RAZAWORKS\FromStarAcme\javnika\wetransfer_javanika-files_2021-11-17_0843\FrontEnd\FrontEnd\bin\IronBarCode.dll
+E:\RAZAWORKS\FromStarAcme\javnika\wetransfer_javanika-files_2021-11-17_0843\FrontEnd\FrontEnd\bin\Microsoft.AI.Agent.Intercept.dll
+E:\RAZAWORKS\FromStarAcme\javnika\wetransfer_javanika-files_2021-11-17_0843\FrontEnd\FrontEnd\bin\Microsoft.AI.DependencyCollector.dll
+E:\RAZAWORKS\FromStarAcme\javnika\wetransfer_javanika-files_2021-11-17_0843\FrontEnd\FrontEnd\bin\Microsoft.AI.PerfCounterCollector.dll
+E:\RAZAWORKS\FromStarAcme\javnika\wetransfer_javanika-files_2021-11-17_0843\FrontEnd\FrontEnd\bin\Microsoft.AI.ServerTelemetryChannel.dll
+E:\RAZAWORKS\FromStarAcme\javnika\wetransfer_javanika-files_2021-11-17_0843\FrontEnd\FrontEnd\bin\Microsoft.AI.Web.dll
+E:\RAZAWORKS\FromStarAcme\javnika\wetransfer_javanika-files_2021-11-17_0843\FrontEnd\FrontEnd\bin\Microsoft.AI.WindowsServer.dll
+E:\RAZAWORKS\FromStarAcme\javnika\wetransfer_javanika-files_2021-11-17_0843\FrontEnd\FrontEnd\bin\Microsoft.ApplicationInsights.dll
+E:\RAZAWORKS\FromStarAcme\javnika\wetransfer_javanika-files_2021-11-17_0843\FrontEnd\FrontEnd\bin\Microsoft.AspNet.Identity.Core.dll
+E:\RAZAWORKS\FromStarAcme\javnika\wetransfer_javanika-files_2021-11-17_0843\FrontEnd\FrontEnd\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+E:\RAZAWORKS\FromStarAcme\javnika\wetransfer_javanika-files_2021-11-17_0843\FrontEnd\FrontEnd\bin\Microsoft.AspNet.Identity.Owin.dll
+E:\RAZAWORKS\FromStarAcme\javnika\wetransfer_javanika-files_2021-11-17_0843\FrontEnd\FrontEnd\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+E:\RAZAWORKS\FromStarAcme\javnika\wetransfer_javanika-files_2021-11-17_0843\FrontEnd\FrontEnd\bin\Microsoft.Owin.dll
+E:\RAZAWORKS\FromStarAcme\javnika\wetransfer_javanika-files_2021-11-17_0843\FrontEnd\FrontEnd\bin\Microsoft.Owin.Host.SystemWeb.dll
+E:\RAZAWORKS\FromStarAcme\javnika\wetransfer_javanika-files_2021-11-17_0843\FrontEnd\FrontEnd\bin\Microsoft.Owin.Security.Cookies.dll
+E:\RAZAWORKS\FromStarAcme\javnika\wetransfer_javanika-files_2021-11-17_0843\FrontEnd\FrontEnd\bin\Microsoft.Owin.Security.dll
+E:\RAZAWORKS\FromStarAcme\javnika\wetransfer_javanika-files_2021-11-17_0843\FrontEnd\FrontEnd\bin\Microsoft.Owin.Security.Facebook.dll
+E:\RAZAWORKS\FromStarAcme\javnika\wetransfer_javanika-files_2021-11-17_0843\FrontEnd\FrontEnd\bin\Microsoft.Owin.Security.Google.dll
+E:\RAZAWORKS\FromStarAcme\javnika\wetransfer_javanika-files_2021-11-17_0843\FrontEnd\FrontEnd\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+E:\RAZAWORKS\FromStarAcme\javnika\wetransfer_javanika-files_2021-11-17_0843\FrontEnd\FrontEnd\bin\Microsoft.Owin.Security.OAuth.dll
+E:\RAZAWORKS\FromStarAcme\javnika\wetransfer_javanika-files_2021-11-17_0843\FrontEnd\FrontEnd\bin\Microsoft.Owin.Security.Twitter.dll
+E:\RAZAWORKS\FromStarAcme\javnika\wetransfer_javanika-files_2021-11-17_0843\FrontEnd\FrontEnd\bin\Microsoft.Web.Infrastructure.dll
+E:\RAZAWORKS\FromStarAcme\javnika\wetransfer_javanika-files_2021-11-17_0843\FrontEnd\FrontEnd\bin\Newtonsoft.Json.dll
+E:\RAZAWORKS\FromStarAcme\javnika\wetransfer_javanika-files_2021-11-17_0843\FrontEnd\FrontEnd\bin\Owin.dll
+E:\RAZAWORKS\FromStarAcme\javnika\wetransfer_javanika-files_2021-11-17_0843\FrontEnd\FrontEnd\bin\QRCoder.dll
+E:\RAZAWORKS\FromStarAcme\javnika\wetransfer_javanika-files_2021-11-17_0843\FrontEnd\FrontEnd\bin\System.Web.Helpers.dll
+E:\RAZAWORKS\FromStarAcme\javnika\wetransfer_javanika-files_2021-11-17_0843\FrontEnd\FrontEnd\bin\System.Web.Mvc.dll
+E:\RAZAWORKS\FromStarAcme\javnika\wetransfer_javanika-files_2021-11-17_0843\FrontEnd\FrontEnd\bin\System.Web.Optimization.dll
+E:\RAZAWORKS\FromStarAcme\javnika\wetransfer_javanika-files_2021-11-17_0843\FrontEnd\FrontEnd\bin\System.Web.Razor.dll
+E:\RAZAWORKS\FromStarAcme\javnika\wetransfer_javanika-files_2021-11-17_0843\FrontEnd\FrontEnd\bin\System.Web.WebPages.Deployment.dll
+E:\RAZAWORKS\FromStarAcme\javnika\wetransfer_javanika-files_2021-11-17_0843\FrontEnd\FrontEnd\bin\System.Web.WebPages.dll
+E:\RAZAWORKS\FromStarAcme\javnika\wetransfer_javanika-files_2021-11-17_0843\FrontEnd\FrontEnd\bin\System.Web.WebPages.Razor.dll
+E:\RAZAWORKS\FromStarAcme\javnika\wetransfer_javanika-files_2021-11-17_0843\FrontEnd\FrontEnd\bin\WebGrease.dll
+E:\RAZAWORKS\FromStarAcme\javnika\wetransfer_javanika-files_2021-11-17_0843\FrontEnd\FrontEnd\bin\IronBarCode.xml
+E:\RAZAWORKS\FromStarAcme\javnika\wetransfer_javanika-files_2021-11-17_0843\FrontEnd\FrontEnd\bin\Microsoft.AI.DependencyCollector.xml
+E:\RAZAWORKS\FromStarAcme\javnika\wetransfer_javanika-files_2021-11-17_0843\FrontEnd\FrontEnd\bin\Microsoft.AI.ServerTelemetryChannel.xml
+E:\RAZAWORKS\FromStarAcme\javnika\wetransfer_javanika-files_2021-11-17_0843\FrontEnd\FrontEnd\bin\Microsoft.AI.Web.xml
+E:\RAZAWORKS\FromStarAcme\javnika\wetransfer_javanika-files_2021-11-17_0843\FrontEnd\FrontEnd\bin\Microsoft.AI.WindowsServer.xml
+E:\RAZAWORKS\FromStarAcme\javnika\wetransfer_javanika-files_2021-11-17_0843\FrontEnd\FrontEnd\bin\Microsoft.ApplicationInsights.xml
+E:\RAZAWORKS\FromStarAcme\javnika\wetransfer_javanika-files_2021-11-17_0843\FrontEnd\FrontEnd\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+E:\RAZAWORKS\FromStarAcme\javnika\wetransfer_javanika-files_2021-11-17_0843\FrontEnd\FrontEnd\bin\Newtonsoft.Json.xml
+E:\RAZAWORKS\FromStarAcme\javnika\wetransfer_javanika-files_2021-11-17_0843\FrontEnd\FrontEnd\bin\System.Web.Helpers.xml
+E:\RAZAWORKS\FromStarAcme\javnika\wetransfer_javanika-files_2021-11-17_0843\FrontEnd\FrontEnd\bin\System.Web.Mvc.xml
+E:\RAZAWORKS\FromStarAcme\javnika\wetransfer_javanika-files_2021-11-17_0843\FrontEnd\FrontEnd\bin\System.Web.Optimization.xml
+E:\RAZAWORKS\FromStarAcme\javnika\wetransfer_javanika-files_2021-11-17_0843\FrontEnd\FrontEnd\bin\System.Web.Razor.xml
+E:\RAZAWORKS\FromStarAcme\javnika\wetransfer_javanika-files_2021-11-17_0843\FrontEnd\FrontEnd\bin\System.Web.WebPages.xml
+E:\RAZAWORKS\FromStarAcme\javnika\wetransfer_javanika-files_2021-11-17_0843\FrontEnd\FrontEnd\bin\System.Web.WebPages.Deployment.xml
+E:\RAZAWORKS\FromStarAcme\javnika\wetransfer_javanika-files_2021-11-17_0843\FrontEnd\FrontEnd\bin\System.Web.WebPages.Razor.xml
+E:\RAZAWORKS\FromStarAcme\javnika\wetransfer_javanika-files_2021-11-17_0843\FrontEnd\FrontEnd\bin\Antlr3.Runtime.pdb
+E:\RAZAWORKS\FromStarAcme\javnika\wetransfer_javanika-files_2021-11-17_0843\FrontEnd\FrontEnd\bin\EntityFramework.xml
+E:\RAZAWORKS\FromStarAcme\javnika\wetransfer_javanika-files_2021-11-17_0843\FrontEnd\FrontEnd\bin\EntityFramework.SqlServer.xml
+E:\RAZAWORKS\FromStarAcme\javnika\wetransfer_javanika-files_2021-11-17_0843\FrontEnd\FrontEnd\bin\Microsoft.AspNet.Identity.Core.xml
+E:\RAZAWORKS\FromStarAcme\javnika\wetransfer_javanika-files_2021-11-17_0843\FrontEnd\FrontEnd\bin\Microsoft.AspNet.Identity.Owin.xml
+E:\RAZAWORKS\FromStarAcme\javnika\wetransfer_javanika-files_2021-11-17_0843\FrontEnd\FrontEnd\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+E:\RAZAWORKS\FromStarAcme\javnika\wetransfer_javanika-files_2021-11-17_0843\FrontEnd\FrontEnd\bin\Microsoft.Owin.xml
+E:\RAZAWORKS\FromStarAcme\javnika\wetransfer_javanika-files_2021-11-17_0843\FrontEnd\FrontEnd\bin\Microsoft.Owin.Host.SystemWeb.xml
+E:\RAZAWORKS\FromStarAcme\javnika\wetransfer_javanika-files_2021-11-17_0843\FrontEnd\FrontEnd\bin\Microsoft.Owin.Security.xml
+E:\RAZAWORKS\FromStarAcme\javnika\wetransfer_javanika-files_2021-11-17_0843\FrontEnd\FrontEnd\bin\Microsoft.Owin.Security.Facebook.xml
+E:\RAZAWORKS\FromStarAcme\javnika\wetransfer_javanika-files_2021-11-17_0843\FrontEnd\FrontEnd\bin\Microsoft.Owin.Security.Cookies.xml
+E:\RAZAWORKS\FromStarAcme\javnika\wetransfer_javanika-files_2021-11-17_0843\FrontEnd\FrontEnd\bin\Microsoft.Owin.Security.OAuth.xml
+E:\RAZAWORKS\FromStarAcme\javnika\wetransfer_javanika-files_2021-11-17_0843\FrontEnd\FrontEnd\bin\Microsoft.Owin.Security.Google.xml
+E:\RAZAWORKS\FromStarAcme\javnika\wetransfer_javanika-files_2021-11-17_0843\FrontEnd\FrontEnd\bin\Microsoft.Owin.Security.Twitter.xml
+E:\RAZAWORKS\FromStarAcme\javnika\wetransfer_javanika-files_2021-11-17_0843\FrontEnd\FrontEnd\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+E:\RAZAWORKS\FromStarAcme\javnika\wetransfer_javanika-files_2021-11-17_0843\FrontEnd\FrontEnd\obj\Debug\FrontEnd.csprojAssemblyReference.cache
+E:\RAZAWORKS\FromStarAcme\javnika\wetransfer_javanika-files_2021-11-17_0843\FrontEnd\FrontEnd\obj\Debug\FrontEnd.csproj.CoreCompileInputs.cache
+E:\RAZAWORKS\FromStarAcme\javnika\wetransfer_javanika-files_2021-11-17_0843\FrontEnd\FrontEnd\obj\Debug\FrontEnd.csproj.CopyComplete
+E:\RAZAWORKS\FromStarAcme\javnika\wetransfer_javanika-files_2021-11-17_0843\FrontEnd\FrontEnd\obj\Debug\FrontEnd.dll
+E:\RAZAWORKS\FromStarAcme\javnika\wetransfer_javanika-files_2021-11-17_0843\FrontEnd\FrontEnd\obj\Debug\FrontEnd.pdb
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\FrontEnd\obj\Debug\FrontEnd.csprojAssemblyReference.cache
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\FrontEnd\obj\Debug\FrontEnd.csproj.CoreCompileInputs.cache
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\FrontEnd\bin\ApplicationInsights.config
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\FrontEnd\bin\roslyn\csc.exe
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\FrontEnd\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\FrontEnd\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\FrontEnd\bin\roslyn\Microsoft.CodeAnalysis.dll
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\FrontEnd\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\FrontEnd\bin\roslyn\Microsoft.CSharp.Core.targets
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\FrontEnd\bin\roslyn\Microsoft.VisualBasic.Core.targets
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\FrontEnd\bin\roslyn\System.Collections.Immutable.dll
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\FrontEnd\bin\roslyn\System.Reflection.Metadata.dll
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\FrontEnd\bin\roslyn\vbc.exe
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\FrontEnd\bin\roslyn\VBCSCompiler.exe
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\FrontEnd\bin\roslyn\VBCSCompiler.exe.config
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\FrontEnd\bin\FrontEnd.dll.config
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\FrontEnd\bin\FrontEnd.dll
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\FrontEnd\bin\FrontEnd.pdb
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\FrontEnd\bin\Antlr3.Runtime.dll
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\FrontEnd\bin\Braintree.dll
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\FrontEnd\bin\EntityFramework.dll
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\FrontEnd\bin\EntityFramework.SqlServer.dll
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\FrontEnd\bin\IronBarCode.dll
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\FrontEnd\bin\log4net.dll
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\FrontEnd\bin\Microsoft.AI.Agent.Intercept.dll
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\FrontEnd\bin\Microsoft.AI.DependencyCollector.dll
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\FrontEnd\bin\Microsoft.AI.PerfCounterCollector.dll
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\FrontEnd\bin\Microsoft.AI.ServerTelemetryChannel.dll
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\FrontEnd\bin\Microsoft.AI.Web.dll
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\FrontEnd\bin\Microsoft.AI.WindowsServer.dll
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\FrontEnd\bin\Microsoft.ApplicationInsights.dll
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\FrontEnd\bin\Microsoft.AspNet.Identity.Core.dll
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\FrontEnd\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\FrontEnd\bin\Microsoft.AspNet.Identity.Owin.dll
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\FrontEnd\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\FrontEnd\bin\Microsoft.Owin.dll
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\FrontEnd\bin\Microsoft.Owin.Host.SystemWeb.dll
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\FrontEnd\bin\Microsoft.Owin.Security.Cookies.dll
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\FrontEnd\bin\Microsoft.Owin.Security.dll
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\FrontEnd\bin\Microsoft.Owin.Security.Facebook.dll
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\FrontEnd\bin\Microsoft.Owin.Security.Google.dll
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\FrontEnd\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\FrontEnd\bin\Microsoft.Owin.Security.OAuth.dll
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\FrontEnd\bin\Microsoft.Owin.Security.Twitter.dll
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\FrontEnd\bin\Microsoft.Web.Infrastructure.dll
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\FrontEnd\bin\Newtonsoft.Json.dll
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\FrontEnd\bin\Owin.dll
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\FrontEnd\bin\QRCoder.dll
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\FrontEnd\bin\SA.Logger.dll
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\FrontEnd\bin\System.Runtime.CompilerServices.Unsafe.dll
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\FrontEnd\bin\System.Web.Helpers.dll
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\FrontEnd\bin\System.Web.Mvc.dll
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\FrontEnd\bin\System.Web.Optimization.dll
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\FrontEnd\bin\System.Web.Razor.dll
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\FrontEnd\bin\System.Web.WebPages.Deployment.dll
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\FrontEnd\bin\System.Web.WebPages.dll
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\FrontEnd\bin\System.Web.WebPages.Razor.dll
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\FrontEnd\bin\Unity.Abstractions.dll
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\FrontEnd\bin\Unity.Container.dll
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\FrontEnd\bin\Unity.Mvc5.dll
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\FrontEnd\bin\WebGrease.dll
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\FrontEnd\bin\SA.Logger.pdb
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\FrontEnd\bin\IronBarCode.xml
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\FrontEnd\bin\log4net.xml
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\FrontEnd\bin\Microsoft.AI.DependencyCollector.xml
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\FrontEnd\bin\Microsoft.AI.ServerTelemetryChannel.xml
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\FrontEnd\bin\Microsoft.AI.Web.xml
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\FrontEnd\bin\Microsoft.AI.WindowsServer.xml
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\FrontEnd\bin\Microsoft.ApplicationInsights.xml
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\FrontEnd\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\FrontEnd\bin\Newtonsoft.Json.xml
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\FrontEnd\bin\System.Runtime.CompilerServices.Unsafe.xml
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\FrontEnd\bin\System.Web.Helpers.xml
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\FrontEnd\bin\System.Web.Mvc.xml
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\FrontEnd\bin\System.Web.Razor.xml
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\FrontEnd\bin\System.Web.WebPages.xml
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\FrontEnd\bin\System.Web.WebPages.Deployment.xml
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\FrontEnd\bin\System.Web.WebPages.Razor.xml
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\FrontEnd\bin\System.Web.Optimization.xml
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\FrontEnd\bin\Unity.Abstractions.pdb
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\FrontEnd\bin\Unity.Container.pdb
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\FrontEnd\bin\Antlr3.Runtime.pdb
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\FrontEnd\bin\EntityFramework.xml
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\FrontEnd\bin\EntityFramework.SqlServer.xml
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\FrontEnd\bin\Microsoft.AspNet.Identity.Core.xml
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\FrontEnd\bin\Microsoft.AspNet.Identity.Owin.xml
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\FrontEnd\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\FrontEnd\bin\Microsoft.Owin.xml
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\FrontEnd\bin\Microsoft.Owin.Host.SystemWeb.xml
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\FrontEnd\bin\Microsoft.Owin.Security.xml
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\FrontEnd\bin\Microsoft.Owin.Security.Facebook.xml
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\FrontEnd\bin\Microsoft.Owin.Security.Cookies.xml
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\FrontEnd\bin\Microsoft.Owin.Security.OAuth.xml
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\FrontEnd\bin\Microsoft.Owin.Security.Google.xml
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\FrontEnd\bin\Microsoft.Owin.Security.Twitter.xml
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\FrontEnd\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\FrontEnd\obj\Debug\FrontEnd.csproj.CopyComplete
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\FrontEnd\obj\Debug\FrontEnd.dll
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\FrontEnd\obj\Debug\FrontEnd.pdb

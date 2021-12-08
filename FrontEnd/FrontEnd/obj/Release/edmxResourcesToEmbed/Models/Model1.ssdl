@@ -1,0 +1,715 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="JAVADBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="tblAdminUsers">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirstName" Type="varchar" MaxLength="500" />
+    <Property Name="LastName" Type="varchar" MaxLength="500" />
+    <Property Name="Username" Type="varchar" MaxLength="500" />
+    <Property Name="Password" Type="varchar" MaxLength="500" />
+    <Property Name="Status" Type="char" MaxLength="1" />
+  </EntityType>
+  <EntityType Name="tblAppVersions">
+    <Key>
+      <PropertyRef Name="AppVersionID" />
+    </Key>
+    <Property Name="AppVersionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Version" Type="varchar" MaxLength="50" />
+    <Property Name="CreatedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="tblBlocks">
+    <Key>
+      <PropertyRef Name="BlockID" />
+    </Key>
+    <Property Name="BlockID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LayoutID" Type="int" />
+    <Property Name="BlockNumber" Type="varchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="tblCouponGroups">
+    <Key>
+      <PropertyRef Name="CouponGroupID" />
+    </Key>
+    <Property Name="CouponGroupID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EventID" Type="int" />
+    <Property Name="Prefix" Type="varchar" MaxLength="50" />
+    <Property Name="NoOfCoupons" Type="int" />
+    <Property Name="DiscountIn" Type="varchar" MaxLength="50" />
+    <Property Name="Discount" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Tiers" Type="varchar(max)" />
+    <Property Name="CreatedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="tblCoupons">
+    <Key>
+      <PropertyRef Name="CouponID" />
+    </Key>
+    <Property Name="CouponID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CouponGroupID" Type="int" />
+    <Property Name="CouponCode" Type="varchar" MaxLength="500" />
+    <Property Name="DiscountIn" Type="varchar" MaxLength="50" />
+    <Property Name="Discount" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="EventID" Type="int" />
+    <Property Name="IsUsed" Type="bit" />
+    <Property Name="UsedDate" Type="datetime" />
+    <Property Name="OrderID" Type="int" />
+    <Property Name="CreatedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="tblCustomers">
+    <Key>
+      <PropertyRef Name="CustomerID" />
+    </Key>
+    <Property Name="CustomerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirstName" Type="varchar" MaxLength="500" />
+    <Property Name="LastName" Type="varchar" MaxLength="500" />
+    <Property Name="Username" Type="varchar" MaxLength="500" />
+    <Property Name="Password" Type="varchar" MaxLength="500" />
+    <Property Name="Mobile" Type="varchar" MaxLength="500" />
+    <Property Name="Email" Type="varchar" MaxLength="500" />
+    <Property Name="CreatedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="tblEventArtists">
+    <Key>
+      <PropertyRef Name="ArtistID" />
+    </Key>
+    <Property Name="ArtistID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EventID" Type="int" />
+    <Property Name="Name" Type="varchar" MaxLength="500" />
+    <Property Name="Image" Type="varchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="tblEventLayoutBlocks">
+    <Key>
+      <PropertyRef Name="EventLayoutBlockID" />
+    </Key>
+    <Property Name="EventLayoutBlockID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EventID" Type="int" />
+    <Property Name="BlockID" Type="int" />
+    <Property Name="TierID" Type="int" />
+    <Property Name="Price" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="CreatedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="tblEvents">
+    <Key>
+      <PropertyRef Name="EventID" />
+    </Key>
+    <Property Name="EventID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="VenueID" Type="int" />
+    <Property Name="LayoutID" Type="int" />
+    <Property Name="EventName" Type="varchar" MaxLength="500" />
+    <Property Name="EventType" Type="varchar" MaxLength="500" />
+    <Property Name="EventLanguage" Type="varchar" MaxLength="500" />
+    <Property Name="EventPlaytime" Type="varchar" MaxLength="500" />
+    <Property Name="EventDurationType" Type="char" MaxLength="1" />
+    <Property Name="EventDate" Type="datetime" />
+    <Property Name="StartDate" Type="datetime" />
+    <Property Name="EndDate" Type="datetime" />
+    <Property Name="ShowTime" Type="varchar" MaxLength="500" />
+    <Property Name="EventBanner" Type="varchar" MaxLength="500" />
+    <Property Name="EventMainBanner" Type="varchar" MaxLength="500" />
+    <Property Name="EventHomeBanner" Type="varchar" MaxLength="500" />
+    <Property Name="LocationTracker" Type="varchar(max)" />
+    <Property Name="EventDescription" Type="varchar(max)" />
+    <Property Name="EventTNC" Type="varchar(max)" />
+    <Property Name="AgeGroup" Type="varchar" MaxLength="500" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="BookingType" Type="varchar" MaxLength="500" />
+    <Property Name="ProcessingFee" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="TicketStock" Type="int" />
+    <Property Name="Status" Type="char" MaxLength="1" />
+    <Property Name="PercentEBSeats" Type="int" />
+    <Property Name="EarlyBirdTicketSelection" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="tblEventVolunteers">
+    <Key>
+      <PropertyRef Name="EventVolunteerID" />
+    </Key>
+    <Property Name="EventVolunteerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EventID" Type="int" />
+    <Property Name="VolunteerID" Type="int" />
+    <Property Name="CreatedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="tblLayout">
+    <Key>
+      <PropertyRef Name="LayoutID" />
+    </Key>
+    <Property Name="LayoutID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="VenueID" Type="int" />
+    <Property Name="LayoutName" Type="varchar" MaxLength="500" />
+    <Property Name="Status" Type="char" MaxLength="1" />
+    <Property Name="LayoutNumber" Type="varchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="tblMailLog">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OrderID" Type="int" />
+    <Property Name="Email" Type="varchar" MaxLength="500" />
+    <Property Name="SentDate" Type="datetime" />
+    <Property Name="MailContent" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="tblOrderCoupons">
+    <Key>
+      <PropertyRef Name="OrderCouponID" />
+    </Key>
+    <Property Name="OrderCouponID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CouponID" Type="int" />
+    <Property Name="SessionID" Type="varchar" MaxLength="500" />
+    <Property Name="OrderID" Type="int" />
+    <Property Name="CreatedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="tblOTPS">
+    <Key>
+      <PropertyRef Name="OTPID" />
+    </Key>
+    <Property Name="OTPID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Email" Type="varchar" MaxLength="500" />
+    <Property Name="OTP" Type="varchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="tblPastEvents">
+    <Key>
+      <PropertyRef Name="PastEventID" />
+    </Key>
+    <Property Name="PastEventID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EventName" Type="varchar" MaxLength="500" />
+    <Property Name="ImagePath" Type="varchar" MaxLength="500" />
+    <Property Name="Year" Type="varchar" MaxLength="500" />
+    <Property Name="Month" Type="varchar" MaxLength="500" />
+    <Property Name="CreatedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="tblReleaseLog">
+    <Key>
+      <PropertyRef Name="LogID" />
+    </Key>
+    <Property Name="LogID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SeatID" Type="int" />
+    <Property Name="EventID" Type="int" />
+    <Property Name="CreatedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="tblSeat">
+    <Key>
+      <PropertyRef Name="SeatID" />
+    </Key>
+    <Property Name="SeatID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SeatRowID" Type="int" />
+    <Property Name="SeatNumber" Type="varchar" MaxLength="500" />
+    <Property Name="Status" Type="varchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="tblSeatRows">
+    <Key>
+      <PropertyRef Name="SeatRowID" />
+    </Key>
+    <Property Name="SeatRowID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BlockID" Type="int" />
+    <Property Name="RowNumber" Type="varchar" MaxLength="50" />
+    <Property Name="GroupName" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="tblSeatSelections">
+    <Key>
+      <PropertyRef Name="SeatSelectionID" />
+    </Key>
+    <Property Name="SeatSelectionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SessionID" Type="varchar" MaxLength="500" />
+    <Property Name="SeatID" Type="int" />
+    <Property Name="EventID" Type="int" />
+    <Property Name="CustomerID" Type="int" />
+    <Property Name="TicketID" Type="int" />
+    <Property Name="OrderID" Type="int" />
+    <Property Name="Price" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="CreatedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="tblSeatSelectionsLog">
+    <Key>
+      <PropertyRef Name="SeatSelectionLogID" />
+    </Key>
+    <Property Name="SeatSelectionLogID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SessionID" Type="varchar" MaxLength="500" />
+    <Property Name="SeatID" Type="int" />
+    <Property Name="EventID" Type="int" />
+    <Property Name="CustomerID" Type="int" />
+    <Property Name="TicketID" Type="int" />
+    <Property Name="OrderID" Type="int" />
+    <Property Name="Price" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="CreatedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="tblTicketOrders">
+    <Key>
+      <PropertyRef Name="OrderID" />
+    </Key>
+    <Property Name="OrderID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OrderNo" Type="int" />
+    <Property Name="EventID" Type="int" />
+    <Property Name="Name" Type="varchar" MaxLength="500" />
+    <Property Name="Email" Type="varchar" MaxLength="500" />
+    <Property Name="Mobile" Type="varchar" MaxLength="500" />
+    <Property Name="NoOfTickets" Type="int" />
+    <Property Name="AmountPerTicket" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="DiscountAmount" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="ProcessingFee" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Amount" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Status" Type="varchar" MaxLength="500" />
+    <Property Name="PaymentStatus" Type="varchar" MaxLength="500" />
+    <Property Name="PaypalOrderID" Type="varchar" MaxLength="500" />
+    <Property Name="Intent" Type="varchar" MaxLength="500" />
+    <Property Name="QRCode" Type="varchar" MaxLength="500" />
+    <Property Name="IsPickedUp" Type="bit" />
+    <Property Name="DatePickedUp" Type="datetime" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="TicketType" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="tblTickets">
+    <Key>
+      <PropertyRef Name="TicketID" />
+    </Key>
+    <Property Name="TicketID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TicketNumber" Type="varchar" MaxLength="500" />
+    <Property Name="Status" Type="varchar" MaxLength="500" />
+    <Property Name="CustomerID" Type="int" />
+    <Property Name="EventID" Type="int" />
+    <Property Name="Amount" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="PaypalOrderID" Type="varchar" MaxLength="500" />
+    <Property Name="CreatedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="tblTier">
+    <Key>
+      <PropertyRef Name="TierID" />
+    </Key>
+    <Property Name="TierID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TierName" Type="varchar" MaxLength="500" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="Status" Type="char" MaxLength="1" />
+  </EntityType>
+  <EntityType Name="tblTierCoupons">
+    <Key>
+      <PropertyRef Name="TierCouponID" />
+    </Key>
+    <Property Name="TierCouponID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CouponGroupID" Type="int" />
+    <Property Name="TierID" Type="int" />
+    <Property Name="EventID" Type="int" />
+    <Property Name="CreatedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="tblVenue">
+    <Key>
+      <PropertyRef Name="VenueID" />
+    </Key>
+    <Property Name="VenueID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="VenueName" Type="varchar" MaxLength="500" />
+    <Property Name="VenueNumber" Type="varchar" MaxLength="500" />
+    <Property Name="SeatingChart" Type="varchar" MaxLength="500" />
+    <Property Name="AppSeatingChart" Type="varchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="tblVolunteers">
+    <Key>
+      <PropertyRef Name="VolunteerID" />
+    </Key>
+    <Property Name="VolunteerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="500" />
+    <Property Name="Username" Type="varchar" MaxLength="500" />
+    <Property Name="Password" Type="varchar" MaxLength="500" />
+    <Property Name="CreatedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="TempOrders">
+    <Key>
+      <PropertyRef Name="TempID" />
+    </Key>
+    <Property Name="TempID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PaypalID" Type="varchar" MaxLength="500" />
+    <Property Name="Amount" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="EventID" Type="int" />
+  </EntityType>
+  <EntityType Name="TempTickets">
+    <Key>
+      <PropertyRef Name="TempTicketID" />
+    </Key>
+    <Property Name="TempTicketID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OrderID" Type="int" />
+    <Property Name="EventID" Type="int" />
+    <Property Name="NoOfTickets" Type="int" />
+    <Property Name="CreatedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="VOBARegistration">
+    <Key>
+      <PropertyRef Name="RegistrationID" />
+    </Key>
+    <Property Name="RegistrationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ParentName" Type="varchar" MaxLength="500" />
+    <Property Name="ParentEmail" Type="varchar" MaxLength="500" />
+    <Property Name="ParentMobile" Type="varchar" MaxLength="500" />
+    <Property Name="ChildName" Type="varchar" MaxLength="500" />
+    <Property Name="ChildDOB" Type="varchar" MaxLength="500" />
+    <Property Name="TermsAccepted" Type="bit" />
+    <Property Name="Amount" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="PaymentStatus" Type="varchar" MaxLength="500" />
+    <Property Name="PaypalOrderID" Type="varchar" MaxLength="500" />
+    <Property Name="Intent" Type="varchar" MaxLength="500" />
+    <Property Name="CreatedDate" Type="datetime" />
+  </EntityType>
+  <Association Name="FK_tblBlocks_tblLayout">
+    <End Role="tblLayout" Type="Self.tblLayout" Multiplicity="0..1" />
+    <End Role="tblBlocks" Type="Self.tblBlocks" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblLayout">
+        <PropertyRef Name="LayoutID" />
+      </Principal>
+      <Dependent Role="tblBlocks">
+        <PropertyRef Name="LayoutID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblCoupons_tblCoupons">
+    <End Role="tblCouponGroups" Type="Self.tblCouponGroups" Multiplicity="0..1" />
+    <End Role="tblCoupons" Type="Self.tblCoupons" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblCouponGroups">
+        <PropertyRef Name="CouponGroupID" />
+      </Principal>
+      <Dependent Role="tblCoupons">
+        <PropertyRef Name="CouponGroupID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblEventLayoutBlocks_tblBlocks">
+    <End Role="tblBlocks" Type="Self.tblBlocks" Multiplicity="0..1" />
+    <End Role="tblEventLayoutBlocks" Type="Self.tblEventLayoutBlocks" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblBlocks">
+        <PropertyRef Name="BlockID" />
+      </Principal>
+      <Dependent Role="tblEventLayoutBlocks">
+        <PropertyRef Name="BlockID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblEventLayoutBlocks_tblEvents">
+    <End Role="tblEvents" Type="Self.tblEvents" Multiplicity="0..1" />
+    <End Role="tblEventLayoutBlocks" Type="Self.tblEventLayoutBlocks" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblEvents">
+        <PropertyRef Name="EventID" />
+      </Principal>
+      <Dependent Role="tblEventLayoutBlocks">
+        <PropertyRef Name="EventID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblEventLayoutBlocks_tblTier">
+    <End Role="tblTier" Type="Self.tblTier" Multiplicity="0..1" />
+    <End Role="tblEventLayoutBlocks" Type="Self.tblEventLayoutBlocks" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblTier">
+        <PropertyRef Name="TierID" />
+      </Principal>
+      <Dependent Role="tblEventLayoutBlocks">
+        <PropertyRef Name="TierID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblEvents_tblLayout">
+    <End Role="tblLayout" Type="Self.tblLayout" Multiplicity="0..1" />
+    <End Role="tblEvents" Type="Self.tblEvents" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblLayout">
+        <PropertyRef Name="LayoutID" />
+      </Principal>
+      <Dependent Role="tblEvents">
+        <PropertyRef Name="LayoutID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblEvents_tblVenue">
+    <End Role="tblVenue" Type="Self.tblVenue" Multiplicity="0..1" />
+    <End Role="tblEvents" Type="Self.tblEvents" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblVenue">
+        <PropertyRef Name="VenueID" />
+      </Principal>
+      <Dependent Role="tblEvents">
+        <PropertyRef Name="VenueID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblEventVolunteers_tblEvents">
+    <End Role="tblEvents" Type="Self.tblEvents" Multiplicity="0..1" />
+    <End Role="tblEventVolunteers" Type="Self.tblEventVolunteers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblEvents">
+        <PropertyRef Name="EventID" />
+      </Principal>
+      <Dependent Role="tblEventVolunteers">
+        <PropertyRef Name="EventID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblEventVolunteers_tblVolunteers">
+    <End Role="tblVolunteers" Type="Self.tblVolunteers" Multiplicity="0..1" />
+    <End Role="tblEventVolunteers" Type="Self.tblEventVolunteers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblVolunteers">
+        <PropertyRef Name="VolunteerID" />
+      </Principal>
+      <Dependent Role="tblEventVolunteers">
+        <PropertyRef Name="VolunteerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblLayout_tblVenue">
+    <End Role="tblVenue" Type="Self.tblVenue" Multiplicity="0..1" />
+    <End Role="tblLayout" Type="Self.tblLayout" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblVenue">
+        <PropertyRef Name="VenueID" />
+      </Principal>
+      <Dependent Role="tblLayout">
+        <PropertyRef Name="VenueID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblOrderCoupons_tblCoupons">
+    <End Role="tblCoupons" Type="Self.tblCoupons" Multiplicity="0..1" />
+    <End Role="tblOrderCoupons" Type="Self.tblOrderCoupons" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblCoupons">
+        <PropertyRef Name="CouponID" />
+      </Principal>
+      <Dependent Role="tblOrderCoupons">
+        <PropertyRef Name="CouponID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblOrderCoupons_tblTicketOrders">
+    <End Role="tblTicketOrders" Type="Self.tblTicketOrders" Multiplicity="0..1" />
+    <End Role="tblOrderCoupons" Type="Self.tblOrderCoupons" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblTicketOrders">
+        <PropertyRef Name="OrderID" />
+      </Principal>
+      <Dependent Role="tblOrderCoupons">
+        <PropertyRef Name="OrderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblSeat_tblSeatRows">
+    <End Role="tblSeatRows" Type="Self.tblSeatRows" Multiplicity="0..1" />
+    <End Role="tblSeat" Type="Self.tblSeat" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblSeatRows">
+        <PropertyRef Name="SeatRowID" />
+      </Principal>
+      <Dependent Role="tblSeat">
+        <PropertyRef Name="SeatRowID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblSeatRows_tblBlocks">
+    <End Role="tblBlocks" Type="Self.tblBlocks" Multiplicity="0..1" />
+    <End Role="tblSeatRows" Type="Self.tblSeatRows" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblBlocks">
+        <PropertyRef Name="BlockID" />
+      </Principal>
+      <Dependent Role="tblSeatRows">
+        <PropertyRef Name="BlockID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblSeatSelections_tblCustomers">
+    <End Role="tblCustomers" Type="Self.tblCustomers" Multiplicity="0..1" />
+    <End Role="tblSeatSelections" Type="Self.tblSeatSelections" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblCustomers">
+        <PropertyRef Name="CustomerID" />
+      </Principal>
+      <Dependent Role="tblSeatSelections">
+        <PropertyRef Name="CustomerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblSeatSelections_tblEvents">
+    <End Role="tblEvents" Type="Self.tblEvents" Multiplicity="0..1" />
+    <End Role="tblSeatSelections" Type="Self.tblSeatSelections" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblEvents">
+        <PropertyRef Name="EventID" />
+      </Principal>
+      <Dependent Role="tblSeatSelections">
+        <PropertyRef Name="EventID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblSeatSelections_tblSeat">
+    <End Role="tblSeat" Type="Self.tblSeat" Multiplicity="0..1" />
+    <End Role="tblSeatSelections" Type="Self.tblSeatSelections" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblSeat">
+        <PropertyRef Name="SeatID" />
+      </Principal>
+      <Dependent Role="tblSeatSelections">
+        <PropertyRef Name="SeatID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblSeatSelections_tblTickets">
+    <End Role="tblTickets" Type="Self.tblTickets" Multiplicity="0..1" />
+    <End Role="tblSeatSelections" Type="Self.tblSeatSelections" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblTickets">
+        <PropertyRef Name="TicketID" />
+      </Principal>
+      <Dependent Role="tblSeatSelections">
+        <PropertyRef Name="TicketID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblTickets_tblCustomers">
+    <End Role="tblCustomers" Type="Self.tblCustomers" Multiplicity="0..1" />
+    <End Role="tblTickets" Type="Self.tblTickets" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblCustomers">
+        <PropertyRef Name="CustomerID" />
+      </Principal>
+      <Dependent Role="tblTickets">
+        <PropertyRef Name="CustomerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblTickets_tblEvents">
+    <End Role="tblEvents" Type="Self.tblEvents" Multiplicity="0..1" />
+    <End Role="tblTickets" Type="Self.tblTickets" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblEvents">
+        <PropertyRef Name="EventID" />
+      </Principal>
+      <Dependent Role="tblTickets">
+        <PropertyRef Name="EventID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblTierCoupons_tblCouponGroups">
+    <End Role="tblCouponGroups" Type="Self.tblCouponGroups" Multiplicity="0..1" />
+    <End Role="tblTierCoupons" Type="Self.tblTierCoupons" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblCouponGroups">
+        <PropertyRef Name="CouponGroupID" />
+      </Principal>
+      <Dependent Role="tblTierCoupons">
+        <PropertyRef Name="CouponGroupID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="JAVADBModelStoreContainer">
+    <EntitySet Name="tblAdminUsers" EntityType="Self.tblAdminUsers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblAppVersions" EntityType="Self.tblAppVersions" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblBlocks" EntityType="Self.tblBlocks" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblCouponGroups" EntityType="Self.tblCouponGroups" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblCoupons" EntityType="Self.tblCoupons" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblCustomers" EntityType="Self.tblCustomers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblEventArtists" EntityType="Self.tblEventArtists" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblEventLayoutBlocks" EntityType="Self.tblEventLayoutBlocks" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblEvents" EntityType="Self.tblEvents" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblEventVolunteers" EntityType="Self.tblEventVolunteers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblLayout" EntityType="Self.tblLayout" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblMailLog" EntityType="Self.tblMailLog" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblOrderCoupons" EntityType="Self.tblOrderCoupons" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblOTPS" EntityType="Self.tblOTPS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblPastEvents" EntityType="Self.tblPastEvents" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblReleaseLog" EntityType="Self.tblReleaseLog" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblSeat" EntityType="Self.tblSeat" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblSeatRows" EntityType="Self.tblSeatRows" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblSeatSelections" EntityType="Self.tblSeatSelections" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblSeatSelectionsLog" EntityType="Self.tblSeatSelectionsLog" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblTicketOrders" EntityType="Self.tblTicketOrders" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblTickets" EntityType="Self.tblTickets" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblTier" EntityType="Self.tblTier" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblTierCoupons" EntityType="Self.tblTierCoupons" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblVenue" EntityType="Self.tblVenue" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblVolunteers" EntityType="Self.tblVolunteers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TempOrders" EntityType="Self.TempOrders" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TempTickets" EntityType="Self.TempTickets" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="VOBARegistration" EntityType="Self.VOBARegistration" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_tblBlocks_tblLayout" Association="Self.FK_tblBlocks_tblLayout">
+      <End Role="tblLayout" EntitySet="tblLayout" />
+      <End Role="tblBlocks" EntitySet="tblBlocks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblCoupons_tblCoupons" Association="Self.FK_tblCoupons_tblCoupons">
+      <End Role="tblCouponGroups" EntitySet="tblCouponGroups" />
+      <End Role="tblCoupons" EntitySet="tblCoupons" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblEventLayoutBlocks_tblBlocks" Association="Self.FK_tblEventLayoutBlocks_tblBlocks">
+      <End Role="tblBlocks" EntitySet="tblBlocks" />
+      <End Role="tblEventLayoutBlocks" EntitySet="tblEventLayoutBlocks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblEventLayoutBlocks_tblEvents" Association="Self.FK_tblEventLayoutBlocks_tblEvents">
+      <End Role="tblEvents" EntitySet="tblEvents" />
+      <End Role="tblEventLayoutBlocks" EntitySet="tblEventLayoutBlocks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblEventLayoutBlocks_tblTier" Association="Self.FK_tblEventLayoutBlocks_tblTier">
+      <End Role="tblTier" EntitySet="tblTier" />
+      <End Role="tblEventLayoutBlocks" EntitySet="tblEventLayoutBlocks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblEvents_tblLayout" Association="Self.FK_tblEvents_tblLayout">
+      <End Role="tblLayout" EntitySet="tblLayout" />
+      <End Role="tblEvents" EntitySet="tblEvents" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblEvents_tblVenue" Association="Self.FK_tblEvents_tblVenue">
+      <End Role="tblVenue" EntitySet="tblVenue" />
+      <End Role="tblEvents" EntitySet="tblEvents" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblEventVolunteers_tblEvents" Association="Self.FK_tblEventVolunteers_tblEvents">
+      <End Role="tblEvents" EntitySet="tblEvents" />
+      <End Role="tblEventVolunteers" EntitySet="tblEventVolunteers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblEventVolunteers_tblVolunteers" Association="Self.FK_tblEventVolunteers_tblVolunteers">
+      <End Role="tblVolunteers" EntitySet="tblVolunteers" />
+      <End Role="tblEventVolunteers" EntitySet="tblEventVolunteers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblLayout_tblVenue" Association="Self.FK_tblLayout_tblVenue">
+      <End Role="tblVenue" EntitySet="tblVenue" />
+      <End Role="tblLayout" EntitySet="tblLayout" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblOrderCoupons_tblCoupons" Association="Self.FK_tblOrderCoupons_tblCoupons">
+      <End Role="tblCoupons" EntitySet="tblCoupons" />
+      <End Role="tblOrderCoupons" EntitySet="tblOrderCoupons" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblOrderCoupons_tblTicketOrders" Association="Self.FK_tblOrderCoupons_tblTicketOrders">
+      <End Role="tblTicketOrders" EntitySet="tblTicketOrders" />
+      <End Role="tblOrderCoupons" EntitySet="tblOrderCoupons" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblSeat_tblSeatRows" Association="Self.FK_tblSeat_tblSeatRows">
+      <End Role="tblSeatRows" EntitySet="tblSeatRows" />
+      <End Role="tblSeat" EntitySet="tblSeat" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblSeatRows_tblBlocks" Association="Self.FK_tblSeatRows_tblBlocks">
+      <End Role="tblBlocks" EntitySet="tblBlocks" />
+      <End Role="tblSeatRows" EntitySet="tblSeatRows" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblSeatSelections_tblCustomers" Association="Self.FK_tblSeatSelections_tblCustomers">
+      <End Role="tblCustomers" EntitySet="tblCustomers" />
+      <End Role="tblSeatSelections" EntitySet="tblSeatSelections" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblSeatSelections_tblEvents" Association="Self.FK_tblSeatSelections_tblEvents">
+      <End Role="tblEvents" EntitySet="tblEvents" />
+      <End Role="tblSeatSelections" EntitySet="tblSeatSelections" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblSeatSelections_tblSeat" Association="Self.FK_tblSeatSelections_tblSeat">
+      <End Role="tblSeat" EntitySet="tblSeat" />
+      <End Role="tblSeatSelections" EntitySet="tblSeatSelections" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblSeatSelections_tblTickets" Association="Self.FK_tblSeatSelections_tblTickets">
+      <End Role="tblTickets" EntitySet="tblTickets" />
+      <End Role="tblSeatSelections" EntitySet="tblSeatSelections" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblTickets_tblCustomers" Association="Self.FK_tblTickets_tblCustomers">
+      <End Role="tblCustomers" EntitySet="tblCustomers" />
+      <End Role="tblTickets" EntitySet="tblTickets" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblTickets_tblEvents" Association="Self.FK_tblTickets_tblEvents">
+      <End Role="tblEvents" EntitySet="tblEvents" />
+      <End Role="tblTickets" EntitySet="tblTickets" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblTierCoupons_tblCouponGroups" Association="Self.FK_tblTierCoupons_tblCouponGroups">
+      <End Role="tblCouponGroups" EntitySet="tblCouponGroups" />
+      <End Role="tblTierCoupons" EntitySet="tblTierCoupons" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

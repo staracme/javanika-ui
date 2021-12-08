@@ -1,0 +1,1896 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="JAVADBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tblAdminUsers">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="500" />
+          <Property Name="LastName" Type="varchar" MaxLength="500" />
+          <Property Name="Username" Type="varchar" MaxLength="500" />
+          <Property Name="Password" Type="varchar" MaxLength="500" />
+          <Property Name="Status" Type="char" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="tblAppVersions">
+          <Key>
+            <PropertyRef Name="AppVersionID" />
+          </Key>
+          <Property Name="AppVersionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Version" Type="varchar" MaxLength="50" />
+          <Property Name="CreatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tblBlocks">
+          <Key>
+            <PropertyRef Name="BlockID" />
+          </Key>
+          <Property Name="BlockID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LayoutID" Type="int" />
+          <Property Name="BlockNumber" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="tblCouponGroups">
+          <Key>
+            <PropertyRef Name="CouponGroupID" />
+          </Key>
+          <Property Name="CouponGroupID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EventID" Type="int" />
+          <Property Name="Prefix" Type="varchar" MaxLength="50" />
+          <Property Name="NoOfCoupons" Type="int" />
+          <Property Name="DiscountIn" Type="varchar" MaxLength="50" />
+          <Property Name="Discount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Tiers" Type="varchar(max)" />
+          <Property Name="CreatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tblCoupons">
+          <Key>
+            <PropertyRef Name="CouponID" />
+          </Key>
+          <Property Name="CouponID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CouponGroupID" Type="int" />
+          <Property Name="CouponCode" Type="varchar" MaxLength="500" />
+          <Property Name="DiscountIn" Type="varchar" MaxLength="50" />
+          <Property Name="Discount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="EventID" Type="int" />
+          <Property Name="IsUsed" Type="bit" />
+          <Property Name="UsedDate" Type="datetime" />
+          <Property Name="OrderID" Type="int" />
+          <Property Name="CreatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tblCustomers">
+          <Key>
+            <PropertyRef Name="CustomerID" />
+          </Key>
+          <Property Name="CustomerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="500" />
+          <Property Name="LastName" Type="varchar" MaxLength="500" />
+          <Property Name="Username" Type="varchar" MaxLength="500" />
+          <Property Name="Password" Type="varchar" MaxLength="500" />
+          <Property Name="Mobile" Type="varchar" MaxLength="500" />
+          <Property Name="Email" Type="varchar" MaxLength="500" />
+          <Property Name="CreatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tblEventArtists">
+          <Key>
+            <PropertyRef Name="ArtistID" />
+          </Key>
+          <Property Name="ArtistID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EventID" Type="int" />
+          <Property Name="Name" Type="varchar" MaxLength="500" />
+          <Property Name="Image" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="tblEventLayoutBlocks">
+          <Key>
+            <PropertyRef Name="EventLayoutBlockID" />
+          </Key>
+          <Property Name="EventLayoutBlockID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EventID" Type="int" />
+          <Property Name="BlockID" Type="int" />
+          <Property Name="TierID" Type="int" />
+          <Property Name="Price" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="CreatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tblEvents">
+          <Key>
+            <PropertyRef Name="EventID" />
+          </Key>
+          <Property Name="EventID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VenueID" Type="int" />
+          <Property Name="LayoutID" Type="int" />
+          <Property Name="EventName" Type="varchar" MaxLength="500" />
+          <Property Name="EventType" Type="varchar" MaxLength="500" />
+          <Property Name="EventLanguage" Type="varchar" MaxLength="500" />
+          <Property Name="EventPlaytime" Type="varchar" MaxLength="500" />
+          <Property Name="EventDurationType" Type="char" MaxLength="1" />
+          <Property Name="EventDate" Type="datetime" />
+          <Property Name="StartDate" Type="datetime" />
+          <Property Name="EndDate" Type="datetime" />
+          <Property Name="ShowTime" Type="varchar" MaxLength="500" />
+          <Property Name="EventBanner" Type="varchar" MaxLength="500" />
+          <Property Name="EventMainBanner" Type="varchar" MaxLength="500" />
+          <Property Name="EventHomeBanner" Type="varchar" MaxLength="500" />
+          <Property Name="LocationTracker" Type="varchar(max)" />
+          <Property Name="EventDescription" Type="varchar(max)" />
+          <Property Name="EventTNC" Type="varchar(max)" />
+          <Property Name="AgeGroup" Type="varchar" MaxLength="500" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="BookingType" Type="varchar" MaxLength="500" />
+          <Property Name="ProcessingFee" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="TicketStock" Type="int" />
+          <Property Name="Status" Type="char" MaxLength="1" />
+          <Property Name="PercentEBSeats" Type="int" />
+          <Property Name="EarlyBirdTicketSelection" Type="varchar" MaxLength="20" />
+          <Property Name="TicketsAvailable" Type="int" />
+          <Property Name="TicketPrice" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="EBTicketPrice" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="EBMinTicketOrder" Type="int" />
+          <Property Name="EBMaxTicketOrder" Type="int" />
+        </EntityType>
+        <EntityType Name="tblEventVolunteers">
+          <Key>
+            <PropertyRef Name="EventVolunteerID" />
+          </Key>
+          <Property Name="EventVolunteerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EventID" Type="int" />
+          <Property Name="VolunteerID" Type="int" />
+          <Property Name="CreatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tblLayout">
+          <Key>
+            <PropertyRef Name="LayoutID" />
+          </Key>
+          <Property Name="LayoutID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VenueID" Type="int" />
+          <Property Name="LayoutName" Type="varchar" MaxLength="500" />
+          <Property Name="Status" Type="char" MaxLength="1" />
+          <Property Name="LayoutNumber" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="tblMailLog">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrderID" Type="int" />
+          <Property Name="Email" Type="varchar" MaxLength="500" />
+          <Property Name="SentDate" Type="datetime" />
+          <Property Name="MailContent" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="tblOrderCoupons">
+          <Key>
+            <PropertyRef Name="OrderCouponID" />
+          </Key>
+          <Property Name="OrderCouponID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CouponID" Type="int" />
+          <Property Name="SessionID" Type="varchar" MaxLength="500" />
+          <Property Name="OrderID" Type="int" />
+          <Property Name="CreatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tblOTPS">
+          <Key>
+            <PropertyRef Name="OTPID" />
+          </Key>
+          <Property Name="OTPID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="500" />
+          <Property Name="OTP" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="tblPastEvents">
+          <Key>
+            <PropertyRef Name="PastEventID" />
+          </Key>
+          <Property Name="PastEventID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EventName" Type="varchar" MaxLength="500" />
+          <Property Name="ImagePath" Type="varchar" MaxLength="500" />
+          <Property Name="Year" Type="varchar" MaxLength="500" />
+          <Property Name="Month" Type="varchar" MaxLength="500" />
+          <Property Name="CreatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tblReleaseLog">
+          <Key>
+            <PropertyRef Name="LogID" />
+          </Key>
+          <Property Name="LogID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SeatID" Type="int" />
+          <Property Name="EventID" Type="int" />
+          <Property Name="CreatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tblSeat">
+          <Key>
+            <PropertyRef Name="SeatID" />
+          </Key>
+          <Property Name="SeatID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SeatRowID" Type="int" />
+          <Property Name="SeatNumber" Type="varchar" MaxLength="500" />
+          <Property Name="Status" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="tblSeatRows">
+          <Key>
+            <PropertyRef Name="SeatRowID" />
+          </Key>
+          <Property Name="SeatRowID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BlockID" Type="int" />
+          <Property Name="RowNumber" Type="varchar" MaxLength="50" />
+          <Property Name="GroupName" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblSeatSelections">
+          <Key>
+            <PropertyRef Name="SeatSelectionID" />
+          </Key>
+          <Property Name="SeatSelectionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SessionID" Type="varchar" MaxLength="500" />
+          <Property Name="SeatID" Type="int" />
+          <Property Name="EventID" Type="int" />
+          <Property Name="CustomerID" Type="int" />
+          <Property Name="TicketID" Type="int" />
+          <Property Name="OrderID" Type="int" />
+          <Property Name="Price" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="CreatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tblSeatSelectionsLog">
+          <Key>
+            <PropertyRef Name="SeatSelectionLogID" />
+          </Key>
+          <Property Name="SeatSelectionLogID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SessionID" Type="varchar" MaxLength="500" />
+          <Property Name="SeatID" Type="int" />
+          <Property Name="EventID" Type="int" />
+          <Property Name="CustomerID" Type="int" />
+          <Property Name="TicketID" Type="int" />
+          <Property Name="OrderID" Type="int" />
+          <Property Name="Price" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="CreatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tblTicketOrders">
+          <Key>
+            <PropertyRef Name="OrderID" />
+          </Key>
+          <Property Name="OrderID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrderNo" Type="int" />
+          <Property Name="EventID" Type="int" />
+          <Property Name="Name" Type="varchar" MaxLength="500" />
+          <Property Name="Email" Type="varchar" MaxLength="500" />
+          <Property Name="Mobile" Type="varchar" MaxLength="500" />
+          <Property Name="NoOfTickets" Type="int" />
+          <Property Name="AmountPerTicket" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="DiscountAmount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="ProcessingFee" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Amount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Status" Type="varchar" MaxLength="500" />
+          <Property Name="PaymentStatus" Type="varchar" MaxLength="500" />
+          <Property Name="PaypalOrderID" Type="varchar" MaxLength="500" />
+          <Property Name="Intent" Type="varchar" MaxLength="500" />
+          <Property Name="QRCode" Type="varchar" MaxLength="500" />
+          <Property Name="IsPickedUp" Type="bit" />
+          <Property Name="DatePickedUp" Type="datetime" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="TicketType" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="tblTickets">
+          <Key>
+            <PropertyRef Name="TicketID" />
+          </Key>
+          <Property Name="TicketID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TicketNumber" Type="varchar" MaxLength="500" />
+          <Property Name="Status" Type="varchar" MaxLength="500" />
+          <Property Name="CustomerID" Type="int" />
+          <Property Name="EventID" Type="int" />
+          <Property Name="Amount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="PaypalOrderID" Type="varchar" MaxLength="500" />
+          <Property Name="CreatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tblTier">
+          <Key>
+            <PropertyRef Name="TierID" />
+          </Key>
+          <Property Name="TierID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TierName" Type="varchar" MaxLength="500" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="Status" Type="char" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="tblTierCoupons">
+          <Key>
+            <PropertyRef Name="TierCouponID" />
+          </Key>
+          <Property Name="TierCouponID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CouponGroupID" Type="int" />
+          <Property Name="TierID" Type="int" />
+          <Property Name="EventID" Type="int" />
+          <Property Name="CreatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tblVenue">
+          <Key>
+            <PropertyRef Name="VenueID" />
+          </Key>
+          <Property Name="VenueID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VenueName" Type="varchar" MaxLength="500" />
+          <Property Name="VenueNumber" Type="varchar" MaxLength="500" />
+          <Property Name="SeatingChart" Type="varchar" MaxLength="500" />
+          <Property Name="AppSeatingChart" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="tblVolunteers">
+          <Key>
+            <PropertyRef Name="VolunteerID" />
+          </Key>
+          <Property Name="VolunteerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="500" />
+          <Property Name="Username" Type="varchar" MaxLength="500" />
+          <Property Name="Password" Type="varchar" MaxLength="500" />
+          <Property Name="CreatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="TempOrders">
+          <Key>
+            <PropertyRef Name="TempID" />
+          </Key>
+          <Property Name="TempID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PaypalID" Type="varchar" MaxLength="500" />
+          <Property Name="Amount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="EventID" Type="int" />
+        </EntityType>
+        <EntityType Name="TempTickets">
+          <Key>
+            <PropertyRef Name="TempTicketID" />
+          </Key>
+          <Property Name="TempTicketID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrderID" Type="int" />
+          <Property Name="EventID" Type="int" />
+          <Property Name="NoOfTickets" Type="int" />
+          <Property Name="CreatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="VOBARegistration">
+          <Key>
+            <PropertyRef Name="RegistrationID" />
+          </Key>
+          <Property Name="RegistrationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ParentName" Type="varchar" MaxLength="500" />
+          <Property Name="ParentEmail" Type="varchar" MaxLength="500" />
+          <Property Name="ParentMobile" Type="varchar" MaxLength="500" />
+          <Property Name="ChildName" Type="varchar" MaxLength="500" />
+          <Property Name="ChildDOB" Type="varchar" MaxLength="500" />
+          <Property Name="TermsAccepted" Type="bit" />
+          <Property Name="Amount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="PaymentStatus" Type="varchar" MaxLength="500" />
+          <Property Name="PaypalOrderID" Type="varchar" MaxLength="500" />
+          <Property Name="Intent" Type="varchar" MaxLength="500" />
+          <Property Name="CreatedDate" Type="datetime" />
+        </EntityType>
+        <Association Name="FK_tblBlocks_tblLayout">
+          <End Role="tblLayout" Type="Self.tblLayout" Multiplicity="0..1" />
+          <End Role="tblBlocks" Type="Self.tblBlocks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblLayout">
+              <PropertyRef Name="LayoutID" />
+            </Principal>
+            <Dependent Role="tblBlocks">
+              <PropertyRef Name="LayoutID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblCoupons_tblCoupons">
+          <End Role="tblCouponGroups" Type="Self.tblCouponGroups" Multiplicity="0..1" />
+          <End Role="tblCoupons" Type="Self.tblCoupons" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCouponGroups">
+              <PropertyRef Name="CouponGroupID" />
+            </Principal>
+            <Dependent Role="tblCoupons">
+              <PropertyRef Name="CouponGroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblEventLayoutBlocks_tblBlocks">
+          <End Role="tblBlocks" Type="Self.tblBlocks" Multiplicity="0..1" />
+          <End Role="tblEventLayoutBlocks" Type="Self.tblEventLayoutBlocks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblBlocks">
+              <PropertyRef Name="BlockID" />
+            </Principal>
+            <Dependent Role="tblEventLayoutBlocks">
+              <PropertyRef Name="BlockID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblEventLayoutBlocks_tblEvents">
+          <End Role="tblEvents" Type="Self.tblEvents" Multiplicity="0..1" />
+          <End Role="tblEventLayoutBlocks" Type="Self.tblEventLayoutBlocks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblEvents">
+              <PropertyRef Name="EventID" />
+            </Principal>
+            <Dependent Role="tblEventLayoutBlocks">
+              <PropertyRef Name="EventID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblEventLayoutBlocks_tblTier">
+          <End Role="tblTier" Type="Self.tblTier" Multiplicity="0..1" />
+          <End Role="tblEventLayoutBlocks" Type="Self.tblEventLayoutBlocks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblTier">
+              <PropertyRef Name="TierID" />
+            </Principal>
+            <Dependent Role="tblEventLayoutBlocks">
+              <PropertyRef Name="TierID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblEvents_tblLayout">
+          <End Role="tblLayout" Type="Self.tblLayout" Multiplicity="0..1" />
+          <End Role="tblEvents" Type="Self.tblEvents" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblLayout">
+              <PropertyRef Name="LayoutID" />
+            </Principal>
+            <Dependent Role="tblEvents">
+              <PropertyRef Name="LayoutID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblEvents_tblVenue">
+          <End Role="tblVenue" Type="Self.tblVenue" Multiplicity="0..1" />
+          <End Role="tblEvents" Type="Self.tblEvents" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblVenue">
+              <PropertyRef Name="VenueID" />
+            </Principal>
+            <Dependent Role="tblEvents">
+              <PropertyRef Name="VenueID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblEventVolunteers_tblEvents">
+          <End Role="tblEvents" Type="Self.tblEvents" Multiplicity="0..1" />
+          <End Role="tblEventVolunteers" Type="Self.tblEventVolunteers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblEvents">
+              <PropertyRef Name="EventID" />
+            </Principal>
+            <Dependent Role="tblEventVolunteers">
+              <PropertyRef Name="EventID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblEventVolunteers_tblVolunteers">
+          <End Role="tblVolunteers" Type="Self.tblVolunteers" Multiplicity="0..1" />
+          <End Role="tblEventVolunteers" Type="Self.tblEventVolunteers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblVolunteers">
+              <PropertyRef Name="VolunteerID" />
+            </Principal>
+            <Dependent Role="tblEventVolunteers">
+              <PropertyRef Name="VolunteerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblLayout_tblVenue">
+          <End Role="tblVenue" Type="Self.tblVenue" Multiplicity="0..1" />
+          <End Role="tblLayout" Type="Self.tblLayout" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblVenue">
+              <PropertyRef Name="VenueID" />
+            </Principal>
+            <Dependent Role="tblLayout">
+              <PropertyRef Name="VenueID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblOrderCoupons_tblCoupons">
+          <End Role="tblCoupons" Type="Self.tblCoupons" Multiplicity="0..1" />
+          <End Role="tblOrderCoupons" Type="Self.tblOrderCoupons" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCoupons">
+              <PropertyRef Name="CouponID" />
+            </Principal>
+            <Dependent Role="tblOrderCoupons">
+              <PropertyRef Name="CouponID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblOrderCoupons_tblTicketOrders">
+          <End Role="tblTicketOrders" Type="Self.tblTicketOrders" Multiplicity="0..1" />
+          <End Role="tblOrderCoupons" Type="Self.tblOrderCoupons" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblTicketOrders">
+              <PropertyRef Name="OrderID" />
+            </Principal>
+            <Dependent Role="tblOrderCoupons">
+              <PropertyRef Name="OrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblSeat_tblSeatRows">
+          <End Role="tblSeatRows" Type="Self.tblSeatRows" Multiplicity="0..1" />
+          <End Role="tblSeat" Type="Self.tblSeat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblSeatRows">
+              <PropertyRef Name="SeatRowID" />
+            </Principal>
+            <Dependent Role="tblSeat">
+              <PropertyRef Name="SeatRowID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblSeatRows_tblBlocks">
+          <End Role="tblBlocks" Type="Self.tblBlocks" Multiplicity="0..1" />
+          <End Role="tblSeatRows" Type="Self.tblSeatRows" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblBlocks">
+              <PropertyRef Name="BlockID" />
+            </Principal>
+            <Dependent Role="tblSeatRows">
+              <PropertyRef Name="BlockID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblSeatSelections_tblCustomers">
+          <End Role="tblCustomers" Type="Self.tblCustomers" Multiplicity="0..1" />
+          <End Role="tblSeatSelections" Type="Self.tblSeatSelections" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCustomers">
+              <PropertyRef Name="CustomerID" />
+            </Principal>
+            <Dependent Role="tblSeatSelections">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblSeatSelections_tblEvents">
+          <End Role="tblEvents" Type="Self.tblEvents" Multiplicity="0..1" />
+          <End Role="tblSeatSelections" Type="Self.tblSeatSelections" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblEvents">
+              <PropertyRef Name="EventID" />
+            </Principal>
+            <Dependent Role="tblSeatSelections">
+              <PropertyRef Name="EventID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblSeatSelections_tblSeat">
+          <End Role="tblSeat" Type="Self.tblSeat" Multiplicity="0..1" />
+          <End Role="tblSeatSelections" Type="Self.tblSeatSelections" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblSeat">
+              <PropertyRef Name="SeatID" />
+            </Principal>
+            <Dependent Role="tblSeatSelections">
+              <PropertyRef Name="SeatID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblSeatSelections_tblTickets">
+          <End Role="tblTickets" Type="Self.tblTickets" Multiplicity="0..1" />
+          <End Role="tblSeatSelections" Type="Self.tblSeatSelections" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblTickets">
+              <PropertyRef Name="TicketID" />
+            </Principal>
+            <Dependent Role="tblSeatSelections">
+              <PropertyRef Name="TicketID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblTickets_tblCustomers">
+          <End Role="tblCustomers" Type="Self.tblCustomers" Multiplicity="0..1" />
+          <End Role="tblTickets" Type="Self.tblTickets" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCustomers">
+              <PropertyRef Name="CustomerID" />
+            </Principal>
+            <Dependent Role="tblTickets">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblTickets_tblEvents">
+          <End Role="tblEvents" Type="Self.tblEvents" Multiplicity="0..1" />
+          <End Role="tblTickets" Type="Self.tblTickets" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblEvents">
+              <PropertyRef Name="EventID" />
+            </Principal>
+            <Dependent Role="tblTickets">
+              <PropertyRef Name="EventID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblTierCoupons_tblCouponGroups">
+          <End Role="tblCouponGroups" Type="Self.tblCouponGroups" Multiplicity="0..1" />
+          <End Role="tblTierCoupons" Type="Self.tblTierCoupons" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCouponGroups">
+              <PropertyRef Name="CouponGroupID" />
+            </Principal>
+            <Dependent Role="tblTierCoupons">
+              <PropertyRef Name="CouponGroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="JAVADBModelStoreContainer">
+          <EntitySet Name="tblAdminUsers" EntityType="Self.tblAdminUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblAppVersions" EntityType="Self.tblAppVersions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblBlocks" EntityType="Self.tblBlocks" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblCouponGroups" EntityType="Self.tblCouponGroups" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblCoupons" EntityType="Self.tblCoupons" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblCustomers" EntityType="Self.tblCustomers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblEventArtists" EntityType="Self.tblEventArtists" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblEventLayoutBlocks" EntityType="Self.tblEventLayoutBlocks" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblEvents" EntityType="Self.tblEvents" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblEventVolunteers" EntityType="Self.tblEventVolunteers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblLayout" EntityType="Self.tblLayout" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblMailLog" EntityType="Self.tblMailLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblOrderCoupons" EntityType="Self.tblOrderCoupons" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblOTPS" EntityType="Self.tblOTPS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblPastEvents" EntityType="Self.tblPastEvents" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblReleaseLog" EntityType="Self.tblReleaseLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblSeat" EntityType="Self.tblSeat" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblSeatRows" EntityType="Self.tblSeatRows" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblSeatSelections" EntityType="Self.tblSeatSelections" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblSeatSelectionsLog" EntityType="Self.tblSeatSelectionsLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblTicketOrders" EntityType="Self.tblTicketOrders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblTickets" EntityType="Self.tblTickets" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblTier" EntityType="Self.tblTier" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblTierCoupons" EntityType="Self.tblTierCoupons" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblVenue" EntityType="Self.tblVenue" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblVolunteers" EntityType="Self.tblVolunteers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TempOrders" EntityType="Self.TempOrders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TempTickets" EntityType="Self.TempTickets" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VOBARegistration" EntityType="Self.VOBARegistration" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_tblBlocks_tblLayout" Association="Self.FK_tblBlocks_tblLayout">
+            <End Role="tblLayout" EntitySet="tblLayout" />
+            <End Role="tblBlocks" EntitySet="tblBlocks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblCoupons_tblCoupons" Association="Self.FK_tblCoupons_tblCoupons">
+            <End Role="tblCouponGroups" EntitySet="tblCouponGroups" />
+            <End Role="tblCoupons" EntitySet="tblCoupons" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblEventLayoutBlocks_tblBlocks" Association="Self.FK_tblEventLayoutBlocks_tblBlocks">
+            <End Role="tblBlocks" EntitySet="tblBlocks" />
+            <End Role="tblEventLayoutBlocks" EntitySet="tblEventLayoutBlocks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblEventLayoutBlocks_tblEvents" Association="Self.FK_tblEventLayoutBlocks_tblEvents">
+            <End Role="tblEvents" EntitySet="tblEvents" />
+            <End Role="tblEventLayoutBlocks" EntitySet="tblEventLayoutBlocks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblEventLayoutBlocks_tblTier" Association="Self.FK_tblEventLayoutBlocks_tblTier">
+            <End Role="tblTier" EntitySet="tblTier" />
+            <End Role="tblEventLayoutBlocks" EntitySet="tblEventLayoutBlocks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblEvents_tblLayout" Association="Self.FK_tblEvents_tblLayout">
+            <End Role="tblLayout" EntitySet="tblLayout" />
+            <End Role="tblEvents" EntitySet="tblEvents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblEvents_tblVenue" Association="Self.FK_tblEvents_tblVenue">
+            <End Role="tblVenue" EntitySet="tblVenue" />
+            <End Role="tblEvents" EntitySet="tblEvents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblEventVolunteers_tblEvents" Association="Self.FK_tblEventVolunteers_tblEvents">
+            <End Role="tblEvents" EntitySet="tblEvents" />
+            <End Role="tblEventVolunteers" EntitySet="tblEventVolunteers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblEventVolunteers_tblVolunteers" Association="Self.FK_tblEventVolunteers_tblVolunteers">
+            <End Role="tblVolunteers" EntitySet="tblVolunteers" />
+            <End Role="tblEventVolunteers" EntitySet="tblEventVolunteers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblLayout_tblVenue" Association="Self.FK_tblLayout_tblVenue">
+            <End Role="tblVenue" EntitySet="tblVenue" />
+            <End Role="tblLayout" EntitySet="tblLayout" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblOrderCoupons_tblCoupons" Association="Self.FK_tblOrderCoupons_tblCoupons">
+            <End Role="tblCoupons" EntitySet="tblCoupons" />
+            <End Role="tblOrderCoupons" EntitySet="tblOrderCoupons" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblOrderCoupons_tblTicketOrders" Association="Self.FK_tblOrderCoupons_tblTicketOrders">
+            <End Role="tblTicketOrders" EntitySet="tblTicketOrders" />
+            <End Role="tblOrderCoupons" EntitySet="tblOrderCoupons" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblSeat_tblSeatRows" Association="Self.FK_tblSeat_tblSeatRows">
+            <End Role="tblSeatRows" EntitySet="tblSeatRows" />
+            <End Role="tblSeat" EntitySet="tblSeat" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblSeatRows_tblBlocks" Association="Self.FK_tblSeatRows_tblBlocks">
+            <End Role="tblBlocks" EntitySet="tblBlocks" />
+            <End Role="tblSeatRows" EntitySet="tblSeatRows" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblSeatSelections_tblCustomers" Association="Self.FK_tblSeatSelections_tblCustomers">
+            <End Role="tblCustomers" EntitySet="tblCustomers" />
+            <End Role="tblSeatSelections" EntitySet="tblSeatSelections" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblSeatSelections_tblEvents" Association="Self.FK_tblSeatSelections_tblEvents">
+            <End Role="tblEvents" EntitySet="tblEvents" />
+            <End Role="tblSeatSelections" EntitySet="tblSeatSelections" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblSeatSelections_tblSeat" Association="Self.FK_tblSeatSelections_tblSeat">
+            <End Role="tblSeat" EntitySet="tblSeat" />
+            <End Role="tblSeatSelections" EntitySet="tblSeatSelections" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblSeatSelections_tblTickets" Association="Self.FK_tblSeatSelections_tblTickets">
+            <End Role="tblTickets" EntitySet="tblTickets" />
+            <End Role="tblSeatSelections" EntitySet="tblSeatSelections" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblTickets_tblCustomers" Association="Self.FK_tblTickets_tblCustomers">
+            <End Role="tblCustomers" EntitySet="tblCustomers" />
+            <End Role="tblTickets" EntitySet="tblTickets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblTickets_tblEvents" Association="Self.FK_tblTickets_tblEvents">
+            <End Role="tblEvents" EntitySet="tblEvents" />
+            <End Role="tblTickets" EntitySet="tblTickets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblTierCoupons_tblCouponGroups" Association="Self.FK_tblTierCoupons_tblCouponGroups">
+            <End Role="tblCouponGroups" EntitySet="tblCouponGroups" />
+            <End Role="tblTierCoupons" EntitySet="tblTierCoupons" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="JAVADBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="JAVADBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tblAdminUsers" EntityType="JAVADBModel.tblAdminUser" />
+          <EntitySet Name="tblAppVersions" EntityType="JAVADBModel.tblAppVersion" />
+          <EntitySet Name="tblBlocks" EntityType="JAVADBModel.tblBlock" />
+          <EntitySet Name="tblCouponGroups" EntityType="JAVADBModel.tblCouponGroup" />
+          <EntitySet Name="tblCoupons" EntityType="JAVADBModel.tblCoupon" />
+          <EntitySet Name="tblCustomers" EntityType="JAVADBModel.tblCustomer" />
+          <EntitySet Name="tblEventArtists" EntityType="JAVADBModel.tblEventArtist" />
+          <EntitySet Name="tblEventLayoutBlocks" EntityType="JAVADBModel.tblEventLayoutBlock" />
+          <EntitySet Name="tblEvents" EntityType="JAVADBModel.tblEvent" />
+          <EntitySet Name="tblEventVolunteers" EntityType="JAVADBModel.tblEventVolunteer" />
+          <EntitySet Name="tblLayouts" EntityType="JAVADBModel.tblLayout" />
+          <EntitySet Name="tblMailLogs" EntityType="JAVADBModel.tblMailLog" />
+          <EntitySet Name="tblOrderCoupons" EntityType="JAVADBModel.tblOrderCoupon" />
+          <EntitySet Name="tblOTPS" EntityType="JAVADBModel.tblOTP" />
+          <EntitySet Name="tblPastEvents" EntityType="JAVADBModel.tblPastEvent" />
+          <EntitySet Name="tblReleaseLogs" EntityType="JAVADBModel.tblReleaseLog" />
+          <EntitySet Name="tblSeats" EntityType="JAVADBModel.tblSeat" />
+          <EntitySet Name="tblSeatRows" EntityType="JAVADBModel.tblSeatRow" />
+          <EntitySet Name="tblSeatSelections" EntityType="JAVADBModel.tblSeatSelection" />
+          <EntitySet Name="tblSeatSelectionsLogs" EntityType="JAVADBModel.tblSeatSelectionsLog" />
+          <EntitySet Name="tblTicketOrders" EntityType="JAVADBModel.tblTicketOrder" />
+          <EntitySet Name="tblTickets" EntityType="JAVADBModel.tblTicket" />
+          <EntitySet Name="tblTiers" EntityType="JAVADBModel.tblTier" />
+          <EntitySet Name="tblTierCoupons" EntityType="JAVADBModel.tblTierCoupon" />
+          <EntitySet Name="tblVenues" EntityType="JAVADBModel.tblVenue" />
+          <EntitySet Name="tblVolunteers" EntityType="JAVADBModel.tblVolunteer" />
+          <EntitySet Name="TempOrders" EntityType="JAVADBModel.TempOrder" />
+          <EntitySet Name="TempTickets" EntityType="JAVADBModel.TempTicket" />
+          <EntitySet Name="VOBARegistrations" EntityType="JAVADBModel.VOBARegistration" />
+          <AssociationSet Name="FK_tblBlocks_tblLayout" Association="JAVADBModel.FK_tblBlocks_tblLayout">
+            <End Role="tblLayout" EntitySet="tblLayouts" />
+            <End Role="tblBlock" EntitySet="tblBlocks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblEventLayoutBlocks_tblBlocks" Association="JAVADBModel.FK_tblEventLayoutBlocks_tblBlocks">
+            <End Role="tblBlock" EntitySet="tblBlocks" />
+            <End Role="tblEventLayoutBlock" EntitySet="tblEventLayoutBlocks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblSeatRows_tblBlocks" Association="JAVADBModel.FK_tblSeatRows_tblBlocks">
+            <End Role="tblBlock" EntitySet="tblBlocks" />
+            <End Role="tblSeatRow" EntitySet="tblSeatRows" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblCoupons_tblCoupons" Association="JAVADBModel.FK_tblCoupons_tblCoupons">
+            <End Role="tblCouponGroup" EntitySet="tblCouponGroups" />
+            <End Role="tblCoupon" EntitySet="tblCoupons" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblTierCoupons_tblCouponGroups" Association="JAVADBModel.FK_tblTierCoupons_tblCouponGroups">
+            <End Role="tblCouponGroup" EntitySet="tblCouponGroups" />
+            <End Role="tblTierCoupon" EntitySet="tblTierCoupons" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblOrderCoupons_tblCoupons" Association="JAVADBModel.FK_tblOrderCoupons_tblCoupons">
+            <End Role="tblCoupon" EntitySet="tblCoupons" />
+            <End Role="tblOrderCoupon" EntitySet="tblOrderCoupons" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblSeatSelections_tblCustomers" Association="JAVADBModel.FK_tblSeatSelections_tblCustomers">
+            <End Role="tblCustomer" EntitySet="tblCustomers" />
+            <End Role="tblSeatSelection" EntitySet="tblSeatSelections" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblTickets_tblCustomers" Association="JAVADBModel.FK_tblTickets_tblCustomers">
+            <End Role="tblCustomer" EntitySet="tblCustomers" />
+            <End Role="tblTicket" EntitySet="tblTickets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblEventLayoutBlocks_tblEvents" Association="JAVADBModel.FK_tblEventLayoutBlocks_tblEvents">
+            <End Role="tblEvent" EntitySet="tblEvents" />
+            <End Role="tblEventLayoutBlock" EntitySet="tblEventLayoutBlocks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblEventLayoutBlocks_tblTier" Association="JAVADBModel.FK_tblEventLayoutBlocks_tblTier">
+            <End Role="tblTier" EntitySet="tblTiers" />
+            <End Role="tblEventLayoutBlock" EntitySet="tblEventLayoutBlocks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblEvents_tblLayout" Association="JAVADBModel.FK_tblEvents_tblLayout">
+            <End Role="tblLayout" EntitySet="tblLayouts" />
+            <End Role="tblEvent" EntitySet="tblEvents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblEvents_tblVenue" Association="JAVADBModel.FK_tblEvents_tblVenue">
+            <End Role="tblVenue" EntitySet="tblVenues" />
+            <End Role="tblEvent" EntitySet="tblEvents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblEventVolunteers_tblEvents" Association="JAVADBModel.FK_tblEventVolunteers_tblEvents">
+            <End Role="tblEvent" EntitySet="tblEvents" />
+            <End Role="tblEventVolunteer" EntitySet="tblEventVolunteers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblSeatSelections_tblEvents" Association="JAVADBModel.FK_tblSeatSelections_tblEvents">
+            <End Role="tblEvent" EntitySet="tblEvents" />
+            <End Role="tblSeatSelection" EntitySet="tblSeatSelections" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblTickets_tblEvents" Association="JAVADBModel.FK_tblTickets_tblEvents">
+            <End Role="tblEvent" EntitySet="tblEvents" />
+            <End Role="tblTicket" EntitySet="tblTickets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblEventVolunteers_tblVolunteers" Association="JAVADBModel.FK_tblEventVolunteers_tblVolunteers">
+            <End Role="tblVolunteer" EntitySet="tblVolunteers" />
+            <End Role="tblEventVolunteer" EntitySet="tblEventVolunteers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblLayout_tblVenue" Association="JAVADBModel.FK_tblLayout_tblVenue">
+            <End Role="tblVenue" EntitySet="tblVenues" />
+            <End Role="tblLayout" EntitySet="tblLayouts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblOrderCoupons_tblTicketOrders" Association="JAVADBModel.FK_tblOrderCoupons_tblTicketOrders">
+            <End Role="tblTicketOrder" EntitySet="tblTicketOrders" />
+            <End Role="tblOrderCoupon" EntitySet="tblOrderCoupons" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblSeat_tblSeatRows" Association="JAVADBModel.FK_tblSeat_tblSeatRows">
+            <End Role="tblSeatRow" EntitySet="tblSeatRows" />
+            <End Role="tblSeat" EntitySet="tblSeats" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblSeatSelections_tblSeat" Association="JAVADBModel.FK_tblSeatSelections_tblSeat">
+            <End Role="tblSeat" EntitySet="tblSeats" />
+            <End Role="tblSeatSelection" EntitySet="tblSeatSelections" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblSeatSelections_tblTickets" Association="JAVADBModel.FK_tblSeatSelections_tblTickets">
+            <End Role="tblTicket" EntitySet="tblTickets" />
+            <End Role="tblSeatSelection" EntitySet="tblSeatSelections" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="tblAdminUser">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Username" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblAppVersion">
+          <Key>
+            <PropertyRef Name="AppVersionID" />
+          </Key>
+          <Property Name="AppVersionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Version" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="tblBlock">
+          <Key>
+            <PropertyRef Name="BlockID" />
+          </Key>
+          <Property Name="BlockID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LayoutID" Type="Int32" />
+          <Property Name="BlockNumber" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tblLayout" Relationship="JAVADBModel.FK_tblBlocks_tblLayout" FromRole="tblBlock" ToRole="tblLayout" />
+          <NavigationProperty Name="tblEventLayoutBlocks" Relationship="JAVADBModel.FK_tblEventLayoutBlocks_tblBlocks" FromRole="tblBlock" ToRole="tblEventLayoutBlock" />
+          <NavigationProperty Name="tblSeatRows" Relationship="JAVADBModel.FK_tblSeatRows_tblBlocks" FromRole="tblBlock" ToRole="tblSeatRow" />
+        </EntityType>
+        <EntityType Name="tblCouponGroup">
+          <Key>
+            <PropertyRef Name="CouponGroupID" />
+          </Key>
+          <Property Name="CouponGroupID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EventID" Type="Int32" />
+          <Property Name="Prefix" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NoOfCoupons" Type="Int32" />
+          <Property Name="DiscountIn" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Discount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Tiers" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tblCoupons" Relationship="JAVADBModel.FK_tblCoupons_tblCoupons" FromRole="tblCouponGroup" ToRole="tblCoupon" />
+          <NavigationProperty Name="tblTierCoupons" Relationship="JAVADBModel.FK_tblTierCoupons_tblCouponGroups" FromRole="tblCouponGroup" ToRole="tblTierCoupon" />
+        </EntityType>
+        <EntityType Name="tblCoupon">
+          <Key>
+            <PropertyRef Name="CouponID" />
+          </Key>
+          <Property Name="CouponID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CouponGroupID" Type="Int32" />
+          <Property Name="CouponCode" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="DiscountIn" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Discount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="EventID" Type="Int32" />
+          <Property Name="IsUsed" Type="Boolean" />
+          <Property Name="UsedDate" Type="DateTime" Precision="3" />
+          <Property Name="OrderID" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tblCouponGroup" Relationship="JAVADBModel.FK_tblCoupons_tblCoupons" FromRole="tblCoupon" ToRole="tblCouponGroup" />
+          <NavigationProperty Name="tblOrderCoupons" Relationship="JAVADBModel.FK_tblOrderCoupons_tblCoupons" FromRole="tblCoupon" ToRole="tblOrderCoupon" />
+        </EntityType>
+        <EntityType Name="tblCustomer">
+          <Key>
+            <PropertyRef Name="CustomerID" />
+          </Key>
+          <Property Name="CustomerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Username" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Mobile" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tblSeatSelections" Relationship="JAVADBModel.FK_tblSeatSelections_tblCustomers" FromRole="tblCustomer" ToRole="tblSeatSelection" />
+          <NavigationProperty Name="tblTickets" Relationship="JAVADBModel.FK_tblTickets_tblCustomers" FromRole="tblCustomer" ToRole="tblTicket" />
+        </EntityType>
+        <EntityType Name="tblEventArtist">
+          <Key>
+            <PropertyRef Name="ArtistID" />
+          </Key>
+          <Property Name="ArtistID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EventID" Type="Int32" />
+          <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Image" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblEventLayoutBlock">
+          <Key>
+            <PropertyRef Name="EventLayoutBlockID" />
+          </Key>
+          <Property Name="EventLayoutBlockID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EventID" Type="Int32" />
+          <Property Name="BlockID" Type="Int32" />
+          <Property Name="TierID" Type="Int32" />
+          <Property Name="Price" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tblBlock" Relationship="JAVADBModel.FK_tblEventLayoutBlocks_tblBlocks" FromRole="tblEventLayoutBlock" ToRole="tblBlock" />
+          <NavigationProperty Name="tblEvent" Relationship="JAVADBModel.FK_tblEventLayoutBlocks_tblEvents" FromRole="tblEventLayoutBlock" ToRole="tblEvent" />
+          <NavigationProperty Name="tblTier" Relationship="JAVADBModel.FK_tblEventLayoutBlocks_tblTier" FromRole="tblEventLayoutBlock" ToRole="tblTier" />
+        </EntityType>
+        <EntityType Name="tblEvent">
+          <Key>
+            <PropertyRef Name="EventID" />
+          </Key>
+          <Property Name="EventID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VenueID" Type="Int32" />
+          <Property Name="LayoutID" Type="Int32" />
+          <Property Name="EventName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="EventType" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="EventLanguage" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="EventPlaytime" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="EventDurationType" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="EventDate" Type="DateTime" Precision="3" />
+          <Property Name="StartDate" Type="DateTime" Precision="3" />
+          <Property Name="EndDate" Type="DateTime" Precision="3" />
+          <Property Name="ShowTime" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="EventBanner" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="EventMainBanner" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="EventHomeBanner" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="LocationTracker" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="EventDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="EventTNC" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="AgeGroup" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="BookingType" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="ProcessingFee" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="TicketStock" Type="Int32" />
+          <Property Name="Status" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="tblEventLayoutBlocks" Relationship="JAVADBModel.FK_tblEventLayoutBlocks_tblEvents" FromRole="tblEvent" ToRole="tblEventLayoutBlock" />
+          <NavigationProperty Name="tblLayout" Relationship="JAVADBModel.FK_tblEvents_tblLayout" FromRole="tblEvent" ToRole="tblLayout" />
+          <NavigationProperty Name="tblVenue" Relationship="JAVADBModel.FK_tblEvents_tblVenue" FromRole="tblEvent" ToRole="tblVenue" />
+          <NavigationProperty Name="tblEventVolunteers" Relationship="JAVADBModel.FK_tblEventVolunteers_tblEvents" FromRole="tblEvent" ToRole="tblEventVolunteer" />
+          <NavigationProperty Name="tblSeatSelections" Relationship="JAVADBModel.FK_tblSeatSelections_tblEvents" FromRole="tblEvent" ToRole="tblSeatSelection" />
+          <NavigationProperty Name="tblTickets" Relationship="JAVADBModel.FK_tblTickets_tblEvents" FromRole="tblEvent" ToRole="tblTicket" />
+          <Property Name="PercentEBSeats" Type="Int32" />
+          <Property Name="EarlyBirdTicketSelection" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="TicketsAvailable" Type="Int32" />
+          <Property Name="TicketPrice" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="EBTicketPrice" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="EBMinTicketOrder" Type="Int32" />
+          <Property Name="EBMaxTicketOrder" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tblEventVolunteer">
+          <Key>
+            <PropertyRef Name="EventVolunteerID" />
+          </Key>
+          <Property Name="EventVolunteerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EventID" Type="Int32" />
+          <Property Name="VolunteerID" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tblEvent" Relationship="JAVADBModel.FK_tblEventVolunteers_tblEvents" FromRole="tblEventVolunteer" ToRole="tblEvent" />
+          <NavigationProperty Name="tblVolunteer" Relationship="JAVADBModel.FK_tblEventVolunteers_tblVolunteers" FromRole="tblEventVolunteer" ToRole="tblVolunteer" />
+        </EntityType>
+        <EntityType Name="tblLayout">
+          <Key>
+            <PropertyRef Name="LayoutID" />
+          </Key>
+          <Property Name="LayoutID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VenueID" Type="Int32" />
+          <Property Name="LayoutName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="LayoutNumber" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tblBlocks" Relationship="JAVADBModel.FK_tblBlocks_tblLayout" FromRole="tblLayout" ToRole="tblBlock" />
+          <NavigationProperty Name="tblEvents" Relationship="JAVADBModel.FK_tblEvents_tblLayout" FromRole="tblLayout" ToRole="tblEvent" />
+          <NavigationProperty Name="tblVenue" Relationship="JAVADBModel.FK_tblLayout_tblVenue" FromRole="tblLayout" ToRole="tblVenue" />
+        </EntityType>
+        <EntityType Name="tblMailLog">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderID" Type="Int32" />
+          <Property Name="Email" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="SentDate" Type="DateTime" Precision="3" />
+          <Property Name="MailContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblOrderCoupon">
+          <Key>
+            <PropertyRef Name="OrderCouponID" />
+          </Key>
+          <Property Name="OrderCouponID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CouponID" Type="Int32" />
+          <Property Name="SessionID" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="OrderID" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tblCoupon" Relationship="JAVADBModel.FK_tblOrderCoupons_tblCoupons" FromRole="tblOrderCoupon" ToRole="tblCoupon" />
+          <NavigationProperty Name="tblTicketOrder" Relationship="JAVADBModel.FK_tblOrderCoupons_tblTicketOrders" FromRole="tblOrderCoupon" ToRole="tblTicketOrder" />
+        </EntityType>
+        <EntityType Name="tblOTP">
+          <Key>
+            <PropertyRef Name="OTPID" />
+          </Key>
+          <Property Name="OTPID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Email" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="OTP" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblPastEvent">
+          <Key>
+            <PropertyRef Name="PastEventID" />
+          </Key>
+          <Property Name="PastEventID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EventName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="ImagePath" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Year" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Month" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="tblReleaseLog">
+          <Key>
+            <PropertyRef Name="LogID" />
+          </Key>
+          <Property Name="LogID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SeatID" Type="Int32" />
+          <Property Name="EventID" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="tblSeat">
+          <Key>
+            <PropertyRef Name="SeatID" />
+          </Key>
+          <Property Name="SeatID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SeatRowID" Type="Int32" />
+          <Property Name="SeatNumber" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tblSeatRow" Relationship="JAVADBModel.FK_tblSeat_tblSeatRows" FromRole="tblSeat" ToRole="tblSeatRow" />
+          <NavigationProperty Name="tblSeatSelections" Relationship="JAVADBModel.FK_tblSeatSelections_tblSeat" FromRole="tblSeat" ToRole="tblSeatSelection" />
+        </EntityType>
+        <EntityType Name="tblSeatRow">
+          <Key>
+            <PropertyRef Name="SeatRowID" />
+          </Key>
+          <Property Name="SeatRowID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BlockID" Type="Int32" />
+          <Property Name="RowNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="GroupName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tblBlock" Relationship="JAVADBModel.FK_tblSeatRows_tblBlocks" FromRole="tblSeatRow" ToRole="tblBlock" />
+          <NavigationProperty Name="tblSeats" Relationship="JAVADBModel.FK_tblSeat_tblSeatRows" FromRole="tblSeatRow" ToRole="tblSeat" />
+        </EntityType>
+        <EntityType Name="tblSeatSelection">
+          <Key>
+            <PropertyRef Name="SeatSelectionID" />
+          </Key>
+          <Property Name="SeatSelectionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SessionID" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="SeatID" Type="Int32" />
+          <Property Name="EventID" Type="Int32" />
+          <Property Name="CustomerID" Type="Int32" />
+          <Property Name="TicketID" Type="Int32" />
+          <Property Name="OrderID" Type="Int32" />
+          <Property Name="Price" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tblCustomer" Relationship="JAVADBModel.FK_tblSeatSelections_tblCustomers" FromRole="tblSeatSelection" ToRole="tblCustomer" />
+          <NavigationProperty Name="tblEvent" Relationship="JAVADBModel.FK_tblSeatSelections_tblEvents" FromRole="tblSeatSelection" ToRole="tblEvent" />
+          <NavigationProperty Name="tblSeat" Relationship="JAVADBModel.FK_tblSeatSelections_tblSeat" FromRole="tblSeatSelection" ToRole="tblSeat" />
+          <NavigationProperty Name="tblTicket" Relationship="JAVADBModel.FK_tblSeatSelections_tblTickets" FromRole="tblSeatSelection" ToRole="tblTicket" />
+        </EntityType>
+        <EntityType Name="tblSeatSelectionsLog">
+          <Key>
+            <PropertyRef Name="SeatSelectionLogID" />
+          </Key>
+          <Property Name="SeatSelectionLogID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SessionID" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="SeatID" Type="Int32" />
+          <Property Name="EventID" Type="Int32" />
+          <Property Name="CustomerID" Type="Int32" />
+          <Property Name="TicketID" Type="Int32" />
+          <Property Name="OrderID" Type="Int32" />
+          <Property Name="Price" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="tblTicketOrder">
+          <Key>
+            <PropertyRef Name="OrderID" />
+          </Key>
+          <Property Name="OrderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderNo" Type="Int32" />
+          <Property Name="EventID" Type="Int32" />
+          <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Mobile" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="NoOfTickets" Type="Int32" />
+          <Property Name="AmountPerTicket" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="DiscountAmount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="ProcessingFee" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Amount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Status" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="PaymentStatus" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="PaypalOrderID" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Intent" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="QRCode" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="IsPickedUp" Type="Boolean" />
+          <Property Name="DatePickedUp" Type="DateTime" Precision="3" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tblOrderCoupons" Relationship="JAVADBModel.FK_tblOrderCoupons_tblTicketOrders" FromRole="tblTicketOrder" ToRole="tblOrderCoupon" />
+          <Property Name="TicketType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblTicket">
+          <Key>
+            <PropertyRef Name="TicketID" />
+          </Key>
+          <Property Name="TicketID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TicketNumber" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerID" Type="Int32" />
+          <Property Name="EventID" Type="Int32" />
+          <Property Name="Amount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="PaypalOrderID" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tblCustomer" Relationship="JAVADBModel.FK_tblTickets_tblCustomers" FromRole="tblTicket" ToRole="tblCustomer" />
+          <NavigationProperty Name="tblEvent" Relationship="JAVADBModel.FK_tblTickets_tblEvents" FromRole="tblTicket" ToRole="tblEvent" />
+          <NavigationProperty Name="tblSeatSelections" Relationship="JAVADBModel.FK_tblSeatSelections_tblTickets" FromRole="tblTicket" ToRole="tblSeatSelection" />
+        </EntityType>
+        <EntityType Name="tblTier">
+          <Key>
+            <PropertyRef Name="TierID" />
+          </Key>
+          <Property Name="TierID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TierName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="Status" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="tblEventLayoutBlocks" Relationship="JAVADBModel.FK_tblEventLayoutBlocks_tblTier" FromRole="tblTier" ToRole="tblEventLayoutBlock" />
+        </EntityType>
+        <EntityType Name="tblTierCoupon">
+          <Key>
+            <PropertyRef Name="TierCouponID" />
+          </Key>
+          <Property Name="TierCouponID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CouponGroupID" Type="Int32" />
+          <Property Name="TierID" Type="Int32" />
+          <Property Name="EventID" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tblCouponGroup" Relationship="JAVADBModel.FK_tblTierCoupons_tblCouponGroups" FromRole="tblTierCoupon" ToRole="tblCouponGroup" />
+        </EntityType>
+        <EntityType Name="tblVenue">
+          <Key>
+            <PropertyRef Name="VenueID" />
+          </Key>
+          <Property Name="VenueID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VenueName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="VenueNumber" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="SeatingChart" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="AppSeatingChart" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tblEvents" Relationship="JAVADBModel.FK_tblEvents_tblVenue" FromRole="tblVenue" ToRole="tblEvent" />
+          <NavigationProperty Name="tblLayouts" Relationship="JAVADBModel.FK_tblLayout_tblVenue" FromRole="tblVenue" ToRole="tblLayout" />
+        </EntityType>
+        <EntityType Name="tblVolunteer">
+          <Key>
+            <PropertyRef Name="VolunteerID" />
+          </Key>
+          <Property Name="VolunteerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Username" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tblEventVolunteers" Relationship="JAVADBModel.FK_tblEventVolunteers_tblVolunteers" FromRole="tblVolunteer" ToRole="tblEventVolunteer" />
+        </EntityType>
+        <EntityType Name="TempOrder">
+          <Key>
+            <PropertyRef Name="TempID" />
+          </Key>
+          <Property Name="TempID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PaypalID" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Amount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="EventID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="TempTicket">
+          <Key>
+            <PropertyRef Name="TempTicketID" />
+          </Key>
+          <Property Name="TempTicketID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderID" Type="Int32" />
+          <Property Name="EventID" Type="Int32" />
+          <Property Name="NoOfTickets" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="VOBARegistration">
+          <Key>
+            <PropertyRef Name="RegistrationID" />
+          </Key>
+          <Property Name="RegistrationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ParentName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="ParentEmail" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="ParentMobile" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="ChildName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="ChildDOB" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="TermsAccepted" Type="Boolean" />
+          <Property Name="Amount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="PaymentStatus" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="PaypalOrderID" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Intent" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <Association Name="FK_tblBlocks_tblLayout">
+          <End Type="JAVADBModel.tblLayout" Role="tblLayout" Multiplicity="0..1" />
+          <End Type="JAVADBModel.tblBlock" Role="tblBlock" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblLayout">
+              <PropertyRef Name="LayoutID" />
+            </Principal>
+            <Dependent Role="tblBlock">
+              <PropertyRef Name="LayoutID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblEventLayoutBlocks_tblBlocks">
+          <End Type="JAVADBModel.tblBlock" Role="tblBlock" Multiplicity="0..1" />
+          <End Type="JAVADBModel.tblEventLayoutBlock" Role="tblEventLayoutBlock" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblBlock">
+              <PropertyRef Name="BlockID" />
+            </Principal>
+            <Dependent Role="tblEventLayoutBlock">
+              <PropertyRef Name="BlockID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblSeatRows_tblBlocks">
+          <End Type="JAVADBModel.tblBlock" Role="tblBlock" Multiplicity="0..1" />
+          <End Type="JAVADBModel.tblSeatRow" Role="tblSeatRow" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblBlock">
+              <PropertyRef Name="BlockID" />
+            </Principal>
+            <Dependent Role="tblSeatRow">
+              <PropertyRef Name="BlockID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblCoupons_tblCoupons">
+          <End Type="JAVADBModel.tblCouponGroup" Role="tblCouponGroup" Multiplicity="0..1" />
+          <End Type="JAVADBModel.tblCoupon" Role="tblCoupon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCouponGroup">
+              <PropertyRef Name="CouponGroupID" />
+            </Principal>
+            <Dependent Role="tblCoupon">
+              <PropertyRef Name="CouponGroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblTierCoupons_tblCouponGroups">
+          <End Type="JAVADBModel.tblCouponGroup" Role="tblCouponGroup" Multiplicity="0..1" />
+          <End Type="JAVADBModel.tblTierCoupon" Role="tblTierCoupon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCouponGroup">
+              <PropertyRef Name="CouponGroupID" />
+            </Principal>
+            <Dependent Role="tblTierCoupon">
+              <PropertyRef Name="CouponGroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblOrderCoupons_tblCoupons">
+          <End Type="JAVADBModel.tblCoupon" Role="tblCoupon" Multiplicity="0..1" />
+          <End Type="JAVADBModel.tblOrderCoupon" Role="tblOrderCoupon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCoupon">
+              <PropertyRef Name="CouponID" />
+            </Principal>
+            <Dependent Role="tblOrderCoupon">
+              <PropertyRef Name="CouponID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblSeatSelections_tblCustomers">
+          <End Type="JAVADBModel.tblCustomer" Role="tblCustomer" Multiplicity="0..1" />
+          <End Type="JAVADBModel.tblSeatSelection" Role="tblSeatSelection" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCustomer">
+              <PropertyRef Name="CustomerID" />
+            </Principal>
+            <Dependent Role="tblSeatSelection">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblTickets_tblCustomers">
+          <End Type="JAVADBModel.tblCustomer" Role="tblCustomer" Multiplicity="0..1" />
+          <End Type="JAVADBModel.tblTicket" Role="tblTicket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCustomer">
+              <PropertyRef Name="CustomerID" />
+            </Principal>
+            <Dependent Role="tblTicket">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblEventLayoutBlocks_tblEvents">
+          <End Type="JAVADBModel.tblEvent" Role="tblEvent" Multiplicity="0..1" />
+          <End Type="JAVADBModel.tblEventLayoutBlock" Role="tblEventLayoutBlock" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblEvent">
+              <PropertyRef Name="EventID" />
+            </Principal>
+            <Dependent Role="tblEventLayoutBlock">
+              <PropertyRef Name="EventID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblEventLayoutBlocks_tblTier">
+          <End Type="JAVADBModel.tblTier" Role="tblTier" Multiplicity="0..1" />
+          <End Type="JAVADBModel.tblEventLayoutBlock" Role="tblEventLayoutBlock" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblTier">
+              <PropertyRef Name="TierID" />
+            </Principal>
+            <Dependent Role="tblEventLayoutBlock">
+              <PropertyRef Name="TierID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblEvents_tblLayout">
+          <End Type="JAVADBModel.tblLayout" Role="tblLayout" Multiplicity="0..1" />
+          <End Type="JAVADBModel.tblEvent" Role="tblEvent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblLayout">
+              <PropertyRef Name="LayoutID" />
+            </Principal>
+            <Dependent Role="tblEvent">
+              <PropertyRef Name="LayoutID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblEvents_tblVenue">
+          <End Type="JAVADBModel.tblVenue" Role="tblVenue" Multiplicity="0..1" />
+          <End Type="JAVADBModel.tblEvent" Role="tblEvent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblVenue">
+              <PropertyRef Name="VenueID" />
+            </Principal>
+            <Dependent Role="tblEvent">
+              <PropertyRef Name="VenueID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblEventVolunteers_tblEvents">
+          <End Type="JAVADBModel.tblEvent" Role="tblEvent" Multiplicity="0..1" />
+          <End Type="JAVADBModel.tblEventVolunteer" Role="tblEventVolunteer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblEvent">
+              <PropertyRef Name="EventID" />
+            </Principal>
+            <Dependent Role="tblEventVolunteer">
+              <PropertyRef Name="EventID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblSeatSelections_tblEvents">
+          <End Type="JAVADBModel.tblEvent" Role="tblEvent" Multiplicity="0..1" />
+          <End Type="JAVADBModel.tblSeatSelection" Role="tblSeatSelection" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblEvent">
+              <PropertyRef Name="EventID" />
+            </Principal>
+            <Dependent Role="tblSeatSelection">
+              <PropertyRef Name="EventID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblTickets_tblEvents">
+          <End Type="JAVADBModel.tblEvent" Role="tblEvent" Multiplicity="0..1" />
+          <End Type="JAVADBModel.tblTicket" Role="tblTicket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblEvent">
+              <PropertyRef Name="EventID" />
+            </Principal>
+            <Dependent Role="tblTicket">
+              <PropertyRef Name="EventID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblEventVolunteers_tblVolunteers">
+          <End Type="JAVADBModel.tblVolunteer" Role="tblVolunteer" Multiplicity="0..1" />
+          <End Type="JAVADBModel.tblEventVolunteer" Role="tblEventVolunteer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblVolunteer">
+              <PropertyRef Name="VolunteerID" />
+            </Principal>
+            <Dependent Role="tblEventVolunteer">
+              <PropertyRef Name="VolunteerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblLayout_tblVenue">
+          <End Type="JAVADBModel.tblVenue" Role="tblVenue" Multiplicity="0..1" />
+          <End Type="JAVADBModel.tblLayout" Role="tblLayout" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblVenue">
+              <PropertyRef Name="VenueID" />
+            </Principal>
+            <Dependent Role="tblLayout">
+              <PropertyRef Name="VenueID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblOrderCoupons_tblTicketOrders">
+          <End Type="JAVADBModel.tblTicketOrder" Role="tblTicketOrder" Multiplicity="0..1" />
+          <End Type="JAVADBModel.tblOrderCoupon" Role="tblOrderCoupon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblTicketOrder">
+              <PropertyRef Name="OrderID" />
+            </Principal>
+            <Dependent Role="tblOrderCoupon">
+              <PropertyRef Name="OrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblSeat_tblSeatRows">
+          <End Type="JAVADBModel.tblSeatRow" Role="tblSeatRow" Multiplicity="0..1" />
+          <End Type="JAVADBModel.tblSeat" Role="tblSeat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblSeatRow">
+              <PropertyRef Name="SeatRowID" />
+            </Principal>
+            <Dependent Role="tblSeat">
+              <PropertyRef Name="SeatRowID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblSeatSelections_tblSeat">
+          <End Type="JAVADBModel.tblSeat" Role="tblSeat" Multiplicity="0..1" />
+          <End Type="JAVADBModel.tblSeatSelection" Role="tblSeatSelection" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblSeat">
+              <PropertyRef Name="SeatID" />
+            </Principal>
+            <Dependent Role="tblSeatSelection">
+              <PropertyRef Name="SeatID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblSeatSelections_tblTickets">
+          <End Type="JAVADBModel.tblTicket" Role="tblTicket" Multiplicity="0..1" />
+          <End Type="JAVADBModel.tblSeatSelection" Role="tblSeatSelection" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblTicket">
+              <PropertyRef Name="TicketID" />
+            </Principal>
+            <Dependent Role="tblSeatSelection">
+              <PropertyRef Name="TicketID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="JAVADBModelStoreContainer" CdmEntityContainer="JAVADBEntities">
+          <EntitySetMapping Name="tblAdminUsers">
+            <EntityTypeMapping TypeName="JAVADBModel.tblAdminUser">
+              <MappingFragment StoreEntitySet="tblAdminUsers">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblAppVersions">
+            <EntityTypeMapping TypeName="JAVADBModel.tblAppVersion">
+              <MappingFragment StoreEntitySet="tblAppVersions">
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="Version" ColumnName="Version" />
+                <ScalarProperty Name="AppVersionID" ColumnName="AppVersionID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblBlocks">
+            <EntityTypeMapping TypeName="JAVADBModel.tblBlock">
+              <MappingFragment StoreEntitySet="tblBlocks">
+                <ScalarProperty Name="BlockNumber" ColumnName="BlockNumber" />
+                <ScalarProperty Name="LayoutID" ColumnName="LayoutID" />
+                <ScalarProperty Name="BlockID" ColumnName="BlockID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblCouponGroups">
+            <EntityTypeMapping TypeName="JAVADBModel.tblCouponGroup">
+              <MappingFragment StoreEntitySet="tblCouponGroups">
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="Tiers" ColumnName="Tiers" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="DiscountIn" ColumnName="DiscountIn" />
+                <ScalarProperty Name="NoOfCoupons" ColumnName="NoOfCoupons" />
+                <ScalarProperty Name="Prefix" ColumnName="Prefix" />
+                <ScalarProperty Name="EventID" ColumnName="EventID" />
+                <ScalarProperty Name="CouponGroupID" ColumnName="CouponGroupID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblCoupons">
+            <EntityTypeMapping TypeName="JAVADBModel.tblCoupon">
+              <MappingFragment StoreEntitySet="tblCoupons">
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+                <ScalarProperty Name="UsedDate" ColumnName="UsedDate" />
+                <ScalarProperty Name="IsUsed" ColumnName="IsUsed" />
+                <ScalarProperty Name="EventID" ColumnName="EventID" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="DiscountIn" ColumnName="DiscountIn" />
+                <ScalarProperty Name="CouponCode" ColumnName="CouponCode" />
+                <ScalarProperty Name="CouponGroupID" ColumnName="CouponGroupID" />
+                <ScalarProperty Name="CouponID" ColumnName="CouponID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblCustomers">
+            <EntityTypeMapping TypeName="JAVADBModel.tblCustomer">
+              <MappingFragment StoreEntitySet="tblCustomers">
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblEventArtists">
+            <EntityTypeMapping TypeName="JAVADBModel.tblEventArtist">
+              <MappingFragment StoreEntitySet="tblEventArtists">
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="EventID" ColumnName="EventID" />
+                <ScalarProperty Name="ArtistID" ColumnName="ArtistID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblEventLayoutBlocks">
+            <EntityTypeMapping TypeName="JAVADBModel.tblEventLayoutBlock">
+              <MappingFragment StoreEntitySet="tblEventLayoutBlocks">
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="TierID" ColumnName="TierID" />
+                <ScalarProperty Name="BlockID" ColumnName="BlockID" />
+                <ScalarProperty Name="EventID" ColumnName="EventID" />
+                <ScalarProperty Name="EventLayoutBlockID" ColumnName="EventLayoutBlockID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblEvents">
+            <EntityTypeMapping TypeName="JAVADBModel.tblEvent">
+              <MappingFragment StoreEntitySet="tblEvents">
+                <ScalarProperty Name="EBMaxTicketOrder" ColumnName="EBMaxTicketOrder" />
+                <ScalarProperty Name="EBMinTicketOrder" ColumnName="EBMinTicketOrder" />
+                <ScalarProperty Name="EBTicketPrice" ColumnName="EBTicketPrice" />
+                <ScalarProperty Name="TicketPrice" ColumnName="TicketPrice" />
+                <ScalarProperty Name="TicketsAvailable" ColumnName="TicketsAvailable" />
+                <ScalarProperty Name="EarlyBirdTicketSelection" ColumnName="EarlyBirdTicketSelection" />
+                <ScalarProperty Name="PercentEBSeats" ColumnName="PercentEBSeats" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="TicketStock" ColumnName="TicketStock" />
+                <ScalarProperty Name="ProcessingFee" ColumnName="ProcessingFee" />
+                <ScalarProperty Name="BookingType" ColumnName="BookingType" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="AgeGroup" ColumnName="AgeGroup" />
+                <ScalarProperty Name="EventTNC" ColumnName="EventTNC" />
+                <ScalarProperty Name="EventDescription" ColumnName="EventDescription" />
+                <ScalarProperty Name="LocationTracker" ColumnName="LocationTracker" />
+                <ScalarProperty Name="EventHomeBanner" ColumnName="EventHomeBanner" />
+                <ScalarProperty Name="EventMainBanner" ColumnName="EventMainBanner" />
+                <ScalarProperty Name="EventBanner" ColumnName="EventBanner" />
+                <ScalarProperty Name="ShowTime" ColumnName="ShowTime" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EventDate" ColumnName="EventDate" />
+                <ScalarProperty Name="EventDurationType" ColumnName="EventDurationType" />
+                <ScalarProperty Name="EventPlaytime" ColumnName="EventPlaytime" />
+                <ScalarProperty Name="EventLanguage" ColumnName="EventLanguage" />
+                <ScalarProperty Name="EventType" ColumnName="EventType" />
+                <ScalarProperty Name="EventName" ColumnName="EventName" />
+                <ScalarProperty Name="LayoutID" ColumnName="LayoutID" />
+                <ScalarProperty Name="VenueID" ColumnName="VenueID" />
+                <ScalarProperty Name="EventID" ColumnName="EventID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblEventVolunteers">
+            <EntityTypeMapping TypeName="JAVADBModel.tblEventVolunteer">
+              <MappingFragment StoreEntitySet="tblEventVolunteers">
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="VolunteerID" ColumnName="VolunteerID" />
+                <ScalarProperty Name="EventID" ColumnName="EventID" />
+                <ScalarProperty Name="EventVolunteerID" ColumnName="EventVolunteerID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblLayouts">
+            <EntityTypeMapping TypeName="JAVADBModel.tblLayout">
+              <MappingFragment StoreEntitySet="tblLayout">
+                <ScalarProperty Name="LayoutNumber" ColumnName="LayoutNumber" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="LayoutName" ColumnName="LayoutName" />
+                <ScalarProperty Name="VenueID" ColumnName="VenueID" />
+                <ScalarProperty Name="LayoutID" ColumnName="LayoutID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblMailLogs">
+            <EntityTypeMapping TypeName="JAVADBModel.tblMailLog">
+              <MappingFragment StoreEntitySet="tblMailLog">
+                <ScalarProperty Name="MailContent" ColumnName="MailContent" />
+                <ScalarProperty Name="SentDate" ColumnName="SentDate" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblOrderCoupons">
+            <EntityTypeMapping TypeName="JAVADBModel.tblOrderCoupon">
+              <MappingFragment StoreEntitySet="tblOrderCoupons">
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+                <ScalarProperty Name="SessionID" ColumnName="SessionID" />
+                <ScalarProperty Name="CouponID" ColumnName="CouponID" />
+                <ScalarProperty Name="OrderCouponID" ColumnName="OrderCouponID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblOTPS">
+            <EntityTypeMapping TypeName="JAVADBModel.tblOTP">
+              <MappingFragment StoreEntitySet="tblOTPS">
+                <ScalarProperty Name="OTP" ColumnName="OTP" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="OTPID" ColumnName="OTPID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblPastEvents">
+            <EntityTypeMapping TypeName="JAVADBModel.tblPastEvent">
+              <MappingFragment StoreEntitySet="tblPastEvents">
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="Month" ColumnName="Month" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="ImagePath" ColumnName="ImagePath" />
+                <ScalarProperty Name="EventName" ColumnName="EventName" />
+                <ScalarProperty Name="PastEventID" ColumnName="PastEventID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblReleaseLogs">
+            <EntityTypeMapping TypeName="JAVADBModel.tblReleaseLog">
+              <MappingFragment StoreEntitySet="tblReleaseLog">
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="EventID" ColumnName="EventID" />
+                <ScalarProperty Name="SeatID" ColumnName="SeatID" />
+                <ScalarProperty Name="LogID" ColumnName="LogID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblSeats">
+            <EntityTypeMapping TypeName="JAVADBModel.tblSeat">
+              <MappingFragment StoreEntitySet="tblSeat">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="SeatNumber" ColumnName="SeatNumber" />
+                <ScalarProperty Name="SeatRowID" ColumnName="SeatRowID" />
+                <ScalarProperty Name="SeatID" ColumnName="SeatID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblSeatRows">
+            <EntityTypeMapping TypeName="JAVADBModel.tblSeatRow">
+              <MappingFragment StoreEntitySet="tblSeatRows">
+                <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+                <ScalarProperty Name="RowNumber" ColumnName="RowNumber" />
+                <ScalarProperty Name="BlockID" ColumnName="BlockID" />
+                <ScalarProperty Name="SeatRowID" ColumnName="SeatRowID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblSeatSelections">
+            <EntityTypeMapping TypeName="JAVADBModel.tblSeatSelection">
+              <MappingFragment StoreEntitySet="tblSeatSelections">
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+                <ScalarProperty Name="TicketID" ColumnName="TicketID" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="EventID" ColumnName="EventID" />
+                <ScalarProperty Name="SeatID" ColumnName="SeatID" />
+                <ScalarProperty Name="SessionID" ColumnName="SessionID" />
+                <ScalarProperty Name="SeatSelectionID" ColumnName="SeatSelectionID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblSeatSelectionsLogs">
+            <EntityTypeMapping TypeName="JAVADBModel.tblSeatSelectionsLog">
+              <MappingFragment StoreEntitySet="tblSeatSelectionsLog">
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+                <ScalarProperty Name="TicketID" ColumnName="TicketID" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="EventID" ColumnName="EventID" />
+                <ScalarProperty Name="SeatID" ColumnName="SeatID" />
+                <ScalarProperty Name="SessionID" ColumnName="SessionID" />
+                <ScalarProperty Name="SeatSelectionLogID" ColumnName="SeatSelectionLogID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblTicketOrders">
+            <EntityTypeMapping TypeName="JAVADBModel.tblTicketOrder">
+              <MappingFragment StoreEntitySet="tblTicketOrders">
+                <ScalarProperty Name="TicketType" ColumnName="TicketType" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="DatePickedUp" ColumnName="DatePickedUp" />
+                <ScalarProperty Name="IsPickedUp" ColumnName="IsPickedUp" />
+                <ScalarProperty Name="QRCode" ColumnName="QRCode" />
+                <ScalarProperty Name="Intent" ColumnName="Intent" />
+                <ScalarProperty Name="PaypalOrderID" ColumnName="PaypalOrderID" />
+                <ScalarProperty Name="PaymentStatus" ColumnName="PaymentStatus" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="ProcessingFee" ColumnName="ProcessingFee" />
+                <ScalarProperty Name="DiscountAmount" ColumnName="DiscountAmount" />
+                <ScalarProperty Name="AmountPerTicket" ColumnName="AmountPerTicket" />
+                <ScalarProperty Name="NoOfTickets" ColumnName="NoOfTickets" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="EventID" ColumnName="EventID" />
+                <ScalarProperty Name="OrderNo" ColumnName="OrderNo" />
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblTickets">
+            <EntityTypeMapping TypeName="JAVADBModel.tblTicket">
+              <MappingFragment StoreEntitySet="tblTickets">
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="PaypalOrderID" ColumnName="PaypalOrderID" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="EventID" ColumnName="EventID" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="TicketNumber" ColumnName="TicketNumber" />
+                <ScalarProperty Name="TicketID" ColumnName="TicketID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblTiers">
+            <EntityTypeMapping TypeName="JAVADBModel.tblTier">
+              <MappingFragment StoreEntitySet="tblTier">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="TierName" ColumnName="TierName" />
+                <ScalarProperty Name="TierID" ColumnName="TierID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblTierCoupons">
+            <EntityTypeMapping TypeName="JAVADBModel.tblTierCoupon">
+              <MappingFragment StoreEntitySet="tblTierCoupons">
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="EventID" ColumnName="EventID" />
+                <ScalarProperty Name="TierID" ColumnName="TierID" />
+                <ScalarProperty Name="CouponGroupID" ColumnName="CouponGroupID" />
+                <ScalarProperty Name="TierCouponID" ColumnName="TierCouponID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblVenues">
+            <EntityTypeMapping TypeName="JAVADBModel.tblVenue">
+              <MappingFragment StoreEntitySet="tblVenue">
+                <ScalarProperty Name="AppSeatingChart" ColumnName="AppSeatingChart" />
+                <ScalarProperty Name="SeatingChart" ColumnName="SeatingChart" />
+                <ScalarProperty Name="VenueNumber" ColumnName="VenueNumber" />
+                <ScalarProperty Name="VenueName" ColumnName="VenueName" />
+                <ScalarProperty Name="VenueID" ColumnName="VenueID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblVolunteers">
+            <EntityTypeMapping TypeName="JAVADBModel.tblVolunteer">
+              <MappingFragment StoreEntitySet="tblVolunteers">
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="VolunteerID" ColumnName="VolunteerID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TempOrders">
+            <EntityTypeMapping TypeName="JAVADBModel.TempOrder">
+              <MappingFragment StoreEntitySet="TempOrders">
+                <ScalarProperty Name="EventID" ColumnName="EventID" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="PaypalID" ColumnName="PaypalID" />
+                <ScalarProperty Name="TempID" ColumnName="TempID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TempTickets">
+            <EntityTypeMapping TypeName="JAVADBModel.TempTicket">
+              <MappingFragment StoreEntitySet="TempTickets">
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="NoOfTickets" ColumnName="NoOfTickets" />
+                <ScalarProperty Name="EventID" ColumnName="EventID" />
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+                <ScalarProperty Name="TempTicketID" ColumnName="TempTicketID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VOBARegistrations">
+            <EntityTypeMapping TypeName="JAVADBModel.VOBARegistration">
+              <MappingFragment StoreEntitySet="VOBARegistration">
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="Intent" ColumnName="Intent" />
+                <ScalarProperty Name="PaypalOrderID" ColumnName="PaypalOrderID" />
+                <ScalarProperty Name="PaymentStatus" ColumnName="PaymentStatus" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="TermsAccepted" ColumnName="TermsAccepted" />
+                <ScalarProperty Name="ChildDOB" ColumnName="ChildDOB" />
+                <ScalarProperty Name="ChildName" ColumnName="ChildName" />
+                <ScalarProperty Name="ParentMobile" ColumnName="ParentMobile" />
+                <ScalarProperty Name="ParentEmail" ColumnName="ParentEmail" />
+                <ScalarProperty Name="ParentName" ColumnName="ParentName" />
+                <ScalarProperty Name="RegistrationID" ColumnName="RegistrationID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,200 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script src="~/App_Scripts/jquery.validate.js"></script>
+
+<script type="text/javascript">
+
+    $(function () {
+
+        $("#frmRegister").validate({
+            rules: {
+                txtFirstName: {
+                    required: true
+                },
+                txtMobile: {
+                    required: true,
+                    digits: true
+                },
+                txtEmail: {
+                    required: true,
+                    email: true
+                },
+                txtRegPassword: {
+                    required: true,
+                },
+                txtRegConfPassword: {
+                    required: true,
+                    equalTo: "#txtRegPassword"
+                },
+            },
+            messages: {
+                txtFirstName: {
+                    required: "Please enter first name"
+                },
+                txtMobile: {
+                    required: "Please enter first name",
+                    digits: "Mobile number should be in digits"
+                },
+                txtEmail: {
+                    required: "Please enter email id",
+                    email: "Please check email id format"
+                },
+                txtRegPassword: {
+                    required: "Please enter your password",
+                },
+                txtRegConfPassword: {
+                    required: true,
+                    equalTo: "Passwords should match"
+                },
+            },
+            errorPlacement: function (error, element) {
+                if (element.attr("name") == "txtFirstName")
+                    $('#lblFirstName').html(error);
+
+                if (element.attr("name") == "txtRegPassword")
+                    $('#lblRegPassword').html(error);
+
+                if (element.attr("name") == "txtRegConfPassword")
+                    $('#lblRegConfPassword').html(error);
+
+                if (element.attr("name") == "txtEmail")
+                    $('#lblEmail').html(error);
+
+                if (element.attr("name") == "txtMobile")
+                    $('#lblMobile').html(error);
+            }
+        });
+
+        $("#txtMobile").on("keyup", function () {
+            CheckIfExists();
+        });
+
+        $("#txtEmail").on("keyup", function () {
+            CheckIfExists();
+        });
+    });
+
+
+    function Register() {
+        if ($("#frmRegister").valid()) {
+            $("#btnRegister").hide();
+            $("#reg_loader").html("Please wait...");
+
+            $.ajax({
+                url: "/Register/Register",
+                data: $("#frmRegister").serialize(),
+                type: "POST",
+                success: function (response) {
+                    if (response.status == "OK") {
+                        alert("Registration successful.")
+                        location.href = "/Home";
+                    }
+                    else if (response.status == "EXIST") {
+                        if (response.mobile == 'True' && response.email == 'False') {
+                            $("#btnRegister").hide();
+                            $("#ErrorMessage").html("This mobile number is already registered with us.");
+                        }
+                        else if (response.email == 'True' && response.mobile == 'False') {
+                            $("#btnRegister").hide();
+                            $("#ErrorMessage").html("This email id is already registered with us.");
+                        }
+                        else if (response.email == 'True' && response.mobile == 'True') {
+                            $("#btnRegister").hide();
+                            $("#ErrorMessage").html("This mobile number & email id is already registered with us.");
+                        }
+                    }
+                }
+            });
+        }
+    }
+
+
+    function CheckIfExists() {
+        var mobile = $("#txtMobile").val();
+        var email = $("#txtEmail").val();
+
+        $.ajax({
+            url: "/Register/IsAccountExists",
+            data: { mobile: mobile, email: email },
+            type: "GET",
+            success: function (response) {
+                if (response.email == 'False' && response.mobile == 'False') {
+                    $("#btnRegister").show();
+                    $("#ErrorMessage").html("");
+                }
+                else {
+                    if (response.mobile == 'True' && response.email == 'False') {
+                        $("#btnRegister").hide();
+                        $("#ErrorMessage").html("This mobile number is already registered with us.");
+                    }
+                    else if (response.email == 'True' && response.mobile == 'False') {
+                        $("#btnRegister").hide();
+                        $("#ErrorMessage").html("This email id is already registered with us.");
+                    }
+                    else if (response.email == 'True' && response.mobile == 'True') {
+                        $("#btnRegister").hide();
+                        $("#ErrorMessage").html("This mobile number & email id is already registered with us.");
+                    }
+                }
+            }
+        });
+    }
+</script>
+
+<div class="ContentWrap">
+    <div class="MainInnerLabel">Register with Javanika.com</div>
+    <form id="frmRegister">
+        <div class="InnerFieldsBlock">
+            <div class="InnerLabel">First Name</div>
+            <div class="InnerTxtWrap"><input type="text" class="InnerTxtBox" id="txtFirstName" name="txtFirstName" /></div>
+            <div class="InnertxtValid" id="lblFirstName">We call you with this...</div>
+            <div class="clr"></div>
+        </div>
+
+        <div class="InnerFieldsBlock">
+            <div class="InnerLabel">Last Name</div>
+            <div class="InnerTxtWrap"><input type="text" class="InnerTxtBox" id="txtLastName" name="txtLastName" /></div>
+            <div class="InnertxtValid" id="lblLastName">This is not mandatory!</div>
+            <div class="clr"></div>
+        </div>
+
+        <div class="InnerFieldsBlock">
+            <div class="InnerLabel">Mobile</div>
+            <div class="InnerTxtWrap"><input type="text" class="InnerTxtBox" id="txtMobile" name="txtMobile" /></div>
+            <div class="InnertxtValid" id="lblMobile">To get you personalised update</div>
+            <div class="clr"></div>
+        </div>
+
+        <div class="InnerFieldsBlock">
+            <div class="InnerLabel">Email ID</div>
+            <div class="InnerTxtWrap"><input type="text" class="InnerTxtBox" id="txtEmail" name="txtEmail" /></div>
+            <div class="InnertxtValid" id="lblEmail">All transaactional updates will land here</div>
+            <div class="clr"></div>
+        </div>
+
+        <div class="InnerFieldsBlock">
+            <div class="InnerLabel">Password</div>
+            <div class="InnerTxtWrap"><input type="password" class="InnerTxtBox" id="txtRegPassword" name="txtRegPassword" /></div>
+            <div class="InnertxtValid" id="lblRegPassword">Include Alphabets, Numbers, characters...</div>
+            <div class="clr"></div>
+        </div>
+
+        <div class="InnerFieldsBlock">
+            <div class="InnerLabel">Confirm Password</div>
+            <div class="InnerTxtWrap"><input type="password" class="InnerTxtBox" id="txtRegConfPassword" name="txtRegConfPassword" /></div>
+            <div class="InnertxtValid" id="lblRegConfPassword">This is for Validation</div>
+            <div class="clr"></div>
+        </div>
+
+        <div class="InnerFieldsBlock">
+            <div class="InnerLabel"></div>
+            <div class="InnerTxtWrap"><button class="InnerBtnStyle" id="btnRegister" type="button" onclick="JavaScript: Register();">Register</button><span id="reg_loader"></span></div>
+            <div class="InnerTxtWrap" id="ErrorMessage"></div>
+            <div class="clr"></div>
+        </div>
+    </form>
+</div>

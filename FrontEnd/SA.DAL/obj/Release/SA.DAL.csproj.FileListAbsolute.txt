@@ -1,0 +1,13 @@
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\SA.DAL\obj\Release\SA.DAL.csprojAssemblyReference.cache
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\SA.DAL\obj\Release\SA.DAL.csproj.CoreCompileInputs.cache
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\SA.DAL\bin\Release\SA.DAL.dll
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\SA.DAL\bin\Release\SA.DAL.pdb
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\SA.DAL\bin\Release\SA.Logger.dll
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\SA.DAL\bin\Release\SA.Models.dll
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\SA.DAL\bin\Release\log4net.dll
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\SA.DAL\bin\Release\SA.Logger.pdb
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\SA.DAL\bin\Release\SA.Models.pdb
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\SA.DAL\bin\Release\log4net.xml
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\SA.DAL\obj\Release\SA.DAL.csproj.CopyComplete
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\SA.DAL\obj\Release\SA.DAL.dll
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\SA.DAL\obj\Release\SA.DAL.pdb

@@ -1,0 +1,8 @@
+2021-12-05 14:22:25,668 [5] ERROR MonitoringLogger - aaa
+2021-12-05 15:24:44,939 [5] DEBUG DebugLogger - aaa
+2021-12-05 15:25:40,400 [5] DEBUG DebugLogger - aaa
+2021-12-05 15:27:15,928 [5] DEBUG DebugLogger - Home Controller
+2021-12-05 15:36:42,539 [5] DEBUG SA.LA.ExceptionLogger - Home Controller
+2021-12-05 15:38:21,489 [5] DEBUG SA.LA.ExceptionLogger - Home Controller
+2021-12-05 15:48:56,507 [5] DEBUG SA.LA.ExceptionLogger - Home Controller
+2021-12-05 15:50:12,474 [5] INFO SA.LA.ExceptionLogger - Home Controller

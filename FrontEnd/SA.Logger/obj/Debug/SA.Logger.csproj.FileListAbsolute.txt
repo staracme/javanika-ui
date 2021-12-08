@@ -1,0 +1,9 @@
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\SA.Logger\bin\Debug\SA.Logger.dll
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\SA.Logger\bin\Debug\SA.Logger.pdb
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\SA.Logger\bin\Debug\log4net.dll
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\SA.Logger\bin\Debug\log4net.xml
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\SA.Logger\obj\Debug\SA.Logger.csproj.CoreCompileInputs.cache
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\SA.Logger\obj\Debug\SA.Logger.csproj.CopyComplete
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\SA.Logger\obj\Debug\SA.Logger.dll
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\SA.Logger\obj\Debug\SA.Logger.pdb
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\SA.Logger\obj\Debug\SA.Logger.csprojAssemblyReference.cache

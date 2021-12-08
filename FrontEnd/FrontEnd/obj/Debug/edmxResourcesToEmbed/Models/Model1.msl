@@ -1,0 +1,384 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="JAVADBModelStoreContainer" CdmEntityContainer="JAVADBEntities">
+    <EntitySetMapping Name="tblAdminUsers">
+      <EntityTypeMapping TypeName="JAVADBModel.tblAdminUser">
+        <MappingFragment StoreEntitySet="tblAdminUsers">
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblAppVersions">
+      <EntityTypeMapping TypeName="JAVADBModel.tblAppVersion">
+        <MappingFragment StoreEntitySet="tblAppVersions">
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="Version" ColumnName="Version" />
+          <ScalarProperty Name="AppVersionID" ColumnName="AppVersionID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblBlocks">
+      <EntityTypeMapping TypeName="JAVADBModel.tblBlock">
+        <MappingFragment StoreEntitySet="tblBlocks">
+          <ScalarProperty Name="BlockNumber" ColumnName="BlockNumber" />
+          <ScalarProperty Name="LayoutID" ColumnName="LayoutID" />
+          <ScalarProperty Name="BlockID" ColumnName="BlockID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblCouponGroups">
+      <EntityTypeMapping TypeName="JAVADBModel.tblCouponGroup">
+        <MappingFragment StoreEntitySet="tblCouponGroups">
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="Tiers" ColumnName="Tiers" />
+          <ScalarProperty Name="Discount" ColumnName="Discount" />
+          <ScalarProperty Name="DiscountIn" ColumnName="DiscountIn" />
+          <ScalarProperty Name="NoOfCoupons" ColumnName="NoOfCoupons" />
+          <ScalarProperty Name="Prefix" ColumnName="Prefix" />
+          <ScalarProperty Name="EventID" ColumnName="EventID" />
+          <ScalarProperty Name="CouponGroupID" ColumnName="CouponGroupID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblCoupons">
+      <EntityTypeMapping TypeName="JAVADBModel.tblCoupon">
+        <MappingFragment StoreEntitySet="tblCoupons">
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+          <ScalarProperty Name="UsedDate" ColumnName="UsedDate" />
+          <ScalarProperty Name="IsUsed" ColumnName="IsUsed" />
+          <ScalarProperty Name="EventID" ColumnName="EventID" />
+          <ScalarProperty Name="Discount" ColumnName="Discount" />
+          <ScalarProperty Name="DiscountIn" ColumnName="DiscountIn" />
+          <ScalarProperty Name="CouponCode" ColumnName="CouponCode" />
+          <ScalarProperty Name="CouponGroupID" ColumnName="CouponGroupID" />
+          <ScalarProperty Name="CouponID" ColumnName="CouponID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblCustomers">
+      <EntityTypeMapping TypeName="JAVADBModel.tblCustomer">
+        <MappingFragment StoreEntitySet="tblCustomers">
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblEventArtists">
+      <EntityTypeMapping TypeName="JAVADBModel.tblEventArtist">
+        <MappingFragment StoreEntitySet="tblEventArtists">
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="EventID" ColumnName="EventID" />
+          <ScalarProperty Name="ArtistID" ColumnName="ArtistID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblEventLayoutBlocks">
+      <EntityTypeMapping TypeName="JAVADBModel.tblEventLayoutBlock">
+        <MappingFragment StoreEntitySet="tblEventLayoutBlocks">
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="TierID" ColumnName="TierID" />
+          <ScalarProperty Name="BlockID" ColumnName="BlockID" />
+          <ScalarProperty Name="EventID" ColumnName="EventID" />
+          <ScalarProperty Name="EventLayoutBlockID" ColumnName="EventLayoutBlockID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblEvents">
+      <EntityTypeMapping TypeName="JAVADBModel.tblEvent">
+        <MappingFragment StoreEntitySet="tblEvents">
+          <ScalarProperty Name="EBMaxTicketOrder" ColumnName="EBMaxTicketOrder" />
+          <ScalarProperty Name="EBMinTicketOrder" ColumnName="EBMinTicketOrder" />
+          <ScalarProperty Name="EBTicketPrice" ColumnName="EBTicketPrice" />
+          <ScalarProperty Name="TicketPrice" ColumnName="TicketPrice" />
+          <ScalarProperty Name="TicketsAvailable" ColumnName="TicketsAvailable" />
+          <ScalarProperty Name="EarlyBirdTicketSelection" ColumnName="EarlyBirdTicketSelection" />
+          <ScalarProperty Name="PercentEBSeats" ColumnName="PercentEBSeats" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="TicketStock" ColumnName="TicketStock" />
+          <ScalarProperty Name="ProcessingFee" ColumnName="ProcessingFee" />
+          <ScalarProperty Name="BookingType" ColumnName="BookingType" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="AgeGroup" ColumnName="AgeGroup" />
+          <ScalarProperty Name="EventTNC" ColumnName="EventTNC" />
+          <ScalarProperty Name="EventDescription" ColumnName="EventDescription" />
+          <ScalarProperty Name="LocationTracker" ColumnName="LocationTracker" />
+          <ScalarProperty Name="EventHomeBanner" ColumnName="EventHomeBanner" />
+          <ScalarProperty Name="EventMainBanner" ColumnName="EventMainBanner" />
+          <ScalarProperty Name="EventBanner" ColumnName="EventBanner" />
+          <ScalarProperty Name="ShowTime" ColumnName="ShowTime" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EventDate" ColumnName="EventDate" />
+          <ScalarProperty Name="EventDurationType" ColumnName="EventDurationType" />
+          <ScalarProperty Name="EventPlaytime" ColumnName="EventPlaytime" />
+          <ScalarProperty Name="EventLanguage" ColumnName="EventLanguage" />
+          <ScalarProperty Name="EventType" ColumnName="EventType" />
+          <ScalarProperty Name="EventName" ColumnName="EventName" />
+          <ScalarProperty Name="LayoutID" ColumnName="LayoutID" />
+          <ScalarProperty Name="VenueID" ColumnName="VenueID" />
+          <ScalarProperty Name="EventID" ColumnName="EventID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblEventVolunteers">
+      <EntityTypeMapping TypeName="JAVADBModel.tblEventVolunteer">
+        <MappingFragment StoreEntitySet="tblEventVolunteers">
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="VolunteerID" ColumnName="VolunteerID" />
+          <ScalarProperty Name="EventID" ColumnName="EventID" />
+          <ScalarProperty Name="EventVolunteerID" ColumnName="EventVolunteerID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblLayouts">
+      <EntityTypeMapping TypeName="JAVADBModel.tblLayout">
+        <MappingFragment StoreEntitySet="tblLayout">
+          <ScalarProperty Name="LayoutNumber" ColumnName="LayoutNumber" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="LayoutName" ColumnName="LayoutName" />
+          <ScalarProperty Name="VenueID" ColumnName="VenueID" />
+          <ScalarProperty Name="LayoutID" ColumnName="LayoutID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblMailLogs">
+      <EntityTypeMapping TypeName="JAVADBModel.tblMailLog">
+        <MappingFragment StoreEntitySet="tblMailLog">
+          <ScalarProperty Name="MailContent" ColumnName="MailContent" />
+          <ScalarProperty Name="SentDate" ColumnName="SentDate" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblOrderCoupons">
+      <EntityTypeMapping TypeName="JAVADBModel.tblOrderCoupon">
+        <MappingFragment StoreEntitySet="tblOrderCoupons">
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+          <ScalarProperty Name="SessionID" ColumnName="SessionID" />
+          <ScalarProperty Name="CouponID" ColumnName="CouponID" />
+          <ScalarProperty Name="OrderCouponID" ColumnName="OrderCouponID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblOTPS">
+      <EntityTypeMapping TypeName="JAVADBModel.tblOTP">
+        <MappingFragment StoreEntitySet="tblOTPS">
+          <ScalarProperty Name="OTP" ColumnName="OTP" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="OTPID" ColumnName="OTPID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblPastEvents">
+      <EntityTypeMapping TypeName="JAVADBModel.tblPastEvent">
+        <MappingFragment StoreEntitySet="tblPastEvents">
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="Month" ColumnName="Month" />
+          <ScalarProperty Name="Year" ColumnName="Year" />
+          <ScalarProperty Name="ImagePath" ColumnName="ImagePath" />
+          <ScalarProperty Name="EventName" ColumnName="EventName" />
+          <ScalarProperty Name="PastEventID" ColumnName="PastEventID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblReleaseLogs">
+      <EntityTypeMapping TypeName="JAVADBModel.tblReleaseLog">
+        <MappingFragment StoreEntitySet="tblReleaseLog">
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="EventID" ColumnName="EventID" />
+          <ScalarProperty Name="SeatID" ColumnName="SeatID" />
+          <ScalarProperty Name="LogID" ColumnName="LogID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblSeats">
+      <EntityTypeMapping TypeName="JAVADBModel.tblSeat">
+        <MappingFragment StoreEntitySet="tblSeat">
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="SeatNumber" ColumnName="SeatNumber" />
+          <ScalarProperty Name="SeatRowID" ColumnName="SeatRowID" />
+          <ScalarProperty Name="SeatID" ColumnName="SeatID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblSeatRows">
+      <EntityTypeMapping TypeName="JAVADBModel.tblSeatRow">
+        <MappingFragment StoreEntitySet="tblSeatRows">
+          <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+          <ScalarProperty Name="RowNumber" ColumnName="RowNumber" />
+          <ScalarProperty Name="BlockID" ColumnName="BlockID" />
+          <ScalarProperty Name="SeatRowID" ColumnName="SeatRowID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblSeatSelections">
+      <EntityTypeMapping TypeName="JAVADBModel.tblSeatSelection">
+        <MappingFragment StoreEntitySet="tblSeatSelections">
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+          <ScalarProperty Name="TicketID" ColumnName="TicketID" />
+          <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+          <ScalarProperty Name="EventID" ColumnName="EventID" />
+          <ScalarProperty Name="SeatID" ColumnName="SeatID" />
+          <ScalarProperty Name="SessionID" ColumnName="SessionID" />
+          <ScalarProperty Name="SeatSelectionID" ColumnName="SeatSelectionID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblSeatSelectionsLogs">
+      <EntityTypeMapping TypeName="JAVADBModel.tblSeatSelectionsLog">
+        <MappingFragment StoreEntitySet="tblSeatSelectionsLog">
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+          <ScalarProperty Name="TicketID" ColumnName="TicketID" />
+          <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+          <ScalarProperty Name="EventID" ColumnName="EventID" />
+          <ScalarProperty Name="SeatID" ColumnName="SeatID" />
+          <ScalarProperty Name="SessionID" ColumnName="SessionID" />
+          <ScalarProperty Name="SeatSelectionLogID" ColumnName="SeatSelectionLogID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblTicketOrders">
+      <EntityTypeMapping TypeName="JAVADBModel.tblTicketOrder">
+        <MappingFragment StoreEntitySet="tblTicketOrders">
+          <ScalarProperty Name="TicketType" ColumnName="TicketType" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="DatePickedUp" ColumnName="DatePickedUp" />
+          <ScalarProperty Name="IsPickedUp" ColumnName="IsPickedUp" />
+          <ScalarProperty Name="QRCode" ColumnName="QRCode" />
+          <ScalarProperty Name="Intent" ColumnName="Intent" />
+          <ScalarProperty Name="PaypalOrderID" ColumnName="PaypalOrderID" />
+          <ScalarProperty Name="PaymentStatus" ColumnName="PaymentStatus" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="ProcessingFee" ColumnName="ProcessingFee" />
+          <ScalarProperty Name="DiscountAmount" ColumnName="DiscountAmount" />
+          <ScalarProperty Name="AmountPerTicket" ColumnName="AmountPerTicket" />
+          <ScalarProperty Name="NoOfTickets" ColumnName="NoOfTickets" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="EventID" ColumnName="EventID" />
+          <ScalarProperty Name="OrderNo" ColumnName="OrderNo" />
+          <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblTickets">
+      <EntityTypeMapping TypeName="JAVADBModel.tblTicket">
+        <MappingFragment StoreEntitySet="tblTickets">
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="PaypalOrderID" ColumnName="PaypalOrderID" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="EventID" ColumnName="EventID" />
+          <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="TicketNumber" ColumnName="TicketNumber" />
+          <ScalarProperty Name="TicketID" ColumnName="TicketID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblTiers">
+      <EntityTypeMapping TypeName="JAVADBModel.tblTier">
+        <MappingFragment StoreEntitySet="tblTier">
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="TierName" ColumnName="TierName" />
+          <ScalarProperty Name="TierID" ColumnName="TierID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblTierCoupons">
+      <EntityTypeMapping TypeName="JAVADBModel.tblTierCoupon">
+        <MappingFragment StoreEntitySet="tblTierCoupons">
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="EventID" ColumnName="EventID" />
+          <ScalarProperty Name="TierID" ColumnName="TierID" />
+          <ScalarProperty Name="CouponGroupID" ColumnName="CouponGroupID" />
+          <ScalarProperty Name="TierCouponID" ColumnName="TierCouponID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblVenues">
+      <EntityTypeMapping TypeName="JAVADBModel.tblVenue">
+        <MappingFragment StoreEntitySet="tblVenue">
+          <ScalarProperty Name="AppSeatingChart" ColumnName="AppSeatingChart" />
+          <ScalarProperty Name="SeatingChart" ColumnName="SeatingChart" />
+          <ScalarProperty Name="VenueNumber" ColumnName="VenueNumber" />
+          <ScalarProperty Name="VenueName" ColumnName="VenueName" />
+          <ScalarProperty Name="VenueID" ColumnName="VenueID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblVolunteers">
+      <EntityTypeMapping TypeName="JAVADBModel.tblVolunteer">
+        <MappingFragment StoreEntitySet="tblVolunteers">
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="VolunteerID" ColumnName="VolunteerID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TempOrders">
+      <EntityTypeMapping TypeName="JAVADBModel.TempOrder">
+        <MappingFragment StoreEntitySet="TempOrders">
+          <ScalarProperty Name="EventID" ColumnName="EventID" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="PaypalID" ColumnName="PaypalID" />
+          <ScalarProperty Name="TempID" ColumnName="TempID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TempTickets">
+      <EntityTypeMapping TypeName="JAVADBModel.TempTicket">
+        <MappingFragment StoreEntitySet="TempTickets">
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="NoOfTickets" ColumnName="NoOfTickets" />
+          <ScalarProperty Name="EventID" ColumnName="EventID" />
+          <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+          <ScalarProperty Name="TempTicketID" ColumnName="TempTicketID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VOBARegistrations">
+      <EntityTypeMapping TypeName="JAVADBModel.VOBARegistration">
+        <MappingFragment StoreEntitySet="VOBARegistration">
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="Intent" ColumnName="Intent" />
+          <ScalarProperty Name="PaypalOrderID" ColumnName="PaypalOrderID" />
+          <ScalarProperty Name="PaymentStatus" ColumnName="PaymentStatus" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="TermsAccepted" ColumnName="TermsAccepted" />
+          <ScalarProperty Name="ChildDOB" ColumnName="ChildDOB" />
+          <ScalarProperty Name="ChildName" ColumnName="ChildName" />
+          <ScalarProperty Name="ParentMobile" ColumnName="ParentMobile" />
+          <ScalarProperty Name="ParentEmail" ColumnName="ParentEmail" />
+          <ScalarProperty Name="ParentName" ColumnName="ParentName" />
+          <ScalarProperty Name="RegistrationID" ColumnName="RegistrationID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

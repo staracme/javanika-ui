@@ -1,0 +1,246 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javanika :: @ViewBag.Title</title>
+
+    @*Stylesheet starts here*@
+    <link href="~/App_Theme/MasterStyleSheet.css" rel="stylesheet" />
+    <link href="~/App_Theme/colorbox.css" rel="stylesheet" />
+    <link href="~/App_Theme/jquery.bxslider.css" rel="stylesheet" />
+    <link href="~/App_Theme/slick-theme.css" rel="stylesheet" />
+    <link href="~/App_Theme/slick.css" rel="stylesheet" />
+    <link href="~/App_Theme/bootstrap.css" rel="stylesheet" />
+    <link href="~/App_Theme/toastr.css" rel="stylesheet" />
+
+    @*Scripts starts here*@
+    <script src="~/App_Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/App_Scripts/jquery.colorbox-min.js"></script>
+    <script src="~/App_Scripts/jquery.bxslider.js"></script>
+    <script src="~/App_Scripts/slick.min.js"></script>
+    <script src="~/App_Scripts/jquery.validate.js"></script>
+    <script src="~/App_Scripts/bootstrap.min.js"></script>
+    <script src="~/App_Scripts/toastr.js"></script>
+
+    <script>
+        $(function () {
+
+            $("#txtUsername, #txtPassword").keyup(function (e) {
+                if (e.keyCode == 13)
+                    $("#btnLogin").click();
+            });
+
+
+            $("#frmLogin").validate({
+                rules: {
+                    Username: {
+                        required: true
+                    },
+                    Password: {
+                        required: true,
+                    },
+                },
+                messages: {
+                    Username: {
+                        required: "Please enter username"
+                    },
+                    Password: {
+                        required: "Please enter password",
+                    }
+                },
+                errorPlacement: function (error, element) {
+                    if (element.attr("name") == "Username")
+                        error.appendTo($('#lblUsername'));
+
+                    if (element.attr("name") == "Password")
+                        error.appendTo($('#lblPassword'));
+                }
+            });
+        })
+
+        function OpenPopup(trigger) {
+            $("#trigger").val(trigger);
+            $.colorbox({ inline: true, href: "#details_trip", height: "555px", width: "380px" });
+        }
+
+
+        function Login() {
+            if ($("#frmLogin").valid()) {
+                var trigger = $("#trigger").val();
+
+                $("#btnLogin").hide();
+                $("#login_loader").html("<b>Please wait...</b>");
+
+                $.ajax({
+                    url: "/Login/Login",
+                    data: $("#frmLogin").serialize(),
+                    type: "POST",
+                    success: function (response) {
+                        if (response == "OK") {
+                            if (trigger == "venue_page") {
+                                ProceedBooking();
+                            }
+                            else if (trigger == "main_page") {
+                                location.reload();
+                            }
+                        }
+                        else if (response == "error") {
+                            alert("Oops! Something went wrong. Please try again after sometime.");
+
+                            $("#login_loader").html("");
+                            $("#btnLogin").show();
+                        }
+                        else if (response == "N") {
+                            alert("Sorry! You are not registered with us. Please register to continue.");
+
+                            $("#login_loader").html("");
+                            $("#btnLogin").show();
+                        }
+                    }
+                });
+            }
+            else {
+                return false;
+            }
+        }
+    </script>
+
+</head>
+<body>
+    <div class="modal fade" id="modalLoader" role="dialog">
+        <div id="divLoader" class="my-img-container">
+            <div class="loader">
+                <div class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+            </div>
+        </div>
+    </div>
+        <div class="MainBodyWrappaer">
+
+            @*Header starts here*@
+            <div class="MainHeaderwrap">
+
+                @*Top Header*@
+                <div class="TopMainHeader">
+                    <div class="InnerTopHeader">
+                        <div class="InnerTopLeft">
+                            <div class="Userlabel">Welcome to Javanika Entertainment</div>
+                        </div>
+                        @*<div class="InnerTopRight">
+                                <div class="InnerRight">
+                                    <a href="" class="TopHeaderLink">My Account</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+                                    @if (Common.IsLoggedIn() == false)
+                                    {
+                                        <a href="javascript:;" onclick="OpenPopup('main_page')" class="TopHeaderLink">Login</a>
+                                    }
+                                    else
+                                    {
+                                        <span href="javascript:;" class="TopHeaderLink">Welcome @Request.Cookies["Customer"]["Name"]</span>
+                                        @MvcHtmlString.Create("&nbsp; &nbsp; &nbsp;| &nbsp; &nbsp; &nbsp;")
+                                        <a href="/Login/Logout" class="TopHeaderLink">Logout</a>
+                                    }
+                                </div>
+                            </div>*@
+                        <div class="clr"></div>
+                    </div>
+                </div>
+
+                @*Bottom Header*@
+                <div class="BottomMainHeader">
+                    <div class="InnerBottomHeader">
+                        <div class="LogoWrap"><a href="/Home"><img src="~/App_Images/Logo.png" height="100px" /></a></div>
+                        <div class="SearchBoxWrap">
+                            <div class="SearchBox">
+                                <div class="SearchTxt"><input placeholder="Search here for all events...." class="SearchTxtBox" /></div>
+                                <div class="SearchIcon"><a href=""><img src="~/App_Images/SearchIcon.png" /></a></div>
+                                <div class="clr"></div>
+                            </div>
+                        </div>
+                        <div class="MenuWrap">
+                            <a href="/Home" class="MenuLinks">Home</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <a href="/AllEvents" class="MenuLinks">Events</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <a href="/ComingSoon" class="MenuLinks">Video</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <a href="/ComingSoon" class="MenuLinks">Gallery</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <a href="/ComingSoon" class="MenuLinks">About</a>
+                        </div>
+                        <div class="clr"></div>
+                    </div>
+                </div>
+
+            </div>
+            @*Header End here*@
+
+
+            <div class="MainBodyContainer">
+                @RenderBody()
+            </div>
+
+            <div class="MainFooterWrap">
+                <div class="MainInnerFooter">
+                    <div class="MainInnerFoot1Wrap">
+                        <br />
+                        @*<img src="~/App_Images/FootLogo.png" width="100px" />*@
+                    </div>
+                    <div class="MainInnerFoot2Wrap">
+                        <div class="MenuFootLinks">
+                            <a href="/Home" class="FootMenuLink">Home</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+                            <a href="/ComingSoon" class="FootMenuLink">Events</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+                            <a href="/ComingSoon/ComingSoon" class="FootMenuLink">Past Events</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+                            <a href="/ComingSoon" class="FootMenuLink">About</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+                            <a href="/ComingSoon" class="FootMenuLink">Contact</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+                        </div>
+
+                        <div class="FootContact">Contact us @@ javanikabooking@gmail.com</div>
+                        <div class="Copyright">Copyrights &copy; 2019. All Rights Reserved. Javanika Entertainments</div>
+                    </div>
+                    <div class="MainInnerFoot3Wrap">
+                        <img src="~/App_Images/fb-icon.png" />&nbsp;&nbsp;
+                        <img src="~/App_Images/instagram-icon.png" />&nbsp;&nbsp;
+                        <img src="~/App_Images/linkedin-icon.png" />&nbsp;&nbsp;
+                        <img src="~/App_Images/twitter-icon.png" />&nbsp;&nbsp;
+                    </div>
+                    <div class="clr"></div>
+                </div>
+            </div>
+
+        </div>
+
+        <div style="display:none;">
+            <div id="details_trip" class="PopStyle">
+                <form id="frmLogin">
+                    <input type="hidden" id="trigger" name="trigger" value="" />
+
+                    <div class="PopLogo">
+                        <img src="~/App_Images/Logo.png" width="150px" />
+                    </div>
+
+                    <div class="PopLabel">Login to <b class="PopHigh">Javanika.com</b> to book your event</div>
+
+                    <div class="LoginTxtWrap">
+                        <div class="LoginIcon"><img src="~/App_Images/Username.png" width="30px" /></div>
+                        <div class="LoginTxtBoxWrap"><input type="text" class="txtboxlogin" placeholder="Username" id="txtUsername" name="Username" /></div>
+                        <div><label id="lblUsername"></label></div>
+                        <div class="clr"></div>
+                    </div>
+
+                    <div class="LoginTxtWrap">
+                        <div class="LoginIcon"><img src="~/App_Images/Password.png" width="30px" /></div>
+                        <div class="LoginTxtBoxWrap"><input type="password" class="txtboxlogin" placeholder="Password" id="txtPassword" name="Password" /></div>
+                        <div><label id="lblPassword"></label></div>
+                        <div class="clr"></div>
+                    </div>
+
+                    @*<div class="Cookiebtn"><input type="checkbox" />&nbsp;Remember me</div>*@
+
+                    <div class="LoginBtnWrap"><button id="btnLogin" onclick="Login()" type="button" class="LoginBtn">LOGIN</button><span id="login_loader"></span></div>
+                    <div class="LoginBtnWrap"><button id="btnRegister" onclick="JavaScript:location.href='/Register'" type="button" class="LoginBtn1">Not a member? Register here....</button></div>
+
+                    <div class="LoginBottom"><a href="" class="Passlink">Recover Password</a></div>
+
+                </form>
+            </div>
+        </div>
+
+</body>
+
+</html>

@@ -1,0 +1,295 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/App_Theme/V1-SeatingArrangementStyle.css" rel="stylesheet" />
+<script src="~/App_Scripts/jquery.validate.js"></script>
+
+
+@{
+    FrontEnd.Models.JAVADBEntities db = new FrontEnd.Models.JAVADBEntities();
+
+    int eventID = Convert.ToInt32(Request["eventID"]);
+    var evt = db.tblEvents.Where(e => e.EventID == eventID).SingleOrDefault();
+}
+
+
+<script src="~/App_Scripts/jquery.countdown.js"></script>
+<script src="~/App_Scripts/jquery.cookie.min.js"></script>
+
+<script src="~/App_Scripts/jquery.validate.js"></script>
+
+<script src="https://www.paypal.com/sdk/js?client-id=AYZg72OmfeJnm88ghZQv7x4opaln2jZ1k6uHnhIYOaMl_RUPLGbutIGi0Gsp8b8NogkMEQuVbj5NBgvX">
+</script>
+
+
+<script type="text/javascript">
+
+
+    paypal.Buttons({
+        createOrder: function (data, actions) {
+            // Set up the transaction
+            return actions.order.create({
+			    headers: {
+                    'Content-Type': 'application/json',
+                },
+                purchase_units: [{
+                    amount: {
+                        value: $("#txtAmount").val()
+                    }
+                }]
+            });
+        },
+        onApprove: function (data, actions) {
+            // Capture the funds from the transaction
+            return actions.order.capture().then(function (details) {
+                // Show a success message to your buyer
+
+                $.ajax({
+                    url: '/BookTickets/PlaceOrder',
+                    type: "POST",
+                    data: {
+                        orderID: data.orderID,
+                        email: $("#txtEmail").val(),
+                        name: $("#txtFirstName").val(),
+                        eventID: $("#eventID").val(),
+                        amount: details.purchase_units[0].amount.value,
+                        intent: details.intent,
+                        status: details.status,
+                        no_of_tickets: $("#txtNoOfTickets").val()
+                    },
+                    success: function (response) {
+                        if(response == "OK") {
+							$("#txtOrderID").val(data.orderID);
+							
+						}
+                    }
+                });
+            });
+        }
+    }).render('#pp');
+
+
+
+    $(function () {
+
+        var date = new Date();
+        var midnight = new Date(date.getFullYear(), date.getMonth(), date.getDate(), 23, 59, 59);
+
+        if ($.cookie('refresh-@eventID') == null) {
+            $.cookie('refresh-@eventID', 'true', { expires: midnight });
+        }
+
+
+
+        $('#clock').countdown('@DateTime.Now.AddMinutes(25.25).ToString("yyyy/MM/dd HH:mm:ss")')
+           .on('update.countdown', function (event) {
+               var format = '%H:%M:%S';
+               $(this).html(event.strftime(format));
+           })
+           .on('finish.countdown', function (event) {
+               ClearSession(false);
+               $("#clock").html("00:00:00");
+           });
+
+        $("#txtNoOfTickets").on("keyup", function () {
+            CalculatePricing();
+        });
+    });
+
+
+    function CalculatePricing() {
+        var price = 0.14; //30;
+        var no_of_tickets = $("#txtNoOfTickets").val();
+
+
+        if (no_of_tickets != "" && no_of_tickets != "0" && !isNaN(no_of_tickets)) {
+            no_of_tickets = parseInt(no_of_tickets);
+
+            if (no_of_tickets >= 10)
+                price = 0.14; //25;
+
+            var amount = (no_of_tickets * price);
+
+            var str = '';
+
+            str += '<tr>';
+            str += '<td>' + no_of_tickets + '</td>'
+            str += '<td>' + amount + '</td>'
+            str += '</tr>';
+
+            $("#lblTickets").html("").hide();
+            $("#tbody").html(str);
+
+			$("#txtAmount").val(amount);
+        }
+        else {
+
+            str += '<tr>';
+            str += '<td  colspan="2" class="TierClass">No Bookings Yet</td>'
+            str += '</tr>';
+
+            $("#lblTickets").html("Please enter valid number of tickets").show();
+            $("#tbody").html(str);
+        }
+    }
+
+	function PlaceOrder() {
+
+	    $("#btnPlaceOrder").hide();
+	    $("#loader").html("<b>Processing...</b>");
+
+        $.ajax({
+            url: "/BookTickets/BookTickets",
+            data: $("#frmBooking").serialize(),
+            type: "POST",
+            success: function (response) {
+                if (response.status == "OK") {
+                    alert("Your tickets for the show have been confirmed");
+                    location.href = "/Home";
+                }
+                else if (response.status == "INVALID DATA") {
+                    alert("Oops..Data you have entered is invalid.");
+                    $("#loader").html("");
+                    $("#btnPlaceOrder").show();
+                }
+            }
+        });
+    }
+</script>
+
+<div>
+    <div class="EventSeatHead">
+        @evt.EventName @evt.EventType | Show time: @evt.ShowTime | Venue: Santa Clara Fair Ground
+    </div>
+
+    <div class="MainOuterSeatingWrap">
+        <div class="ContentWrap">
+            <div class="MainInnerLabel">We need some details to email you your tickets....</div>
+            <form id="frmBooking">
+                <input type="hidden" class="InnerTxtBox" id="eventID" name="eventID" value="@Request["eventID"]" />
+                <div class="InnerFieldsBlock">
+                    <div class="InnerLabel">Name</div>
+                    <div class="InnerTxtWrap"><input type="text" class="InnerTxtBox" id="txtFirstName" name="txtFirstName" /></div>
+                    @*<div class="InnertxtValid" id="lblFirstName">We call you with this...</div>*@
+                    <div class="clr"></div>
+                </div>
+
+                <div class="InnerFieldsBlock">
+                    <div class="InnerLabel">Email ID</div>
+                    <div class="InnerTxtWrap"><input type="text" class="InnerTxtBox" id="txtEmail" name="txtEmail" /></div>
+                    @*<div class="InnertxtValid" id="lblEmail">All transaactional updates will land here</div>*@
+                    <div class="clr"></div>
+                </div>
+
+                <div class="InnerFieldsBlock">
+                    <div class="InnerLabel">No Of Tickets</div>
+                    <div class="InnerTxtWrap"><input type="text" class="InnerTxtBox" id="txtNoOfTickets" name="txtNoOfTickets" /></div>
+                    <div class="InnertxtValid" id="lblTickets" style="display:none;">This is for Validation</div>
+                    <div class="clr"></div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="RightOuterSeatingWrap">
+
+        <div class="BookDetHead">Booking Details</div>
+
+        <div class="SessionTimeWrap">
+            <div class="SessionTime">Session will timeout in:</div>
+            <div id="clock">15.00</div>
+        </div>
+
+        @*<div class="TiersHead">Tier Availability</div>
+            <table class="TierTbl" border="1">
+                <tr>
+                    <th>Tier</th>
+                    <th>Available Seats</th>
+                    <th>Cost</th>
+                </tr>
+                <tr>
+                    <td class="TierClass">--</td>
+                    <td>--</td>
+                    <td>--</td>
+                </tr>
+            </table>*@
+
+        <div class="TiersHead">Tier Availability</div>
+        <table class="TierTbl" border="1">
+            <tr>
+                <th>Tickets</th>
+                <th>Cost Per ticket</th>
+            </tr>
+            <tr>
+                <td class="TierClass">Less than 10 tickets</td>
+                <td>$30</td>
+            </tr>
+            <tr>
+                <td class="TierClass">10 or more tickets</td>
+                <td>$25</td>
+            </tr>
+        </table>
+
+        <div class="BookingHead">Your Bookings</div>
+        <table class="TierTbl" border="1">
+            <tr>
+                <th>Tickets</th>
+                <th>Total Cost</th>
+            </tr>
+            <tbody id="tbody">
+                <tr>
+                    <td colspan="2" class="TierClass">No Bookings Yet</td>
+                </tr>
+            </tbody>
+        </table>
+
+
+        <input type="hidden" value="0" id="txtAmount" name="txtAmount" />
+		
+		<form id="frmOrders" method="POST" action="/OrderSuccess">
+			<input type="hidden" id="txtOrderID" name="txtOrderID"  value=""/>
+		</form>
+		
+        <br />
+        <div id="pp"></div>
+
+        <!-- <button class="btnBookings" onclick="JavaScript: PlaceOrder();" id="btnPlaceOrder">Proceed with Bookings</button><span id="loader"></span> -->
+
+    </div>
+
+
+
+    <div class="clr"></div>
+</div>
+<script src="~/App_Scripts/scrollbooster.min.js"></script>
+
+<script>
+    let viewport = document.querySelector('.MainOuterSeatingWrap')
+    let content = viewport.querySelector('.app-inner')
+
+    let scr = new ScrollBooster({
+        viewport: viewport,
+        content: content,
+        // textSelection: true,
+        emulateScroll: true,
+        onClick: (data, event) => {
+            //event.preventDefault()
+        },
+        shouldScroll: (data, event) => {
+            if (event.target.tagName == 'BUTTON') {
+                return false
+            } else {
+                return true
+            }
+        },
+        onUpdate: (data) => {
+            // viewport.scrollLeft = data.position.x
+            // viewport.scrollTop = data.position.y
+            content.style.transform = `translate(
+            ${-data.position.x}px,
+            ${-data.position.y}px
+          )`
+        }
+    })
+</script>

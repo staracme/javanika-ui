@@ -1,0 +1,1637 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{A75D966D-088E-4148-9B4B-56FD19E0E414}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FrontEnd</RootNamespace>
+    <AssemblyName>FrontEnd</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Braintree, Version=4.15.0.0, Culture=neutral, PublicKeyToken=31b586f34d3e96c7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Braintree.4.15.0\lib\net452\Braintree.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="IronBarCode, Version=4.0.2.18638, Culture=neutral, PublicKeyToken=b971bb3971bdf306, processorArchitecture=MSIL">
+      <HintPath>..\packages\BarCode.4.0.2.2\lib\net40\IronBarCode.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="log4net, Version=2.0.13.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.13\lib\net45\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.Agent.Intercept, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.1.2.1\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.DependencyCollector, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.0.0\lib\net45\Microsoft.AI.DependencyCollector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.PerfCounterCollector, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.0.0\lib\net45\Microsoft.AI.PerfCounterCollector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.ServerTelemetryChannel, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.0.0\lib\net45\Microsoft.AI.ServerTelemetryChannel.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.Web, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Web.2.0.0\lib\net45\Microsoft.AI.Web.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.WindowsServer, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.2.0.0\lib\net45\Microsoft.AI.WindowsServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationInsights, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.2.0.0\lib\net45\Microsoft.ApplicationInsights.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="QRCoder, Version=1.3.6.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\QRCoder.1.3.6\lib\net40\QRCoder.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.2\lib\netstandard1.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Abstractions, Version=5.11.1.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.5.11.1\lib\net45\Unity.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Container, Version=5.11.1.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.5.11.1\lib\net45\Unity.Container.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Mvc5, Version=1.4.0.0, Culture=neutral, PublicKeyToken=43da31bc42a85347, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.Mvc5.1.4.0\lib\net45\Unity.Mvc5.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.1\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin">
+      <HintPath>..\packages\Microsoft.Owin.3.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.3.0.1\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security">
+      <HintPath>..\packages\Microsoft.Owin.Security.3.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Facebook">
+      <HintPath>..\packages\Microsoft.Owin.Security.Facebook.3.0.1\lib\net45\Microsoft.Owin.Security.Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.3.0.1\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.3.0.1\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Google">
+      <HintPath>..\packages\Microsoft.Owin.Security.Google.3.0.1\lib\net45\Microsoft.Owin.Security.Google.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Twitter">
+      <HintPath>..\packages\Microsoft.Owin.Security.Twitter.3.0.1\lib\net45\Microsoft.Owin.Security.Twitter.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.MicrosoftAccount">
+      <HintPath>..\packages\Microsoft.Owin.Security.MicrosoftAccount.3.0.1\lib\net45\Microsoft.Owin.Security.MicrosoftAccount.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\IdentityConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="App_Start\UnityConfig.cs" />
+    <Compile Include="Common.cs" />
+    <Compile Include="Models\Class1.cs" />
+    <Compile Include="Utility\SendEmail.cs" />
+    <Compile Include="Controllers\AllEventsController.cs" />
+    <Compile Include="Controllers\BookingSummaryController.cs" />
+    <Compile Include="Controllers\BookTicketsController.cs" />
+    <Compile Include="Controllers\ComingSoonController.cs" />
+    <Compile Include="Controllers\DummyVenueController.cs" />
+    <Compile Include="Controllers\EventsController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LiveVenueController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\BookingSuccessController.cs" />
+    <Compile Include="Controllers\ManualMailsController.cs" />
+    <Compile Include="Controllers\OrderSuccessController.cs" />
+    <Compile Include="Controllers\OrderSummaryController.cs" />
+    <Compile Include="Controllers\PastEventsController.cs" />
+    <Compile Include="Controllers\RegisterController.cs" />
+    <Compile Include="Controllers\SeatGeneratorController.cs" />
+    <Compile Include="Controllers\TestController.cs" />
+    <Compile Include="Controllers\TestMailController.cs" />
+    <Compile Include="Controllers\TestReceiptController.cs" />
+    <Compile Include="Controllers\TicketTempController.cs" />
+    <Compile Include="Controllers\V1VenueController.cs" />
+    <Compile Include="Controllers\V2StaticController.cs" />
+    <Compile Include="Controllers\V2VenueController.cs" />
+    <Compile Include="Controllers\V3VenueController.cs" />
+    <Compile Include="Controllers\V4StaticController.cs" />
+    <Compile Include="Controllers\V4VenueController.cs" />
+    <Compile Include="Controllers\V5VenueController.cs" />
+    <Compile Include="Controllers\V6VenueController.cs" />
+    <Compile Include="Controllers\V7StaticController.cs" />
+    <Compile Include="Controllers\V7VenueController.cs" />
+    <Compile Include="Controllers\Venue3StaticController.cs" />
+    <Compile Include="Controllers\VOBAController.cs" />
+    <Compile Include="Controllers\VOBASummaryController.cs" />
+    <Compile Include="Enums\Enums.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Model1.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblAdminUser.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblAppVersion.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblBlock.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblCoupon.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblCouponGroup.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblCustomer.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblEvent.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblEventArtist.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblEventLayoutBlock.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblEventVolunteer.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblLayout.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblMailLog.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblOrderCoupon.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblOTP.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblPastEvent.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblReleaseLog.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblSeat.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblSeatRow.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblSeatSelection.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblSeatSelectionsLog.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblTicket.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblTicketOrder.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblTier.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblTierCoupon.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblVenue.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblVolunteer.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TempOrder.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TempTicket.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VOBARegistration.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Startup.cs" />
+    <Compile Include="Utility\Utility.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Images\Banner1.png" />
+    <Content Include="App_Images\Banner2.png" />
+    <Content Include="App_Images\BodyBG.png" />
+    <Content Include="App_Images\bootstrap-theme.min.css" />
+    <Content Include="App_Images\bootstrap.min.css" />
+    <Content Include="App_Images\border.png" />
+    <Content Include="App_Images\controls.png" />
+    <Content Include="App_Images\DragArrow.png" />
+    <Content Include="App_Images\EventBanner1.png" />
+    <Content Include="App_Images\EventBanner2.png" />
+    <Content Include="App_Images\EventBanner3.png" />
+    <Content Include="App_Images\EventBanner4.png" />
+    <Content Include="App_Images\fb-icon.png" />
+    <Content Include="App_Images\FootLogo.png" />
+    <Content Include="App_Images\indicator-big.gif" />
+    <Content Include="App_Images\instagram-icon.png" />
+    <Content Include="App_Images\linkedin-icon.png" />
+    <Content Include="App_Images\loading.gif" />
+    <Content Include="App_Images\Logo!!.png" />
+    <Content Include="App_Images\Logo.png" />
+    <Content Include="App_Images\next-button.png" />
+    <Content Include="App_Images\Next.png" />
+    <Content Include="App_Images\overlay.png" />
+    <Content Include="App_Images\Password.png" />
+    <Content Include="App_Images\previous-button.png" />
+    <Content Include="App_Images\Previous.png" />
+    <Content Include="App_Images\RightArrow.png" />
+    <Content Include="App_Images\SearchIcon.png" />
+    <Content Include="App_Images\SliderBanner31.png" />
+    <Content Include="App_Images\twitter-icon.png" />
+    <Content Include="App_Images\Username.png" />
+    <Content Include="App_Images\VenueSymbol.png" />
+    <Content Include="App_Scripts\bootstrap.bundle.min.js" />
+    <Content Include="App_Scripts\bootstrap.min.js" />
+    <Content Include="App_Scripts\jquery-1.10.2.min.js" />
+    <Content Include="App_Scripts\jquery.bxslider.js" />
+    <Content Include="App_Scripts\jquery.colorbox-min.js" />
+    <Content Include="App_Scripts\jquery.cookie.min.js" />
+    <Content Include="App_Scripts\jquery.countdown.js" />
+    <Content Include="App_Scripts\jquery.validate.js" />
+    <Content Include="App_Scripts\scrollbooster.min.js" />
+    <Content Include="App_Scripts\slick.min.js" />
+    <Content Include="App_Scripts\toastr.js" />
+    <Content Include="App_Theme\bootstrap-grid.min.css" />
+    <Content Include="App_Theme\bootstrap-theme.css" />
+    <Content Include="App_Theme\bootstrap.css" />
+    <Content Include="App_Theme\bootstrap.min.css" />
+    <Content Include="App_Theme\colorbox.css" />
+    <Content Include="App_Theme\ImageGallery.css" />
+    <Content Include="App_Theme\jquery.bxslider.css" />
+    <Content Include="App_Theme\MasterStyleSheet.css" />
+    <Content Include="App_Theme\toastr.css" />
+    <Content Include="App_Theme\V1-SeatingArrangementStyle.css" />
+    <Content Include="App_Theme\slick-theme.css" />
+    <Content Include="App_Theme\slick.css" />
+    <Content Include="App_Theme\V2-SeatingArrangementStyle.css" />
+    <Content Include="App_Theme\V3-SeatingArrangementStyle.css" />
+    <Content Include="App_Theme\V4-SeatingArrangementStyle.css" />
+    <Content Include="App_Theme\V5-SeatingArrangementStyle.css" />
+    <Content Include="App_Theme\V7-SeatingArrangementStyle.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="Global.asax" />
+    <Content Include="ApplicationInsights.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Models\Model1.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\Model1.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.cs</LastGenOutput>
+    </Content>
+    <Content Include="QRCodes\1027.png" />
+    <Content Include="QRCodes\1028.png" />
+    <Content Include="QRCodes\1029.png" />
+    <Content Include="QRCodes\1033.png" />
+    <Content Include="QRCodes\1034.png" />
+    <Content Include="QRCodes\1035.png" />
+    <Content Include="QRCodes\1036.png" />
+    <Content Include="QRCodes\1038.png" />
+    <Content Include="QRCodes\1039.png" />
+    <Content Include="QRCodes\1040.png" />
+    <Content Include="QRCodes\1041.png" />
+    <Content Include="QRCodes\1044.png" />
+    <Content Include="QRCodes\1045.png" />
+    <Content Include="QRCodes\1051.png" />
+    <Content Include="QRCodes\1053.png" />
+    <Content Include="QRCodes\1059.png" />
+    <Content Include="QRCodes\1061.png" />
+    <Content Include="QRCodes\1065.png" />
+    <Content Include="QRCodes\1066.png" />
+    <Content Include="QRCodes\1067.png" />
+    <Content Include="QRCodes\1068.png" />
+    <Content Include="QRCodes\1075.png" />
+    <Content Include="QRCodes\1077.png" />
+    <Content Include="QRCodes\1078.png" />
+    <Content Include="QRCodes\1080.png" />
+    <Content Include="QRCodes\1081.png" />
+    <Content Include="QRCodes\1082.png" />
+    <Content Include="QRCodes\1084.png" />
+    <Content Include="QRCodes\1089.png" />
+    <Content Include="QRCodes\1090.png" />
+    <Content Include="QRCodes\1096.png" />
+    <Content Include="QRCodes\1098.png" />
+    <Content Include="QRCodes\1101.png" />
+    <Content Include="QRCodes\1102.png" />
+    <Content Include="QRCodes\1104.png" />
+    <Content Include="QRCodes\1105.png" />
+    <Content Include="QRCodes\1106.png" />
+    <Content Include="QRCodes\1108.png" />
+    <Content Include="QRCodes\1110.png" />
+    <Content Include="QRCodes\1114.png" />
+    <Content Include="QRCodes\1115.png" />
+    <Content Include="QRCodes\1117.png" />
+    <Content Include="QRCodes\1118.png" />
+    <Content Include="QRCodes\1122.png" />
+    <Content Include="QRCodes\1123.png" />
+    <Content Include="QRCodes\1125.png" />
+    <Content Include="QRCodes\1128.png" />
+    <Content Include="QRCodes\1133.png" />
+    <Content Include="QRCodes\1134.png" />
+    <Content Include="QRCodes\1136.png" />
+    <Content Include="QRCodes\1138.png" />
+    <Content Include="QRCodes\2099.png" />
+    <Content Include="QRCodes\3098.png" />
+    <Content Include="QRCodes\3099.png" />
+    <Content Include="QRCodes\3101.png" />
+    <Content Include="QRCodes\4101.png" />
+    <Content Include="QRCodes\4102.png" />
+    <Content Include="QRCodes\4103.png" />
+    <Content Include="QRCodes\4104.png" />
+    <Content Include="QRCodes\4105.png" />
+    <Content Include="QRCodes\4106.png" />
+    <Content Include="QRCodes\4107.png" />
+    <Content Include="QRCodes\4108.png" />
+    <Content Include="QRCodes\4109.png" />
+    <Content Include="QRCodes\4110.png" />
+    <Content Include="QRCodes\4111.png" />
+    <Content Include="QRCodes\4112.png" />
+    <Content Include="QRCodes\4113.png" />
+    <Content Include="QRCodes\4114.png" />
+    <Content Include="QRCodes\4115.png" />
+    <Content Include="QRCodes\4116.png" />
+    <Content Include="QRCodes\4117.png" />
+    <Content Include="QRCodes\4118.png" />
+    <Content Include="QRCodes\4119.png" />
+    <Content Include="QRCodes\4120.png" />
+    <Content Include="QRCodes\4121.png" />
+    <Content Include="QRCodes\4122.png" />
+    <Content Include="QRCodes\4123.png" />
+    <Content Include="QRCodes\4124.png" />
+    <Content Include="QRCodes\4125.png" />
+    <Content Include="QRCodes\4126.png" />
+    <Content Include="QRCodes\4127.png" />
+    <Content Include="QRCodes\4128.png" />
+    <Content Include="QRCodes\4129.png" />
+    <Content Include="QRCodes\4130.png" />
+    <Content Include="QRCodes\4131.png" />
+    <Content Include="QRCodes\4132.png" />
+    <Content Include="QRCodes\4133.png" />
+    <Content Include="QRCodes\4134.png" />
+    <Content Include="QRCodes\4135.png" />
+    <Content Include="QRCodes\4136.png" />
+    <Content Include="QRCodes\4137.png" />
+    <Content Include="QRCodes\4138.png" />
+    <Content Include="QRCodes\4139.png" />
+    <Content Include="QRCodes\4140.png" />
+    <Content Include="QRCodes\4141.png" />
+    <Content Include="QRCodes\4142.png" />
+    <Content Include="QRCodes\4143.png" />
+    <Content Include="QRCodes\4144.png" />
+    <Content Include="QRCodes\4145.png" />
+    <Content Include="QRCodes\4146.png" />
+    <Content Include="QRCodes\4147.png" />
+    <Content Include="QRCodes\4148.png" />
+    <Content Include="QRCodes\4149.png" />
+    <Content Include="QRCodes\4150.png" />
+    <Content Include="QRCodes\4151.png" />
+    <Content Include="QRCodes\4152.png" />
+    <Content Include="QRCodes\4153.png" />
+    <Content Include="QRCodes\4154.png" />
+    <Content Include="QRCodes\4155.png" />
+    <Content Include="QRCodes\4156.png" />
+    <Content Include="QRCodes\4157.png" />
+    <Content Include="QRCodes\4158.png" />
+    <Content Include="QRCodes\4159.png" />
+    <Content Include="QRCodes\4160.png" />
+    <Content Include="QRCodes\4161.png" />
+    <Content Include="QRCodes\4162.png" />
+    <Content Include="QRCodes\4163.png" />
+    <Content Include="QRCodes\4164.png" />
+    <Content Include="QRCodes\4165.png" />
+    <Content Include="QRCodes\4166.png" />
+    <Content Include="QRCodes\4167.png" />
+    <Content Include="QRCodes\4168.png" />
+    <Content Include="QRCodes\4169.png" />
+    <Content Include="QRCodes\4170.png" />
+    <Content Include="QRCodes\4171.png" />
+    <Content Include="QRCodes\4172.png" />
+    <Content Include="QRCodes\4173.png" />
+    <Content Include="QRCodes\4174.png" />
+    <Content Include="QRCodes\4175.png" />
+    <Content Include="QRCodes\4176.png" />
+    <Content Include="QRCodes\4177.png" />
+    <Content Include="QRCodes\4178.png" />
+    <Content Include="QRCodes\4179.png" />
+    <Content Include="QRCodes\4180.png" />
+    <Content Include="QRCodes\4181.png" />
+    <Content Include="QRCodes\4182.png" />
+    <Content Include="QRCodes\4183.png" />
+    <Content Include="QRCodes\4184.png" />
+    <Content Include="QRCodes\4185.png" />
+    <Content Include="QRCodes\4186.png" />
+    <Content Include="QRCodes\4187.png" />
+    <Content Include="QRCodes\4188.png" />
+    <Content Include="QRCodes\4189.png" />
+    <Content Include="QRCodes\4190.png" />
+    <Content Include="QRCodes\4191.png" />
+    <Content Include="QRCodes\4192.png" />
+    <Content Include="QRCodes\4193.png" />
+    <Content Include="QRCodes\4194.png" />
+    <Content Include="QRCodes\4195.png" />
+    <Content Include="QRCodes\4196.png" />
+    <Content Include="QRCodes\4197.png" />
+    <Content Include="QRCodes\4198.png" />
+    <Content Include="QRCodes\4199.png" />
+    <Content Include="QRCodes\4200.png" />
+    <Content Include="QRCodes\4201.png" />
+    <Content Include="QRCodes\4202.png" />
+    <Content Include="QRCodes\4203.png" />
+    <Content Include="QRCodes\4204.png" />
+    <Content Include="QRCodes\4205.png" />
+    <Content Include="QRCodes\4206.png" />
+    <Content Include="QRCodes\4207.png" />
+    <Content Include="QRCodes\4208.png" />
+    <Content Include="QRCodes\4209.png" />
+    <Content Include="QRCodes\4210.png" />
+    <Content Include="QRCodes\4211.png" />
+    <Content Include="QRCodes\4212.png" />
+    <Content Include="QRCodes\4213.png" />
+    <Content Include="QRCodes\4214.png" />
+    <Content Include="QRCodes\4215.png" />
+    <Content Include="QRCodes\4216.png" />
+    <Content Include="QRCodes\4217.png" />
+    <Content Include="QRCodes\4218.png" />
+    <Content Include="QRCodes\4219.png" />
+    <Content Include="QRCodes\4220.png" />
+    <Content Include="QRCodes\4221.png" />
+    <Content Include="QRCodes\4222.png" />
+    <Content Include="QRCodes\4223.png" />
+    <Content Include="QRCodes\4224.png" />
+    <Content Include="QRCodes\4225.png" />
+    <Content Include="QRCodes\4226.png" />
+    <Content Include="QRCodes\4227.png" />
+    <Content Include="QRCodes\4228.png" />
+    <Content Include="QRCodes\4229.png" />
+    <Content Include="QRCodes\4230.png" />
+    <Content Include="QRCodes\4231.png" />
+    <Content Include="QRCodes\4232.png" />
+    <Content Include="QRCodes\4233.png" />
+    <Content Include="QRCodes\4234.png" />
+    <Content Include="QRCodes\4235.png" />
+    <Content Include="QRCodes\4236.png" />
+    <Content Include="QRCodes\4237.png" />
+    <Content Include="QRCodes\4238.png" />
+    <Content Include="QRCodes\4239.png" />
+    <Content Include="QRCodes\4240.png" />
+    <Content Include="QRCodes\4241.png" />
+    <Content Include="QRCodes\4242.png" />
+    <Content Include="QRCodes\4243.png" />
+    <Content Include="QRCodes\4244.png" />
+    <Content Include="QRCodes\4245.png" />
+    <Content Include="QRCodes\4246.png" />
+    <Content Include="QRCodes\4247.png" />
+    <Content Include="QRCodes\4248.png" />
+    <Content Include="QRCodes\4249.png" />
+    <Content Include="QRCodes\4250.png" />
+    <Content Include="QRCodes\4251.png" />
+    <Content Include="QRCodes\4252.png" />
+    <Content Include="QRCodes\4253.png" />
+    <Content Include="QRCodes\4254.png" />
+    <Content Include="QRCodes\4255.png" />
+    <Content Include="QRCodes\4256.png" />
+    <Content Include="QRCodes\4257.png" />
+    <Content Include="QRCodes\4258.png" />
+    <Content Include="QRCodes\4259.png" />
+    <Content Include="QRCodes\4260.png" />
+    <Content Include="QRCodes\4261.png" />
+    <Content Include="QRCodes\4262.png" />
+    <Content Include="QRCodes\4263.png" />
+    <Content Include="QRCodes\4264.png" />
+    <Content Include="QRCodes\4265.png" />
+    <Content Include="QRCodes\4266.png" />
+    <Content Include="QRCodes\4267.png" />
+    <Content Include="QRCodes\4268.png" />
+    <Content Include="QRCodes\4269.png" />
+    <Content Include="QRCodes\4270.png" />
+    <Content Include="QRCodes\4271.png" />
+    <Content Include="QRCodes\4272.png" />
+    <Content Include="QRCodes\4273.png" />
+    <Content Include="QRCodes\4274.png" />
+    <Content Include="QRCodes\4275.png" />
+    <Content Include="QRCodes\4276.png" />
+    <Content Include="QRCodes\4277.png" />
+    <Content Include="QRCodes\4278.png" />
+    <Content Include="QRCodes\4279.png" />
+    <Content Include="QRCodes\4280.png" />
+    <Content Include="QRCodes\4281.png" />
+    <Content Include="QRCodes\4282.png" />
+    <Content Include="QRCodes\4283.png" />
+    <Content Include="QRCodes\4284.png" />
+    <Content Include="QRCodes\4285.png" />
+    <Content Include="QRCodes\4289.png" />
+    <Content Include="QRCodes\4290.png" />
+    <Content Include="QRCodes\4291.png" />
+    <Content Include="QRCodes\4292.png" />
+    <Content Include="QRCodes\4293.png" />
+    <Content Include="QRCodes\4294.png" />
+    <Content Include="QRCodes\4295.png" />
+    <Content Include="QRCodes\4296.png" />
+    <Content Include="QRCodes\4297.png" />
+    <Content Include="QRCodes\4298.png" />
+    <Content Include="QRCodes\4299.png" />
+    <Content Include="QRCodes\4300.png" />
+    <Content Include="QRCodes\4301.png" />
+    <Content Include="QRCodes\4302.png" />
+    <Content Include="QRCodes\4303.png" />
+    <Content Include="QRCodes\4304.png" />
+    <Content Include="QRCodes\4305.png" />
+    <Content Include="QRCodes\4306.png" />
+    <Content Include="QRCodes\4307.png" />
+    <Content Include="QRCodes\4308.png" />
+    <Content Include="QRCodes\4309.png" />
+    <Content Include="QRCodes\4310.png" />
+    <Content Include="QRCodes\4311.png" />
+    <Content Include="QRCodes\4312.png" />
+    <Content Include="QRCodes\4313.png" />
+    <Content Include="QRCodes\4314.png" />
+    <Content Include="QRCodes\4315.png" />
+    <Content Include="QRCodes\4316.png" />
+    <Content Include="QRCodes\4317.png" />
+    <Content Include="QRCodes\4318.png" />
+    <Content Include="QRCodes\4319.png" />
+    <Content Include="QRCodes\4320.png" />
+    <Content Include="QRCodes\4321.png" />
+    <Content Include="QRCodes\4322.png" />
+    <Content Include="QRCodes\4323.png" />
+    <Content Include="QRCodes\4324.png" />
+    <Content Include="QRCodes\4325.png" />
+    <Content Include="QRCodes\4326.png" />
+    <Content Include="QRCodes\5177.png" />
+    <Content Include="QRCodes\5178.png" />
+    <Content Include="QRCodes\5179.png" />
+    <Content Include="QRCodes\5180.png" />
+    <Content Include="QRCodes\5181.png" />
+    <Content Include="QRCodes\6178.png" />
+    <Content Include="QRCodes\6179.png" />
+    <Content Include="QRCodes\6180.png" />
+    <Content Include="QRCodes\6181.png" />
+    <Content Include="QRCodes\6182.png" />
+    <Content Include="QRCodes\6183.png" />
+    <Content Include="QRCodes\6184.png" />
+    <Content Include="QRCodes\6185.png" />
+    <Content Include="QRCodes\6186.png" />
+    <Content Include="QRCodes\6187.png" />
+    <Content Include="QRCodes\6188.png" />
+    <Content Include="QRCodes\6189.png" />
+    <Content Include="QRCodes\6190.png" />
+    <Content Include="QRCodes\6191.png" />
+    <Content Include="QRCodes\6192.png" />
+    <Content Include="QRCodes\6193.png" />
+    <Content Include="QRCodes\6194.png" />
+    <Content Include="QRCodes\6195.png" />
+    <Content Include="QRCodes\6196.png" />
+    <Content Include="QRCodes\6197.png" />
+    <Content Include="QRCodes\6198.png" />
+    <Content Include="QRCodes\6199.png" />
+    <Content Include="QRCodes\6200.png" />
+    <Content Include="QRCodes\6201.png" />
+    <Content Include="QRCodes\6202.png" />
+    <Content Include="QRCodes\6203.png" />
+    <Content Include="QRCodes\6204.png" />
+    <Content Include="QRCodes\6205.png" />
+    <Content Include="QRCodes\6206.png" />
+    <Content Include="QRCodes\6207.png" />
+    <Content Include="QRCodes\6208.png" />
+    <Content Include="QRCodes\6209.png" />
+    <Content Include="QRCodes\6210.png" />
+    <Content Include="QRCodes\6211.png" />
+    <Content Include="QRCodes\6212.png" />
+    <Content Include="QRCodes\6213.png" />
+    <Content Include="QRCodes\6214.png" />
+    <Content Include="QRCodes\6215.png" />
+    <Content Include="QRCodes\6216.png" />
+    <Content Include="QRCodes\6217.png" />
+    <Content Include="QRCodes\6218.png" />
+    <Content Include="QRCodes\6219.png" />
+    <Content Include="QRCodes\6220.png" />
+    <Content Include="QRCodes\6221.png" />
+    <Content Include="QRCodes\6222.png" />
+    <Content Include="QRCodes\6223.png" />
+    <Content Include="QRCodes\6224.png" />
+    <Content Include="QRCodes\6225.png" />
+    <Content Include="QRCodes\6226.png" />
+    <Content Include="QRCodes\6227.png" />
+    <Content Include="QRCodes\6228.png" />
+    <Content Include="QRCodes\6229.png" />
+    <Content Include="QRCodes\6230.png" />
+    <Content Include="QRCodes\6231.png" />
+    <Content Include="QRCodes\6232.png" />
+    <Content Include="QRCodes\6233.png" />
+    <Content Include="QRCodes\6234.png" />
+    <Content Include="QRCodes\6235.png" />
+    <Content Include="QRCodes\6236.png" />
+    <Content Include="QRCodes\6237.png" />
+    <Content Include="QRCodes\6238.png" />
+    <Content Include="QRCodes\6239.png" />
+    <Content Include="QRCodes\6240.png" />
+    <Content Include="QRCodes\6241.png" />
+    <Content Include="QRCodes\6242.png" />
+    <Content Include="QRCodes\6243.png" />
+    <Content Include="QRCodes\6244.png" />
+    <Content Include="QRCodes\6245.png" />
+    <Content Include="QRCodes\6246.png" />
+    <Content Include="QRCodes\6247.png" />
+    <Content Include="QRCodes\6248.png" />
+    <Content Include="QRCodes\6249.png" />
+    <Content Include="QRCodes\6250.png" />
+    <Content Include="QRCodes\6251.png" />
+    <Content Include="QRCodes\6252.png" />
+    <Content Include="QRCodes\6253.png" />
+    <Content Include="QRCodes\6254.png" />
+    <Content Include="QRCodes\6255.png" />
+    <Content Include="QRCodes\6256.png" />
+    <Content Include="QRCodes\6257.png" />
+    <Content Include="QRCodes\6258.png" />
+    <Content Include="QRCodes\6259.png" />
+    <Content Include="QRCodes\6260.png" />
+    <Content Include="QRCodes\6261.png" />
+    <Content Include="QRCodes\6262.png" />
+    <Content Include="QRCodes\6263.png" />
+    <Content Include="QRCodes\6264.png" />
+    <Content Include="QRCodes\6265.png" />
+    <Content Include="QRCodes\6266.png" />
+    <Content Include="QRCodes\6267.png" />
+    <Content Include="QRCodes\6268.png" />
+    <Content Include="QRCodes\6269.png" />
+    <Content Include="QRCodes\6270.png" />
+    <Content Include="QRCodes\6271.png" />
+    <Content Include="QRCodes\6272.png" />
+    <Content Include="QRCodes\6273.png" />
+    <Content Include="QRCodes\6274.png" />
+    <Content Include="QRCodes\6275.png" />
+    <Content Include="QRCodes\6276.png" />
+    <Content Include="QRCodes\6277.png" />
+    <Content Include="QRCodes\6278.png" />
+    <Content Include="QRCodes\6279.png" />
+    <Content Include="QRCodes\6280.png" />
+    <Content Include="QRCodes\6281.png" />
+    <Content Include="QRCodes\6282.png" />
+    <Content Include="QRCodes\6283.png" />
+    <Content Include="QRCodes\6285.png" />
+    <Content Include="QRCodes\6287.png" />
+    <Content Include="QRCodes\6288.png" />
+    <Content Include="QRCodes\6289.png" />
+    <Content Include="QRCodes\6290.png" />
+    <Content Include="QRCodes\6291.png" />
+    <Content Include="QRCodes\6292.png" />
+    <Content Include="QRCodes\6293.png" />
+    <Content Include="QRCodes\6294.png" />
+    <Content Include="QRCodes\6295.png" />
+    <Content Include="QRCodes\6296.png" />
+    <Content Include="QRCodes\6297.png" />
+    <Content Include="QRCodes\6298.png" />
+    <Content Include="QRCodes\6299.png" />
+    <Content Include="QRCodes\6300.png" />
+    <Content Include="QRCodes\6301.png" />
+    <Content Include="QRCodes\6302.png" />
+    <Content Include="QRCodes\6303.png" />
+    <Content Include="QRCodes\6304.png" />
+    <Content Include="QRCodes\6305.png" />
+    <Content Include="QRCodes\6306.png" />
+    <Content Include="QRCodes\6307.png" />
+    <Content Include="QRCodes\6308.png" />
+    <Content Include="QRCodes\6309.png" />
+    <Content Include="QRCodes\6310.png" />
+    <Content Include="QRCodes\6311.png" />
+    <Content Include="QRCodes\6312.png" />
+    <Content Include="QRCodes\6313.png" />
+    <Content Include="QRCodes\6314.png" />
+    <Content Include="QRCodes\6315.png" />
+    <Content Include="QRCodes\6316.png" />
+    <Content Include="QRCodes\6317.png" />
+    <Content Include="QRCodes\6318.png" />
+    <Content Include="QRCodes\6319.png" />
+    <Content Include="QRCodes\6320.png" />
+    <Content Include="QRCodes\6321.png" />
+    <Content Include="QRCodes\6322.png" />
+    <Content Include="QRCodes\6323.png" />
+    <Content Include="QRCodes\6324.png" />
+    <Content Include="QRCodes\6325.png" />
+    <Content Include="QRCodes\6326.png" />
+    <Content Include="QRCodes\6327.png" />
+    <Content Include="QRCodes\6328.png" />
+    <Content Include="QRCodes\6329.png" />
+    <Content Include="QRCodes\6330.png" />
+    <Content Include="QRCodes\6331.png" />
+    <Content Include="QRCodes\6332.png" />
+    <Content Include="QRCodes\6333.png" />
+    <Content Include="QRCodes\6334.png" />
+    <Content Include="QRCodes\6335.png" />
+    <Content Include="QRCodes\6336.png" />
+    <Content Include="QRCodes\6337.png" />
+    <Content Include="QRCodes\6338.png" />
+    <Content Include="QRCodes\6339.png" />
+    <Content Include="QRCodes\6340.png" />
+    <Content Include="QRCodes\6341.png" />
+    <Content Include="QRCodes\6342.png" />
+    <Content Include="QRCodes\6343.png" />
+    <Content Include="QRCodes\6344.png" />
+    <Content Include="QRCodes\6345.png" />
+    <Content Include="QRCodes\6346.png" />
+    <Content Include="QRCodes\6347.png" />
+    <Content Include="QRCodes\6348.png" />
+    <Content Include="QRCodes\6349.png" />
+    <Content Include="QRCodes\6350.png" />
+    <Content Include="QRCodes\6351.png" />
+    <Content Include="QRCodes\6352.png" />
+    <Content Include="QRCodes\6353.png" />
+    <Content Include="QRCodes\6354.png" />
+    <Content Include="QRCodes\6355.png" />
+    <Content Include="QRCodes\6356.png" />
+    <Content Include="QRCodes\6357.png" />
+    <Content Include="QRCodes\6358.png" />
+    <Content Include="QRCodes\6360.png" />
+    <Content Include="QRCodes\6361.png" />
+    <Content Include="QRCodes\6362.png" />
+    <Content Include="QRCodes\6363.png" />
+    <Content Include="QRCodes\6364.png" />
+    <Content Include="QRCodes\6365.png" />
+    <Content Include="QRCodes\7357.png" />
+    <Content Include="QRCodes\7358.png" />
+    <Content Include="QRCodes\7359.png" />
+    <Content Include="QRCodes\7360.png" />
+    <Content Include="QRCodes\7361.png" />
+    <Content Include="QRCodes\7362.png" />
+    <Content Include="QRCodes\7363.png" />
+    <Content Include="QRCodes\7364.png" />
+    <Content Include="QRCodes\7365.png" />
+    <Content Include="QRCodes\7366.png" />
+    <Content Include="QRCodes\7367.png" />
+    <Content Include="QRCodes\7368.png" />
+    <Content Include="QRCodes\7369.png" />
+    <Content Include="QRCodes\7370.png" />
+    <Content Include="QRCodes\7371.png" />
+    <Content Include="QRCodes\7372.png" />
+    <Content Include="QRCodes\7373.png" />
+    <Content Include="QRCodes\7374.png" />
+    <Content Include="QRCodes\7375.png" />
+    <Content Include="QRCodes\7376.png" />
+    <Content Include="QRCodes\7377.png" />
+    <Content Include="QRCodes\7378.png" />
+    <Content Include="QRCodes\7379.png" />
+    <Content Include="QRCodes\7380.png" />
+    <Content Include="QRCodes\7381.png" />
+    <Content Include="QRCodes\7382.png" />
+    <Content Include="QRCodes\7383.png" />
+    <Content Include="QRCodes\7384.png" />
+    <Content Include="QRCodes\7385.png" />
+    <Content Include="QRCodes\7386.png" />
+    <Content Include="QRCodes\7387.png" />
+    <Content Include="QRCodes\7388.png" />
+    <Content Include="QRCodes\7389.png" />
+    <Content Include="QRCodes\7390.png" />
+    <Content Include="QRCodes\7391.png" />
+    <Content Include="QRCodes\7392.png" />
+    <Content Include="QRCodes\7393.png" />
+    <Content Include="QRCodes\7394.png" />
+    <Content Include="QRCodes\7395.png" />
+    <Content Include="QRCodes\7396.png" />
+    <Content Include="QRCodes\7397.png" />
+    <Content Include="QRCodes\7398.png" />
+    <Content Include="QRCodes\7399.png" />
+    <Content Include="QRCodes\7400.png" />
+    <Content Include="QRCodes\7401.png" />
+    <Content Include="QRCodes\7402.png" />
+    <Content Include="QRCodes\7403.png" />
+    <Content Include="QRCodes\7404.png" />
+    <Content Include="QRCodes\7405.png" />
+    <Content Include="QRCodes\7406.png" />
+    <Content Include="QRCodes\8357.png" />
+    <Content Include="QRCodes\8358.png" />
+    <Content Include="QRCodes\8359.png" />
+    <Content Include="QRCodes\8360.png" />
+    <Content Include="QRCodes\8361.png" />
+    <Content Include="QRCodes\8362.png" />
+    <Content Include="QRCodes\8363.png" />
+    <Content Include="QRCodes\8364.png" />
+    <Content Include="QRCodes\8365.png" />
+    <Content Include="QRCodes\8366.png" />
+    <Content Include="QRCodes\8367.png" />
+    <Content Include="QRCodes\8368.png" />
+    <Content Include="QRCodes\8369.png" />
+    <Content Include="QRCodes\8370.png" />
+    <Content Include="QRCodes\8371.png" />
+    <Content Include="QRCodes\8372.png" />
+    <Content Include="QRCodes\8373.png" />
+    <Content Include="QRCodes\8375.png" />
+    <Content Include="QRCodes\8376.png" />
+    <Content Include="QRCodes\8377.png" />
+    <Content Include="QRCodes\8378.png" />
+    <Content Include="QRCodes\8379.png" />
+    <Content Include="QRCodes\8380.png" />
+    <Content Include="QRCodes\8381.png" />
+    <Content Include="QRCodes\8382.png" />
+    <Content Include="QRCodes\8383.png" />
+    <Content Include="QRCodes\8384.png" />
+    <Content Include="QRCodes\8388.png" />
+    <Content Include="QRCodes\8389.png" />
+    <Content Include="QRCodes\8390.png" />
+    <Content Include="QRCodes\8391.png" />
+    <Content Include="QRCodes\8398.png" />
+    <Content Include="QRCodes\8399.png" />
+    <Content Include="QRCodes\8400.png" />
+    <Content Include="QRCodes\8401.png" />
+    <Content Include="QRCodes\8402.png" />
+    <Content Include="QRCodes\8403.png" />
+    <Content Include="QRCodes\8404.png" />
+    <Content Include="QRCodes\8405.png" />
+    <Content Include="QRCodes\8406.png" />
+    <Content Include="QRCodes\8407.png" />
+    <Content Include="QRCodes\8408.png" />
+    <Content Include="QRCodes\8409.png" />
+    <Content Include="QRCodes\8410.png" />
+    <Content Include="QRCodes\8411.png" />
+    <Content Include="QRCodes\8412.png" />
+    <Content Include="QRCodes\8413.png" />
+    <Content Include="QRCodes\8414.png" />
+    <Content Include="QRCodes\8415.png" />
+    <Content Include="QRCodes\8416.png" />
+    <Content Include="QRCodes\8417.png" />
+    <Content Include="QRCodes\8418.png" />
+    <Content Include="QRCodes\8419.png" />
+    <Content Include="QRCodes\8420.png" />
+    <Content Include="QRCodes\8421.png" />
+    <Content Include="QRCodes\8425.png" />
+    <Content Include="QRCodes\8426.png" />
+    <Content Include="QRCodes\8427.png" />
+    <Content Include="QRCodes\8428.png" />
+    <Content Include="QRCodes\8429.png" />
+    <Content Include="QRCodes\8431.png" />
+    <Content Include="QRCodes\8432.png" />
+    <Content Include="QRCodes\8433.png" />
+    <Content Include="QRCodes\8434.png" />
+    <Content Include="QRCodes\8435.png" />
+    <Content Include="QRCodes\8436.png" />
+    <Content Include="QRCodes\8437.png" />
+    <Content Include="QRCodes\8438.png" />
+    <Content Include="QRCodes\8439.png" />
+    <Content Include="QRCodes\8440.png" />
+    <Content Include="QRCodes\8441.png" />
+    <Content Include="QRCodes\8442.png" />
+    <Content Include="QRCodes\8443.png" />
+    <Content Include="QRCodes\8444.png" />
+    <Content Include="QRCodes\8445.png" />
+    <Content Include="QRCodes\8446.png" />
+    <Content Include="QRCodes\8447.png" />
+    <Content Include="QRCodes\8448.png" />
+    <Content Include="QRCodes\8452.png" />
+    <Content Include="QRCodes\8453.png" />
+    <Content Include="QRCodes\8454.png" />
+    <Content Include="QRCodes\8459.png" />
+    <Content Include="QRCodes\8460.png" />
+    <Content Include="QRCodes\8461.png" />
+    <Content Include="QRCodes\8462.png" />
+    <Content Include="QRCodes\8463.png" />
+    <Content Include="QRCodes\8464.png" />
+    <Content Include="QRCodes\8465.png" />
+    <Content Include="QRCodes\8466.png" />
+    <Content Include="QRCodes\8467.png" />
+    <Content Include="QRCodes\8468.png" />
+    <Content Include="QRCodes\8469.png" />
+    <Content Include="QRCodes\8470.png" />
+    <Content Include="QRCodes\8471.png" />
+    <Content Include="QRCodes\8472.png" />
+    <Content Include="QRCodes\8473.png" />
+    <Content Include="QRCodes\8474.png" />
+    <Content Include="QRCodes\8475.png" />
+    <Content Include="QRCodes\8476.png" />
+    <Content Include="QRCodes\8477.png" />
+    <Content Include="QRCodes\8478.png" />
+    <Content Include="QRCodes\8479.png" />
+    <Content Include="QRCodes\8480.png" />
+    <Content Include="QRCodes\8481.png" />
+    <Content Include="QRCodes\8482.png" />
+    <Content Include="QRCodes\8483.png" />
+    <Content Include="QRCodes\8484.png" />
+    <Content Include="QRCodes\8485.png" />
+    <Content Include="QRCodes\8486.png" />
+    <Content Include="QRCodes\8487.png" />
+    <Content Include="QRCodes\8488.png" />
+    <Content Include="QRCodes\8489.png" />
+    <Content Include="QRCodes\8490.png" />
+    <Content Include="QRCodes\8491.png" />
+    <Content Include="QRCodes\8492.png" />
+    <Content Include="QRCodes\8493.png" />
+    <Content Include="QRCodes\8494.png" />
+    <Content Include="QRCodes\9423.png" />
+    <Content Include="QRCodes\9424.png" />
+    <Content Include="QRCodes\9425.png" />
+    <Content Include="QRCodes\9426.png" />
+    <Content Include="QRCodes\9427.png" />
+    <Content Include="QRCodes\9428.png" />
+    <Content Include="QRCodes\9429.png" />
+    <Content Include="QRCodes\9447.png" />
+    <Content Include="QRCodes\9448.png" />
+    <Content Include="QRCodes\9449.png" />
+    <Content Include="QRCodes\9450.png" />
+    <Content Include="QRCodes\9451.png" />
+    <Content Include="QRCodes\9452.png" />
+    <Content Include="QRCodes\9453.png" />
+    <Content Include="QRCodes\9454.png" />
+    <Content Include="QRCodes\9455.png" />
+    <Content Include="QRCodes\9457.png" />
+    <Content Include="QRCodes\9460.png" />
+    <Content Include="QRCodes\9461.png" />
+    <Content Include="QRCodes\9462.png" />
+    <Content Include="QRCodes\9464.png" />
+    <Content Include="QRCodes\9465.png" />
+    <Content Include="QRCodes\9466.png" />
+    <Content Include="QRCodes\9467.png" />
+    <Content Include="QRCodes\9468.png" />
+    <Content Include="QRCodes\9469.png" />
+    <Content Include="QRCodes\9470.png" />
+    <Content Include="QRCodes\9471.png" />
+    <Content Include="QRCodes\9472.png" />
+    <Content Include="QRCodes\9473.png" />
+    <Content Include="QRCodes\9474.png" />
+    <Content Include="QRCodes\9475.png" />
+    <Content Include="QRCodes\9476.png" />
+    <Content Include="QRCodes\9477.png" />
+    <Content Include="QRCodes\9478.png" />
+    <Content Include="QRCodes\9479.png" />
+    <Content Include="QRCodes\9480.png" />
+    <Content Include="QRCodes\9481.png" />
+    <Content Include="QRCodes\9482.png" />
+    <Content Include="QRCodes\9483.png" />
+    <Content Include="QRCodes\9484.png" />
+    <Content Include="QRCodes\9485.png" />
+    <Content Include="QRCodes\9486.png" />
+    <Content Include="QRCodes\9487.png" />
+    <Content Include="QRCodes\9488.png" />
+    <Content Include="QRCodes\9489.png" />
+    <Content Include="QRCodes\9490.png" />
+    <Content Include="QRCodes\9491.png" />
+    <Content Include="QRCodes\9492.png" />
+    <Content Include="QRCodes\9493.png" />
+    <Content Include="QRCodes\9494.png" />
+    <Content Include="QRCodes\9495.png" />
+    <Content Include="QRCodes\9496.png" />
+    <Content Include="QRCodes\9497.png" />
+    <Content Include="QRCodes\9498.png" />
+    <Content Include="QRCodes\9499.png" />
+    <Content Include="QRCodes\9500.png" />
+    <Content Include="QRCodes\9501.png" />
+    <Content Include="QRCodes\9502.png" />
+    <Content Include="QRCodes\9503.png" />
+    <Content Include="QRCodes\9505.png" />
+    <Content Include="QRCodes\9506.png" />
+    <Content Include="QRCodes\9507.png" />
+    <Content Include="QRCodes\9508.png" />
+    <Content Include="QRCodes\9509.png" />
+    <Content Include="QRCodes\9510.png" />
+    <Content Include="QRCodes\9511.png" />
+    <Content Include="QRCodes\9512.png" />
+    <Content Include="QRCodes\9513.png" />
+    <Content Include="QRCodes\9514.png" />
+    <Content Include="QRCodes\9515.png" />
+    <Content Include="QRCodes\9516.png" />
+    <Content Include="QRCodes\9517.png" />
+    <Content Include="QRCodes\9518.png" />
+    <Content Include="QRCodes\9519.png" />
+    <Content Include="QRCodes\9520.png" />
+    <Content Include="QRCodes\9521.png" />
+    <Content Include="QRCodes\9522.png" />
+    <Content Include="QRCodes\9523.png" />
+    <Content Include="QRCodes\9524.png" />
+    <Content Include="QRCodes\9525.png" />
+    <Content Include="QRCodes\9527.png" />
+    <Content Include="QRCodes\9528.png" />
+    <Content Include="QRCodes\9529.png" />
+    <Content Include="QRCodes\9530.png" />
+    <Content Include="QRCodes\9531.png" />
+    <Content Include="QRCodes\9532.png" />
+    <Content Include="QRCodes\9533.png" />
+    <Content Include="QRCodes\9534.png" />
+    <Content Include="QRCodes\9535.png" />
+    <Content Include="QRCodes\9536.png" />
+    <Content Include="QRCodes\9537.png" />
+    <Content Include="QRCodes\9538.png" />
+    <Content Include="QRCodes\9539.png" />
+    <Content Include="QRCodes\9540.png" />
+    <Content Include="QRCodes\9541.png" />
+    <Content Include="QRCodes\9542.png" />
+    <Content Include="QRCodes\9543.png" />
+    <Content Include="QRCodes\9544.png" />
+    <Content Include="QRCodes\9545.png" />
+    <Content Include="QRCodes\9546.png" />
+    <Content Include="QRCodes\9547.png" />
+    <Content Include="QRCodes\9548.png" />
+    <Content Include="QRCodes\9549.png" />
+    <Content Include="QRCodes\9550.png" />
+    <Content Include="QRCodes\9551.png" />
+    <Content Include="QRCodes\9552.png" />
+    <Content Include="QRCodes\9553.png" />
+    <Content Include="QRCodes\9554.png" />
+    <Content Include="QRCodes\9555.png" />
+    <Content Include="QRCodes\9556.png" />
+    <Content Include="QRCodes\9557.png" />
+    <Content Include="QRCodes\9558.png" />
+    <Content Include="QRCodes\9559.png" />
+    <Content Include="QRCodes\9560.png" />
+    <Content Include="QRCodes\9561.png" />
+    <Content Include="QRCodes\9562.png" />
+    <Content Include="QRCodes\9563.png" />
+    <Content Include="QRCodes\9564.png" />
+    <Content Include="QRCodes\9565.png" />
+    <Content Include="QRCodes\9566.png" />
+    <Content Include="QRCodes\9567.png" />
+    <Content Include="QRCodes\9568.png" />
+    <Content Include="QRCodes\9569.png" />
+    <Content Include="QRCodes\9570.png" />
+    <Content Include="QRCodes\9571.png" />
+    <Content Include="QRCodes\9572.png" />
+    <Content Include="QRCodes\9573.png" />
+    <Content Include="QRCodes\9574.png" />
+    <Content Include="QRCodes\9575.png" />
+    <Content Include="QRCodes\9576.png" />
+    <Content Include="QRCodes\9577.png" />
+    <Content Include="QRCodes\9578.png" />
+    <Content Include="QRCodes\9579.png" />
+    <Content Include="QRCodes\9580.png" />
+    <Content Include="QRCodes\9581.png" />
+    <Content Include="QRCodes\9582.png" />
+    <Content Include="QRCodes\9583.png" />
+    <Content Include="QRCodes\9584.png" />
+    <Content Include="QRCodes\9585.png" />
+    <Content Include="QRCodes\9586.png" />
+    <Content Include="QRCodes\9587.png" />
+    <Content Include="QRCodes\9588.png" />
+    <Content Include="QRCodes\9589.png" />
+    <Content Include="QRCodes\9590.png" />
+    <Content Include="QRCodes\9591.png" />
+    <Content Include="QRCodes\9592.png" />
+    <Content Include="QRCodes\9593.png" />
+    <Content Include="QRCodes\9594.png" />
+    <Content Include="QRCodes\9595.png" />
+    <Content Include="QRCodes\9596.png" />
+    <Content Include="QRCodes\9597.png" />
+    <Content Include="QRCodes\9598.png" />
+    <Content Include="QRCodes\9599.png" />
+    <Content Include="QRCodes\9600.png" />
+    <Content Include="QRCodes\9601.png" />
+    <Content Include="QRCodes\9602.png" />
+    <Content Include="QRCodes\9603.png" />
+    <Content Include="QRCodes\9604.png" />
+    <Content Include="QRCodes\9605.png" />
+    <Content Include="QRCodes\9606.png" />
+    <Content Include="QRCodes\9607.png" />
+    <Content Include="QRCodes\9608.png" />
+    <Content Include="QRCodes\9609.png" />
+    <Content Include="QRCodes\9610.png" />
+    <Content Include="QRCodes\9611.png" />
+    <Content Include="QRCodes\9612.png" />
+    <Content Include="QRCodes\9613.png" />
+    <Content Include="QRCodes\9614.png" />
+    <Content Include="QRCodes\9615.png" />
+    <Content Include="QRCodes\9616.png" />
+    <Content Include="QRCodes\9617.png" />
+    <Content Include="QRCodes\9618.png" />
+    <Content Include="QRCodes\9619.png" />
+    <Content Include="QRCodes\9620.png" />
+    <Content Include="QRCodes\9621.png" />
+    <Content Include="QRCodes\9622.png" />
+    <Content Include="QRCodes\9623.png" />
+    <Content Include="QRCodes\9624.png" />
+    <Content Include="QRCodes\9625.png" />
+    <Content Include="QRCodes\9626.png" />
+    <Content Include="QRCodes\9627.png" />
+    <Content Include="QRCodes\9628.png" />
+    <Content Include="QRCodes\9629.png" />
+    <Content Include="QRCodes\9630.png" />
+    <Content Include="QRCodes\9631.png" />
+    <Content Include="QRCodes\9632.png" />
+    <Content Include="QRCodes\9633.png" />
+    <Content Include="QRCodes\9634.png" />
+    <Content Include="QRCodes\9635.png" />
+    <Content Include="QRCodes\9636.png" />
+    <Content Include="QRCodes\9637.png" />
+    <Content Include="QRCodes\9638.png" />
+    <Content Include="QRCodes\9639.png" />
+    <Content Include="QRCodes\9640.png" />
+    <Content Include="QRCodes\9641.png" />
+    <Content Include="QRCodes\9642.png" />
+    <Content Include="QRCodes\9643.png" />
+    <Content Include="QRCodes\9644.png" />
+    <Content Include="QRCodes\9645.png" />
+    <Content Include="QRCodes\9646.png" />
+    <Content Include="QRCodes\9647.png" />
+    <Content Include="QRCodes\9648.png" />
+    <Content Include="QRCodes\9649.png" />
+    <Content Include="QRCodes\9650.png" />
+    <Content Include="QRCodes\9651.png" />
+    <Content Include="QRCodes\9652.png" />
+    <Content Include="QRCodes\9653.png" />
+    <Content Include="QRCodes\9654.png" />
+    <Content Include="QRCodes\9655.png" />
+    <Content Include="QRCodes\9656.png" />
+    <Content Include="QRCodes\9663.png" />
+    <Content Include="QRCodes\9664.png" />
+    <Content Include="QRCodes\9665.png" />
+    <Content Include="QRCodes\9666.png" />
+    <Content Include="QRCodes\9667.png" />
+    <Content Include="QRCodes\9668.png" />
+    <Content Include="QRCodes\9669.png" />
+    <Content Include="QRCodes\9670.png" />
+    <Content Include="QRCodes\9671.png" />
+    <Content Include="QRCodes\9672.png" />
+    <Content Include="QRCodes\9673.png" />
+    <Content Include="QRCodes\9674.png" />
+    <Content Include="QRCodes\9675.png" />
+    <Content Include="QRCodes\9676.png" />
+    <Content Include="QRCodes\9677.png" />
+    <Content Include="QRCodes\9685.png" />
+    <Content Include="QRCodes\9686.png" />
+    <Content Include="QRCodes\9687.png" />
+    <Content Include="QRCodes\9689.png" />
+    <Content Include="QRCodes\9701.png" />
+    <Content Include="QRCodes\9704.png" />
+    <Content Include="QRCodes\9706.png" />
+    <Content Include="QRCodes\9708.png" />
+    <Content Include="QRCodes\9712.png" />
+    <Content Include="QRCodes\9713.png" />
+    <Content Include="QRCodes\9718.png" />
+    <Content Include="QRCodes\9720.png" />
+    <Content Include="QRCodes\9721.png" />
+    <Content Include="QRCodes\9724.png" />
+    <Content Include="QRCodes\9725.png" />
+    <Content Include="QRCodes\9726.png" />
+    <Content Include="QRCodes\9729.png" />
+    <Content Include="QRCodes\9733.png" />
+    <Content Include="QRCodes\9735.png" />
+    <Content Include="QRCodes\9736.png" />
+    <Content Include="QRCodes\9738.png" />
+    <Content Include="QRCodes\9739.png" />
+    <Content Include="QRCodes\9740.png" />
+    <Content Include="QRCodes\9741.png" />
+    <Content Include="QRCodes\9742.png" />
+    <Content Include="QRCodes\9743.png" />
+    <Content Include="QRCodes\9747.png" />
+    <Content Include="QRCodes\9748.png" />
+    <Content Include="QRCodes\9750.png" />
+    <Content Include="QRCodes\9752.png" />
+    <Content Include="QRCodes\9753.png" />
+    <Content Include="QRCodes\9755.png" />
+    <Content Include="QRCodes\9756.png" />
+    <Content Include="QRCodes\9758.png" />
+    <Content Include="QRCodes\9760.png" />
+    <Content Include="QRCodes\9762.png" />
+    <Content Include="QRCodes\9766.png" />
+    <Content Include="QRCodes\9770.png" />
+    <Content Include="QRCodes\9771.png" />
+    <Content Include="QRCodes\9772.png" />
+    <Content Include="QRCodes\9774.png" />
+    <Content Include="QRCodes\9775.png" />
+    <Content Include="QRCodes\9779.png" />
+    <Content Include="QRCodes\9786.png" />
+    <Content Include="QRCodes\9787.png" />
+    <Content Include="QRCodes\9788.png" />
+    <Content Include="QRCodes\9791.png" />
+    <Content Include="QRCodes\9792.png" />
+    <Content Include="QRCodes\9795.png" />
+    <Content Include="QRCodes\9799.png" />
+    <Content Include="QRCodes\9801.png" />
+    <Content Include="QRCodes\9802.png" />
+    <Content Include="QRCodes\9805.png" />
+    <Content Include="QRCodes\9809.png" />
+    <Content Include="QRCodes\9810.png" />
+    <Content Include="QRCodes\9811.png" />
+    <Content Include="QRCodes\9812.png" />
+    <Content Include="QRCodes\9815.png" />
+    <Content Include="QRCodes\9816.png" />
+    <Content Include="QRCodes\9817.png" />
+    <Content Include="QRCodes\9819.png" />
+    <Content Include="QRCodes\9822.png" />
+    <Content Include="QRCodes\9824.png" />
+    <Content Include="QRCodes\9826.png" />
+    <Content Include="QRCodes\9829.png" />
+    <Content Include="QRCodes\9831.png" />
+    <Content Include="QRCodes\9834.png" />
+    <Content Include="QRCodes\9835.png" />
+    <Content Include="QRCodes\9837.png" />
+    <Content Include="QRCodes\9838.png" />
+    <Content Include="QRCodes\9841.png" />
+    <Content Include="QRCodes\9842.png" />
+    <Content Include="QRCodes\9843.png" />
+    <Content Include="QRCodes\9846.png" />
+    <Content Include="QRCodes\9847.png" />
+    <Content Include="QRCodes\9848.png" />
+    <Content Include="QRCodes\9849.png" />
+    <Content Include="QRCodes\9850.png" />
+    <Content Include="QRCodes\9854.png" />
+    <Content Include="QRCodes\9855.png" />
+    <Content Include="QRCodes\9856.png" />
+    <Content Include="QRCodes\9858.png" />
+    <Content Include="QRCodes\9859.png" />
+    <Content Include="QRCodes\9860.png" />
+    <Content Include="QRCodes\9861.png" />
+    <Content Include="QRCodes\9863.png" />
+    <Content Include="QRCodes\9868.png" />
+    <Content Include="QRCodes\9882.png" />
+    <Content Include="QRCodes\9883.png" />
+    <Content Include="QRCodes\9886.png" />
+    <Content Include="QRCodes\9889.png" />
+    <Content Include="QRCodes\9892.png" />
+    <Content Include="QRCodes\9893.png" />
+    <Content Include="QRCodes\9901.png" />
+    <Content Include="QRCodes\9914.png" />
+    <Content Include="QRCodes\9915.png" />
+    <Content Include="QRCodes\9917.png" />
+    <Content Include="QRCodes\9918.png" />
+    <Content Include="QRCodes\9919.png" />
+    <Content Include="QRCodes\9923.png" />
+    <Content Include="QRCodes\9924.png" />
+    <Content Include="QRCodes\9926.png" />
+    <Content Include="QRCodes\9927.png" />
+    <Content Include="QRCodes\9930.png" />
+    <Content Include="QRCodes\9931.png" />
+    <Content Include="QRCodes\9932.png" />
+    <Content Include="QRCodes\9934.png" />
+    <Content Include="QRCodes\qrTest.png" />
+    <Content Include="SilverJublie\Silver Jubilee 10.jpg" />
+    <Content Include="SilverJublie\Silver Jubilee 11.jpg" />
+    <Content Include="SilverJublie\Silver Jubilee 13.jpg" />
+    <Content Include="SilverJublie\Silver Jubilee 14.jpg" />
+    <Content Include="SilverJublie\Silver Jubilee 15.jpg" />
+    <Content Include="SilverJublie\Silver Jubilee 16.jpg" />
+    <Content Include="SilverJublie\Silver Jubilee 17.jpg" />
+    <Content Include="SilverJublie\Silver Jubilee 18.jpg" />
+    <Content Include="SilverJublie\Silver Jubilee 19.jpg" />
+    <Content Include="SilverJublie\Silver Jubilee 20.jpg" />
+    <Content Include="SilverJublie\Silver Jubilee 21.jpg" />
+    <Content Include="SilverJublie\Silver Jubilee 22.jpg" />
+    <Content Include="SilverJublie\Silver Jubilee 23.jpg" />
+    <Content Include="SilverJublie\Silver Jubilee 24.jpg" />
+    <Content Include="SilverJublie\Silver Jubilee 25.jpg" />
+    <Content Include="SilverJublie\Silver Jubilee 26.jpg" />
+    <Content Include="SilverJublie\Silver Jubilee 27.jpg" />
+    <Content Include="SilverJublie\Silver Jubilee 29.jpg" />
+    <Content Include="SilverJublie\Silver Jubilee 30.jpg" />
+    <Content Include="SilverJublie\Silver Jubilee 31.jpg" />
+    <Content Include="SilverJublie\Silver Jubilee 32.jpg" />
+    <Content Include="SilverJublie\Silver Jubilee 33.jpg" />
+    <Content Include="SilverJublie\Silver Jubilee 34.jpg" />
+    <Content Include="SilverJublie\Silver Jubilee 36.jpg" />
+    <Content Include="SilverJublie\Silver Jubilee 37.jpg" />
+    <Content Include="SilverJublie\Silver Jubilee 38.jpg" />
+    <Content Include="SilverJublie\Silver Jubilee 39.jpg" />
+    <Content Include="SilverJublie\Silver Jubilee 4.jpg" />
+    <Content Include="SilverJublie\Silver Jubilee 40.jpg" />
+    <Content Include="SilverJublie\Silver Jubilee 44.jpg" />
+    <Content Include="SilverJublie\Silver Jubilee 45.jpg" />
+    <Content Include="SilverJublie\Silver Jubilee 46.jpg" />
+    <Content Include="SilverJublie\Silver Jubilee 47.jpg" />
+    <Content Include="SilverJublie\Silver Jubilee 48.jpg" />
+    <Content Include="SilverJublie\Silver Jubilee 49.jpg" />
+    <Content Include="SilverJublie\Silver Jubilee 50.jpg" />
+    <Content Include="SilverJublie\Silver Jubilee 51.jpg" />
+    <Content Include="SilverJublie\Silver Jubilee 52.jpg" />
+    <Content Include="SilverJublie\Silver Jubilee 53.jpg" />
+    <Content Include="SilverJublie\Silver Jubilee 54.jpg" />
+    <Content Include="SilverJublie\Silver Jubilee 55.jpg" />
+    <Content Include="SilverJublie\Silver Jubilee 56.jpg" />
+    <Content Include="SilverJublie\Silver Jubilee 57.jpg" />
+    <Content Include="SilverJublie\Silver Jubilee 58.jpg" />
+    <Content Include="SilverJublie\Silver Jubilee 59.jpg" />
+    <Content Include="SilverJublie\Silver jubilee 6.jpg" />
+    <Content Include="SilverJublie\Silver Jubilee 60.jpg" />
+    <Content Include="SilverJublie\Silver Jubilee 61.jpg" />
+    <Content Include="SilverJublie\Silver Jubilee 62.jpg" />
+    <Content Include="SilverJublie\Silver Jubilee 63.jpg" />
+    <Content Include="SilverJublie\Silver Jubilee 64.jpg" />
+    <Content Include="SilverJublie\Silver Jubilee 65.jpg" />
+    <Content Include="SilverJublie\Silver Jubilee 66.jpg" />
+    <Content Include="SilverJublie\Silver Jubilee 67.jpg" />
+    <Content Include="SilverJublie\Silver Jubilee 68.jpg" />
+    <Content Include="SilverJublie\Silver Jubilee 7.jpg" />
+    <Content Include="SilverJublie\Silver Jubilee 70.jpg" />
+    <Content Include="SilverJublie\Silver Jubilee 71.jpg" />
+    <Content Include="SilverJublie\Silver Jubilee 72.jpg" />
+    <Content Include="SilverJublie\Silver Jubilee 74.jpg" />
+    <Content Include="SilverJublie\Silver Jubilee 75.jpg" />
+    <Content Include="SilverJublie\Silver Jubilee 76.jpg" />
+    <Content Include="SilverJublie\Silver Jubilee 77.jpg" />
+    <Content Include="SilverJublie\Silver Jubilee 78.jpg" />
+    <Content Include="SilverJublie\Silver Jubilee 79.jpg" />
+    <Content Include="SilverJublie\Silver Jubilee 80.jpg" />
+    <Content Include="SilverJublie\Silver Jubilee 82.jpg" />
+    <Content Include="SilverJublie\Silver Junilee 2.jpg" />
+    <Content Include="Templates\registration_success.html" />
+    <Content Include="Templates\receipt.html" />
+    <Content Include="Templates\receiptseats.html" />
+    <Content Include="Templates\ticket.html" />
+    <Content Include="Templates\ticketseats.html" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Shared\Lockout.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Views\Backups\V5Venue - Backup 22-1-2020\" />
+    <Folder Include="Views\BookingSummary - Backup 10-1-2020\" />
+    <Folder Include="Views\BookingSummary - Backup 13-1-2020\" />
+    <Folder Include="Views\BookingSummary - Backup 22-1-2020\" />
+    <Folder Include="Views\Login\" />
+    <Folder Include="Views\NewFolder1\" />
+    <Folder Include="Views\TestMail\" />
+    <Folder Include="Views\V4Venue\" />
+    <Folder Include="Views\V5Venue - Backup\" />
+    <Folder Include="Views\V6Venue\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+    <EntityDeploy Include="Models\Model1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Content>
+    <Content Include="App_Images\Thumbs.db" />
+    <Content Include="Disclaimer\General Rules for VOBA 2021 Junior.docx" />
+    <Content Include="App_Images\bootstrap.min.css.map" />
+    <Content Include="App_Images\bootstrap-theme.min.css.map" />
+    <None Include="Project_Readme.html" />
+    <Content Include="Views\Test\Index.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Events\Index.cshtml" />
+    <Content Include="Views\V1Venue\Index.cshtml" />
+    <Content Include="Views\V2Venue\Index.cshtml" />
+    <Content Include="Views\Register\Index.cshtml" />
+    <Content Include="Views\BookingSummary\Index.cshtml" />
+    <Content Include="Views\TicketTemp\Index.cshtml" />
+    <Content Include="Views\BookTickets\Index.cshtml" />
+    <Content Include="Views\ComingSoon\Index.cshtml" />
+    <Content Include="Views\OrderSuccess\Index.cshtml" />
+    <Content Include="Views\OrderSummary\Index.cshtml" />
+    <Content Include="Views\V3Venue\Index.cshtml" />
+    <Content Include="Views\DummyVenue\Index.cshtml" />
+    <Content Include="Views\SeatGenerator\Index.cshtml" />
+    <Content Include="Views\V5Venue\Index.cshtml" />
+    <Content Include="Views\V5Static\Index.cshtml" />
+    <Content Include="Views\BookingSummary\Summary.cshtml" />
+    <Content Include="Views\BookingSuccess\Index.cshtml" />
+    <Content Include="Views\V4Static\Index.cshtml" />
+    <Content Include="Views\Venue3Static\Index.cshtml" />
+    <Content Include="Views\AllEvents\Index.cshtml" />
+    <Content Include="Views\V7Venue\Index.cshtml" />
+    <Content Include="Views\V7Static\Index.cshtml" />
+    <Content Include="Views\TestReceipt\Index.cshtml" />
+    <Content Include="Views\V5Venue\Index - Backup 30-1-2020.cshtml" />
+    <Content Include="Views\V7Venue\Index - Backup 30-1-2020.cshtml" />
+    <Content Include="Views\V2Static\Index.cshtml" />
+    <Content Include="Views\PastEvents\Index.cshtml" />
+    <Content Include="Views\Backups\BookingSummary - Backup 10-1-2020\Index.cshtml" />
+    <Content Include="Views\Backups\BookingSummary - Backup 10-1-2020\Summary.cshtml" />
+    <Content Include="Views\Backups\BookingSummary - Backup 13-1-2020\Index.cshtml" />
+    <Content Include="Views\Backups\BookingSummary - Backup 13-1-2020\Summary.cshtml" />
+    <Content Include="Views\Backups\BookingSummary - Backup 22-1-2020\Index.cshtml" />
+    <Content Include="Views\Backups\BookingSummary - Backup 22-1-2020\Summary.cshtml" />
+    <Content Include="Views\Backups\V5Venue - Backup 3-2-2020\Index - Backup 30-1-2020.cshtml" />
+    <Content Include="Views\Backups\V5Venue - Backup 3-2-2020\Index.cshtml" />
+    <Content Include="Views\Backups\V7Venue - Backup 3-2-2020\Index - Backup 30-1-2020.cshtml" />
+    <Content Include="Views\Backups\V7Venue - Backup 3-2-2020\Index.cshtml" />
+    <Content Include="Views\BookingSummary\Summary - Backup 27-01-2020.cshtml" />
+    <Content Include="Views\BookingSummary\Summary - Backup 30-1-2020.cshtml" />
+    <Content Include="Views\VOBA\Index.cshtml" />
+    <Content Include="Views\VOBASummary\Index.cshtml" />
+    <Content Include="Views\BookTickets\Index - Copy.cshtml" />
+    <Content Include="Views\Index.cshtml" />
+    <Content Include="Views\ManualMails\Index.cshtml" />
+    <Content Include="Views\PastEvents - Copy\Index.cshtml" />
+    <Content Include="Views\VOBA\Rules.cshtml" />
+    <Content Include="Views\BookingSummary\Index - Backup 06Dec2021.cshtml" />
+    <Content Include="Views\BookingSummary\Summary - Backup06Dec2021.cshtml" />
+    <Content Include="Views\V2Venue\Index - Backup06Dec2021.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SA.Logger\SA.Logger.csproj">
+      <Project>{3ad9b846-8c27-424d-b918-c8140d8b3980}</Project>
+      <Name>SA.Logger</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>4812</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:4812/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

@@ -1,2 +1,2 @@
-# javanika-ui
-javanika-ui
+# javanika-ui-dev
+javanika-ui-dev

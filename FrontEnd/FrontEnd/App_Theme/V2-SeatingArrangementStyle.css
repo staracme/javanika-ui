@@ -206,7 +206,7 @@ ol {
 /*Seating Arrangements Style*/
     .MainOuterSeatingWrap {
         width: 850px;
-        height: 500px;
+        height: 600px;
         border: 1px solid #efefef;
         background:white;
         overflow: hidden;
@@ -232,8 +232,17 @@ ol {
 .StageWrap
 {border:1px solid #efefef; margin:0 auto 20px auto; font-size:35px; text-align:center; color:gray; text-transform:uppercase; background:#efefef; width:1000px;}
 
-.EventSeatHead
-{width:100%; background:white; color:gray; border-top:3px solid #e80063; font-size:20px; color:#e80063; padding:10px; margin:0 auto 15px auto;box-shadow:2px 2px 5px #b1b1b1;}
+.EventSeatHead {
+    width: 100%;
+    background: white;
+    color: gray;
+    border-top: 3px solid #ff3a3a;
+    font-size: 20px;
+    color: #ff3a3a;
+    padding: 10px;
+    margin: 0 auto 15px auto;
+    box-shadow: 2px 2px 5px #b1b1b1;
+}
 .DragContent
 {float:left;  font-size:22px; margin:12px 10px 0 0; color:olive;}
 .DragImg

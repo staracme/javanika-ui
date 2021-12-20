@@ -399,7 +399,7 @@ FrontEnd/FrontEnd/bin
 FrontEnd/FrontEnd/obj
 FrontEnd/SA.Caching/bin
 FrontEnd/SA.Caching/obj
-FrontEnd/SA.DAL/bin
+FrontEnd/SA.DAL/bin	
 FrontEnd/SA.DAL/obj
 FrontEnd/SA.Logger/bin
 FrontEnd/SA.Logger/obj
@@ -412,3 +412,5 @@ FrontEnd/bin/
 *.log
 *.cache
 *.config
+*.csproj
+*.user

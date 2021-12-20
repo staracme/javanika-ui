@@ -14,11 +14,291 @@
 }
 
 
+<!--sandbox-->
+@*<script src="https://www.paypal.com/sdk/js?client-id=AW3y6TJ_eeCUe4f0X1BT33IR2EuHy2IzWuAsHFWtKcoZJd3OsVDZkV3qPvS6J2NUp5JjWSjBxcihAFuU">
+    </script>*@
+
+<!--live-->
+<script src="https://www.paypal.com/sdk/js?client-id=AYZg72OmfeJnm88ghZQv7x4opaln2jZ1k6uHnhIYOaMl_RUPLGbutIGi0Gsp8b8NogkMEQuVbj5NBgvX">
+</script>
+
+
+<script type="text/javascript">
+    @*var a =  @ViewData["isEarlyBird"]
+        alert(a);*@
+
+    function OverridePP() {
+        var isOrderPlaced = false;
+        // Show a success message to your buyer
+        var email = $("#txtEmail").val();
+        var name = $("#txtFirstName").val();
+        var mobile = $("#txtMobile").val();
+        //var ticketType = ({ Convert.ToBoolean(TempData["isEarlyBirdApplicable"]);} == true) ? "EARLYBIRD" : "GENERAL";
+        //var ticketType = (isTrue1) ? "EARLYBIRD" : "GENERAL";
+
+        $.ajax({
+			url: '/BookingSummary/PlaceOrder',
+			type: "POST",
+			data: {
+                orderID: 'override-paypal-id',
+				email: email,
+				name: name,
+				mobile: mobile,
+                eventID: '@Request["eventID"]',
+                ticketType: '@ViewData["isEarlyBird"]',
+                actualPrice: @Model[0].ActualPrice,
+                discountedAmount: '@ViewData["DiscountedAmount"]',
+                priceAfterDiscount: @Model[0].Price,
+                processingFee: @ViewData["ProcessingFee"],
+                amount: '@ViewData["Amount"]',
+                intent: 'CAPTURE',
+                status: 'COMPLETED',
+				sessionId: '@Common.GetSessionID()',
+			},
+			success: function (response) {
+				if(response.status == "OK") {
+					isOrderPlaced = true;
+					//location.href = "/BookingSuccess?tID=" + response.orderID;
+					$.ajax({
+						url: "/BookingSummary/BookUnconfirmedSeats",
+                        data: {
+                            eventID: '@Request["eventID"]',
+                            orderID: response.orderID
+                        }
+                        ,type: "GET",
+						success: function(unconf_response) {
+							if(unconf_response == "OK") {
+								location.href = "/BookingSuccess?tID=" + response.orderID;
+							}
+						}
+					});
+				}
+			}
+        });
+    }
+</script>
+
+<script type="text/javascript">
+    $("#modalLoader").modal('show');
+    $(document).ready(function () {
+        $("#modalLoader").modal('hide');
+    });
+
+	//window.addEventListener('unload', deleteCartData, false);
+
+	var isOrderPlaced = false;
+
+    window.addEventListener('beforeunload', (event) => {
+	    if(isOrderPlaced == false) {
+	        event.returnValue = 'Are you sure you want to leave?';
+	    }
+	});
+
+    function deleteCartData() {
+        var data = new FormData();
+
+        data.append('eventID', @evt.EventID);
+
+        if ("sendBeacon" in navigator) {
+            navigator.sendBeacon("/BookingSummary/DeleteCart", data);
+        }
+        else {
+            var client = new XMLHttpRequest();
+            client.open("POST", "/BookingSummary/DeleteCart", false);
+            client.send(data);
+        }
+    }
+
+
+    $(function () {
+        $("#frmBooking").validate({
+            rules: {
+                txtFirstName: {
+                    required: true
+                },
+                txtEmail: {
+                    required: true,
+                    email: true
+                },
+                txtMobile: {
+                    required: true,
+                    digits: true
+                }
+            },
+            messages: {
+                txtFirstName: {
+                    required: "Please enter name"
+                },
+                txtEmail: {
+                    required: "Please enter email id",
+                    email: "Please check email id format"
+                },
+                txtMobile: {
+                    required: "Please enter mobile number",
+                    digits: "Mobile number should be in digits"
+                }
+            },
+            errorPlacement: function (error, element) {
+                if (element.attr("name") == "txtFirstName")
+                    error.appendTo($('#lblName'));
+
+                if (element.attr("name") == "txtEmail")
+                    error.appendTo($('#lblEmail'));
+
+                if (element.attr("name") == "txtMobile") {
+                    $("#lblMobile").html("");
+                    error.appendTo($('#lblMobile'));
+                }
+            }
+        });
+    });
+
+
+    paypal.Buttons({
+        createOrder: function (data, actions) {
+            // Set up the transaction
+
+			var seats = '@Model.Count()';
+
+            if ($("#frmBooking").valid()) {
+
+				if(seats > 0)
+                {
+					return actions.order.create({
+						headers: {
+							'Content-Type': 'application/json',
+						},
+						purchase_units: [{
+							amount: {
+								value: '@Decimal.Round(Convert.ToDecimal(ViewData["Amount"]),2)'
+							}
+						}]
+					});
+				}
+				else {
+					alert("Sorry, due to some error you will have to reselect the seats.");
+					location.href = "/V5Venue?eventID=@evt.EventID";
+				}
+            }
+            else {
+                return false;
+            }
+        },
+        onApprove: function (data, actions) {
+            $("#divLoading").show();
+
+			var seats = '@Model.Count()';
+
+			if(seats > 0) {
+				// Capture the funds from the transaction
+				return actions.order.capture().then(function (details) {
+					// Show a success message to your buyer
+					var email = $("#txtEmail").val();
+					var name = $("#txtFirstName").val();
+					var mobile = $("#txtMobile").val();
+
+					$.ajax({
+						url: '/BookingSummary/PlaceOrder',
+						type: "POST",
+						data: {
+							orderID: data.orderID,
+							email: email,
+							name: name,
+							mobile: mobile,
+							eventID: @Request["eventID"],
+							amount: details.purchase_units[0].amount.value,
+							intent: details.intent,
+							status: details.status,
+							sessionId: '@Common.GetSessionID()',
+						},
+						success: function (response) {
+							if(response.status == "OK") {
+								isOrderPlaced = true;
+
+								//location.href = "/BookingSuccess?tID=" + response.orderID;
+
+								$.ajax({
+									url: "/BookingSummary/BookUnconfirmedSeats",
+									data: { eventID: @Request["eventID"], orderID: response.orderID },
+									type: "GET",
+									success: function(unconf_response) {
+										if(unconf_response == "OK") {
+											location.href = "/BookingSuccess?tID=" + response.orderID;
+										}
+									}
+								});
+							}
+						}
+					});
+				});
+			}
+        }
+    }).render('#pp');
+    function PlaceOrder() {
+        $(".OrdBtnMain").hide();
+        $("#loader").html("<b>Please wait....</b>");
+
+        $.ajax({
+            url: '/BookingSummary/PlaceOrder',
+            data: { eventID: '@Request["eventID"]' },
+            type: "POST",
+            success: function (response) {
+                if (response == "OK") {
+                    alert("Booking confirmed! Your tickets have been sent to your registered email id.");
+                    location.href = "/Home";
+                }
+            }
+        });
+    }
+
+    function ShowDetailForm() {
+
+        $("#details").show();
+
+		$('html, body').animate({
+			scrollTop: $("#details").offset().top
+		}, 2000);
+
+    }
+
+	//validate & use coupon
+    function CheckCoupon() {
+
+        if ($("#txtCouponCode").val() != "") {
+
+            var code = $("#txtCouponCode").val();
+
+            $("#btnCoupon").hide();
+            $("#coupon_loader").html("Processing...");
+
+            $.ajax({
+                url: "/V5Venue/CheckCouponCode",
+                data: { code: code, eventID: '@Request["eventID"]' },
+                type: 'GET',
+                success: OnCheckCouponSuccess
+            });
+        }
+        else
+            alert("Please enter valid coupon code.");
+    }
+
+    function OnCheckCouponSuccess(msg) {
+        if (msg == "OK")
+            location.reload();
+        else {
+            alert(msg);
+            $("#coupon_loader").html("");
+            $("#btnCoupon").show();
+
+        }
+    }
+</script>
+
 
 <div class="ContentWrap">
     <div class="MainInnerLabel">Your Order Summary</div>
     <div class="message-box">
-            <p>Your are entitiled for Early Bird discounts.</p>
+        <p>Your are entitiled for Early Bird discounts.</p>
     </div>
     <div class="OrderSumWrap">
         <table border="1" class="ordTbl">
@@ -183,8 +463,8 @@
                 </button>
             </div>
             <div class="FinalOrdBtn">
-                    <div id="pp"></div>
-                </div>
+                <div id="pp"></div>
+            </div>
         </div>
     </div>
 
@@ -198,195 +478,3 @@
         <img src="../App_Images/indicator-big.gif">
     </p>
 </div>
-
-<script type="text/javascript">
-    @*var a =  @ViewData["isEarlyBird"]
-        alert(a);*@
-
-    function OverridePP() {
-        var isOrderPlaced = false;
-        // Show a success message to your buyer
-        var email = $("#txtEmail").val();
-        var name = $("#txtFirstName").val();
-        var mobile = $("#txtMobile").val();
-        //var ticketType = ({ Convert.ToBoolean(TempData["isEarlyBirdApplicable"]);} == true) ? "EARLYBIRD" : "GENERAL";
-        //var ticketType = (isTrue1) ? "EARLYBIRD" : "GENERAL";
-        
-        $.ajax({
-			url: '/BookingSummary/PlaceOrder',
-			type: "POST",
-			data: {
-                orderID: 'override-paypal-id',
-				email: email,
-				name: name,
-				mobile: mobile,
-                eventID: '@Request["eventID"]',
-                ticketType: '@ViewData["isEarlyBird"]',
-                actualPrice: @Model[0].ActualPrice,
-                discountedAmount: '@ViewData["DiscountedAmount"]',
-                priceAfterDiscount: @Model[0].Price,
-                processingFee: @ViewData["ProcessingFee"],
-                amount: '@ViewData["Amount"]',
-                intent: 'CAPTURE',
-                status: 'COMPLETED',
-				sessionId: '@Common.GetSessionID()',
-			},
-			success: function (response) {
-				if(response.status == "OK") {
-					isOrderPlaced = true;
-					//location.href = "/BookingSuccess?tID=" + response.orderID;
-					$.ajax({
-						url: "/BookingSummary/BookUnconfirmedSeats",
-                        data: {
-                            eventID: '@Request["eventID"]',
-                            orderID: response.orderID
-                        }
-                        ,type: "GET",
-						success: function(unconf_response) {
-							if(unconf_response == "OK") {
-								location.href = "/BookingSuccess?tID=" + response.orderID;
-							}
-						}
-					});
-				}
-			}
-        });
-    }
-</script>
-
-<script type="text/javascript">
-    $("#modalLoader").modal('show');
-    $(document).ready(function () {
-        $("#modalLoader").modal('hide');
-    });
-
-	//window.addEventListener('unload', deleteCartData, false);
-
-	var isOrderPlaced = false;
-
-    window.addEventListener('beforeunload', (event) => {
-	    if(isOrderPlaced == false) {
-	        event.returnValue = 'Are you sure you want to leave?';
-	    }
-	});
-
-    function deleteCartData() {
-        var data = new FormData();
-
-        data.append('eventID', @evt.EventID);
-
-        if ("sendBeacon" in navigator) {
-            navigator.sendBeacon("/BookingSummary/DeleteCart", data);
-        }
-        else {
-            var client = new XMLHttpRequest();
-            client.open("POST", "/BookingSummary/DeleteCart", false);
-            client.send(data);
-        }
-    }
-
-
-    $(function () {
-        $("#frmBooking").validate({
-            rules: {
-                txtFirstName: {
-                    required: true
-                },
-                txtEmail: {
-                    required: true,
-                    email: true
-                },
-                txtMobile: {
-                    required: true,
-                    digits: true
-                }
-            },
-            messages: {
-                txtFirstName: {
-                    required: "Please enter name"
-                },
-                txtEmail: {
-                    required: "Please enter email id",
-                    email: "Please check email id format"
-                },
-                txtMobile: {
-                    required: "Please enter mobile number",
-                    digits: "Mobile number should be in digits"
-                }
-            },
-            errorPlacement: function (error, element) {
-                if (element.attr("name") == "txtFirstName")
-                    error.appendTo($('#lblName'));
-
-                if (element.attr("name") == "txtEmail")
-                    error.appendTo($('#lblEmail'));
-
-                if (element.attr("name") == "txtMobile") {
-                    $("#lblMobile").html("");
-                    error.appendTo($('#lblMobile'));
-                }
-            }
-        });
-    });
-
-
-
-    function PlaceOrder() {
-        $(".OrdBtnMain").hide();
-        $("#loader").html("<b>Please wait....</b>");
-
-        $.ajax({
-            url: '/BookingSummary/PlaceOrder',
-            data: { eventID: '@Request["eventID"]' },
-            type: "POST",
-            success: function (response) {
-                if (response == "OK") {
-                    alert("Booking confirmed! Your tickets have been sent to your registered email id.");
-                    location.href = "/Home";
-                }
-            }
-        });
-    }
-
-    function ShowDetailForm() {
-
-        $("#details").show();
-
-		$('html, body').animate({
-			scrollTop: $("#details").offset().top
-		}, 2000);
-
-    }
-
-	//validate & use coupon
-    function CheckCoupon() {
-
-        if ($("#txtCouponCode").val() != "") {
-
-            var code = $("#txtCouponCode").val();
-
-            $("#btnCoupon").hide();
-            $("#coupon_loader").html("Processing...");
-
-            $.ajax({
-                url: "/V5Venue/CheckCouponCode",
-                data: { code: code, eventID: '@Request["eventID"]' },
-                type: 'GET',
-                success: OnCheckCouponSuccess
-            });
-        }
-        else
-            alert("Please enter valid coupon code.");
-    }
-
-    function OnCheckCouponSuccess(msg) {
-        if (msg == "OK")
-            location.reload();
-        else {
-            alert(msg);
-            $("#coupon_loader").html("");
-            $("#btnCoupon").show();
-
-        }
-    }
-</script>

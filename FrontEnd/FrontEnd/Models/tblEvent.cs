@@ -54,6 +54,7 @@ namespace FrontEnd.Models
         public Nullable<decimal> EBTicketPrice { get; set; }
         public Nullable<int> EBMinTicketOrder { get; set; }
         public Nullable<int> EBMaxTicketOrder { get; set; }
+        public Nullable<decimal> EBTickets { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblEventLayoutBlock> tblEventLayoutBlocks { get; set; }

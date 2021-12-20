@@ -20,5 +20,7 @@ namespace FrontEnd.Models
         public string Year { get; set; }
         public string Month { get; set; }
         public Nullable<System.DateTime> CreatedDate { get; set; }
+        public Nullable<decimal> EventID { get; set; }
+        public string ImageType { get; set; }
     }
 }

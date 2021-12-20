@@ -1,0 +1,7 @@
+#mosaic {
+    position: relative;
+}
+
+#mosaic .mosaic-item {
+    opacity: 0;
+}

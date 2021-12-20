@@ -45,9 +45,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=5.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.5.1.1\lib\net45\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="Braintree, Version=4.15.0.0, Culture=neutral, PublicKeyToken=31b586f34d3e96c7, processorArchitecture=MSIL">
       <HintPath>..\packages\Braintree.4.15.0\lib\net452\Braintree.dll</HintPath>
       <Private>True</Private>
+    </Reference>
+    <Reference Include="Dapper, Version=1.60.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.1.60.6\lib\net451\Dapper.dll</HintPath>
     </Reference>
     <Reference Include="IronBarCode, Version=4.0.2.18638, Culture=neutral, PublicKeyToken=b971bb3971bdf306, processorArchitecture=MSIL">
       <HintPath>..\packages\BarCode.4.0.2.2\lib\net40\IronBarCode.dll</HintPath>
@@ -223,7 +229,13 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="Common.cs" />
+    <Compile Include="Controllers\GalleryController.cs" />
+    <Compile Include="Infra\AutoMapperWebProfile.cs" />
+    <Compile Include="Models\Events.cs" />
     <Compile Include="Models\Class1.cs" />
+    <Compile Include="Models\tblConfig.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Utility\SendEmail.cs" />
     <Compile Include="Controllers\AllEventsController.cs" />
     <Compile Include="Controllers\BookingSummaryController.cs" />
@@ -406,13 +418,21 @@
     <Content Include="App_Images\VenueSymbol.png" />
     <Content Include="App_Scripts\bootstrap.bundle.min.js" />
     <Content Include="App_Scripts\bootstrap.min.js" />
+    <Content Include="App_Scripts\freewall.js" />
+    <Content Include="App_Scripts\imagesloaded.pkgd.min.js" />
     <Content Include="App_Scripts\jquery-1.10.2.min.js" />
+    <Content Include="App_Scripts\jquery-bricks.js" />
     <Content Include="App_Scripts\jquery.bxslider.js" />
     <Content Include="App_Scripts\jquery.colorbox-min.js" />
     <Content Include="App_Scripts\jquery.cookie.min.js" />
     <Content Include="App_Scripts\jquery.countdown.js" />
     <Content Include="App_Scripts\jquery.validate.js" />
+    <Content Include="App_Scripts\lg-thumbnail.umd.js" />
+    <Content Include="App_Scripts\lg-zoom.umd.js" />
+    <Content Include="App_Scripts\lightgallery.min.js" />
+    <Content Include="App_Scripts\masonry.pkgd.min.js" />
     <Content Include="App_Scripts\scrollbooster.min.js" />
+    <Content Include="App_Scripts\simple-lightbox.jquery.min.js" />
     <Content Include="App_Scripts\slick.min.js" />
     <Content Include="App_Scripts\toastr.js" />
     <Content Include="App_Theme\bootstrap-grid.min.css" />
@@ -422,7 +442,9 @@
     <Content Include="App_Theme\colorbox.css" />
     <Content Include="App_Theme\ImageGallery.css" />
     <Content Include="App_Theme\jquery.bxslider.css" />
+    <Content Include="App_Theme\lightgallery-bundle.min.css" />
     <Content Include="App_Theme\MasterStyleSheet.css" />
+    <Content Include="App_Theme\simple-lightbox.min.css" />
     <Content Include="App_Theme\toastr.css" />
     <Content Include="App_Theme\V1-SeatingArrangementStyle.css" />
     <Content Include="App_Theme\slick-theme.css" />
@@ -1583,11 +1605,17 @@
     <Content Include="Views\BookingSummary\Index - Backup 06Dec2021.cshtml" />
     <Content Include="Views\BookingSummary\Summary - Backup06Dec2021.cshtml" />
     <Content Include="Views\V2Venue\Index - Backup06Dec2021.cshtml" />
+    <Content Include="Views\Gallery\Index.cshtml" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\SA.Caching\SA.Caching.csproj">
+      <Project>{e64c7848-e960-4c71-8e92-854fd9ca6fca}</Project>
+      <Name>SA.Caching</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SA.Logger\SA.Logger.csproj">
       <Project>{3ad9b846-8c27-424d-b918-c8140d8b3980}</Project>
       <Name>SA.Logger</Name>

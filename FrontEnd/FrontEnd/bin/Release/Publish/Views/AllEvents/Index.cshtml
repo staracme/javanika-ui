@@ -1,0 +1,330 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    FrontEnd.Models.JAVADBEntities db = new FrontEnd.Models.JAVADBEntities();
+    var past_events = (List<FrontEnd.Models.tblEvent>)ViewData["PastEvents"];
+    var future_events = (List<FrontEnd.Models.tblEvent>)ViewData["UpcomingEvents"];
+    var current_events = (List<FrontEnd.Models.tblEvent>)ViewData["CurrentEvents"];
+
+    string view_image_path = Common.GetViewImagePath();
+}
+
+@*<script src="~/App_Scripts/slick.min.js"></script>*@
+
+<script type="text/javascript">
+    /*$(document).on('ready', function () {
+       $(".regular").slick({
+            dots: true,
+          infinite: true,
+           slidesToShow: 4,
+          slidesToScroll: 4
+        });
+    });
+	*/
+    
+    $(function () {
+
+			$('.bxslider').bxSlider({
+				auto: true,
+				touchEnabled: false
+			});
+
+    });
+</script>
+
+
+
+@*
+    <div class="CurrentEventsWrap">
+
+        <div class="HomeEventsHeader">Current Events</div>
+
+        <div class="ThumbSliderWrap">
+            <div class="regular slider">
+                @foreach (var evt in current_events)
+                {
+                    int eventID = evt.EventID;
+
+                    if (evt.EventDurationType == "S")
+                    {
+                        var isFutureEvent = db.tblEvents.SqlQuery("SELECT * FROM TBLEVENTS WHERE CONVERT(DATE,EVENTDATE,103) = CONVERT(DATE,GETDATE(),103) AND EVENTID = " + eventID + "").Any();
+
+                        decimal min_price = Decimal.Round(Convert.ToDecimal(db.tblEventLayoutBlocks.Where(e => e.EventID == evt.EventID).Min(s => s.Price)));
+
+                        if (isFutureEvent)
+                        {
+                            string evtDay = Convert.ToDateTime(evt.EventDate).ToString("dd");
+                            string evtMonth = Convert.ToDateTime(evt.EventDate).ToString("MMM");
+
+                            <a class="HomeEventLink" href="/Events?eventID=@evt.EventID">
+                                <div class="EventsHomeBlock">
+                                    <div class="EventHomeBanner">
+                                        <img src="@view_image_path/EventBanners/@(evt.EventBanner)" />
+                                    </div>
+                                    <div class="HomeEventLabel">
+                                        <div class="HomeEventDate">
+                                            <div class="HomeEventDay">@evtDay</div>
+                                            <div class="HomeEventMonth">@evtMonth</div>
+                                        </div>
+                                        <div class="HomeEventCOntent">
+                                            <div class="HomeEventName">@evt.EventName</div>
+                                            @if (evt.tblVenue != null && evt.VenueID > 0)
+                                            {
+                                                <div class="HomeEventMenu">Venue : @evt.tblVenue.VenueName </div>
+                                            }
+                                            <div class="HomeEventType">@evt.EventType</div>
+                                            @if (evt.tblVenue != null && evt.VenueID > 0)
+                                            {
+                                                <div class="HomeEventTic">Ticket: <span class="HomeTicHighlighter">$25 onwards</span></div>
+                                            }
+                                        </div>
+                                        <div class="clr"></div>
+                                    </div>
+                                </div>
+                            </a>
+                        }
+                    }
+                    else if (evt.EventDurationType == "M")
+                    {
+                        var isFutureEvent = db.tblEvents.SqlQuery("SELECT * FROM TBLEVENTS WHERE  CONVERT(DATE,GETDATE(),103) BETWEEN CONVERT(DATE,STARTDATE,103) AND CONVERT(DATE,ENDDATE,103) AND EVENTID = " + eventID + "").Any();
+
+                        decimal min_price = Decimal.Round(Convert.ToDecimal(db.tblEventLayoutBlocks.Where(e => e.EventID == evt.EventID).Min(s => s.Price)));
+
+                        if (isFutureEvent)
+                        {
+                            string evtDay = Convert.ToDateTime(evt.StartDate).ToString("dd");
+                            string evtMonth = Convert.ToDateTime(evt.StartDate).ToString("MMM");
+
+                            <a class="HomeEventLink" href="/Events?eventID=@evt.EventID">
+                                <div class="EventsHomeBlock">
+                                    <div class="EventHomeBanner">
+                                        <img src="@view_image_path/EventBanners/@(evt.EventBanner)" />
+                                    </div>
+                                    <div class="HomeEventLabel">
+                                        <div class="HomeEventDate">
+                                            <div class="HomeEventDay">@evtDay</div>
+                                            <div class="HomeEventMonth">@evtMonth</div>
+                                        </div>
+                                        <div class="HomeEventCOntent">
+                                            <div class="HomeEventName">@evt.EventName</div>
+                                            @if (evt.tblVenue != null && evt.VenueID > 0)
+                                            {
+                                                <div class="HomeEventMenu">Venue : @evt.tblVenue.VenueName </div>
+                                            }
+                                            <div class="HomeEventType">@evt.EventType</div>
+                                            @if (evt.tblVenue != null && evt.VenueID > 0)
+                                            {
+                                                <div class="HomeEventTic">Ticket: <span class="HomeTicHighlighter">$25 onwards</span></div>
+                                            }
+                                        </div>
+                                        <div class="clr"></div>
+                                    </div>
+                                </div>
+                            </a>
+                        }
+                    }
+                }
+                <div class="clr"></div>
+            </div>
+            <div class="clr"></div>
+        </div>
+    </div>*@
+
+<script>
+    function showloader() {
+        $("#modalLoader").modal('show');
+    }
+</script>
+<div class="CurrentEventsWrap">
+
+    <div class="HomeEventsHeader">Upcoming Events</div>
+
+    <div class="ThumbSliderWrap">
+        <div class="regular slider">
+            @foreach (var evt in future_events)
+            {
+                int eventID = evt.EventID;
+
+                if (evt.EventDurationType == "S")
+                {
+                    var isFutureEvent = db.tblEvents.SqlQuery("SELECT * FROM TBLEVENTS WHERE CONVERT(DATE,EVENTDATE,103) > CONVERT(DATE,GETDATE(),103) AND EVENTID = " + eventID + "").Any();
+
+                    decimal min_price = Decimal.Round(Convert.ToDecimal(db.tblEventLayoutBlocks.Where(e => e.EventID == evt.EventID).Min(s => s.Price)));
+
+                    if (isFutureEvent)
+                    {
+                        string evtDay = Convert.ToDateTime(evt.EventDate).ToString("dd");
+                        string evtMonth = Convert.ToDateTime(evt.EventDate).ToString("MMM");
+
+                        <a class="HomeEventLink" href="/Events?eventID=@evt.EventID">
+                            <div class="EventsHomeBlock">
+                                <div class="EventHomeBanner">
+                                    <img src="@view_image_path/EventBanners/@(evt.EventBanner)" />
+                                </div>
+                                <div class="HomeEventLabel">
+                                    <div class="HomeEventDate">
+                                        <div class="HomeEventDay">@evtDay</div>
+                                        <div class="HomeEventMonth">@evtMonth</div>
+                                    </div>
+                                    <div class="HomeEventCOntent">
+                                        <div class="HomeEventName">@evt.EventName</div>
+                                        @if (evt.tblVenue != null && evt.VenueID > 0)
+                                        {
+                                            <div class="HomeEventMenu">Venue : @FrontEnd.Common.GetContent(evt.tblVenue.VenueName, 24) </div>
+                                        }
+                                        <div class="HomeEventType">@evt.EventType</div>
+                                        @if (evt.tblVenue != null && evt.VenueID > 0)
+                                        {
+                                            <div class="HomeEventTic">Ticket: <span class="HomeTicHighlighter">$@min_price onwards</span></div>
+                                        }
+                                    </div>
+                                    <div class="clr"></div>
+                                </div>
+                            </div>
+                        </a>
+                    }
+                }
+                else if (evt.EventDurationType == "M")
+                {
+                    var isFutureEvent = db.tblEvents.SqlQuery("SELECT * FROM TBLEVENTS WHERE CONVERT(DATE,STARTDATE,103) >= CONVERT(DATE,GETDATE(),103) AND EVENTID = " + eventID + "").Any();
+
+                    decimal min_price = Decimal.Round(Convert.ToDecimal(db.tblEventLayoutBlocks.Where(e => e.EventID == evt.EventID).Min(s => s.Price)));
+
+                    if (isFutureEvent)
+                    {
+                        string evtDay = Convert.ToDateTime(evt.StartDate).ToString("dd");
+                        string evtMonth = Convert.ToDateTime(evt.StartDate).ToString("MMM");
+
+                        <a class="HomeEventLink" href="/Events?eventID=@evt.EventID">
+                            <div class="EventsHomeBlock">
+                                <div class="EventHomeBanner">
+                                    <img src="@view_image_path/EventBanners/@(evt.EventBanner)" />
+                                </div>
+                                <div class="HomeEventLabel">
+                                    <div class="HomeEventDate">
+                                        <div class="HomeEventDay">@evtDay</div>
+                                        <div class="HomeEventMonth">@evtMonth</div>
+                                    </div>
+                                    <div class="HomeEventCOntent">
+                                        <div class="HomeEventName">@evt.EventName</div>
+                                        @if (evt.tblVenue != null && evt.VenueID > 0)
+                                        {
+                                            <div class="HomeEventMenu">Venue : @FrontEnd.Common.GetContent(evt.tblVenue.VenueName, 24) </div>
+                                        }
+                                        <div class="HomeEventType">@evt.EventType</div>
+                                        @if (evt.tblVenue != null && evt.VenueID > 0)
+                                        {
+                                            <div class="HomeEventTic">Ticket: <span class="HomeTicHighlighter">$@min_price onwards</span></div>
+                                        }
+                                    </div>
+                                    <div class="clr"></div>
+                                </div>
+                            </div>
+                        </a>
+                    }
+                }
+            }
+            <div class="clr"></div>
+        </div>
+        <div class="clr"></div>
+    </div>
+</div>
+
+
+<div class="CurrentEventsWrap">
+    <div class="HomeEventsHeader">Past Events</div>
+
+    <div class="ThumbSliderWrap">
+        <div class="regular slider">
+            @foreach (var evt in past_events)
+            {
+                int eventID = evt.EventID;
+
+                if (evt.EventDurationType == "S")
+                {
+                    var isPastEvent = db.tblEvents.SqlQuery("SELECT * FROM TBLEVENTS WHERE CONVERT(DATE,EVENTDATE,103) < CONVERT(DATE,GETDATE(),103) AND EVENTID = " + eventID + "").Any();
+
+                    decimal min_price = Decimal.Round(Convert.ToDecimal(db.tblEventLayoutBlocks.Where(e => e.EventID == evt.EventID).Min(s => s.Price)));
+
+                    if (isPastEvent)
+                    {
+                        string evtDay = Convert.ToDateTime(evt.EventDate).ToString("dd");
+                        string evtMonth = Convert.ToDateTime(evt.EventDate).ToString("MMM");
+
+                        <a class="HomeEventLink" href="/Events?eventID=@evt.EventID">
+                            <div class="EventsHomeBlock">
+                                <div class="EventHomeBanner">
+                                    <img src="@view_image_path/EventBanners/@(evt.EventBanner)" />
+                                </div>
+                                <div class="HomeEventLabel">
+                                    <div class="HomeEventDate">
+                                        <div class="HomeEventDay">@evtDay</div>
+                                        <div class="HomeEventMonth">@evtMonth</div>
+                                    </div>
+                                    <div class="HomeEventCOntent">
+                                        <div class="HomeEventName">@evt.EventName</div>
+                                        @if (evt.tblVenue != null && evt.VenueID > 0)
+                                        {
+                                            <div class="HomeEventMenu">Venue : @FrontEnd.Common.GetContent(evt.tblVenue.VenueName, 24) </div>
+                                        }
+                                        <div class="HomeEventType">@evt.EventType</div>
+                                        @if (evt.tblVenue != null && evt.VenueID > 0)
+                                        {
+                                            <div class="HomeEventTic">Ticket: <span class="HomeTicHighlighter">$@min_price onwards</span></div>
+                                        }
+                                    </div>
+                                    <div class="clr"></div>
+                                </div>
+                            </div>
+                        </a>
+                    }
+                }
+                else if (evt.EventDurationType == "M")
+                {
+                    var isPastEvent = db.tblEvents.SqlQuery("SELECT * FROM TBLEVENTS WHERE CONVERT(DATE,ENDDATE,103) < CONVERT(DATE,GETDATE(),103) AND EVENTID = " + eventID + "").Any();
+
+                    decimal min_price = Decimal.Round(Convert.ToDecimal(db.tblEventLayoutBlocks.Where(e => e.EventID == evt.EventID).Min(s => s.Price)));
+
+                    if (isPastEvent)
+                    {
+                        string evtDay = Convert.ToDateTime(evt.StartDate).ToString("dd");
+                        string evtMonth = Convert.ToDateTime(evt.StartDate).ToString("MMM");
+
+                        <a class="HomeEventLink" href="/Events?eventID=@evt.EventID">
+                            <div class="EventsHomeBlock">
+                                <div class="EventHomeBanner">
+                                    <img src="@view_image_path/EventBanners/@(evt.EventBanner)" />
+                                </div>
+                                <div class="HomeEventLabel">
+                                    <div class="HomeEventDate">
+                                        <div class="HomeEventDay">@evtDay</div>
+                                        <div class="HomeEventMonth">@evtMonth</div>
+                                    </div>
+                                    <div class="HomeEventCOntent">
+                                        <div class="HomeEventName">@evt.EventName</div>
+                                        @if (evt.tblVenue != null && evt.VenueID > 0)
+                                        {
+                                            <div class="HomeEventMenu">Venue : @FrontEnd.Common.GetContent(evt.tblVenue.VenueName, 24) </div>
+                                        }
+                                        <div class="HomeEventType">@evt.EventType</div>
+                                        @if (evt.tblVenue != null && evt.VenueID > 0)
+                                        {
+                                            <div class="HomeEventTic">Ticket: <span class="HomeTicHighlighter">$@min_price onwards</span></div>
+                                        }
+                                    </div>
+                                    <div class="clr"></div>
+                                </div>
+                            </div>
+                        </a>
+                    }
+                }
+            }
+            <div class="clr"></div>
+        </div>
+        <div class="clr"></div>
+    </div>
+</div>

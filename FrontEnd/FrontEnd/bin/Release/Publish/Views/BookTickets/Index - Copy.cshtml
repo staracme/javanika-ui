@@ -1,0 +1,278 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/App_Theme/V1-SeatingArrangementStyle.css" rel="stylesheet" />
+<script src="~/App_Scripts/jquery.validate.js"></script>
+
+
+@{
+    FrontEnd.Models.JAVADBEntities db = new FrontEnd.Models.JAVADBEntities();
+
+    int eventID = Convert.ToInt32(Request["eventID"]);
+    var evt = db.tblEvents.Where(e => e.EventID == eventID).SingleOrDefault();
+}
+
+
+<script src="~/App_Scripts/jquery.countdown.js"></script>
+<script src="~/App_Scripts/jquery.cookie.min.js"></script>
+
+<script src="~/App_Scripts/jquery.validate.js"></script>
+
+<script src="https://www.paypal.com/sdk/js?client-id=AW3y6TJ_eeCUe4f0X1BT33IR2EuHy2IzWuAsHFWtKcoZJd3OsVDZkV3qPvS6J2NUp5JjWSjBxcihAFuU">
+</script>
+
+
+<script type="text/javascript">
+	
+    $(function () {
+        $("#frmBooking").validate({
+            rules: {
+                txtFirstName: {
+                    required: true
+                },
+                txtEmail: {
+                    required: true,
+                    email: true
+                },
+                txtNoOfTickets: {
+                    required: true,
+                    digits: true
+                }
+            },
+            messages: {
+                txtFirstName: {
+                    required: "Please enter name"
+                },
+                txtEmail: {
+                    required: "Please enter email id",
+                    email: "Please check email id format"
+                },
+                txtNoOfTickets: {
+                    required: "Please enter valid number of tickets",
+                    digits: "Number of tickets should be numeric"
+                }
+            },
+            errorPlacement: function (error, element) {
+                if (element.attr("name") == "txtFirstName")
+                    error.appendTo($('#lblName'));
+
+                if (element.attr("name") == "txtEmail")
+                    error.appendTo($('#lblEmail'));
+
+                if (element.attr("name") == "txtNoOfTickets") {
+                    $("#lblTickets").html("");
+                    error.appendTo($('#lblTickets'));
+                }
+            }
+        });
+
+
+        var date = new Date();
+        var midnight = new Date(date.getFullYear(), date.getMonth(), date.getDate(), 23, 59, 59);
+
+        if ($.cookie('refresh-@eventID') == null) {
+            $.cookie('refresh-@eventID', 'true', { expires: midnight });
+        }
+
+
+
+        $('#clock').countdown('@DateTime.Now.AddMinutes(25.25).ToString("yyyy/MM/dd HH:mm:ss")')
+           .on('update.countdown', function (event) {
+               var format = '%H:%M:%S';
+               $(this).html(event.strftime(format));
+           })
+           .on('finish.countdown', function (event) {
+               ClearSession(false);
+               $("#clock").html("00:00:00");
+           });
+
+        $("#txtNoOfTickets").on("keyup", function () {
+            CalculatePricing();
+        });
+    });
+
+
+    function CalculatePricing() {
+        var price = 40;
+        var no_of_tickets = $("#txtNoOfTickets").val();
+
+
+        if (no_of_tickets != "" && no_of_tickets != "0" && !isNaN(no_of_tickets)) {
+            no_of_tickets = parseInt(no_of_tickets);
+			
+			/*
+            if (no_of_tickets >= 10)
+                price = 40;
+			*/
+			
+            var amount = (no_of_tickets * price);
+
+            var str = '';
+
+            str += '<tr>';
+            str += '<td>' + no_of_tickets + '</td>'
+            str += '<td>' + amount + '</td>'
+            str += '</tr>';
+
+            $("#lblTickets").html("").hide();
+            $("#tbody").html(str);
+
+			$("#txtAmount").val(amount);
+        }
+        else {
+
+            str += '<tr>';
+            str += '<td  colspan="2" class="TierClass">No Bookings Yet</td>'
+            str += '</tr>';
+
+            $("#lblTickets").html("");
+            $("#lblTickets").html("Please enter valid number of tickets").show();
+            $("#tbody").html(str);
+        }
+    }
+
+	function PlaceOrder() {
+
+	    if ($("#frmBooking").valid()) {
+
+	        $("#btnPlaceOrder").hide();
+	        $("#loader").html("<b>Processing...</b>");
+
+	        $.ajax({
+	            url: "/BookTickets/BookTickets",
+	            data: $("#frmBooking").serialize(),
+	            type: "POST",
+	            success: function (response) {
+	                if (response.status == "OK") {
+	                    location.href = "/OrderSummary";
+	                }
+	                else if (response.status == "INVALID DATA") {
+	                    alert("Oops..Data you have entered is invalid.");
+	                    $("#loader").html("");
+	                    $("#btnPlaceOrder").show();
+	                }
+	            }
+	        });
+	    }
+	    else {
+	        return false;
+	    }
+	}
+
+</script>
+
+<div>
+    <div class="EventSeatHead">
+        @evt.EventName @evt.EventType | Show time: @evt.ShowTime
+    </div>
+
+    <div class="MainOuterSeatingWrap">
+        <div class="ContentWrap">
+            <div class="MainInnerLabel">We need some details to email you your tickets....</div>
+            <form id="frmBooking">
+                <input type="hidden" class="InnerTxtBox" id="eventID" name="eventID" value="@Request["eventID"]" />
+                <div class="InnerFieldsBlock">
+                    <div class="InnerLabel">Name</div>
+                    <div class="InnerTxtWrap"><input type="text" class="InnerTxtBox" id="txtFirstName" name="txtFirstName" /></div>
+                    <div id="lblName"></div>
+                    <div class="clr"></div>
+                </div>
+
+                <div class="InnerFieldsBlock">
+                    <div class="InnerLabel">Email ID</div>
+                    <div class="InnerTxtWrap"><input type="text" class="InnerTxtBox" id="txtEmail" name="txtEmail" /></div>
+                    <div id="lblEmail"></div>
+                    <div class="clr"></div>
+                </div>
+
+                <div class="InnerFieldsBlock">
+                    <div class="InnerLabel">No Of Tickets</div>
+                    <div class="InnerTxtWrap"><input type="text" class="InnerTxtBox" id="txtNoOfTickets" name="txtNoOfTickets" /></div>
+                    <div id="lblTickets"></div>
+                    <div class="clr"></div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="RightOuterSeatingWrap">
+
+        <div class="BookDetHead">Booking Details</div>
+
+        <div class="SessionTimeWrap">
+            <div class="SessionTime">Session will timeout in:</div>
+            <div id="clock">NA</div>
+        </div>
+
+        <div class="TiersHead">Tier Availability</div>
+        <table class="TierTbl" border="1">
+            <tr>
+                <th>Tickets</th>
+                <th>Cost Per ticket</th>
+            </tr>
+            <tr>
+                <td class="TierClass">General Admission</td>
+                <td>$40</td>
+            </tr>
+
+        </table>
+
+        <div class="BookingHead">Your Bookings</div>
+        <table class="TierTbl" border="1">
+            <tr>
+                <th>Tickets</th>
+                <th>Total Cost</th>
+            </tr>
+            <tbody id="tbody">
+                <tr>
+                    <td colspan="2" class="TierClass">No Bookings Yet</td>
+                </tr>
+            </tbody>
+        </table>
+
+
+        <input type="hidden" value="0" id="txtAmount" name="txtAmount" />
+		
+        <br />
+        @if(evt.EventID != 3039)
+		{
+			<button class="btnBookings" onclick="JavaScript: PlaceOrder();" id="btnPlaceOrder">Proceed with Bookings</button><span id="loader"></span> 
+		}
+    </div>
+
+
+
+    <div class="clr"></div>
+</div>
+<script src="~/App_Scripts/scrollbooster.min.js"></script>
+
+<script>
+    let viewport = document.querySelector('.MainOuterSeatingWrap')
+    let content = viewport.querySelector('.app-inner')
+
+    let scr = new ScrollBooster({
+        viewport: viewport,
+        content: content,
+        // textSelection: true,
+        emulateScroll: true,
+        onClick: (data, event) => {
+            //event.preventDefault()
+        },
+        shouldScroll: (data, event) => {
+            if (event.target.tagName == 'BUTTON') {
+                return false
+            } else {
+                return true
+            }
+        },
+        onUpdate: (data) => {
+            // viewport.scrollLeft = data.position.x
+            // viewport.scrollTop = data.position.y
+            content.style.transform = `translate(
+            ${-data.position.x}px,
+            ${-data.position.y}px
+          )`
+        }
+    })
+</script>

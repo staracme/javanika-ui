@@ -1,0 +1,327 @@
+﻿*, *:before, *:after {
+       box-sizing: border-box;
+}
+html {
+       font-size: 16px;
+}
+.plane {
+       margin: 20px auto;
+       max-width: 300px;
+}
+.cockpit {
+       height: 250px;
+       position: relative;
+       overflow: hidden;
+       text-align: center;
+       border-bottom: 5px solid #d8d8d8;
+}
+.cockpit:before {
+       content: "";
+       display: block;
+       position: absolute;
+       top: 0;
+       left: 0;
+       height: 500px;
+       width: 100%;
+       border-radius: 50%;
+       border-right: 5px solid #d8d8d8;
+       border-left: 5px solid #d8d8d8;
+}
+.cockpit h1 {
+       width: 60%;
+       margin: 100px auto 35px auto;
+}
+.exit {
+       position: relative;
+       height: 50px;
+}
+.exit:before, .exit:after {
+       content: "EXIT";
+       font-size: 14px;
+       line-height: 18px;
+       padding: 0px 2px;
+       font-family: "Arial Narrow", Arial, sans-serif;
+       display: block;
+       position: absolute;
+       background: green;
+       color: white;
+       top: 50%;
+       transform: translate(0, -50%);
+}
+.exit:before {
+       left: 0;
+}
+.exit:after {
+       right: 0;
+}
+.fuselage {
+
+}
+ol {
+       list-style: none;
+       padding: 0;
+       margin: 0;
+}
+.seats {
+       display: flex;
+       flex-direction: row;
+       flex-wrap: nowrap;
+       justify-content: flex-start;
+}
+.seat {
+       width:40px;
+       padding: 5px;
+       position: relative;
+}
+.seat:nth-child(3) {
+       
+}
+.seat input[type=checkbox] {
+       position: absolute;
+       opacity: 0;
+}
+.seat input[type=checkbox]:checked + label {
+       background: #bada55;
+       -webkit-animation-name: rubberBand;
+       animation-name: rubberBand;
+       animation-duration: 300ms;
+       animation-fill-mode: both;
+}
+.seat input[type=checkbox]:disabled + label {
+       background: #ddd;
+       text-indent: -9999px;
+       overflow: hidden;
+}
+.seat input[type=checkbox]:disabled + label:after {
+       
+       text-indent: 0;
+       position: absolute;
+       top: 4px;
+       left: 50%;
+       transform: translate(-50%, 0%);
+}
+.seat input[type=checkbox]:disabled + label:hover {
+       box-shadow: none;
+       cursor: not-allowed;
+}
+.seat label {
+       display: block;
+       position: relative;
+       width: 100%;
+       text-align: center;
+       font-size: 10px;
+       font-weight:bold;
+       color:black;
+       line-height: 1.5rem;
+       padding: 1px 0;
+       background: #fdfdfd;
+       border:2px solid #b1b1b1;
+       border-radius: 5px;
+       animation-duration: 300ms;
+       animation-fill-mode: both;
+}
+.seat label:before {
+       content: "";
+       position: absolute;
+       width: 75%;
+       height: 75%;
+       top: 1px;
+       left: 50%;
+       transform: translate(-50%, 0%);
+       background: rgba(255, 255, 255, .4);
+       border-radius: 3px;
+}
+.seat label:hover {
+       cursor: pointer;
+       box-shadow: 0 0 0px 2px green;
+}
+@-webkit-keyframes rubberBand {
+       0% {
+              -webkit-transform: scale3d(1, 1, 1);
+              transform: scale3d(1, 1, 1);
+       }
+       30% {
+              -webkit-transform: scale3d(1.25, 0.75, 1);
+              transform: scale3d(1.25, 0.75, 1);
+       }
+       40% {
+              -webkit-transform: scale3d(0.75, 1.25, 1);
+              transform: scale3d(0.75, 1.25, 1);
+       }
+       50% {
+              -webkit-transform: scale3d(1.15, 0.85, 1);
+              transform: scale3d(1.15, 0.85, 1);
+       }
+       65% {
+              -webkit-transform: scale3d(0.95, 1.05, 1);
+              transform: scale3d(0.95, 1.05, 1);
+       }
+       75% {
+              -webkit-transform: scale3d(1.05, 0.95, 1);
+              transform: scale3d(1.05, 0.95, 1);
+       }
+       100% {
+              -webkit-transform: scale3d(1, 1, 1);
+              transform: scale3d(1, 1, 1);
+       }
+}
+@keyframes rubberBand {
+       0% {
+              -webkit-transform: scale3d(1, 1, 1);
+              transform: scale3d(1, 1, 1);
+       }
+       30% {
+              -webkit-transform: scale3d(1.25, 0.75, 1);
+              transform: scale3d(1.25, 0.75, 1);
+       }
+       40% {
+              -webkit-transform: scale3d(0.75, 1.25, 1);
+              transform: scale3d(0.75, 1.25, 1);
+       }
+       50% {
+              -webkit-transform: scale3d(1.15, 0.85, 1);
+              transform: scale3d(1.15, 0.85, 1);
+       }
+       65% {
+              -webkit-transform: scale3d(0.95, 1.05, 1);
+              transform: scale3d(0.95, 1.05, 1);
+       }
+       75% {
+              -webkit-transform: scale3d(1.05, 0.95, 1);
+              transform: scale3d(1.05, 0.95, 1);
+       }
+       100% {
+              -webkit-transform: scale3d(1, 1, 1);
+              transform: scale3d(1, 1, 1);
+       }
+}
+.rubberBand {
+       -webkit-animation-name: rubberBand;
+       animation-name: rubberBand;
+}
+
+
+
+
+/*Seating Arrangements Style*/
+    .MainOuterSeatingWrap {
+        width: 850px;
+        height: 500px;
+        border: 1px solid #efefef;
+        background:white;
+        overflow: hidden;
+        /* overflow: scroll; */
+        box-shadow:2px 2px 5px #b1b1b1;
+        float:left;
+        border-top:3px solid olive;
+    }
+
+    .app-inner {
+        width: 1200px;
+        height: 700px;
+        cursor:move;
+        
+        padding: 20px;
+        background: #ffffff;
+    }
+
+        .app-inner span {
+            color: skyblue;
+        }
+
+.StageWrap
+{border:1px solid #efefef; margin:0 auto 20px auto; font-size:35px; text-align:center; color:gray; text-transform:uppercase; background:#efefef; width:1000px;}
+
+.EventSeatHead
+{width:100%; background:white; color:gray; border-top:3px solid #e80063; font-size:20px; color:#e80063; padding:10px; margin:0 auto 15px auto;box-shadow:2px 2px 5px #b1b1b1;}
+.DragContent
+{float:left;  font-size:22px; margin:12px 10px 0 0; color:olive;}
+.DragImg
+{float:left;}
+
+.seat .tooltip {
+  background: #1496bb;
+  bottom: 100%;
+  color: #fff;
+  display: block;
+  left: -25px;
+  margin-bottom: 15px;
+  font-family:Calibri; font-size:14px; font-weight:bold;
+  text-align:center;
+  opacity: 0;
+  padding: 10px;
+  pointer-events: none;
+  position: absolute;
+  width: 100px;
+  -webkit-transform: translateY(10px);
+     -moz-transform: translateY(10px);
+      -ms-transform: translateY(10px);
+       -o-transform: translateY(10px);
+          transform: translateY(10px);
+  -webkit-transition: all .25s ease-out;
+     -moz-transition: all .25s ease-out;
+      -ms-transition: all .25s ease-out;
+       -o-transition: all .25s ease-out;
+          transition: all .25s ease-out;
+  -webkit-box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.28);
+     -moz-box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.28);
+      -ms-box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.28);
+       -o-box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.28);
+          box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.28);
+}
+
+/* This bridges the gap so you can mouse into the tooltip without it disappearing */
+.seat .tooltip:before {
+  bottom: -20px;
+  content: " ";
+  display: block;
+  height: 20px;
+  left: 0;
+  position: absolute;
+  width: 100%;
+}  
+
+/* CSS Triangles - see Trevor's post */
+.seat .tooltip:after {
+  border-left: solid transparent 10px;
+  border-right: solid transparent 10px;
+  border-top: solid #1496bb 10px;
+  bottom: -10px;
+  content: " ";
+  height: 0;
+  left: 50%;
+  margin-left: -13px;
+  position: absolute;
+  width: 0;
+}
+  
+.seat:hover .tooltip {
+  opacity: 1;
+  pointer-events: auto;
+  -webkit-transform: translateY(0px);
+     -moz-transform: translateY(0px);
+      -ms-transform: translateY(0px);
+       -o-transform: translateY(0px);
+          transform: translateY(0px);
+}
+
+/* IE can just show/hide with no transition */
+.lte8 .seat .tooltip {
+  display: none;
+}
+
+.lte8 .seat:hover .tooltip {
+  display: block;
+}
+
+
+
+
+
+
+
+
+
+
+
+

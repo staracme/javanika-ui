@@ -20,6 +20,7 @@ namespace FrontEnd.Models
         public Nullable<int> TierID { get; set; }
         public Nullable<decimal> Price { get; set; }
         public Nullable<System.DateTime> CreatedDate { get; set; }
+        public Nullable<decimal> EBPrice { get; set; }
     
         public virtual tblBlock tblBlock { get; set; }
         public virtual tblEvent tblEvent { get; set; }

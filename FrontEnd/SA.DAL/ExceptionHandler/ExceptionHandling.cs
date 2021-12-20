@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Xml;
+using FrontEnd.Models.ExceptionHandler;
 using SA.Models.ExceptionHandler;
 
 namespace SA.DAL.ExceptionHanler

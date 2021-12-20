@@ -1,0 +1,20 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model List<FrontEnd.Models.tblPastEvent>
+
+
+<div class="CurrentEventsWrap">
+
+		<div class="HomeEventsHeader">Past Events</div>
+				@foreach(var image in Model)
+				{
+					<div>@image.EventName</div>
+					<div>@image.Month - @image.Year</div>
+					<div><img src="http://admin.javanika.com/PastEventImages/@image.ImagePath" /></div>
+				}		
+		</div>
+</div>

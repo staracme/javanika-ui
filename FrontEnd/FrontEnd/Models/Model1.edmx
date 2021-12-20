@@ -32,6 +32,13 @@
           <Property Name="LayoutID" Type="int" />
           <Property Name="BlockNumber" Type="varchar" MaxLength="500" />
         </EntityType>
+        <EntityType Name="tblConfigs">
+          <Key>
+            <PropertyRef Name="ConfigID" />
+          </Key>
+          <Property Name="ConfigID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IsCacheToReferesh" Type="bit" />
+        </EntityType>
         <EntityType Name="tblCouponGroups">
           <Key>
             <PropertyRef Name="CouponGroupID" />
@@ -92,6 +99,7 @@
           <Property Name="TierID" Type="int" />
           <Property Name="Price" Type="decimal" Precision="18" Scale="2" />
           <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="EBPrice" Type="decimal" Precision="18" Scale="2" />
         </EntityType>
         <EntityType Name="tblEvents">
           <Key>
@@ -128,6 +136,7 @@
           <Property Name="EBTicketPrice" Type="decimal" Precision="18" Scale="2" />
           <Property Name="EBMinTicketOrder" Type="int" />
           <Property Name="EBMaxTicketOrder" Type="int" />
+          <Property Name="EBTickets" Type="decimal" Precision="18" Scale="2" />
         </EntityType>
         <EntityType Name="tblEventVolunteers">
           <Key>
@@ -186,6 +195,8 @@
           <Property Name="Year" Type="varchar" MaxLength="500" />
           <Property Name="Month" Type="varchar" MaxLength="500" />
           <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="EventID" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="ImageType" Type="varchar" MaxLength="30" />
         </EntityType>
         <EntityType Name="tblReleaseLog">
           <Key>
@@ -227,6 +238,7 @@
           <Property Name="OrderID" Type="int" />
           <Property Name="Price" Type="decimal" Precision="18" Scale="2" />
           <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="EBPrice" Type="decimal" Precision="18" Scale="2" />
         </EntityType>
         <EntityType Name="tblSeatSelectionsLog">
           <Key>
@@ -241,6 +253,7 @@
           <Property Name="OrderID" Type="int" />
           <Property Name="Price" Type="decimal" Precision="18" Scale="2" />
           <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="EBPrice" Type="decimal" Precision="18" Scale="2" />
         </EntityType>
         <EntityType Name="tblTicketOrders">
           <Key>
@@ -266,6 +279,8 @@
           <Property Name="DatePickedUp" Type="datetime" />
           <Property Name="CreatedDate" Type="datetime" />
           <Property Name="TicketType" Type="varchar" MaxLength="20" />
+          <Property Name="ActualPrice" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="PriceAfterDiscount" Type="decimal" Precision="18" Scale="2" />
         </EntityType>
         <EntityType Name="tblTickets">
           <Key>
@@ -611,6 +626,7 @@
           <EntitySet Name="tblAdminUsers" EntityType="Self.tblAdminUsers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblAppVersions" EntityType="Self.tblAppVersions" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblBlocks" EntityType="Self.tblBlocks" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblConfigs" EntityType="Self.tblConfigs" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblCouponGroups" EntityType="Self.tblCouponGroups" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblCoupons" EntityType="Self.tblCoupons" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblCustomers" EntityType="Self.tblCustomers" Schema="dbo" store:Type="Tables" />
@@ -840,6 +856,7 @@
             <End Role="tblTicket" EntitySet="tblTickets" />
             <End Role="tblSeatSelection" EntitySet="tblSeatSelections" />
           </AssociationSet>
+          <EntitySet Name="tblConfigs" EntityType="JAVADBModel.tblConfig" />
         </EntityContainer>
         <EntityType Name="tblAdminUser">
           <Key>
@@ -940,6 +957,7 @@
           <NavigationProperty Name="tblBlock" Relationship="JAVADBModel.FK_tblEventLayoutBlocks_tblBlocks" FromRole="tblEventLayoutBlock" ToRole="tblBlock" />
           <NavigationProperty Name="tblEvent" Relationship="JAVADBModel.FK_tblEventLayoutBlocks_tblEvents" FromRole="tblEventLayoutBlock" ToRole="tblEvent" />
           <NavigationProperty Name="tblTier" Relationship="JAVADBModel.FK_tblEventLayoutBlocks_tblTier" FromRole="tblEventLayoutBlock" ToRole="tblTier" />
+          <Property Name="EBPrice" Type="Decimal" Precision="18" Scale="2" />
         </EntityType>
         <EntityType Name="tblEvent">
           <Key>
@@ -982,6 +1000,7 @@
           <Property Name="EBTicketPrice" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="EBMinTicketOrder" Type="Int32" />
           <Property Name="EBMaxTicketOrder" Type="Int32" />
+          <Property Name="EBTickets" Type="Decimal" Precision="18" Scale="2" />
         </EntityType>
         <EntityType Name="tblEventVolunteer">
           <Key>
@@ -1047,6 +1066,8 @@
           <Property Name="Year" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="Month" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="EventID" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="ImageType" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="tblReleaseLog">
           <Key>
@@ -1096,6 +1117,7 @@
           <NavigationProperty Name="tblEvent" Relationship="JAVADBModel.FK_tblSeatSelections_tblEvents" FromRole="tblSeatSelection" ToRole="tblEvent" />
           <NavigationProperty Name="tblSeat" Relationship="JAVADBModel.FK_tblSeatSelections_tblSeat" FromRole="tblSeatSelection" ToRole="tblSeat" />
           <NavigationProperty Name="tblTicket" Relationship="JAVADBModel.FK_tblSeatSelections_tblTickets" FromRole="tblSeatSelection" ToRole="tblTicket" />
+          <Property Name="EBPrice" Type="Decimal" Precision="18" Scale="2" />
         </EntityType>
         <EntityType Name="tblSeatSelectionsLog">
           <Key>
@@ -1110,6 +1132,7 @@
           <Property Name="OrderID" Type="Int32" />
           <Property Name="Price" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="EBPrice" Type="Decimal" Precision="18" Scale="2" />
         </EntityType>
         <EntityType Name="tblTicketOrder">
           <Key>
@@ -1136,6 +1159,8 @@
           <Property Name="CreatedDate" Type="DateTime" Precision="3" />
           <NavigationProperty Name="tblOrderCoupons" Relationship="JAVADBModel.FK_tblOrderCoupons_tblTicketOrders" FromRole="tblTicketOrder" ToRole="tblOrderCoupon" />
           <Property Name="TicketType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ActualPrice" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="PriceAfterDiscount" Type="Decimal" Precision="18" Scale="2" />
         </EntityType>
         <EntityType Name="tblTicket">
           <Key>
@@ -1485,6 +1510,13 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="tblConfig">
+          <Key>
+            <PropertyRef Name="ConfigID" />
+          </Key>
+          <Property Name="ConfigID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IsCacheToReferesh" Type="Boolean" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1578,6 +1610,7 @@
           <EntitySetMapping Name="tblEventLayoutBlocks">
             <EntityTypeMapping TypeName="JAVADBModel.tblEventLayoutBlock">
               <MappingFragment StoreEntitySet="tblEventLayoutBlocks">
+                <ScalarProperty Name="EBPrice" ColumnName="EBPrice" />
                 <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
                 <ScalarProperty Name="Price" ColumnName="Price" />
                 <ScalarProperty Name="TierID" ColumnName="TierID" />
@@ -1590,6 +1623,7 @@
           <EntitySetMapping Name="tblEvents">
             <EntityTypeMapping TypeName="JAVADBModel.tblEvent">
               <MappingFragment StoreEntitySet="tblEvents">
+                <ScalarProperty Name="EBTickets" ColumnName="EBTickets" />
                 <ScalarProperty Name="EBMaxTicketOrder" ColumnName="EBMaxTicketOrder" />
                 <ScalarProperty Name="EBMinTicketOrder" ColumnName="EBMinTicketOrder" />
                 <ScalarProperty Name="EBTicketPrice" ColumnName="EBTicketPrice" />
@@ -1679,6 +1713,8 @@
           <EntitySetMapping Name="tblPastEvents">
             <EntityTypeMapping TypeName="JAVADBModel.tblPastEvent">
               <MappingFragment StoreEntitySet="tblPastEvents">
+                <ScalarProperty Name="ImageType" ColumnName="ImageType" />
+                <ScalarProperty Name="EventID" ColumnName="EventID" />
                 <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
                 <ScalarProperty Name="Month" ColumnName="Month" />
                 <ScalarProperty Name="Year" ColumnName="Year" />
@@ -1721,6 +1757,7 @@
           <EntitySetMapping Name="tblSeatSelections">
             <EntityTypeMapping TypeName="JAVADBModel.tblSeatSelection">
               <MappingFragment StoreEntitySet="tblSeatSelections">
+                <ScalarProperty Name="EBPrice" ColumnName="EBPrice" />
                 <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
                 <ScalarProperty Name="Price" ColumnName="Price" />
                 <ScalarProperty Name="OrderID" ColumnName="OrderID" />
@@ -1736,6 +1773,7 @@
           <EntitySetMapping Name="tblSeatSelectionsLogs">
             <EntityTypeMapping TypeName="JAVADBModel.tblSeatSelectionsLog">
               <MappingFragment StoreEntitySet="tblSeatSelectionsLog">
+                <ScalarProperty Name="EBPrice" ColumnName="EBPrice" />
                 <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
                 <ScalarProperty Name="Price" ColumnName="Price" />
                 <ScalarProperty Name="OrderID" ColumnName="OrderID" />
@@ -1751,6 +1789,8 @@
           <EntitySetMapping Name="tblTicketOrders">
             <EntityTypeMapping TypeName="JAVADBModel.tblTicketOrder">
               <MappingFragment StoreEntitySet="tblTicketOrders">
+                <ScalarProperty Name="PriceAfterDiscount" ColumnName="PriceAfterDiscount" />
+                <ScalarProperty Name="ActualPrice" ColumnName="ActualPrice" />
                 <ScalarProperty Name="TicketType" ColumnName="TicketType" />
                 <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
                 <ScalarProperty Name="DatePickedUp" ColumnName="DatePickedUp" />
@@ -1867,6 +1907,14 @@
                 <ScalarProperty Name="ParentEmail" ColumnName="ParentEmail" />
                 <ScalarProperty Name="ParentName" ColumnName="ParentName" />
                 <ScalarProperty Name="RegistrationID" ColumnName="RegistrationID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblConfigs">
+            <EntityTypeMapping TypeName="JAVADBModel.tblConfig">
+              <MappingFragment StoreEntitySet="tblConfigs">
+                <ScalarProperty Name="IsCacheToReferesh" ColumnName="IsCacheToReferesh" />
+                <ScalarProperty Name="ConfigID" ColumnName="ConfigID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

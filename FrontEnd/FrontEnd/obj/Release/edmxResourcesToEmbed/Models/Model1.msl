@@ -88,6 +88,7 @@
     <EntitySetMapping Name="tblEventLayoutBlocks">
       <EntityTypeMapping TypeName="JAVADBModel.tblEventLayoutBlock">
         <MappingFragment StoreEntitySet="tblEventLayoutBlocks">
+          <ScalarProperty Name="EBPrice" ColumnName="EBPrice" />
           <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
           <ScalarProperty Name="Price" ColumnName="Price" />
           <ScalarProperty Name="TierID" ColumnName="TierID" />
@@ -100,6 +101,12 @@
     <EntitySetMapping Name="tblEvents">
       <EntityTypeMapping TypeName="JAVADBModel.tblEvent">
         <MappingFragment StoreEntitySet="tblEvents">
+          <ScalarProperty Name="EBTickets" ColumnName="EBTickets" />
+          <ScalarProperty Name="EBMaxTicketOrder" ColumnName="EBMaxTicketOrder" />
+          <ScalarProperty Name="EBMinTicketOrder" ColumnName="EBMinTicketOrder" />
+          <ScalarProperty Name="EBTicketPrice" ColumnName="EBTicketPrice" />
+          <ScalarProperty Name="TicketPrice" ColumnName="TicketPrice" />
+          <ScalarProperty Name="TicketsAvailable" ColumnName="TicketsAvailable" />
           <ScalarProperty Name="EarlyBirdTicketSelection" ColumnName="EarlyBirdTicketSelection" />
           <ScalarProperty Name="PercentEBSeats" ColumnName="PercentEBSeats" />
           <ScalarProperty Name="Status" ColumnName="Status" />
@@ -184,6 +191,8 @@
     <EntitySetMapping Name="tblPastEvents">
       <EntityTypeMapping TypeName="JAVADBModel.tblPastEvent">
         <MappingFragment StoreEntitySet="tblPastEvents">
+          <ScalarProperty Name="ImageType" ColumnName="ImageType" />
+          <ScalarProperty Name="EventID" ColumnName="EventID" />
           <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
           <ScalarProperty Name="Month" ColumnName="Month" />
           <ScalarProperty Name="Year" ColumnName="Year" />
@@ -226,6 +235,7 @@
     <EntitySetMapping Name="tblSeatSelections">
       <EntityTypeMapping TypeName="JAVADBModel.tblSeatSelection">
         <MappingFragment StoreEntitySet="tblSeatSelections">
+          <ScalarProperty Name="EBPrice" ColumnName="EBPrice" />
           <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
           <ScalarProperty Name="Price" ColumnName="Price" />
           <ScalarProperty Name="OrderID" ColumnName="OrderID" />
@@ -241,6 +251,7 @@
     <EntitySetMapping Name="tblSeatSelectionsLogs">
       <EntityTypeMapping TypeName="JAVADBModel.tblSeatSelectionsLog">
         <MappingFragment StoreEntitySet="tblSeatSelectionsLog">
+          <ScalarProperty Name="EBPrice" ColumnName="EBPrice" />
           <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
           <ScalarProperty Name="Price" ColumnName="Price" />
           <ScalarProperty Name="OrderID" ColumnName="OrderID" />
@@ -256,6 +267,8 @@
     <EntitySetMapping Name="tblTicketOrders">
       <EntityTypeMapping TypeName="JAVADBModel.tblTicketOrder">
         <MappingFragment StoreEntitySet="tblTicketOrders">
+          <ScalarProperty Name="PriceAfterDiscount" ColumnName="PriceAfterDiscount" />
+          <ScalarProperty Name="ActualPrice" ColumnName="ActualPrice" />
           <ScalarProperty Name="TicketType" ColumnName="TicketType" />
           <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
           <ScalarProperty Name="DatePickedUp" ColumnName="DatePickedUp" />
@@ -372,6 +385,14 @@
           <ScalarProperty Name="ParentEmail" ColumnName="ParentEmail" />
           <ScalarProperty Name="ParentName" ColumnName="ParentName" />
           <ScalarProperty Name="RegistrationID" ColumnName="RegistrationID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblConfigs">
+      <EntityTypeMapping TypeName="JAVADBModel.tblConfig">
+        <MappingFragment StoreEntitySet="tblConfigs">
+          <ScalarProperty Name="IsCacheToReferesh" ColumnName="IsCacheToReferesh" />
+          <ScalarProperty Name="ConfigID" ColumnName="ConfigID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

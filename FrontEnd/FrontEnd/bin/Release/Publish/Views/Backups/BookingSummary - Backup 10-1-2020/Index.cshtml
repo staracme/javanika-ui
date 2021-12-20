@@ -1,0 +1,144 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model List<FrontEnd.Controllers.SelectedSeats>
+
+@{ 
+    var evt = (FrontEnd.Models.tblEvent)ViewData["Event"];
+    decimal totalAmount = 0;
+}
+
+<script src="https://www.paypal.com/sdk/js?client-id=AYZg72OmfeJnm88ghZQv7x4opaln2jZ1k6uHnhIYOaMl_RUPLGbutIGi0Gsp8b8NogkMEQuVbj5NBgvX">
+</script>
+
+<script type="text/javascript">
+
+    paypal.Buttons({
+        createOrder: function (data, actions) {
+            // Set up the transaction
+
+            return actions.order.create({
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                purchase_units: [{
+                    amount: {
+                        value: '@Model.Sum(e=>e.TotalCost)'
+                    }
+                }]
+            });
+
+        },
+        onApprove: function (data, actions) {
+            $("#divLoading").show();
+
+
+            // Capture the funds from the transaction
+            return actions.order.capture().then(function (details) {
+                // Show a success message to your buyer
+
+                alert(details.purchase_units[0].amount.value)
+
+                $.ajax({
+                    url: '/OrderSummary/PlaceOrder',
+                    type: "POST",
+                    data: {
+                        orderID: data.orderID,
+                        amount: details.purchase_units[0].amount.value,
+                        intent: details.intent,
+                        status: details.status,
+                        sessionId: '@Common.GetSessionID()',
+                    },
+                    success: function (response) {
+                        if(response.status == "OK") {
+                            @*location.href = "/OrderSuccess?orderID=@Model.OrderID";*@ 
+
+                        }
+                    }
+                });
+            });
+        }
+    }).render('#pp');
+
+    function PlaceOrder() {
+        $(".OrdBtnMain").hide();
+        $("#loader").html("<b>Please wait....</b>");
+
+        $.ajax({
+            url: '/BookingSummary/PlaceOrder',
+            data: { eventID: '@Request["eventID"]' },
+            type: "POST",
+            success: function (response) {
+                if (response == "OK") {
+                    alert("Booking confirmed! Your tickets have been sent to your registered email id.");
+                    location.href = "/Home";
+                }
+                
+            }
+        });
+    }
+</script>
+
+
+<div class="ContentWrap">
+    <div class="MainInnerLabel">Your Order Summary</div>
+
+    <div class="OrderSumWrap">
+        <table border="1" class="ordTbl">
+            <tr>
+                <th>Show Details</th>
+                <th>Tier</th>
+                <th>Total Seats</th>
+                <th>Sub Total</th>
+            </tr>
+            @foreach (var seat in Model)
+            {
+                totalAmount += seat.TotalCost;
+
+                <tr>
+                    <td>
+                        <div class="ShowName">@evt.EventName @evt.EventType</div>
+                        <div class="Theatre">
+                            Location : <span class="showtdhigh">@evt.tblVenue.VenueName</span> | Date :
+
+                            @if (evt.EventDurationType == "S")
+                            {
+                                <span class="showtdhigh">@Convert.ToDateTime(evt.EventDate).ToString("dd-MMMM-yyyy")</span>
+                            }
+                            else if (evt.EventDurationType == "M")
+                            {
+                                <span class="showtdhigh">@Convert.ToDateTime(evt.StartDate).ToString("dd-MMMM-yyyy")</span>
+                            }
+                        </div>
+                    </td>
+
+                    <td>
+                        <div class="ShowTier">@seat.TierName</div>
+                    </td>
+                    <td>
+                        <div class="ShowSeat">@seat.NoOfSeats</div>
+                    </td>
+                    <td>
+                        <div class="ShowCost">$@seat.TotalCost</div>
+                    </td>
+                </tr>
+            }
+        </table>
+        <div class="OrdTot">
+            <div class="TotalOrdBlock">
+                <div class="TotOrdLeft">Total Amount:</div>
+                <div class="TotOrdRight">$@totalAmount</div>
+                <div class="clr"></div>
+            </div>
+            <div class="clr"></div>
+        </div>
+        <div class="OrdBtn">
+            <div id="pp"></div>
+        </div>
+    </div>
+
+</div>
+

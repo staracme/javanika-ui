@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using FrontEnd.Infra;
 using log4net;
 
 namespace FrontEnd
@@ -15,9 +16,10 @@ namespace FrontEnd
         {
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
+            AutoMapperWebProfile.Run();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-            UnityConfig.RegisterComponents();
+            //UnityConfig.RegisterComponents();
             log4net.Config.XmlConfigurator.Configure();
         }
 

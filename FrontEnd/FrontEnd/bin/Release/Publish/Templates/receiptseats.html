@@ -1,0 +1,213 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+
+    <style>
+        .TicketWrap {
+            border: 5px solid #808080;
+            width: 500px;
+            font-family: Calibri;
+            margin: 0 auto;
+            padding: 5px;
+            background: #f5f5f5;
+        }
+
+        .EventInfoWrap {
+            border: 1px solid #d8d8d8;
+            font-size: 14px;
+            background: white;
+            padding: 7px;
+            margin: 10px 0 0 0;
+        }
+
+        .clr {
+            clear: both;
+        }
+
+        .EventInfoHeader {
+            font-weight: bold;
+            font-size: 16px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .TNC {
+            margin: 20px 0 0 0;
+            font-family: Calibri;
+            font-size: 13px;
+        }
+
+        .EventInfoLeft {
+            float: left;
+            width: 100px;
+            font-weight: bold;
+        }
+
+        .EventInfoRight {
+            float: left;
+            width: 380px;
+        }
+
+        .EventWrap {
+            border-bottom: 1px solid #d8d8d8;
+            margin-top: 5px;
+            padding: 7px 0;
+        }
+
+        .EventWrap1 {
+            margin-top: 5px;
+            padding: 7px 0;
+        }
+
+        .RecTable {
+            background: white;
+            margin: 10px 0;
+            border-collapse: collapse;
+            border: 1px solid #d8d8d8;
+            width: 100%;
+            font-size: 14px;
+            text-align: center;
+        }
+
+            .RecTable td {
+                padding: 5px 0;
+            }
+
+            .RecTable th {
+                padding: 7px 0;
+            }
+
+
+            .hide_discount {
+                display:none;
+            }
+
+    </style>
+</head>
+<body>
+    <div class="TicketWrap">
+        <div>
+            <br />
+            <b style="font-size:20px;">Dear [name],</b><br />
+            Thank you for purchasing tickets from Javanika.com!
+        </div>
+
+        <div class="EventInfoWrap">
+            <div class="EventInfoHeader">Event Info</div>
+
+            <div class="EventWrap">
+                <div class="EventInfoLeft">Event Name</div>
+                <div class="EventInfoRight">[event_name] <!--Live Garba & Dandia - Kinjal Dave--></div>
+                <div class="clr"></div>
+            </div>
+
+            <div class="EventWrap">
+                <div class="EventInfoLeft">Date & Time</div>
+                <div class="EventInfoRight">[event_date_time]  <!--20th October 2019, 6.00 PM--></div>
+                <div class="clr"></div>
+            </div>
+
+            <div class="EventWrap">
+                <div class="EventInfoLeft">Address</div>
+                <div class="EventInfoRight">[address]</div>
+                <div class="clr"></div>
+            </div>
+            <br />
+
+            <div class="EventInfoHeader">Organiser Info</div>
+
+            <div class="EventWrap">
+                <div class="EventInfoLeft">Host</div>
+                <div class="EventInfoRight">Javanika Entertainments</div>
+                <div class="clr"></div>
+            </div>
+
+            <br />
+
+            <div class="EventInfoHeader">Order Info</div>
+
+            <div class="EventWrap">
+                <div class="EventInfoLeft">Order No.</div>
+                <div class="EventInfoRight">[order_no]</div>
+                <div class="clr"></div>
+            </div>
+
+            <div class="EventWrap">
+                <div class="EventInfoLeft">Serial No.</div>
+                <div class="EventInfoRight">[sr_no]</div>
+                <div class="clr"></div>
+            </div>
+
+            <div class="EventWrap">
+                <div class="EventInfoLeft">Seat Numbers.</div>
+                <div class="EventInfoRight">[seat_nos]</div>
+                <div class="clr"></div>
+            </div>
+
+            <div class="EventWrap">
+                <div class="EventInfoLeft">Order Date</div>
+                <div class="EventInfoRight">[date_time] <!--10th October 2019, 6.00 PM--></div>
+                <div class="clr"></div>
+            </div>
+
+            <div class="EventWrap1">
+                <div class="EventInfoLeft">Order By</div>
+                <div class="EventInfoRight">[name]</div>
+                <div class="clr"></div>
+            </div>
+        </div>
+
+        <div>
+            <table border="1" class="RecTable">
+                <tr>
+                    <th>Event</th>
+                    <th>Unit Price</th>
+                    <th>Quantity (No Of Seats)</th>
+                    <th>Sub Total</th>
+                </tr>
+
+                <tr>
+                    <td>[event_name]<!--Group of 10 or more--></td>
+                    <td>[individual_price] <!--$30--></td>
+                    <td>[no_of_tickets]</td>
+                    <td><b>$[amount]</b></td>
+                </tr>
+                
+
+                <tr class="[class_name]">
+                    <td colspan="3">Discount</td>
+                    <td>[coupon_code] - $[discount]</td>
+                </tr>
+				
+				<tr>
+                    <td colspan="3">Service Fees</td>
+                    <td>$[service_charge]</td>
+                </tr>
+				
+                <tr>
+                    <td colspan="3">Total</td>
+                    <td><b>$[total_amount]</b></td>
+                </tr>
+            </table>
+        </div>
+
+
+
+
+        <div class="TNC">
+            <b>Terms & Conditions:</b><br />
+            <ol>
+                <li>All sales are final.</li>
+                <li>All tickets are non-refundable and non-transferable once purchased.</li>
+                <li>The person in whose name the tickets is issued must collect the tickets at the venue.</li>
+                <li>You will see a charge from Javanika.com on your credit card statement for this order.</li>
+                <li>Please present a printed copy of this page along with your Photo ID to collect your tickets at the venue. Please do carry a valid Photo ID along with you to the event.</li>
+                <li>In case of cancellation or reschedule of the event you can claim for the refund. but ticket purchased Service Fee is (non-refundable).</li>
+            </ol>
+        </div>
+
+    </div>
+</body>
+</html>

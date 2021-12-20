@@ -40,6 +40,8 @@ namespace FrontEnd.Models
         public Nullable<System.DateTime> DatePickedUp { get; set; }
         public Nullable<System.DateTime> CreatedDate { get; set; }
         public string TicketType { get; set; }
+        public Nullable<decimal> ActualPrice { get; set; }
+        public Nullable<decimal> PriceAfterDiscount { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblOrderCoupon> tblOrderCoupons { get; set; }

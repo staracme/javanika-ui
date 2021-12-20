@@ -1,0 +1,131 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = null;
+}
+
+@{ 
+    var evt = (FrontEnd.Models.tblEvent)ViewData["Event"];
+    var seats = (List<FrontEnd.Models.tblSeatSelection>)ViewData["Seats"];
+
+    string image_path = System.Configuration.ConfigurationManager.AppSettings["ViewImagePath"];
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+
+    <style>
+        .TicketWrap {
+            border: 5px solid #808080;
+            width: 500px;
+            font-family: Calibri;
+            margin: 0 auto;
+            padding: 5px;
+            background: #f5f5f5;
+        }
+
+        .EventName {
+            font-size: 22px;
+            font-family: Calibri;
+            text-align: center;
+            font-weight: bold;
+            border-bottom: 1px solid #d8d8d8;
+            padding: 0 0 5px 0;
+            color: #eb0041;
+            margin: 5px 0 10px 0;
+        }
+
+        .High1 {
+            font-size: 22px;
+            font-family: Calibri;
+            font-weight: bold;
+            color: #eb0041;
+        }
+
+        .EventBanner {
+            box-shadow: 2px 2px 2px gray;
+            width: 260px;
+            height: 360px;
+            float: left;
+        }
+
+        .clr {
+            clear: both;
+        }
+
+        .EventInfoWrap {
+            width: 220px;
+            float: right;
+            height: 360px;
+        }
+
+        .DateTime {
+            font-size: 14px;
+            color: gray;
+            margin-bottom: 10px;
+        }
+
+        .High {
+            font-size: 16px;
+            color: black;
+            font-weight: bold;
+        }
+
+        .QRCodeWrap {
+            border: 1px dashed #d8d8d8;
+            width: 200px;
+            height: 130px;
+            background: white;
+        }
+
+        .TNC {
+            margin: 20px 0 0 0;
+            font-family: Calibri;
+            font-size: 13px;
+        }
+    </style>
+</head>
+<body>
+    <div class="TicketWrap">
+        <div class="EventName">@evt.EventName</div>
+
+        <div>
+            <div class="EventBanner"><img src="@image_path/EventBanners/@(evt.EventBanner)" /></div>
+            <div class="EventInfoWrap">
+                <div class="DateTime">
+                    Serial No.<br />
+                    <span class="High1">125</span>
+                </div>
+                <div class="DateTime">
+                    Date : Time<br />
+                    <span class="High">[date]</span>
+                </div>
+                <div class="DateTime">
+                    Venue<br />
+                    <span class="High">@evt.tblVenue.VenueName</span>
+                </div>
+
+                <div class="DateTime">
+                    Seat<br />
+                    <span class="High">@string.Join(",", seats.Select(s=>s.tblSeat.SeatNumber))</span>
+                </div>
+
+                <div class="QRCodeWrap"></div>
+
+            </div>
+            <div class="clr"></div>
+        </div>
+
+
+        <div class="TNC">
+            <b>Terms & Conditions:</b><br />
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries
+        </div>
+
+    </div>
+</body>
+</html>
+

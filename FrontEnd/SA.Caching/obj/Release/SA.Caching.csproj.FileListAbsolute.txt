@@ -1,0 +1,8 @@
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\javanika-ui-dev\FrontEnd\SA.Caching\bin\Release\SA.Caching.dll
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\javanika-ui-dev\FrontEnd\SA.Caching\bin\Release\SA.Caching.pdb
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\javanika-ui-dev\FrontEnd\SA.Caching\bin\Release\System.Web.Http.dll
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\javanika-ui-dev\FrontEnd\SA.Caching\obj\Release\SA.Caching.csprojAssemblyReference.cache
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\javanika-ui-dev\FrontEnd\SA.Caching\obj\Release\SA.Caching.csproj.CoreCompileInputs.cache
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\javanika-ui-dev\FrontEnd\SA.Caching\obj\Release\SA.Caching.csproj.CopyComplete
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\javanika-ui-dev\FrontEnd\SA.Caching\obj\Release\SA.Caching.dll
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\javanika-ui-dev\FrontEnd\SA.Caching\obj\Release\SA.Caching.pdb

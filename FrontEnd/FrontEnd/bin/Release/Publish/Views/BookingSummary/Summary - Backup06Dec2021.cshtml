@@ -1,0 +1,421 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model List<FrontEnd.Controllers.SelectedSeatsV5>
+
+@{
+    var evt = (FrontEnd.Models.tblEvent)ViewData["Event"];
+    decimal totalAmount = 0;
+}
+
+
+<!--sandbox-->
+@*<script src="https://www.paypal.com/sdk/js?client-id=AW3y6TJ_eeCUe4f0X1BT33IR2EuHy2IzWuAsHFWtKcoZJd3OsVDZkV3qPvS6J2NUp5JjWSjBxcihAFuU">
+    </script>*@
+
+<!--live-->
+@*<script src="https://www.paypal.com/sdk/js?client-id=AYZg72OmfeJnm88ghZQv7x4opaln2jZ1k6uHnhIYOaMl_RUPLGbutIGi0Gsp8b8NogkMEQuVbj5NBgvX">
+</script>*@
+
+<script type="text/javascript">
+    function OverridePP() {
+        debugger;
+        var isOrderPlaced = false;
+        // Show a success message to your buyer
+        var email = $("#txtEmail").val();
+        var name = $("#txtFirstName").val();
+        var mobile = $("#txtMobile").val();
+
+        $.ajax({
+			url: '/BookingSummary/PlaceOrder',
+			type: "POST",
+			data: {
+                orderID: 'override-paypal-id',
+				email: email,
+				name: name,
+				mobile: mobile,
+				eventID: @Request["eventID"],
+				amount: -1,
+                intent: 'CAPTURE',
+                status: 'COMPLETED',
+				sessionId: '@Common.GetSessionID()',
+			},
+			success: function (response) {
+				if(response.status == "OK") {
+					isOrderPlaced = true;
+					//location.href = "/BookingSuccess?tID=" + response.orderID;
+					$.ajax({
+						url: "/BookingSummary/BookUnconfirmedSeats",
+						data: { eventID: @Request["eventID"], orderID: response.orderID },
+						type: "GET",
+						success: function(unconf_response) {
+							if(unconf_response == "OK") {
+								location.href = "/BookingSuccess?tID=" + response.orderID;
+							}
+						}
+					});
+				}
+			}
+        });
+    }
+</script>
+
+<script type="text/javascript">
+	window.addEventListener('unload', deleteCartData, false);
+
+	var isOrderPlaced = false;
+
+	window.addEventListener('beforeunload', (event) => {
+	    if(isOrderPlaced == false) {
+	        event.returnValue = 'Are you sure you want to leave?';
+	    }
+	});
+
+    function deleteCartData() {
+
+        var data = new FormData();
+
+        data.append('eventID', @evt.EventID);
+
+        if ("sendBeacon" in navigator) {
+            navigator.sendBeacon("/BookingSummary/DeleteCart", data);
+        }
+        else {
+            var client = new XMLHttpRequest();
+            client.open("POST", "/BookingSummary/DeleteCart", false);
+            client.send(data);
+        }
+    }
+
+
+    $(function () {
+        $("#frmBooking").validate({
+            rules: {
+                txtFirstName: {
+                    required: true
+                },
+                txtEmail: {
+                    required: true,
+                    email: true
+                },
+                txtMobile: {
+                    required: true,
+                    digits: true
+                }
+            },
+            messages: {
+                txtFirstName: {
+                    required: "Please enter name"
+                },
+                txtEmail: {
+                    required: "Please enter email id",
+                    email: "Please check email id format"
+                },
+                txtMobile: {
+                    required: "Please enter mobile number",
+                    digits: "Mobile number should be in digits"
+                }
+            },
+            errorPlacement: function (error, element) {
+                if (element.attr("name") == "txtFirstName")
+                    error.appendTo($('#lblName'));
+
+                if (element.attr("name") == "txtEmail")
+                    error.appendTo($('#lblEmail'));
+
+                if (element.attr("name") == "txtMobile") {
+                    $("#lblMobile").html("");
+                    error.appendTo($('#lblMobile'));
+                }
+            }
+        });
+    });
+
+    @*paypal.Buttons({
+        createOrder: function (data, actions) {
+            // Set up the transaction
+
+			var seats = '@Model.Count()';
+
+            if ($("#frmBooking").valid()) {
+
+				if(seats > 0)
+                {
+					return actions.order.create({
+						headers: {
+							'Content-Type': 'application/json',
+						},
+						purchase_units: [{
+							amount: {
+								value: '@Decimal.Round(Convert.ToDecimal(ViewData["Amount"]),2)'
+							}
+						}]
+					});
+				}
+				else {
+					alert("Sorry, due to some error you will have to reselect the seats.");
+					location.href = "/V5Venue?eventID=@evt.EventID";
+				}
+            }
+            else {
+                return false;
+            }
+        },
+        onApprove: function (data, actions) {
+            $("#divLoading").show();
+
+			var seats = '@Model.Count()';
+
+			if(seats > 0) {
+				// Capture the funds from the transaction
+				return actions.order.capture().then(function (details) {
+					// Show a success message to your buyer
+					var email = $("#txtEmail").val();
+					var name = $("#txtFirstName").val();
+					var mobile = $("#txtMobile").val();
+
+					$.ajax({
+						url: '/BookingSummary/PlaceOrder',
+						type: "POST",
+						data: {
+							orderID: data.orderID,
+							email: email,
+							name: name,
+							mobile: mobile,
+							eventID: @Request["eventID"],
+							amount: details.purchase_units[0].amount.value,
+							intent: details.intent,
+							status: details.status,
+							sessionId: '@Common.GetSessionID()',
+						},
+						success: function (response) {
+							if(response.status == "OK") {
+								isOrderPlaced = true;
+
+								//location.href = "/BookingSuccess?tID=" + response.orderID;
+
+								$.ajax({
+									url: "/BookingSummary/BookUnconfirmedSeats",
+									data: { eventID: @Request["eventID"], orderID: response.orderID },
+									type: "GET",
+									success: function(unconf_response) {
+										if(unconf_response == "OK") {
+											location.href = "/BookingSuccess?tID=" + response.orderID;
+										}
+									}
+								});
+							}
+						}
+					});
+				});
+			}
+        }
+    }).render('#pp');*@
+
+    function PlaceOrder() {
+        $(".OrdBtnMain").hide();
+        $("#loader").html("<b>Please wait....</b>");
+
+        $.ajax({
+            url: '/BookingSummary/PlaceOrder',
+            data: { eventID: '@Request["eventID"]' },
+            type: "POST",
+            success: function (response) {
+                if (response == "OK") {
+                    alert("Booking confirmed! Your tickets have been sent to your registered email id.");
+                    location.href = "/Home";
+                }
+            }
+        });
+    }
+
+    function ShowDetailForm() {
+
+        $("#details").show();
+
+		$('html, body').animate({
+			scrollTop: $("#details").offset().top
+		}, 2000);
+
+    }
+
+	//validate & use coupon
+    function CheckCoupon() {
+
+        if ($("#txtCouponCode").val() != "") {
+
+            var code = $("#txtCouponCode").val();
+
+            $("#btnCoupon").hide();
+            $("#coupon_loader").html("Processing...");
+
+            $.ajax({
+                url: "/V5Venue/CheckCouponCode",
+                data: { code: code, eventID: '@Request["eventID"]' },
+                type: 'GET',
+                success: OnCheckCouponSuccess
+            });
+        }
+        else
+            alert("Please enter valid coupon code.");
+    }
+
+    function OnCheckCouponSuccess(msg) {
+
+        if (msg == "OK")
+            location.reload();
+        else {
+            alert(msg);
+            $("#coupon_loader").html("");
+            $("#btnCoupon").show();
+
+        }
+    }
+</script>
+
+
+<div class="ContentWrap">
+    <div class="MainInnerLabel">Your Order Summary</div>
+
+    <div class="OrderSumWrap">
+        <table border="1" class="ordTbl">
+            <tr>
+                <th>Show Details</th>
+                <th>Total Seats</th>
+                <th>Seats Selected</th>
+                <th>Sub Total</th>
+            </tr>
+            @foreach (var seat in Model)
+            {
+                totalAmount += seat.TotalPrice;
+
+                <tr>
+                    <td>
+                        <div class="ShowName">@evt.EventName @evt.EventType</div>
+                        <div class="Theatre">
+                            Location : <span class="showtdhigh">@evt.tblVenue.VenueName</span> | Date :
+                            <span class="showtdhigh">@Convert.ToDateTime(evt.EventDate).ToString("dd-MMMM-yyyy")</span>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="ShowSeat">@seat.NoOfSeats</div>
+                    </td>
+                    <td>
+                        <div class="ShowSeat">@ViewData["Seats"]</div>
+                    </td>
+                    <td>
+                        <div class="ShowCost">$@seat.TotalPrice</div>
+                    </td>
+                </tr>
+            }
+        </table>
+        @{
+            var couponUsed = (FrontEnd.Models.tblOrderCoupon)ViewData["CouponUsed"];
+            if (couponUsed != null)
+            {
+                if (couponUsed.tblCoupon.DiscountIn == "Percentage")
+                {
+                    <div class="OrdTot">
+                        <div class="TotalOrdBlock">
+                            <div class="TotOrdLeft">Discount: <b>(@couponUsed.tblCoupon.CouponCode - @couponUsed.tblCoupon.Discount%)</b></div>
+                            <div class="TotOrdRight">$@Decimal.Round(Convert.ToDecimal(ViewData["DiscountAmount"]), 2)</div>
+                            <div class="clr"></div>
+                        </div>
+                        <div class="clr"></div>
+                    </div>
+                }
+                else if (couponUsed.tblCoupon.DiscountIn == "Value")
+                {
+                    <div class="OrdTot">
+                        <div class="TotalOrdBlock">
+                            <div class="TotOrdLeft">Discount: <b>(@couponUsed.tblCoupon.CouponCode)</b></div>
+                            <div class="TotOrdRight">$@Decimal.Round(Convert.ToDecimal(ViewData["DiscountAmount"]), 2)</div>
+                            <div class="clr"></div>
+                        </div>
+                        <div class="clr"></div>
+                    </div>
+                }
+            }
+        }
+
+        @{
+            if (ViewData["ProcessingPercentage"] != null)
+            {
+
+                <div class="OrdTot">
+                    <div class="TotalOrdBlock">
+                        <div class="TotOrdLeft">Service Fees </div>
+                        <div class="TotOrdRight">$@Decimal.Round(Convert.ToDecimal(ViewData["ProcessingFee"]), 2)</div>
+                        <div class="clr"></div>
+                    </div>
+                    <div class="clr"></div>
+                </div>
+            }
+        }
+
+
+
+        <div class="OrdTot">
+            <div class="TotalOrdBlock">
+                <div class="TotOrdLeft">Total Amount:</div>
+                <div class="TotOrdRight">$@Decimal.Round(Convert.ToDecimal(ViewData["Amount"]), 2)</div>
+                <div class="clr"></div>
+            </div>
+            <div class="clr"></div>
+        </div>
+
+        <div class="OrdBtn">
+            <button class="OrdBtnMain" type="button" onclick="ShowDetailForm();">Continue</button><span id="loader"></span>
+        </div>
+
+    </div>
+
+    <div class="MainOuterSeatingWrap">
+        <div class="ContentWrap" id="details" style="display:none;">
+            <div class="MainInnerLabel">We need some details to email you your tickets....</div>
+            <form id="frmBooking">
+                <input type="hidden" class="InnerTxtBox" id="eventID" name="eventID" value="@Request["eventID"]" />
+                <div class="InnerFieldsBlock">
+                    <div class="InnerLabel">Name</div>
+                    <div class="InnerTxtWrap"><input type="text" class="InnerTxtBox" id="txtFirstName" name="txtFirstName" /></div>
+                    <div id="lblName"></div>
+                    <div class="clr"></div>
+                </div>
+
+                <div class="InnerFieldsBlock">
+                    <div class="InnerLabel">Email ID</div>
+                    <div class="InnerTxtWrap"><input type="text" class="InnerTxtBox" id="txtEmail" name="txtEmail" /></div>
+                    <div id="lblEmail"></div>
+                    <div class="clr"></div>
+                </div>
+
+                <div class="InnerFieldsBlock">
+                    <div class="InnerLabel">Mobile</div>
+                    <div class="InnerTxtWrap"><input type="text" class="InnerTxtBox" id="txtMobile" name="txtMobile" /></div>
+                    <div id="lblMobile"></div>
+                    <div class="clr"></div>
+                </div>
+            </form>
+            <div>
+                <button type="button" onclick="JavaScript: OverridePP();"
+                        class="button-62" id="but_upload">
+                    Override PayPal Payment
+                </button>
+            </div>
+            @*<div class="FinalOrdBtn">
+                    <div id="pp"></div>
+                </div>*@
+        </div>
+    </div>
+</div>
+
+
+<div id="divLoading" style="margin: 0px; padding: 0px; position: fixed; right: 0px; top: 0px; width: 100%; height: 100%; background-color: rgb(102, 102, 102); z-index: 30001; opacity: 0.8;display:none;">
+    <p style="position: absolute; color: White; top: 50%; left: 45%;">
+        Loading, please wait...
+        <img src="../App_Images/indicator-big.gif">
+    </p>
+</div>

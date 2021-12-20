@@ -1,0 +1,142 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model FrontEnd.Models.EventsViewModel
+
+@{
+    var view_image_path = System.Configuration.ConfigurationManager.AppSettings["ViewImagePath"].ToString();
+    var events = (List<FrontEnd.Models.EventsViewModel>)TempData["ListEvents"];
+    var eventsRequest = (FrontEnd.Models.EventRequest)TempData["EventRequest"];
+    var eventId = TempData["eventID"];
+    var searchEvent = (FrontEnd.Models.EventsViewModel)TempData["SearchEvents"];
+    var eventImageList = (List<FrontEnd.Models.EventsImageListViewModel>)TempData["eventImageList"];
+}
+
+<div class="container" id="eventContainer">
+    <div class="row galleryEventCards">
+        @foreach (var item in events)
+        {
+            <div class="col-sm-3 mb-4">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <div class="img-holder">
+                            <img class="img-responsive" src="@view_image_path/EventBanners/@item.EventBanner" />
+                        </div>
+                        <div class="card-content">
+                            <h4 class="ellipsis" title="@item.EventName">@item.EventName | @item.EventType</h4>
+                            <p>@item.VenueName</p>
+                            <p>@item.EventDate.ToLongDateString()</p>
+                            <button class="btn btn-primary" onclick="viewGallery(@item.EventID)">View Gallery</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+        </div>
+    <div class="row hide" id="eventImages">
+        <div class="card">
+            <div class="eventTitle d-flex w100">
+                <div class="ev-title"> Event Title. </div>
+                <div class="ml-auto">
+                    <button class="btn btn-primary" onclick="back()">Back</button>
+                </div>
+            </div>
+            <div class="card-body">
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    //var gallery = $('#container .grid-item a').simpleLightbox({
+    //    /* options */
+    //});
+   
+    //var $grid = $('#container').imagesLoaded().done(function () {
+    //    // init Masonry after all images have loaded
+    //    console.log("loaded");
+    //    $('#container').masonry({
+    //        itemSelector: '.grid-item',
+    //        columnWidth: 200,
+    //        gutterWidth: 15
+    //    });
+    //});
+    function viewGallery(eventId) {
+        $("#modalLoader").modal('show'); $("#modalLoader").modal('show');
+        $.ajax({
+			url: "/Gallery/getPastEventImages",
+			type: "POST",
+			data: { eventID: eventId  },
+            success: function (response) {
+                console.log("getPastEventImages: ", JSON.parse(response));
+                var resp = JSON.parse(response);
+                if (resp.length > 0) {
+                    var imgContainer = "#eventContainer #eventImages .card .card-body";
+                    $(imgContainer).empty();
+                    //$grid.masonry('layout');
+                    resp.forEach((r) => {
+                        var div = $("<div class='grid-item'></div>");
+                        var url = 'http://localhost:2745/PastEventImages/' + r.EventID + '/' + r.ImagePath;
+                        if (r.ImageType == "video/mp4") {
+                            var video = $("<video controls></video>");
+                            var source = $("<source src='" + url + "' type='video/mp4' />");
+                            $(video).append(source);
+                            $(div).append(video);
+                        } else {
+                            //var thumbUrl = 'http://localhost:2745/PastEventImages/' + r.EventID + '/thumb/tb-' + r.ImagePath;
+                            var a = $("<a href='" + url + "' class='big' rel='rel1'></a>");
+                            var img = $("<img class='img-responsive' src='" + url + "' />");
+                            $(a).append(img);
+                            $(div).append(a);
+                        }
+                        $(imgContainer).append(div);
+                        //$grid.masonry('addItems', div);
+                    });
+                    setLayout();
+                } else {
+                    $("#modalLoader").modal('hide');
+                    // add toast images to show
+                    toastr.error("No Image Available!");
+                }
+			}
+		});
+    }
+
+    function back() {
+        //var imgContainer = "#eventContainer #eventImages .card .card-body";
+        //$(imgContainer).children().each(function () {
+        //    //$grid.masonry('remove', this);
+        //    $(this).remove();
+        //});
+        var imgContainer = "#eventContainer #eventImages .card .card-body";
+        $(imgContainer).masonry('destroy');
+        $(imgContainer).removeData('masonry');
+        $("#eventContainer .galleryEventCards").removeClass("hide");
+        $("#eventContainer #eventImages").addClass("hide");
+        $(imgContainer).empty();
+        //window.location.reload();
+    }
+    function setLayout() {
+        var $grid = $("#eventContainer #eventImages .card .card-body").imagesLoaded().done(function () {
+            // init Masonry after all images have loaded
+            console.log("loaded");
+            $("#eventContainer #eventImages .card .card-body").masonry({
+                itemSelector: '.grid-item',
+                columnWidth: 200,
+                gutterWidth: 15
+            });
+            $("#eventContainer .galleryEventCards").addClass("hide");
+            $("#eventContainer #eventImages").removeClass("hide");
+            $("#modalLoader").modal('hide');
+            //console.log($("#eventContainer #eventImages .card .card-body"));
+        });
+        document.querySelectorAll('video').forEach(vid =>
+            vid.addEventListener('loadeddata', (event) => {
+                console.log("loadeddata");
+                $grid.masonry('layout');
+            })
+        );
+    }
+</script>

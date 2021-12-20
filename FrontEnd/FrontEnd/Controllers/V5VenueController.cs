@@ -1,10 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Dapper;
 using FrontEnd.Models;
 using Newtonsoft.Json;
+using SA.Caching.Helpers;
+
 namespace FrontEnd.Controllers
 {
     public class SelectedSeatsV5
@@ -12,6 +17,10 @@ namespace FrontEnd.Controllers
         public string SessionID { get; set; }
         public int NoOfSeats { get; set; }
         public decimal TotalPrice { get; set; }
+        public decimal ActualPrice { get; set; }
+        public decimal DiscountedAmount { get; set; }
+        public decimal Price { get; set; }
+        public decimal EBPrice { get; set; }
     }
 
     public class SelectedSeatsV5Response
@@ -33,6 +42,21 @@ namespace FrontEnd.Controllers
 
     public class V5VenueController : Controller
     {
+        private readonly int _cacheTime;
+        private readonly int _cacheTimeInHours;
+        private readonly string _constr;
+        private bool IsCacheToReferesh;
+        public V5VenueController()
+        {
+            IsCacheToReferesh = false;
+            if (Session != null)
+            {
+                IsCacheToReferesh = (Convert.ToString(Session["IsCacheToReferesh"]) == null) ? false : (bool)Session["IsCacheToReferesh"];
+            }
+            _cacheTime = Convert.ToInt32(ConfigurationManager.AppSettings["cacheTimeInMinutes"]);
+            _cacheTimeInHours = Convert.ToInt32(ConfigurationManager.AppSettings["cacheTimeInHours"]);
+            _constr = ConfigurationManager.ConnectionStrings["DefaultConnection"].ToString();
+        }
         // GET: V5Venue
         JAVADBEntities db = new JAVADBEntities();
         public ActionResult Index()
@@ -45,7 +69,11 @@ namespace FrontEnd.Controllers
             if (Request.Cookies["refresh-" + eventID] != null)
                 DeleteSession(eventID, true);
 
+            //ViewData["Tiers"] = db.tblTiers.ToList();
+            ViewData["EventsData"] = getEventsFromCache(eventID, IsCacheToReferesh);
             ViewData["Tiers"] = db.tblTiers.ToList();
+            ViewData["SeatDetails"] = getSeatDetailsFromCache(eventID, IsCacheToReferesh);
+            ViewData["TiersData"] = getTiersFromCache(eventID, IsCacheToReferesh);
             return View();
         }
         
@@ -100,7 +128,6 @@ namespace FrontEnd.Controllers
             string json = JsonConvert.SerializeObject(response);
             return json;
         }
-
         public string RemoveSeat()
         {
             int eventID = Convert.ToInt32(Request["eventID"]);
@@ -125,7 +152,6 @@ namespace FrontEnd.Controllers
             string json = JsonConvert.SerializeObject(response);
             return json;
         }
-
         public void DeleteSession(int eventID, bool isRefresh)
         {
             string sessionID = Common.GetSessionID();
@@ -153,8 +179,6 @@ namespace FrontEnd.Controllers
             if (isRefresh == false)
                 Response.Redirect("/Events?eventID=" + eventID);
         }
-
-
 
         //checks whether the coupon code exists and sets the values in session accdingly
         public string CheckCouponCode(string code)
@@ -264,7 +288,6 @@ namespace FrontEnd.Controllers
                 return json;
             }
         }
-
         public string CheckBooking()
         {
             string sessionID = Common.GetSessionID();
@@ -297,5 +320,116 @@ namespace FrontEnd.Controllers
             else
                 return "NOT OCCUPIED";
         }
+
+        #region Private Functions
+        private List<TiersViewModel> getTiers(int EventId)
+        {
+            List<TiersViewModel> tiersVM = null;
+            //string constr = System.Configuration.ConfigurationManager.ConnectionStrings["DefaultConnection"].ToString();
+            using (SqlConnection con = new SqlConnection(_constr))
+            {
+                tiersVM = new List<TiersViewModel>();
+                var parameters = new DynamicParameters();
+                parameters.Add("@EventId", EventId);
+
+                using (SqlMapper.GridReader multi = con.QueryMultiple("GetTiers"
+                    , parameters
+                    , commandType: System.Data.CommandType.StoredProcedure))
+                {
+                    tiersVM = multi.Read<TiersViewModel>().ToList();
+                }
+            }
+            return tiersVM;
+        }
+        private SeatListViewModel getSeatDetails(int EventId)
+        {
+            SeatListViewModel seatVM = null;
+            List<SeatDetailViewModel> seatDetailsVM = null;
+            List<TiersViewModel> tiersVM = null;
+            //string constr = System.Configuration.ConfigurationManager.ConnectionStrings["DefaultConnection"].ToString();
+            using (SqlConnection con = new SqlConnection(_constr))
+            {
+                seatVM = new SeatListViewModel();
+                seatDetailsVM = new List<SeatDetailViewModel>();
+                tiersVM = new List<TiersViewModel>();
+                var parameters = new DynamicParameters();
+                parameters.Add("@EventId", EventId);
+
+                using (SqlMapper.GridReader multi = con.QueryMultiple("GetV5SeatDetails"
+                    , parameters
+                    , commandType: System.Data.CommandType.StoredProcedure))
+                {
+                    seatDetailsVM = multi.Read<SeatDetailViewModel>().ToList();
+                    tiersVM = multi.Read<TiersViewModel>().ToList();
+                }
+                seatVM.Seats = seatDetailsVM;
+                seatVM.Tiers = tiersVM;
+            }
+            return seatVM;
+        }
+        #endregion
+
+        #region Caching Functions
+        private object getEventsFromCache(int eventID, bool IsCacheToReferesh)
+        {
+            string ckKey = "cvEvent_" + eventID.ToString();
+            object cvKey = MemoryCacher.GetValue(ckKey);
+            object oData = null;
+            if (MemoryCacher.GetValue(ckKey) == null || IsCacheToReferesh)
+            {
+                oData = db.tblEvents.Where(t => t.EventID == eventID).SingleOrDefault();
+                if (IsCacheToReferesh)
+                {
+                    MemoryCacher.Delete(ckKey);
+                }
+                MemoryCacher.Add(ckKey, oData, DateTimeOffset.UtcNow.AddHours(_cacheTimeInHours));
+            }
+            else
+            {
+                oData = cvKey;
+            }
+            return oData;
+        }
+        private object getTiersFromCache(int eventID, bool IsCacheToReferesh)
+        {
+            string ckKey = "cvTiers_" + eventID.ToString();
+            object cvKey = MemoryCacher.GetValue(ckKey);
+            object tiersData = null;
+            if (MemoryCacher.GetValue(ckKey) == null || IsCacheToReferesh)
+            {
+                tiersData = getTiers(eventID);
+                if (IsCacheToReferesh)
+                {
+                    MemoryCacher.Delete(ckKey);
+                }
+                MemoryCacher.Add(ckKey, tiersData, DateTimeOffset.UtcNow.AddMinutes(_cacheTime));
+            }
+            else
+            {
+                tiersData = cvKey;
+            }
+            return tiersData;
+        }
+        private object getSeatDetailsFromCache(int eventID, bool IsCacheToReferesh)
+        {
+            string ckKey = "cvSeatDetails_" + eventID.ToString();
+            object cvKey = MemoryCacher.GetValue(ckKey);
+            object data = null;
+            if (MemoryCacher.GetValue(ckKey) == null || IsCacheToReferesh)
+            {
+                data = getSeatDetails(eventID);
+                if (IsCacheToReferesh)
+                {
+                    MemoryCacher.Delete(ckKey);
+                }
+                MemoryCacher.Add(ckKey, data, DateTimeOffset.UtcNow.AddMinutes(_cacheTime));
+            }
+            else
+            {
+                data = cvKey;
+            }
+            return data;
+        }
+        #endregion
     }
 }

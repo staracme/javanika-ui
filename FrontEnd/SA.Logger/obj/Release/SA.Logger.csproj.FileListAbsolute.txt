@@ -6,3 +6,12 @@ E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\SA.Logger\obj\Release\SA
 E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\SA.Logger\obj\Release\SA.Logger.csproj.CopyComplete
 E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\SA.Logger\obj\Release\SA.Logger.dll
 E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\SA.Logger\obj\Release\SA.Logger.pdb
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\javanika-ui-dev\FrontEnd\SA.Logger\bin\Release\SA.Logger.dll
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\javanika-ui-dev\FrontEnd\SA.Logger\bin\Release\SA.Logger.pdb
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\javanika-ui-dev\FrontEnd\SA.Logger\bin\Release\log4net.dll
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\javanika-ui-dev\FrontEnd\SA.Logger\bin\Release\log4net.xml
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\javanika-ui-dev\FrontEnd\SA.Logger\obj\Release\SA.Logger.csprojAssemblyReference.cache
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\javanika-ui-dev\FrontEnd\SA.Logger\obj\Release\SA.Logger.csproj.CoreCompileInputs.cache
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\javanika-ui-dev\FrontEnd\SA.Logger\obj\Release\SA.Logger.csproj.CopyComplete
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\javanika-ui-dev\FrontEnd\SA.Logger\obj\Release\SA.Logger.dll
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\javanika-ui-dev\FrontEnd\SA.Logger\obj\Release\SA.Logger.pdb

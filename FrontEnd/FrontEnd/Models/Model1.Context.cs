@@ -54,5 +54,6 @@ namespace FrontEnd.Models
         public virtual DbSet<TempOrder> TempOrders { get; set; }
         public virtual DbSet<TempTicket> TempTickets { get; set; }
         public virtual DbSet<VOBARegistration> VOBARegistrations { get; set; }
+        public virtual DbSet<tblConfig> tblConfigs { get; set; }
     }
 }

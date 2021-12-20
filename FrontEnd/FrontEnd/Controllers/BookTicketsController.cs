@@ -7,6 +7,7 @@ using FrontEnd.Models;
 using System.Net;
 using System.Net.Mail;
 using System.Configuration;
+using SA.Caching.Helpers;
 
 namespace FrontEnd.Controllers
 {
@@ -26,6 +27,8 @@ namespace FrontEnd.Controllers
         public decimal Price { get; set; }
         public decimal TotalAmount { get; set; }
         public string TicketType { get; set; }
+        public int totalSeatsAvailable { get; set; }
+        public bool isTicketCountValid { get; set; }
     }
 
     public class PaymentResponse
@@ -51,6 +54,17 @@ namespace FrontEnd.Controllers
     {
         // GET: BookTickets
         JAVADBEntities db = new JAVADBEntities();
+        private readonly int _cacheTimeInHours;
+        private bool IsCacheToReferesh;
+        public BookTicketsController()
+        {
+            IsCacheToReferesh = false;
+            if (Session != null)
+            {
+                IsCacheToReferesh = (Convert.ToString(Session["IsCacheToReferesh"]) == null) ? false : (bool)Session["IsCacheToReferesh"];
+            }
+            _cacheTimeInHours = Convert.ToInt32(ConfigurationManager.AppSettings["cacheTimeInHours"]);
+        }
 
         [OutputCacheAttribute(VaryByParam = "*", Duration = 0, NoStore = true)]
         public ActionResult Index()
@@ -68,7 +82,8 @@ namespace FrontEnd.Controllers
         {
             int eventID = Convert.ToInt32(Request["eventID"]);
             int no_of_tickets = Convert.ToInt32(Request["no_of_tickets"]);
-            var evt = db.tblEvents.Where(e=>e.EventID == eventID).SingleOrDefault();
+
+            var evt = (tblEvent)getEventsFromCache(eventID, IsCacheToReferesh); //db.tblEvents.Where(e=>e.EventID == eventID).SingleOrDefault();
 
             BookResponse response = new BookResponse();
 
@@ -91,7 +106,7 @@ namespace FrontEnd.Controllers
         {
             int eventID = Convert.ToInt32(Request["eventID"]);
             int no_of_tickets = Convert.ToInt32(Request["no_of_tickets"]);
-            var evt = db.tblEvents.Where(e => e.EventID == eventID).SingleOrDefault();
+            var evt = (tblEvent)getEventsFromCache(eventID, IsCacheToReferesh); //db.tblEvents.Where(e => e.EventID == eventID).SingleOrDefault();
 
             BookResponse response = new BookResponse();
             //check if stock is available
@@ -125,119 +140,119 @@ namespace FrontEnd.Controllers
             string email = Request["txtEmail"];
             int eventID = Convert.ToInt32(Request["eventID"]);
             int i = 0;
-            
+
             BookResponse response = new BookResponse();
 
             if (!string.IsNullOrEmpty(name) && !string.IsNullOrEmpty(email) && !string.IsNullOrEmpty(Request["txtNoOfTickets"]) && int.TryParse(Request["txtNoOfTickets"], out i))
             {
                 //if (Session["OrderID"] == null)
                 //{
-                    int noOfTickets = Convert.ToInt32(Request["txtNoOfTickets"]);
-                    eventID = Convert.ToInt32(Request["eventID"]);
-                    //decimal price = Convert.ToDecimal(40);
-                    decimal price = Convert.ToDecimal(0.01);
+                int noOfTickets = Convert.ToInt32(Request["txtNoOfTickets"]);
+                eventID = Convert.ToInt32(Request["eventID"]);
+                //decimal price = Convert.ToDecimal(40);
+                decimal price = Convert.ToDecimal(0.01);
 
-                    var evt = db.tblEvents.Where(e => e.EventID == eventID).SingleOrDefault();
-                    price = (decimal)evt.TicketPrice;
-                    
-                    var soldTicketsCount = db.tblTicketOrders.Where(e => e.EventID == eventID
-                                                && e.Status == "SUCCESS"
-                                                && e.PaymentStatus == "COMPLETED").ToList();
+                var evt = (tblEvent)getEventsFromCache(eventID, IsCacheToReferesh); //db.tblEvents.Where(e => e.EventID == eventID).SingleOrDefault();
+                price = (decimal)evt.TicketPrice;
 
-                    decimal totalAmount = (noOfTickets * price);
+                var soldTicketsCount = db.tblTicketOrders.Where(e => e.EventID == eventID
+                                            && e.Status == "SUCCESS"
+                                            && e.PaymentStatus == "COMPLETED").ToList();
 
-                    var input = new OrderInput
+                decimal totalAmount = (noOfTickets * price);
+
+                var input = new OrderInput
+                {
+                    CustomerName = name,
+                    CustomerEmail = email,
+                    NoOfTickets = noOfTickets,
+                    Price = price,
+                    TotalAmount = totalAmount
+                };
+                //Logic to check Early Bird ticket allocation base on configurtion 
+                //datewise ot seatwise
+                if (evt.EarlyBirdTicketSelection == EarlyBirdTicketType.DATEWISE.ToString())
+                {
+                    DateTime currentDate = System.DateTime.Today;
+                    if (currentDate >= evt.StartDate && currentDate <= evt.EndDate)
                     {
-                        CustomerName = name,
-                        CustomerEmail = email,
-                        NoOfTickets = noOfTickets,
-                        Price = price,
-                        TotalAmount = totalAmount
-                    };
-                    //Logic to check EArly Bird ticket allocation base on configurtion 
-                    //datewise ot seatwise
-                    if (evt.EarlyBirdTicketSelection == EarlyBirdTicketType.DATEWISE.ToString())
-                    {
-                        DateTime currentDate = System.DateTime.Today;
-                        if (currentDate >= evt.StartDate && currentDate <= evt.EndDate)
-                        {
-                            input.TicketType = TicketType.EARLYBIRD.ToString();
-                            input.Price = (decimal)evt.EBTicketPrice;
-                        }
-                        else
-                        {
-                            input.TicketType = TicketType.GENERAL.ToString();
-                            input.Price = (decimal)evt.TicketPrice;
-                        }
-                    }
-                    else if (evt.EarlyBirdTicketSelection == EarlyBirdTicketType.SEATWISE.ToString())
-                    {
-                        int percentEBSeats = (int)evt.PercentEBSeats;
-                        int totalEBSeatsAllowed = (int)((evt.TicketStock * percentEBSeats) / 100);
-
-                        if (totalEBSeatsAllowed >= noOfTickets && evt.TicketsAvailable >= noOfTickets)
-                        {
-                            input.TicketType = TicketType.EARLYBIRD.ToString();
-                            input.Price = (decimal)evt.EBTicketPrice;
-                        }
-                        else
-                        {
-                            input.TicketType = TicketType.GENERAL.ToString();
-                            input.Price = (decimal)evt.TicketPrice;
-                        }
-                    }
-                    input.TotalAmount = (input.NoOfTickets * input.Price);
-                    //removing hard coded logic
-                    #region MyRegion
-                    //if (eventID == 3039)
-                    //{
-                    //    //check if stock is available
-                    //    if (noOfTickets <= evt.TicketStock)
-                    //    {
-                    //        response.orderID = SaveTicketOrder(input);
-                    //        response.status = "OK";
-                    //        Session["OrderID"] = Convert.ToInt32(response.orderID);
-                    //    }
-                    //    else
-                    //    {
-                    //        response.ticket_stock = Convert.ToInt32(evt.TicketStock);
-                    //        response.status = "OUT_OF_STOCK";
-                    //    }
-                    //}
-                    //else
-                    //{ 
-                    #endregion
-
-                    int totalSeatsAvailable = (int)(evt.TicketsAvailable - soldTicketsCount.Count);
-                    //to check current no of tickets does not exceed thre remaining stock of tickets
-                    bool isTicketCountValid = totalSeatsAvailable > noOfTickets;
-                    if (isTicketCountValid)
-                    {
-                        if (Session["OrderID"] == null)
-                        {
-                            response.orderID = SaveTicketOrder(input);
-                        }
-                        else
-                        {
-                            response.orderID = UpdateTicketOrder(input);
-                        }
-                        response.status = "OK";
-                        Session["OrderID"] = Convert.ToInt32(response.orderID);
+                        input.TicketType = TicketType.EARLYBIRD.ToString();
+                        input.Price = (decimal)evt.EBTicketPrice;
                     }
                     else
                     {
-                        //response.ticket_stock = Convert.ToInt32(evt.TicketStock);
-                        //it should display this instead of above date
-                        response.ticket_stock = Convert.ToInt32((evt.TicketStock - soldTicketsCount.Count));
-                        response.status = "OUT_OF_STOCK";
+                        input.TicketType = TicketType.GENERAL.ToString();
+                        input.Price = (decimal)evt.TicketPrice;
                     }
-                    return Json(response, JsonRequestBehavior.AllowGet);
+                }
+                else if (evt.EarlyBirdTicketSelection == EarlyBirdTicketType.SEATWISE.ToString())
+                {
+                    int percentEBSeats = (int)evt.PercentEBSeats;
+                    int totalEBSeatsAllowed = (int)((evt.TicketStock * percentEBSeats) / 100);
+
+                    if (totalEBSeatsAllowed >= noOfTickets && evt.TicketsAvailable >= noOfTickets)
+                    {
+                        input.TicketType = TicketType.EARLYBIRD.ToString();
+                        input.Price = (decimal)evt.EBTicketPrice;
+                    }
+                    else
+                    {
+                        input.TicketType = TicketType.GENERAL.ToString();
+                        input.Price = (decimal)evt.TicketPrice;
+                    }
+                }
+                input.TotalAmount = (input.NoOfTickets * input.Price);
+                //removing hard coded logic
+                #region MyRegion
+                //if (eventID == 3039)
+                //{
+                //    //check if stock is available
+                //    if (noOfTickets <= evt.TicketStock)
+                //    {
+                //        response.orderID = SaveTicketOrder(input);
+                //        response.status = "OK";
+                //        Session["OrderID"] = Convert.ToInt32(response.orderID);
+                //    }
+                //    else
+                //    {
+                //        response.ticket_stock = Convert.ToInt32(evt.TicketStock);
+                //        response.status = "OUT_OF_STOCK";
+                //    }
+                //}
+                //else
+                //{ 
+                #endregion
+
+                int totalSeatsAvailable = (int)(evt.TicketsAvailable - soldTicketsCount.Count);
+                //to check current no of tickets does not exceed thre remaining stock of tickets
+                bool isTicketCountValid = totalSeatsAvailable > noOfTickets;
+                if (isTicketCountValid)
+                {
+                    if (Session["OrderID"] == null)
+                    {
+                        response.orderID = SaveTicketOrder(input);
+                    }
+                    else
+                    {
+                        response.orderID = UpdateTicketOrder(input);
+                    }
+                    response.status = "OK";
+                    Session["OrderID"] = Convert.ToInt32(response.orderID);
+                }
+                else
+                {
+                    //response.ticket_stock = Convert.ToInt32(evt.TicketStock);
+                    //it should display this instead of above date
+                    response.ticket_stock = Convert.ToInt32((evt.TicketStock - soldTicketsCount.Count));
+                    response.status = "OUT_OF_STOCK";
+                }
+                return Json(response, JsonRequestBehavior.AllowGet);
                 //}
                 //else
                 //{
                 //    return GetExistingTicketOrderDetails(OrderID);
                 //}
-                
+
             }
             else
             {
@@ -292,5 +307,30 @@ namespace FrontEnd.Controllers
             db.SaveChanges();
             return result.OrderID;
         }
+
+        #region Caching Functions
+        private object getEventsFromCache(int eventID, bool IsCacheToReferesh)
+        {
+            string ckKey = "cvEvent_" + eventID.ToString();
+            object cvKey = MemoryCacher.GetValue(ckKey);
+            object oData = null;
+            if (MemoryCacher.GetValue(ckKey) == null || IsCacheToReferesh)
+            {
+                oData = db.tblEvents.Where(t => t.EventID == eventID).SingleOrDefault();
+                if (IsCacheToReferesh)
+                {
+                    MemoryCacher.Delete(ckKey);
+                }
+                MemoryCacher.Add(ckKey, oData, DateTimeOffset.UtcNow.AddHours(_cacheTimeInHours));
+            }
+            else
+            {
+                oData = cvKey;
+            }
+            return oData;
+        }
+        #endregion
     }
+
+
 }

@@ -1,0 +1,102 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model FrontEnd.Models.VOBARegistration
+
+<script src="~/App_Scripts/jquery.validate.js"></script>
+
+<script src="https://www.paypal.com/sdk/js?client-id=AYZg72OmfeJnm88ghZQv7x4opaln2jZ1k6uHnhIYOaMl_RUPLGbutIGi0Gsp8b8NogkMEQuVbj5NBgvX">
+</script>
+
+@*<script src="https://www.paypal.com/sdk/js?client-id=AW3y6TJ_eeCUe4f0X1BT33IR2EuHy2IzWuAsHFWtKcoZJd3OsVDZkV3qPvS6J2NUp5JjWSjBxcihAFuU">
+</script>*@
+
+<script type="text/javascript">
+        paypal.Buttons({
+        createOrder: function (data, actions) {
+            return actions.order.create({
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				purchase_units: [{
+					amount: {
+						value: '@Decimal.Round(Convert.ToDecimal(25),2)'
+					}
+				}]
+			});
+        },
+        onApprove: function (data, actions) {
+			  // Capture the funds from the transaction
+			  return actions.order.capture().then(function (details) {
+					// Show a success message to your buyer
+				  $.ajax({
+						url: '/VOBASummary/PlaceOrder',
+						type: "POST",
+						data: {
+							orderID: data.orderID,
+							amount: details.purchase_units[0].amount.value,
+							intent: details.intent,
+                            status: details.status,
+                            r_id: '@Request["r_id"]'
+						},
+						success: function (response) {
+                            if (response.status == "OK") {
+                                alert("You have successfully registered for the VOBA event.");
+                                location.href = "/Home";
+                            }
+						}
+					});
+			  });
+        }
+    }).render('#pp');
+</script>
+<div class="ContentWrap">
+    <div class="MainInnerLabel">Confirmation</div>
+    <form id="frmRegister">
+        <div class="InnerFieldsBlock">
+            <div class="InnerLabel">Guardian Name</div>
+            <div class="InnerTxtWrap"><input type="text" class="InnerTxtBox" id="txtParentName" name="txtParentName" value="@(Model != null ? Model.ParentName : "")" @(Model != null ? "disabled" : "") /></div>
+            <div class="" id="lblParentName"></div>
+            <div class="clr"></div>
+        </div>
+
+        <div class="InnerFieldsBlock">
+            <div class="InnerLabel">Guardian Email</div>
+            <div class="InnerTxtWrap"><input type="text" class="InnerTxtBox" id="txtGuardianEmail" name="txtGuardianEmail" value="@(Model != null ? Model.ParentEmail : "")" @(Model != null ? "disabled" : "") /></div>
+            <div class="" id="lblParentName"></div>
+            <div class="clr"></div>
+        </div>
+
+        <div class="InnerFieldsBlock">
+            <div class="InnerLabel">Guardian Mobile</div>
+            <div class="InnerTxtWrap"><input type="text" class="InnerTxtBox" id="txtGuardianMobile" name="txtGuardianMobile" value="@(Model != null ? Model.ParentMobile : "")" @(Model != null ? "disabled" : "") /></div>
+            <div class="" id="lblParentName"></div>
+            <div class="clr"></div>
+        </div>
+
+        <div class="InnerFieldsBlock">
+            <div class="InnerLabel">Child Name</div>
+            <div class="InnerTxtWrap"><input type="text" class="InnerTxtBox" id="txtChildName" name="txtChildName" value="@(Model != null ? Model.ChildName : "")" @(Model != null ? "disabled" : "") /></div>
+            <div class="" id="lblChildName"></div>
+            <div class="clr"></div>
+        </div>
+        <div class="InnerFieldsBlock">
+            <div class="InnerLabel">Date Of Birth</div>
+            <div class="InnerTxtWrap"><input type="date" class="InnerTxtBox" id="txtDOB" name="txtDOB" value="@(Model != null ? Convert.ToDateTime(Model.ChildDOB).ToString("yyyy-MM-dd") : "")" @(Model != null ? "disabled" : "") /></div>
+            <div class="" id="lblDOB"></div>
+            <div class="clr"></div>
+        </div>
+        @*<div class="InnerFieldsBlock">
+            <div class="InnerLabel"></div>
+            <div class="InnerTxtWrap"><input type="checkbox" name="chkTerms" id="chkTerms" @(Model != null ? "checked" : "") />I hereby accept terms & conditions</div>
+            <div class="" id="lblTerms"></div>
+            <div class="clr"></div>
+        </div>*@
+        <div class="FinalOrdBtn">
+            <div id="pp"></div>
+        </div>
+    </form>
+</div>

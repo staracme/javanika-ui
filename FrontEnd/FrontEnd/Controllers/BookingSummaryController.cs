@@ -26,6 +26,8 @@ namespace FrontEnd.Controllers
             public string name { get; set; }
             public string email { get; set; }
             public decimal amount { get; set; }
+            public string ticketType { get; set; }
+            public decimal discountedAmount { get; set; }
             public int no_of_tickets { get; set; }
             public string status { get; set; }
             public string intent { get; set; }
@@ -72,7 +74,6 @@ namespace FrontEnd.Controllers
             var evt = db.tblEvents.Where(e => e.EventID == eventID).SingleOrDefault();
             ViewData["Event"] = evt;
 
-
             var couponsUsed = (db
                         .tblOrderCoupons
                         .Where(c => c.SessionID == sessionID && c.OrderID == null)
@@ -80,13 +81,15 @@ namespace FrontEnd.Controllers
 
             var items = db.Database.SqlQuery<SelectedSeatsV5>("select SessionID, count(*) as 'NoOfSeats', sum(Price) as 'TotalPrice' from tblSeatSelections where EventID = " + eventID + " and SessionID = '" + sessionID + "' group by SessionID").ToList();
 
-            decimal amount = items.Sum(i => i.TotalPrice);
+            var selectedSeatsTicketDetails = db.Database.SqlQuery<SelectedSeatsV5>("select SessionID, Price, EBPrice  from tblSeatSelections where EventID = " + eventID + " and SessionID = '" + sessionID + "' ").ToList();
 
+            decimal amount = items.Sum(i => i.TotalPrice);
+            amount = selectedSeatsTicketDetails.Sum(x => x.Price);
+            items[0].ActualPrice = amount;
 
             var seats = db.tblSeatSelections.Where(t => t.OrderID == null && t.SessionID == sessionID && t.EventID == eventID).ToList();
 
             ViewData["Seats"] = string.Join(",", seats.Select(s => s.tblSeat.SeatNumber));
-
 
             if (couponsUsed != null)
             {
@@ -144,20 +147,33 @@ namespace FrontEnd.Controllers
             }
             else
             {
-                if (evt.ProcessingFee != null && evt.ProcessingFee > 0)
+                OrderInput input = CheckIsEarlyBirdAndisTicketCountValid(eventID, selectedSeatsTicketDetails);
+                if(input.TicketType == "EARLYBIRD")
                 {
-
-                    decimal process_fees_perc = Convert.ToDecimal(evt.ProcessingFee);
-                    decimal process_amount = ((amount * process_fees_perc / 100));
-
-                    amount = (amount + process_amount);
-
-
-                    ViewData["ProcessingPercentage"] = process_fees_perc;
-                    ViewData["ProcessingFee"] = process_amount;
+                    input.TotalAmount = selectedSeatsTicketDetails.Sum(x => x.EBPrice);
+                }
+                else
+                {
+                    input.TotalAmount = selectedSeatsTicketDetails.Sum(x => x.Price);
                 }
 
-
+                amount = input.TotalAmount;
+                //to check current no of tickets does not exceed thre remaining stock of tickets
+                //bool isTicketCountValid = CheckSeatsAvailability(eventID, selectedSeatsTicketDetails.Count);
+                
+                if (input.isTicketCountValid && evt.ProcessingFee != null && evt.ProcessingFee > 0)
+                {
+                    decimal process_fees_perc = Convert.ToDecimal(evt.ProcessingFee);
+                    decimal process_amount = ((amount * process_fees_perc / 100));
+                    amount = (amount + process_amount);
+                    ViewData["ProcessingPercentage"] = process_fees_perc;
+                    ViewData["ProcessingFee"] = process_amount;
+                    TempData["TicketType"] = input.TicketType;
+                    ViewData["isEarlyBird"] = (input.TicketType == "EARLYBIRD") ? 1 : 0;
+                    items[0].Price = input.TotalAmount;
+                    items[0].DiscountedAmount = items[0].ActualPrice - items[0].Price;
+                    ViewData["DiscountedAmount"] = items[0].DiscountedAmount;
+                }
                 ViewData["Amount"] = amount;
             }
 
@@ -172,6 +188,81 @@ namespace FrontEnd.Controllers
             }
         }
 
+        //public bool CheckSeatsAvailability(int eventID, int no_of_tickets)
+        //{
+        //    //= Convert.ToInt32(Request["eventID"]);
+        //    //= Convert.ToInt32(Request["no_of_tickets"]);
+            
+        //    var evt = db.tblEvents.Where(e => e.EventID == eventID).SingleOrDefault();
+
+        //    BookResponse response = new BookResponse();
+        //    //check if stock is available
+        //    var soldTicketsCount = db.tblTicketOrders.Where(e => e.EventID == eventID
+        //                                        && e.Status == "SUCCESS"
+        //                                        && e.PaymentStatus == "COMPLETED").ToList();
+
+        //    int totalEBSeatsAllowed = Convert.ToInt32(evt.EBTickets);
+        //    int totalSeatsAvailable = (totalEBSeatsAllowed - soldTicketsCount.Count);
+
+        //    //to check current no of tickets does not exceed thre remaining stock of tickets
+        //    bool isTicketCountValid = totalSeatsAvailable > no_of_tickets;
+        //    return isTicketCountValid;
+        //}
+        private OrderInput CheckIsEarlyBirdAndisTicketCountValid(int eventID, List<SelectedSeatsV5> selectedSeatsTicketDetails)
+        {
+            var evt = db.tblEvents.Where(e => e.EventID == eventID).SingleOrDefault();
+            //decimal price = (decimal)evt.TicketPrice;
+            //decimal price = selectedSeatsTicketDetails.Sum(e => e.Price);
+            //decimal EBPrice = selectedSeatsTicketDetails.Sum(e => e.EBPrice);
+
+            int noOfTickets = selectedSeatsTicketDetails.Count;
+
+            var soldTicketsCount = db.tblTicketOrders.Where(e => e.EventID == eventID
+                                        && e.Status == "SUCCESS"
+                                        && e.PaymentStatus == "COMPLETED").ToList();
+
+            //decimal totalAmount = (noOfTickets * price);
+            
+            var input = new OrderInput
+            {
+                CustomerName = "",
+                CustomerEmail = "",
+                NoOfTickets = noOfTickets,
+            };
+            //Logic to check Early Bird ticket allocation base on configurtion 
+            //datewise ot seatwise
+            if (evt.EarlyBirdTicketSelection == EarlyBirdTicketType.DATEWISE.ToString())
+            {
+                DateTime currentDate = System.DateTime.Today;
+                if (currentDate >= evt.StartDate && currentDate <= evt.EndDate)
+                {
+                    input.TicketType = TicketType.EARLYBIRD.ToString();
+                }
+                else
+                {
+                    input.TicketType = TicketType.GENERAL.ToString();
+                }
+            }
+            else if (evt.EarlyBirdTicketSelection == EarlyBirdTicketType.SEATWISE.ToString())
+            {
+                //int percentEBSeats = (int)evt.PercentEBSeats;
+                //int totalEBSeatsAllowed = (int)((evt.TicketStock * percentEBSeats) / 100);
+                int totalEBSeatsAllowed = Convert.ToInt32(evt.EBTickets);
+                input.totalSeatsAvailable = (totalEBSeatsAllowed - soldTicketsCount.Count);
+                
+                if (totalEBSeatsAllowed >= noOfTickets && input.totalSeatsAvailable >= noOfTickets)
+                {
+                    input.TicketType = TicketType.EARLYBIRD.ToString();
+                }
+                else
+                {
+                    input.TicketType = TicketType.GENERAL.ToString();
+                }
+            }
+
+            input.isTicketCountValid = (input.totalSeatsAvailable > input.NoOfTickets);
+            return input;
+        }
         public string BookUnconfirmedSeats()
         {
             try
@@ -254,12 +345,11 @@ namespace FrontEnd.Controllers
                 
                 var coupon_used = db.tblOrderCoupons.Where(t => t.OrderID == null && t.SessionID == sessionID && t.tblCoupon.EventID == eventID).SingleOrDefault();
                 
+                //to check the last order serial number
                 var orders = db.tblTicketOrders.Where(os => os.Status == "SUCCESS" && os.PaymentStatus == "COMPLETED" && os.EventID == eventID).ToList();
-
                 int serialNo = (orders.Count() > 0 ? Convert.ToInt32((orders.OrderByDescending(os => os.OrderID).Take(1).SingleOrDefault().OrderNo) + 1) : 1);
 
                 var evt = db.tblEvents.Where(e => e.EventID == eventID).SingleOrDefault();
-
 
                 tblTicketOrder order = new tblTicketOrder();
                 order.EventID = eventID;
@@ -268,6 +358,10 @@ namespace FrontEnd.Controllers
                 order.Email = email;
                 order.Mobile = mobile;
                 order.Amount = Convert.ToDecimal(Request["amount"]);
+                order.TicketType = (Convert.ToInt32(Request["ticketType"]) == 1) ? "EARLYBIRD" : "GENERAL";
+                order.ActualPrice = Convert.ToDecimal(Request["actualPrice"]);
+                order.DiscountAmount = Convert.ToDecimal(Request["discountedAmount"]);
+                order.PriceAfterDiscount = Convert.ToDecimal(Request["priceAfterDiscount"]);
                 order.CreatedDate = DateTime.Now;
                 order.OrderNo = serialNo;
                 order.Status = "SUCCESS";

@@ -3,3 +3,9 @@ E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\SA.Models\bin\Release\SA
 E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\SA.Models\obj\Release\SA.Models.csproj.CoreCompileInputs.cache
 E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\SA.Models\obj\Release\SA.Models.dll
 E:\RAZAWORKS\Git\projects\javanika\javanika-ui\FrontEnd\SA.Models\obj\Release\SA.Models.pdb
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\javanika-ui-dev\FrontEnd\SA.Models\bin\Release\SA.Models.dll
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\javanika-ui-dev\FrontEnd\SA.Models\bin\Release\SA.Models.pdb
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\javanika-ui-dev\FrontEnd\SA.Models\obj\Release\SA.Models.csprojAssemblyReference.cache
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\javanika-ui-dev\FrontEnd\SA.Models\obj\Release\SA.Models.csproj.CoreCompileInputs.cache
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\javanika-ui-dev\FrontEnd\SA.Models\obj\Release\SA.Models.dll
+E:\RAZAWORKS\Git\projects\javanika\javanika-ui\javanika-ui-dev\FrontEnd\SA.Models\obj\Release\SA.Models.pdb
